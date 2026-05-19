@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const base = isGitHubPages ? '/WebUI/' : '/';
+
 export default defineConfig({
+  base,
   root: '.',
   publicDir: 'public',
   build: {
