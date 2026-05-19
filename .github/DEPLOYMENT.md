@@ -2,29 +2,68 @@
 
 This guide covers setting up and deploying the VVG ONLINE WebUI to GitHub Pages.
 
-## Quick Start
+---
 
-### 1. Ensure GitHub Actions is Enabled
+## 🚨 ERROR FIX: "Failed to create deployment (status: 404)"
 
-- Go to your repository on GitHub
-- Navigate to **Settings** → **Actions** → **General**
-- Under "Actions permissions", select **Allow all actions and reusable workflows**
-- Click **Save**
+If you see this error during deployment:
 
-### 2. Configure GitHub Pages
+```text
+Error: Failed to create deployment (status: 404)
+Ensure GitHub Pages has been enabled:
+https://github.com/VVG-ONLINE/WebUI/settings/pages
+```
 
-- Go to **Settings** → **Pages**
-- Under "Build and deployment":
-  - **Source**: Select **Deploy from a branch**
-  - **Branch**: Select **gh-pages**
-  - **Folder**: Select **/ (root)**
-- Click **Save**
+**SOLUTION - Follow these steps immediately:**
 
-The `gh-pages` branch will be created automatically by the workflow on your first push.
+### Step 1: Enable GitHub Pages Settings
 
-### 3. Push to Deploy
+1. **Go to**: https://github.com/VVG-ONLINE/WebUI/settings/pages
+2. **Under "Build and deployment"**:
+   - **Source**: Click dropdown → Select **"Deploy from a branch"**
+   - **Branch**: Click dropdown → Select **main** (or your default branch)
+   - **Folder**: Click dropdown → Select **"/ (root)"**
+3. **Click Save**
 
-Simply push to `main` or `master` branch:
+⚠️ **CRITICAL**:
+
+- Do NOT select "GitHub Actions" as the source
+- Select **"Deploy from a branch"** instead
+- Choose your **default branch** (usually `main` or `master`)
+
+### Step 2: Wait for Confirmation
+
+After clicking Save, you should see:
+
+- ✅ A green checkmark saying "GitHub Pages is enabled"
+- Or a message about waiting for deployment
+
+### Step 3: Trigger New Deployment
+
+Push a commit to trigger the workflow:
+
+```bash
+git add .
+git commit -m "Enable GitHub Pages"
+git push origin main
+```
+
+### Step 4: Monitor the Deployment
+
+1. Go to **Actions** tab
+2. Click the latest workflow run
+3. Watch for both jobs to complete:
+   - ✅ Build
+   - ✅ Deploy to GitHub Pages
+4. If successful, check the deployment output for your site URL
+
+---
+
+## Quick Start (After GitHub Pages is Enabled)
+
+### 1. Deploy
+
+Push to your default branch:
 
 ```bash
 git add .
@@ -33,6 +72,7 @@ git push origin main
 ```
 
 The GitHub Actions workflow will:
+
 1. Install dependencies
 2. Run TypeScript checks
 3. Build the project
@@ -43,18 +83,21 @@ The GitHub Actions workflow will:
 After deployment completes (check the **Actions** tab):
 
 **For project repository (e.g., `vvgonline/WebUI`):**
-```
+
+```text
 https://vvgonline.github.io/WebUI/
 ```
 
 **For user/organization pages (e.g., `vvgonline/vvgonline.github.io`):**
-```
+
+```text
 https://vvgonline.github.io/
 ```
 
 ## Workflow Details
 
 The CI/CD pipeline (`.github/workflows/deploy.yml`) runs on:
+
 - ✅ Push to `main` or `master`
 - ✅ Pull requests to `main` or `master` (build only, no deploy)
 
@@ -71,6 +114,7 @@ The CI/CD pipeline (`.github/workflows/deploy.yml`) runs on:
 ### Environment
 
 The build system automatically sets:
+
 - `GITHUB_PAGES=true` — Triggers GitHub Pages base path (`/WebUI/`)
 
 ## Configuration
@@ -84,6 +128,7 @@ const base = isGitHubPages ? '/YOUR-REPO-NAME/' : '/';
 ```
 
 Example:
+
 ```typescript
 const base = isGitHubPages ? '/my-website/' : '/';
 ```
@@ -113,26 +158,31 @@ Wait 24-48 hours for DNS propagation.
 ### Troubleshooting
 
 #### Build Fails: "npm ERR! code ENOENT"
+
 - Ensure `package-lock.json` is committed
 - Verify `package.json` exists in root
 
 #### Build Fails: "TypeScript errors"
+
 - Check error message in Actions log
 - Run locally: `npx tsc --noEmit`
 - Fix issues in `src/` directory
 
 #### Site Shows 404 After Deployment
+
 - Wait 2-3 minutes for GitHub Pages to update
 - Check repository name in `vite.config.ts`
 - Verify `gh-pages` branch exists
 - Clear browser cache (Ctrl+Shift+Delete / Cmd+Shift+Del)
 
 #### Styles/Assets Not Loading
+
 - Verify base path is correct in `vite.config.ts`
 - Check that all assets exist in `public/`
 - Rebuild locally: `npm run build`
 
 #### "gh-pages" Branch Doesn't Exist
+
 - Check **Settings** → **Pages** configuration
 - Ensure workflow has **write** permissions
 - Manually trigger: Push a small change to `main`
@@ -149,6 +199,7 @@ To rollback to a previous deployment:
 ## Permissions
 
 The workflow requires these GitHub permissions:
+
 - `contents: read` — Read repository contents
 - `pages: write` — Write to GitHub Pages
 - `id-token: write` — OIDC token authentication
@@ -158,15 +209,18 @@ These are configured in `.github/workflows/deploy.yml`.
 ## Performance Tips
 
 ### Reduce Build Time
+
 - Ensure `node_modules/` is cached (already configured)
 - Use `npm ci` instead of `npm install` (already configured)
 
 ### Reduce Artifact Size
+
 - Keep `dist/` output small
 - Current: 0.25 MB (excellent)
 - Blog images use data URIs (efficient)
 
 ### Deployment Performance
+
 - GitHub Pages serves globally with CDN
 - All assets cached aggressively (long expiry headers)
 
@@ -202,5 +256,6 @@ This is not recommended; using the CI/CD pipeline is better.
 ## Need Help?
 
 Check the **Actions** tab logs for detailed error messages, or consult:
+
 - README.md — General project documentation
 - GitHub Issues — Report bugs or request features
