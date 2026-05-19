@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | VVG ONLINE</title>
+  <meta name="description" content="Get in touch with VVG ONLINE. Let's transform your business with innovative digital consulting solutions.">
+  <meta name="keywords" content="contact digital consultant, business transformation inquiry, VVG ONLINE contact">
+  <meta name="author" content="VVG ONLINE">
+  <meta name="theme-color" content="#ffdd33">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="VVG ONLINE">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="/pwa/icon-192.png">
+  <link rel="apple-touch-icon" href="/pwa/icon-192.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Us | VVG ONLINE">
+  <meta property="og:description" content="Get in touch with VVG ONLINE. Let's transform your business with innovative digital consulting solutions.">
+  <meta property="og:url" content="https://vvgonline.net/contact.html">
+  <meta property="og:site_name" content="VVG ONLINE">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us | VVG ONLINE">
+  <meta name="twitter:description" content="Get in touch with VVG ONLINE. Let's transform your business with innovative digital consulting solutions.">
+
+  <link rel="canonical" href="https://vvgonline.net/contact.html">
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+  <system-panel></system-panel>
+
+  <page-header
+    user-tag="GET_IN_TOUCH"
+    path-tag="LETS_BUILD"
+    title="Let's Transform Together"
+    subtitle="Ready to drive your business beyond growth? Reach out and we'll craft your roadmap."
+  ></page-header>
+
+  <section class="container py-5" aria-labelledby="contact-form-heading">
+    <h2 id="contact-form-heading" class="visually-hidden">Contact Form</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form id="contact-form" class="p-4 border">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="contact-name" class="form-label mono small">NAME</label>
+              <input type="text" class="form-control border-0 border-bottom rounded-0" id="contact-name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="contact-email" class="form-label mono small">EMAIL</label>
+              <input type="email" class="form-control border-0 border-bottom rounded-0" id="contact-email" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="contact-subject" class="form-label mono small">SUBJECT</label>
+            <input type="text" class="form-control border-0 border-bottom rounded-0" id="contact-subject">
+          </div>
+          <div class="mb-3">
+            <label for="contact-message" class="form-label mono small">MESSAGE</label>
+            <textarea class="form-control border-0 border-bottom rounded-0" id="contact-message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-vvg w-100">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+  <ai-terminal></ai-terminal>
+  <div id="canvas-container" aria-hidden="true"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="module" src="src/main.ts"></script>
+</body>
+</html>

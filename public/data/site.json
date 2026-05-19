@@ -1,0 +1,20 @@
+{
+  "heroText": "Transform Your Vision into Reality.",
+  "tagline": "Driving you beyond growth, through unique, innovative, and result-oriented digital consulting.",
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/vvgonline",
+    "github": "https://github.com/vvgonline",
+    "twitter": "https://twitter.com/vvgonline"
+  },
+  "navItems": [
+    { "label": "SERVICES", "href": "services.html", "icon": "bi-cpu" },
+    { "label": "ABOUT", "href": "about.html", "icon": "bi-info-circle" },
+    { "label": "WORKFLOW", "href": "#workflow", "icon": "bi-diagram-3" },
+    { "label": "INSIGHTS", "href": "blog.html", "icon": "bi-newspaper" },
+    { "label": "CONTACT", "href": "contact.html", "icon": "bi-terminal" }
+  ],
+  "siteUrl": "https://vvgonline.net",
+  "siteName": "VVG ONLINE",
+  "siteDescription": "Digital Business Consulting — Driving you beyond growth through unique, innovative, and result-oriented digital solutions.",
+  "locale": "en_US"
+}

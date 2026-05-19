@@ -1,2 +1,3 @@
 # WebUI
-VVG ONLINE's website
+
+This is a VVG ONLINE's static website project.
