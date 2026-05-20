@@ -45,11 +45,26 @@ class SystemPanel extends HTMLElement {
     const container = this.querySelector('#nav-links');
     if (!container || !this.config) return;
     container.innerHTML = this.config.navItems
-      .map((item) => `
-        <a href="${item.href}" class="no-cursor" aria-label="Navigate to ${item.label}">
-          <i class="bi ${item.icon} me-2"></i><span class="text-light">${item.label}</span>
-        </a>
-      `).join('');
+      .map((item) => {
+        if (item.action === 'toggleTerminal') {
+          return `
+            <button id="nav-f10-btn" class="nav-action-btn" title="Toggle AI terminal (F10)" aria-label="Toggle AI terminal">
+              <i class="bi ${item.icon} me-2"></i><span class="text-light">${item.label}</span>
+            </button>
+          `;
+        }
+        return `
+          <a href="${item.href}" class="no-cursor" aria-label="Navigate to ${item.label}">
+            <i class="bi ${item.icon} me-2"></i><span class="text-light">${item.label}</span>
+          </a>
+        `;
+      }).join('');
+
+    // Bind F10 button click
+    const f10Btn = this.querySelector('#nav-f10-btn');
+    if (f10Btn) {
+      f10Btn.addEventListener('click', () => this.toggleTerminal());
+    }
   }
 
   initClock(): void {
@@ -97,6 +112,14 @@ class SystemPanel extends HTMLElement {
   initEventListeners(): void {
     this.querySelector('#btn-theme-toggle')?.addEventListener('click', () => this.toggleTheme());
     this.querySelector('#nav-terminal-toggle')?.addEventListener('click', () => this.toggleTerminal());
+
+    // Add F10 keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'F10') {
+        e.preventDefault();
+        this.toggleTerminal();
+      }
+    });
   }
 }
 

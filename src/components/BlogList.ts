@@ -188,19 +188,8 @@ class BlogList extends HTMLElement {
       return matchesCategory && matchesSearch;
     });
 
-    const controls = this.querySelector('.blog-controls');
-    const resultsCount = this.querySelector('.blog-results-count');
-    const content = this.viewMode === 'grid' ? this.renderGrid() : this.renderArchive();
-
-    if (controls && resultsCount) {
-      resultsCount.innerHTML = `Showing ${this.filteredPosts.length} of ${this.posts.length} articles`;
-      const contentContainer = document.createElement('div');
-      contentContainer.innerHTML = content;
-      while (resultsCount.nextSibling) {
-        this.removeChild(resultsCount.nextSibling);
-      }
-      this.appendChild(contentContainer);
-    }
+    this.render();
+    this.bindEvents();
   }
 }
 
