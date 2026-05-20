@@ -1,6 +1,6 @@
 # GitHub Pages Deployment Guide
 
-This guide covers setting up and deploying the VVG ONLINE WebUI to GitHub Pages.
+This guide covers setting up and deploying the VVG ONLINE WebUI to GitHub Pages. https://vvg-online.github.io/WebUI/
 
 ---
 

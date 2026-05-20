@@ -13,12 +13,12 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: '/index.html',
-        blog: '/blog.html',
-        'blog-post': '/blog-post.html',
-        contact: '/contact.html',
-        services: '/services.html',
-        about: '/about.html',
+        main: 'index.html',
+        blog: 'blog.html',
+        'blog-post': 'blog-post.html',
+        contact: 'contact.html',
+        services: 'services.html',
+        about: 'about.html',
       },
     },
   },
