@@ -1,0 +1,93 @@
+@page "/contact"
+@inject VVG.Web.Services.MetadataService MetadataService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Contact</PageTitle>
+
+<HeroBanner Title="Start the Conversation"
+    Subtitle="Whether it's a project idea, a strategic question, or a partnership proposal, our team is ready to connect. Let's build the future together."
+    TagUser="// CONTACT_US" TagPath="// START_CONVERSATION" />
+
+<div class="container">
+    <h2>Contact</h2>
+    <p>Get in touch with us to discuss your project or partnership opportunities.</p>
+</div>
+
+<section class="container py-5">
+
+    <div class="row ">
+        <div class="col-lg-8">
+            <div class="card p-4 p-md-5">
+                <EditForm Model="@contactForm" OnValidSubmit="@HandleSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label mono">Full Name</label>
+                        <InputText id="name" class="form-control" @bind-Value="contactForm.Name" placeholder="Your Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label mono">Email Address</label>
+                        <InputText id="email" class="form-control" @bind-Value="contactForm.Email" placeholder="name@example.com" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label mono">Message</label>
+                        <InputTextArea id="message" class="form-control" @bind-Value="contactForm.Message" rows="5" placeholder="Your message here..." />
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-vvg">Send Message _</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private ContactFormModel contactForm = new ContactFormModel();
+
+    public class ContactFormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        public string? Name { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.EmailAddress]
+        public string? Email { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required]
+        public string? Message { get; set; }
+    }
+
+    private void HandleSubmit()
+    {
+        var subject = $"Contact Form Submission from {contactForm.Name}";
+        var body = $"{contactForm.Message}%0A%0AFrom: {contactForm.Name} ({contactForm.Email})";
+        var mailtoUrl = $"mailto:vvgonline.net@gmail.com?subject={Uri.EscapeDataString(subject)}&body={Uri.EscapeDataString(body)}";
+        NavigationManager.NavigateTo(mailtoUrl);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "Contact Us - VVG ONLINE",
+            Description = "Get in touch with VVG ONLINE for digital business consulting. Let's start a conversation about your vision and digital transformation goals.",
+            Keywords = "contact, get in touch, consultation, digital consulting, VVG ONLINE, business inquiry",
+            Image = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            
+            OgType = "website",
+            OgTitle = "Contact Us - VVG ONLINE",
+            OgDescription = "Ready to transform your business? Get in touch with VVG ONLINE today for expert digital consulting services.",
+            OgImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgUrl = "https://test.vvgonline.net/Contact",
+
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonlinedotnet",
+            TwitterCreator = "@vvgonlinedotnet",
+            TwitterTitle = "Contact Us - VVG ONLINE",
+            TwitterDescription = "Ready to transform your business? Let's talk about your digital transformation journey.",
+            TwitterImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+        });
+    }
+}

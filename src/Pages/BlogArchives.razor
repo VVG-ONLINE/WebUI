@@ -1,0 +1,240 @@
+@page "/BlogArchives"
+@using System.Net.Http.Json
+@using VVG.Web.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Blog Archives - VVG ONLINE</PageTitle>
+
+<!-- Hero Section -->
+<HeroBanner Title="DIGITAL INSIGHTS ARCHIVES"
+    Subtitle="Explore our extensive collection of articles, tutorials, and insights on digital trends, technology, and innovation. Dive into topics ranging from AI and cybersecurity to software development and digital marketing. Stay informed and ahead in the ever-evolving digital landscape."
+    TagUser="// DIGITAL_INSIGHTS_ARCHIVES" TagPath="// STAY_UPDATED" />
+
+<!-- Search and Filters -->
+<section class="bg-dark border-bottom border-secondary py-4">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark text-white border-secondary">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input type="text" class="form-control bg-dark text-white border-secondary"
+                        placeholder="Search posts..." @bind="searchTerm" @bind:event="oninput"
+                        @onkeyup="HandleSearchKeyup" />
+                    @if (!string.IsNullOrWhiteSpace(searchTerm))
+                    {
+                        <button class="btn btn-outline-secondary" @onclick="ClearSearch">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select bg-dark text-white border-secondary" @bind="selectedYear"
+                    @bind:after="ApplyFilters">
+                    <option value="All">All Years (@(allPosts?.Length ?? 0))</option>
+                    @if (yearsSummary != null)
+                    {
+                        @foreach (var year in yearsSummary.Keys.OrderByDescending(y => y))
+                        {
+                            <option value="@year">@year (@yearsSummary[year])</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select bg-dark text-white border-secondary" @bind="selectedTag"
+                    @bind:after="ApplyFilters">
+                    <option value="All">All Tags</option>
+                    <option value="Must">Must (@GetTagCount("Must"))</option>
+                    <option value="Recommended">Recommended (@GetTagCount("Recommended"))</option>
+                    <option value="Top">Top (@GetTagCount("Top"))</option>
+                    <option disabled>──────────</option>
+                    @if (tagsSummary != null)
+                    {
+                        @foreach (var tag in tagsSummary.Keys.Where(t => t != "Must" && t != "Recommended" && t != "Top"))
+                        {
+                            <option value="@tag">#@tag (@tagsSummary[tag])</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Posts Listing -->
+<section class="bg-dark text-white py-5">
+    <div class="container">
+        @if (isLoading)
+        {
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        }
+        else if (groupedPosts == null || !groupedPosts.Any())
+        {
+            <div class="text-center py-5">
+                <h3>No posts found</h3>
+                <p class="text-muted">Try adjusting your filters or search query.</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var yearGroup in groupedPosts)
+            {
+                <div class="mb-5">
+                    <h2 class="h3 mono mb-4 text-warning pb-2">
+                        YEARS // @yearGroup.Key (@yearGroup.Value.Count)
+                    </h2>
+
+                    <div class="row g-4">
+                        @foreach (var post in yearGroup.Value)
+                        {
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 p-4">
+                                    <div class="mb-3"><span class="insight-tag">@post.Category</span></div>
+                                    <h4 class="serif mb-3"><a href="/blog/@post.Slug" class="">@post.Title</a></h4>
+                                    <p class="small opacity-75 mb-4">@post.Excerpt</p>
+                                    <div class="mt-auto mono border-top pt-3 d-flex justify-content-between">
+                                        <span>@post.TimeToRead min read</span>
+                                        <a href="/blog/@post.Slug" class="">READ -></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>
+
+@code {
+    private Models.BlogPost[]? allPosts;
+    private Dictionary<string, List<Models.BlogPost>>? groupedPosts;
+    private Dictionary<string, int>? tagsSummary;
+    private Dictionary<int, int>? yearsSummary;
+
+    private string searchTerm = string.Empty;
+    private string selectedYear = "All";
+    private string selectedTag = "All";
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Load posts directly as array
+            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+
+            if (allPosts != null && allPosts.Length > 0)
+            {
+                // Filter out drafts
+                allPosts = allPosts.Where(p => !p.Draft).ToArray();
+
+                // Generate summaries
+                GenerateSummaries();
+
+                // Group posts
+                GroupPosts();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"BlogArchives ERROR: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void GenerateSummaries()
+    {
+        if (allPosts == null) return;
+
+        // Year summary
+        yearsSummary = allPosts
+        .GroupBy(p => p.PublishedAt.Year)
+        .ToDictionary(g => g.Key, g => g.Count());
+
+        // Tag summary
+        tagsSummary = allPosts
+        .SelectMany(p => p.Tags ?? Array.Empty<string>())
+        .GroupBy(t => t)
+        .ToDictionary(g => g.Key, g => g.Count());
+    }
+
+    private int GetTagCount(string tag)
+    {
+        if (allPosts == null) return 0;
+        return allPosts.Count(p => p.Tags?.Contains(tag) ?? false);
+    }
+
+    private void GroupPosts()
+    {
+        if (allPosts == null) return;
+
+        var query = allPosts.AsEnumerable();
+
+        // Apply search filter
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            var searchLower = searchTerm.ToLower();
+            query = query.Where(p =>
+            (!string.IsNullOrEmpty(p.Title) && p.Title.Contains(searchLower, StringComparison.OrdinalIgnoreCase)) ||
+            (!string.IsNullOrEmpty(p.Excerpt) && p.Excerpt.Contains(searchLower, StringComparison.OrdinalIgnoreCase))
+            );
+        }
+
+        // Apply tag filter
+        if (selectedTag != "All")
+        {
+            query = query.Where(p => p.Tags?.Contains(selectedTag) ?? false);
+        }
+
+        // Apply year filter
+        if (selectedYear != "All" && int.TryParse(selectedYear, out int year))
+        {
+            query = query.Where(p => p.PublishedAt.Year == year);
+        }
+
+        // Group by year
+        groupedPosts = query
+        .OrderByDescending(p => p.PublishedAt)
+        .GroupBy(p => p.PublishedAt.Year)
+        .OrderByDescending(g => g.Key)
+        .ToDictionary(g => g.Key.ToString(), g => g.ToList());
+    }
+
+    private void ApplyFilters()
+    {
+        GroupPosts();
+        StateHasChanged();
+    }
+
+    private void FilterByTag(string tag)
+    {
+        selectedTag = tag;
+        ApplyFilters();
+    }
+
+    private void HandleSearchKeyup(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            ApplyFilters();
+        }
+    }
+
+    private void ClearSearch()
+    {
+        searchTerm = string.Empty;
+        ApplyFilters();
+    }
+}

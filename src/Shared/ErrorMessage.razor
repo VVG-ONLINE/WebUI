@@ -1,0 +1,17 @@
+@code {
+    [Parameter]
+    public string Message { get; set; } = "An unexpected error has occurred.";
+}
+
+<div class="min-vh-100 py-5">
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error</h4>
+            <p>@Message</p>
+            <hr />
+            <p class="mb-0">
+                <a href="/Blog" class="btn btn-outline-warning">← Back to Blog</a>
+            </p>
+        </div>
+    </div>
+</div>

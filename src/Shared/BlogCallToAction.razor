@@ -1,0 +1,28 @@
+@using VVG.Web.Models
+
+<section class="blog-cta py-5 bg-warning ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h3 class="mono mb-3">// TRANSFORM_YOUR_BUSINESS</h3>
+                <h2 class="h3 mb-4">Ready to take the next step?</h2>
+                <p class="opacity-75 mb-4">
+                    Let VVG ONLINE help you implement the strategies discussed in this article.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="/contact" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="bi bi-envelope-fill me-2"></i>CONTACT US
+                    </a>
+                    <a href="/blog" class="btn btn-outline-secondary px-4 py-2">
+                        <i class="bi bi-archive-fill me-2"></i>VIEW ALL POSTS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter]
+    public BlogPost? Post { get; set; }
+}

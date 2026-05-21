@@ -1,0 +1,97 @@
+@page "/services"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject MetadataService MetadataService
+
+<PageTitle>Services</PageTitle>
+
+<HeroBanner Title="End-to-End Digital Solutions"
+    Subtitle="A comprehensive suite of services designed to architect, build, and scale your digital ambitions into market-leading realities."
+    TagUser="// DIGITAL_SOLUTIONS" TagPath="// MARKET_LEADING_REALITIES" />
+
+<div class="container">
+    <h2>Services</h2>
+    <p>We offer a range of services tailored to meet your</p>
+</div>
+
+<section class="container py-5">
+
+    @if (services is null)
+    {
+        <p class="text-center">Loading...</p>
+    }
+    else
+    {
+        <div class="row g-0 border-top border-start">
+            @foreach (var (s, index) in services.Select((value, i) => (value, i)))
+            {
+                <div class="col-md-6 col-lg-4 p-4 border-bottom border-end @((index + 1) % 2 == 0 ? "" : "")">
+                    <span class="mono">0@(index + 1).</span>
+                    <h3 class="mt-3">@s.title</h3>
+                    <p class="opacity-75 small">@s.description</p>
+                    @if (s.subservices != null && s.subservices.Length > 0)
+                    {
+                        <ul class="list-unstyled mt-3">
+                            @foreach (var subservice in s.subservices)
+                            {
+                                <li class="mb-2">
+                                    <i class="bi bi-check2 text-accent me-1"></i>
+                                    <strong>@subservice.name</strong>
+                                    <div class="small opacity-75 ms-3">@subservice.description</div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            }
+        </div>
+    }
+</section>
+
+@code {
+    class Service
+    {
+        public int id { get; set; }
+        public string? title { get; set; }
+        public string? description { get; set; }
+        public string? icon { get; set; } // New field for the icon
+        public Subservice[]? subservices { get; set; } // New field for subservices
+    }
+
+    class Subservice
+    {
+        public string? name { get; set; }
+        public string? description { get; set; }
+    }
+
+    Service[]? services;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "Our Services - VVG ONLINE",
+            Description = "Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies to transform your enterprise.",
+            Keywords = "digital services, technology solutions, digital marketing, data analytics, UX design, consulting services, digital transformation, VVG ONLINE",
+            Image = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            
+            OgType = "website",
+            OgTitle = "Services - VVG ONLINE",
+            OgDescription = "Explore our comprehensive digital business consulting services designed to transform your enterprise through innovation and strategic guidance.",
+            OgImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgUrl = "https://test.vvgonline.net/Services",
+
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonlinedotnet",
+            TwitterCreator = "@vvgonlinedotnet",
+            TwitterTitle = "Services - VVG ONLINE",
+            TwitterDescription = "Comprehensive digital business consulting services to transform your enterprise.",
+            TwitterImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+        });
+
+        var doc = await Http.GetFromJsonAsync<ServiceDoc>("assets/data/services.json");
+        services = doc?.services;
+    }
+
+    class ServiceDoc { public Service[]? services { get; set; } }
+}

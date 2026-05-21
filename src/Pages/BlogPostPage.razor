@@ -1,0 +1,210 @@
+@page "/blog/{slug}"
+@using VVG.Web.Models
+@using Markdig
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject MetadataService MetadataService
+@inject IJSRuntime JSRuntime
+
+@if (isLoading)
+{
+    <div class="container py-5 text-center">
+        <div class="spinner-border text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3 mono text-warning">// LOADING_POST</p>
+    </div>
+}
+else if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="container py-5">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error</h4>
+            <p>@errorMessage</p>
+            <hr>
+            <a href="/blog" class="btn btn-warning">← Back to Blog</a>
+        </div>
+    </div>
+}
+else if (blogPost != null)
+{
+    <BlogHero Post="@blogPost" />
+
+    @* Main Content with Sidebar Layout *@
+    <section class="blog-post-section py-5">
+        <div class="container">
+            <div class="row g-2">
+                @* Sidebar *@
+                @* <div class="col-lg-3">
+                    <BlogPostSidebar Post="@blogPost" HtmlContent="@blogPostHtml"
+                        OnCopyLink="@(async () => await CopyLink())" OnShare="@(async () => await SharePost())" />
+                </div> *@
+
+                @* Main Content *@
+                <div class="col-lg-12">
+                    <BlogContent HtmlContent="@blogPostHtml" OnCopyLink="@CopyLink" OnShare="@SharePost"
+                        ShowCopyToast="@showCopyConfirmation" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <BlogNavigation PreviousPost="@previousPost" NextPost="@nextPost" />
+    <BlogCallToAction Post="@blogPost" />
+}
+
+@code {
+    [Parameter]
+    public string? Slug { get; set; }
+
+    private Models.BlogPost? blogPost;
+    private Models.BlogPost[]? allPosts;
+    private Models.BlogPost? previousPost;
+    private Models.BlogPost? nextPost;
+    private string? blogPostHtml;
+    private bool isLoading = true;
+    private string? errorMessage;
+    private bool showCopyConfirmation = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBlogPost();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Slug != null)
+        {
+            await LoadBlogPost();
+        }
+    }
+
+    private async Task LoadBlogPost()
+    {
+        try
+        {
+            isLoading = true;
+            errorMessage = null;
+
+            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+
+            if (allPosts == null || allPosts.Length == 0)
+            {
+                errorMessage = "No blog posts available.";
+                return;
+            }
+
+            allPosts = allPosts.Where(p => !p.Draft).OrderByDescending(p => p.PublishedAt).ToArray();
+            blogPost = allPosts.FirstOrDefault(p => p.Slug == Slug);
+
+            if (blogPost == null)
+            {
+                errorMessage = "Blog post not found.";
+                return;
+            }
+
+            try
+            {
+                var fileName = !string.IsNullOrEmpty(blogPost.Filename)
+                ? blogPost.Filename
+                : Slug;
+
+                var markdownContent = await Http.GetStringAsync($"assets/data/blogs/{fileName}.md");
+                markdownContent = RemoveFrontmatter(markdownContent);
+
+                var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .Build();
+                blogPostHtml = Markdown.ToHtml(markdownContent, pipeline);
+            }
+            catch (HttpRequestException ex)
+            {
+                errorMessage = $"Blog post content file not found: {ex.Message}";
+                return;
+            }
+
+            var currentIndex = Array.IndexOf(allPosts, blogPost);
+            previousPost = currentIndex < allPosts.Length - 1 ? allPosts[currentIndex + 1] : null;
+            nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+            await SetMetadata();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+            Console.WriteLine($"BlogPost ERROR: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private string RemoveFrontmatter(string markdown)
+    {
+        if (markdown.StartsWith("---"))
+        {
+            var endIndex = markdown.IndexOf("---", 3);
+            if (endIndex > 0)
+            {
+                return markdown.Substring(endIndex + 3).Trim();
+            }
+        }
+        return markdown;
+    }
+
+    private async Task SetMetadata()
+    {
+        if (blogPost == null) return;
+
+        var url = Navigation.ToAbsoluteUri($"/blog/{blogPost.Slug}").ToString();
+        var keywords = blogPost.Tags != null ? string.Join(", ", blogPost.Tags) : "";
+
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = blogPost.Title,
+            Description = blogPost.Excerpt,
+            Keywords = keywords,
+            OgTitle = blogPost.Title,
+            OgDescription = blogPost.Excerpt,
+            OgType = "article",
+            OgUrl = url,
+            TwitterCard = "summary_large_image",
+            TwitterTitle = blogPost.Title,
+            TwitterDescription = blogPost.Excerpt,
+            ArticlePublishedTime = blogPost.PublishedAt.ToString("o"),
+            ArticleSection = blogPost.Category?.ToString(),
+            ArticleTags = blogPost.Tags
+        });
+    }
+
+    private async Task CopyLink()
+    {
+        var url = Navigation.ToAbsoluteUri($"/blog/{Slug}").ToString();
+        await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", url);
+        showCopyConfirmation = true;
+        await Task.Delay(3000);
+        showCopyConfirmation = false;
+        StateHasChanged();
+    }
+
+    private async Task SharePost()
+    {
+        var url = Navigation.ToAbsoluteUri($"/blog/{Slug}").ToString();
+        var shareData = new
+        {
+            title = blogPost?.Title,
+            text = blogPost?.Excerpt,
+            url = url
+        };
+
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.share", shareData);
+        }
+        catch
+        {
+            await CopyLink();
+        }
+    }
+}

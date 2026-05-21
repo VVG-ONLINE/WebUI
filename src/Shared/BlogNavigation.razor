@@ -1,0 +1,68 @@
+@using VVG.Web.Models
+
+<section class="blog-navigation py-5 order-top border-warning">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <a href="/blog" class="btn btn-outline">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Blog
+                    </a>
+
+                    <div class="d-flex gap-2">
+                        @if (PreviousPost != null)
+                        {
+                            <a href="/blog/@PreviousPost.Slug" class="btn btn-outline" title="@PreviousPost.Title">
+                                <i class="bi bi-chevron-left"></i> Previous
+                            </a>
+                        }
+                        @if (NextPost != null)
+                        {
+                            <a href="/blog/@NextPost.Slug" class="btn btn-outline" title="@NextPost.Title">
+                                Next <i class="bi bi-chevron-right"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                @if (PreviousPost != null || NextPost != null)
+                {
+                    <div class="row mt-4 g-3">
+                        @if (PreviousPost != null)
+                        {
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="opacity-75 small mb-2">← PREVIOUS POST</h6>
+                                        <h5 class="card-title">@PreviousPost.Title</h5>
+                                        <p class="card-text small opacity-75">@PreviousPost.Excerpt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @if (NextPost != null)
+                        {
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body text-end">
+                                        <h6 class="opacity-75 small mb-2">NEXT POST →</h6>
+                                        <h5 class="card-title">@NextPost.Title</h5>
+                                        <p class="card-text small opacity-75">@NextPost.Excerpt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter]
+    public BlogPost? PreviousPost { get; set; }
+
+    [Parameter]
+    public BlogPost? NextPost { get; set; }
+}

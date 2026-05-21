@@ -1,0 +1,317 @@
+# Quality Standards Configuration for VVG Online Project
+# Version: 2.0
+# Last Updated: January 20, 2026
+
+# ============================================================================
+# CODE STYLE GUIDELINES
+# ============================================================================
+[style]
+# Line length limits (modern standard: 100-120 for readability)
+max_line_length = 120
+comment_line_length = 100
+
+# Indentation standards
+indent_style = "space"
+indent_size = 2  # For TypeScript/JavaScript/HTML
+csharp_indent_size = 4  # For C# files
+
+# File encoding and line endings
+charset = "utf-8"
+end_of_line = "lf"  # Unix-style line endings
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ============================================================================
+# NAMING CONVENTIONS
+# ============================================================================
+[naming]
+# Removed strict prefixes for better code readability and modern conventions
+# Modern best practices favor descriptive names over prefixes
+
+[naming.javascript]
+# JavaScript/TypeScript conventions
+functions = "camelCase"
+variables = "camelCase"
+constants = "UPPER_SNAKE_CASE"
+classes = "PascalCase"
+interfaces = "PascalCase"
+type_aliases = "PascalCase"
+
+[naming.csharp]
+# C# conventions (following .NET standards)
+classes = "PascalCase"
+interfaces = "IPascalCase"  # Prefix with I
+methods = "PascalCase"
+properties = "PascalCase"
+private_fields = "_camelCase"  # Prefix with underscore
+local_variables = "camelCase"
+constants = "PascalCase"
+parameters = "camelCase"
+
+[naming.css]
+# CSS/SCSS conventions
+classes = "kebab-case"
+ids = "kebab-case"
+variables = "kebab-case"
+
+# ============================================================================
+# FORMATTING RULES
+# ============================================================================
+[formatting]
+# Control flow spacing
+insert_space_after_keywords_in_control_flow_statements = true
+insert_space_before_function_parenthesis = false
+insert_space_between_parentheses_in_calls = false
+insert_space_after_comma = true
+
+# Brace style (Allman vs K&R)
+brace_style = "same_line"  # K&R style for JS/TS
+csharp_brace_style = "next_line"  # Allman style for C#
+
+# Quote preferences
+quote_style = "double"  # Prefer double quotes
+jsx_quote_style = "double"
+
+# Semicolons
+require_semicolons = true  # Always use semicolons in JS/TS
+
+# ============================================================================
+# CODE QUALITY THRESHOLDS
+# ============================================================================
+[quality]
+# Complexity metrics
+max_cyclomatic_complexity = 10
+max_cognitive_complexity = 15
+max_function_lines = 50
+max_file_lines = 500
+max_parameters = 5
+
+# Code coverage targets
+min_code_coverage = 80
+min_branch_coverage = 75
+min_line_coverage = 85
+
+# Technical debt ratio (%)
+max_technical_debt_ratio = 5.0
+
+# ============================================================================
+# DOCUMENTATION STANDARDS
+# ============================================================================
+[documentation]
+# Require documentation for public APIs
+require_function_docs = true
+require_class_docs = true
+require_complex_logic_docs = true
+
+# Documentation style
+doc_style = "JSDoc"  # For JavaScript/TypeScript
+csharp_doc_style = "XML"  # For C#
+
+# Minimum documentation coverage
+min_public_api_documentation = 90
+min_complex_function_documentation = 100
+
+# ============================================================================
+# SECURITY STANDARDS
+# ============================================================================
+[security]
+# Dependency scanning
+scan_dependencies = true
+block_vulnerable_dependencies = true
+max_vulnerability_severity = "medium"
+
+# Code analysis
+detect_hardcoded_secrets = true
+detect_sql_injection = true
+detect_xss_vulnerabilities = true
+detect_csrf_vulnerabilities = true
+
+# ============================================================================
+# PERFORMANCE GUIDELINES
+# ============================================================================
+[performance]
+# Bundle size limits (in KB)
+max_javascript_bundle_size = 500
+max_css_bundle_size = 100
+max_initial_page_size = 1500
+
+# Performance budgets
+max_first_contentful_paint_ms = 1800
+max_largest_contentful_paint_ms = 2500
+max_time_to_interactive_ms = 3500
+max_cumulative_layout_shift = 0.1
+max_first_input_delay_ms = 100
+
+# ============================================================================
+# ACCESSIBILITY STANDARDS
+# ============================================================================
+[accessibility]
+# WCAG compliance level
+wcag_level = "AA"
+require_alt_text = true
+require_aria_labels = true
+color_contrast_ratio = 4.5
+
+# ============================================================================
+# TESTING REQUIREMENTS
+# ============================================================================
+[testing]
+# Test coverage requirements
+require_unit_tests = true
+require_integration_tests = true
+min_unit_test_coverage = 80
+
+# Test naming conventions
+test_file_suffix = ".test"
+test_file_extension = ".cs"  # or .js/.ts
+
+# ============================================================================
+# COMMIT & VERSION CONTROL
+# ============================================================================
+[git]
+# Commit message format (Conventional Commits)
+commit_message_format = "conventional"
+# Format: <type>(<scope>): <subject>
+# Types: feat, fix, docs, style, refactor, test, chore
+
+# Branch naming conventions
+branch_naming = "feature/*, bugfix/*, hotfix/*, release/*"
+
+# Require issue reference in commits
+require_issue_reference = false
+
+# ============================================================================
+# BUILD & DEPLOYMENT
+# ============================================================================
+[build]
+# Build warnings
+treat_warnings_as_errors = true
+max_build_warnings = 0
+
+# Optimization
+enable_minification = true
+enable_tree_shaking = true
+enable_code_splitting = true
+
+[deployment]
+# Environment-specific settings
+require_environment_validation = true
+allowed_environments = ["development", "staging", "production"]
+
+# Pre-deployment checks
+require_all_tests_pass = true
+require_lint_pass = true
+require_security_scan = true
+require_performance_check = true
+
+# ============================================================================
+# LINTING CONFIGURATION
+# ============================================================================
+[linting]
+# Enable strict mode
+strict_mode = true
+
+# Specific rules
+no_unused_variables = true
+no_console_logs = "warn"  # Warn but don't fail
+no_debugger = "error"
+no_implicit_any = true  # TypeScript
+prefer_const = true
+
+# ============================================================================
+# FILE ORGANIZATION
+# ============================================================================
+[organization]
+# Maximum nesting depth
+max_folder_nesting = 5
+
+# File naming
+file_naming = "kebab-case"
+component_file_naming = "PascalCase.razor"
+test_file_naming = "PascalCase.test.cs"
+
+# ============================================================================
+# LANGUAGE-SPECIFIC SETTINGS
+# ============================================================================
+[languages.csharp]
+language_version = "latest"
+nullable_reference_types = true
+implicit_usings = true
+file_scoped_namespaces = true
+
+[languages.typescript]
+strict_mode = true
+no_implicit_any = true
+strict_null_checks = true
+target = "ES2020"
+
+[languages.css]
+use_css_modules = true
+prefer_scss = true
+autoprefixer_enabled = true
+
+# ============================================================================
+# PROJECT-SPECIFIC RULES
+# ============================================================================
+[project.blazor]
+# Blazor-specific conventions
+component_file_extension = ".razor"
+code_behind_pattern = ".razor.cs"
+css_isolation = true
+scoped_css_pattern = ".razor.css"
+
+[project.ai_chatbot]
+# AI chatbot specific requirements
+require_prompt_versioning = true
+require_model_documentation = true
+require_privacy_compliance = true
+max_context_window = 8192
+
+# ============================================================================
+# MONITORING & METRICS
+# ============================================================================
+[monitoring]
+# Error tracking
+enable_error_tracking = true
+error_sampling_rate = 1.0
+
+# Performance monitoring
+enable_performance_monitoring = true
+track_user_interactions = true
+track_api_response_times = true
+
+# Analytics
+enable_analytics = true
+respect_do_not_track = true
+
+# ============================================================================
+# EXCEPTIONS & OVERRIDES
+# ============================================================================
+[exceptions]
+# Files/folders to exclude from quality checks
+exclude_paths = [
+  "node_modules/**",
+  "bin/**",
+  "obj/**",
+  "wwwroot/lib/**",
+  "*.min.js",
+  "*.min.css",
+  "migrations/**"
+]
+
+# Allow longer lines in specific file types
+allow_long_lines_in = ["*.md", "*.json"]
+
+# ============================================================================
+# CONTINUOUS IMPROVEMENT
+# ============================================================================
+[improvement]
+# Regular quality reviews
+require_quarterly_review = true
+track_quality_trends = true
+quality_gate_threshold = 85
+
+# Refactoring guidelines
+max_code_age_days = 365  # Flag old code for review
+identify_code_smells = true
+suggest_refactoring = true

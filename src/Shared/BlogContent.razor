@@ -1,0 +1,64 @@
+@using Microsoft.JSInterop
+
+<section class="blog-content px-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                @if (!string.IsNullOrEmpty(HtmlContent))
+                {
+                    <article class="content-body prose">
+                        @((MarkupString)HtmlContent)
+                    </article>
+                }
+
+                <hr class="my-5" />
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <button class="btn btn-warning px-4 py-2" @onclick="HandleCopyLink">
+                        <i class="bi bi-link-45deg me-2"></i>COPY LINK
+                    </button>
+                    <button class="btn btn-outline-secondary px-4 py-2" @onclick="HandleShare">
+                        <i class="bi bi-share-fill me-2"></i>SHARE
+                    </button>
+                </div>
+
+                @if (ShowCopyToast)
+                {
+                    <div class="position-fixed top-0 start-50 translate-middle-x mt-5 p-3" style="z-index: 9999;">
+                        <div class="toast show align-items-center text-bg-success border-0" role="alert">
+                            <div class="d-flex">
+                                <div class="toast-body">
+                                    <i class="bi bi-check-circle me-2"></i>Link copied to clipboard!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired]
+    public string? HtmlContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnCopyLink { get; set; }
+
+    [Parameter]
+    public EventCallback OnShare { get; set; }
+
+    [Parameter]
+    public bool ShowCopyToast { get; set; }
+
+    private async Task HandleCopyLink()
+    {
+        await OnCopyLink.InvokeAsync();
+    }
+
+    private async Task HandleShare()
+    {
+        await OnShare.InvokeAsync();
+    }
+}

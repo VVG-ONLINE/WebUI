@@ -1,0 +1,79 @@
+@implements IDisposable
+
+@code {
+    [Microsoft.AspNetCore.Components.Parameter]
+    public string Title { get; set; } = "Transform Your Vision into Reality.";
+
+    [Microsoft.AspNetCore.Components.Parameter]
+    public string Subtitle { get; set; } = "Driving you beyond growth, through unique, innovative, and result-oriented digital consulting.";
+
+    [Microsoft.AspNetCore.Components.Parameter]
+    public string TagUser { get; set; } = "";
+
+    [Microsoft.AspNetCore.Components.Parameter]
+    public string TagPath { get; set; } = "";
+
+    private string? displayedTitle;
+    private System.Timers.Timer? _timer;
+    private int _charIndex;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Timers.Timer(72); // 72ms delay between characters
+        _timer.Elapsed += TypeCharacter;
+        _timer.AutoReset = true;
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Title != null)
+        {
+            _charIndex = 0;
+            displayedTitle = "";
+            _timer?.Start();
+        }
+    }
+
+    private void TypeCharacter(object? sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (_charIndex < Title.Length)
+        {
+            displayedTitle += Title[_charIndex];
+            _charIndex++;
+            InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+            _timer?.Stop();
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
+
+<header class="container py-5 hero">
+    <div class="row align-items-center">
+        <div class="col-lg-8 col-12">
+            <div class="terminal-tag-group mb-3">
+                <div class="tag-segment tag-user">@TagUser</div>
+                <div class="tag-segment tag-path">@TagPath</div>
+            </div>
+
+            <h1 class="hero-title"><span>@displayedTitle</span><span class="blink">_</span></h1>
+            <p class="lead fs-4 opacity-75 serif">@Subtitle</p>
+            <div class="mt-4">
+                <NavLink href="Services" class="btn btn-vvg me-3">Start_Transformation</NavLink>
+                <code
+                    class="d-block d-md-inline mt-3 mt-md-0">
+                    <span class="text-dark bg-accent px-2 py-1">&gt;</span><span class="text-white bg-dark px-2 py-1"> locate --services --all</span>
+                    @* <span>
+                        > ./run_audit.sh --verbose
+                    </span> *@
+                    </code>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,88 @@
+// Theme CSS (extracted from theme_sample_file/_web-layout/assets/styles/main.css) - essential parts
+@charset "UTF-8";
+
+// Classes to apply background and text colors using accent
+.bg-accent {
+  background-color: var(--accent) !important;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+// Global body styling
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s; // Smooth transition for background changes
+  line-height: 1.6;
+  padding-top: 32px;
+}
+
+// Terminal card styles
+.terminal-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--accent);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1); // Soft green glow
+}
+
+.terminal-card-title {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-card-title::before {
+  content: "[service]~# ";
+  color: var(--text);
+}
+
+.terminal-card ul {
+  list-style-type: none; // Remove default bullet points
+  padding-left: 0;
+}
+
+.terminal-card ul li::before {
+  content: ">";
+  color: var(--accent); // Green arrow for command prompt
+  margin-right: 10px;
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem; // Smaller font size for hero title on smaller screens
+  }
+}
+
+// Utility classes to override default styling
+.no-border-radius {
+  border-radius: 0 !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+
+a,
+input,
+textarea,
+select,
+button,
+.badge {
+  border-radius: 0 !important; // Remove border radius for a clean look
+}
+
+.nav-logo {
+  // Set the height of the logo to 24 pixels
+  height: 24px;
+
+  // Maintain the aspect ratio of the logo by setting width to auto
+  width: auto;
+
+  // Disable pointer events on the logo, making it non-interactive
+  pointer-events: none;
+}

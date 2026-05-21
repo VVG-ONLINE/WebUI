@@ -1,0 +1,119 @@
+@using VVG.Web.Models
+
+<aside class="blog-sidebar" id="blogSidebar" role="complementary" aria-label="Blog Post Sidebar">
+    <!-- About/Profile Card -->
+    @if (!string.IsNullOrEmpty(AuthorName))
+    {
+        <div class="sidebar-card author-card mb-4">
+            <div class="card-header">
+                <i class="bi bi-person-circle"></i> ABOUT AUTHOR
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@AuthorName</h5>
+                <p class="card-text small text-muted">@AuthorBio</p>
+                @if (!string.IsNullOrEmpty(AuthorUrl))
+                {
+                    <a href="@AuthorUrl" target="_blank" class="btn btn-sm btn-outline-primary">
+                        Visit Profile <i class="bi bi-box-arrow-up-right"></i>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+
+    <!-- Post Metadata Card -->
+    @if (Post != null)
+    {
+        <div class="sidebar-card meta-card mb-4">
+            <div class="card-header">
+                <i class="bi bi-info-circle"></i> POST DETAILS
+            </div>
+            <div class="card-body">
+                <div class="meta-item mb-3">
+                    <strong>Published</strong>
+                    <div class="text-muted small">@Post.PublishedAt.ToString("MMM dd, yyyy")</div>
+                </div>
+                <div class="meta-item mb-3">
+                    <strong>Category</strong>
+                    <div class="text-muted small">@Post.Category</div>
+                </div>
+                <div class="meta-item">
+                    <strong>Reading Time</strong>
+                    <div class="text-muted small">~@Post.TimeToRead min</div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Tags Card -->
+    @if (Post?.Tags != null && Post.Tags.Length > 0)
+    {
+        <div class="sidebar-card tags-card mb-4">
+            <div class="card-header">
+                <i class="bi bi-tags"></i> TAGS
+            </div>
+            <div class="card-body">
+                <div class="tags-list">
+                    @foreach (var tag in Post.Tags)
+                    {
+                        <span class="badge bg-secondary">
+                            <i class="bi bi-hash"></i>@tag
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Highlights Card -->
+    @if (!string.IsNullOrEmpty(Highlights))
+    {
+        <div class="sidebar-card highlights-card mb-4">
+            <div class="card-header">
+                <i class="bi bi-star"></i> KEY POINTS
+            </div>
+            <div class="card-body">
+                <ul class="highlights-list">
+                    @foreach (var highlight in Highlights.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <li>@highlight.Trim()</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+    <!-- Table of Contents (Sticky) -->
+    @if (!string.IsNullOrEmpty(HtmlContent))
+    {
+        @* <div class="sidebar-card toc-card sticky-top">
+            <TableOfContents HtmlContent="@HtmlContent" />
+        </div> *@
+    }
+</aside>
+
+@code {
+    [Parameter]
+    public BlogPost? Post { get; set; }
+
+    [Parameter]
+    public string? HtmlContent { get; set; }
+
+    [Parameter]
+    public string? AuthorName { get; set; } = "VVG ONLINE";
+
+    [Parameter]
+    public string? AuthorBio { get; set; } = "Delivering cutting-edge digital solutions and strategic insights for modern businesses.";
+
+    [Parameter]
+    public string? AuthorUrl { get; set; }
+
+    [Parameter]
+    public string? Highlights { get; set; }
+
+    [Parameter]
+    public EventCallback OnCopyLink { get; set; }
+
+    [Parameter]
+    public EventCallback OnShare { get; set; }
+}

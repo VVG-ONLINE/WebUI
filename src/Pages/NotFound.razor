@@ -1,0 +1,46 @@
+﻿@page "/404"
+@inject VVG.Web.Services.MetadataService MetadataService
+
+<PageTitle>Not Found</PageTitle>
+
+<HeroBanner Title="404 - Page Not Found" 
+    Subtitle="The page you are looking for does not exist." TagUser="// 404_ERROR" TagPath="// NOT_FOUND" />
+
+<section class="container py-5 text-center">
+    <p class="lead">Here are some useful links to get you back on track:</p>
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="" class="btn btn-vvg">_Home</a>
+        <a href="Services" class="btn btn-secondary">_Services</a>
+        <a href="Blog" class="btn btn-secondary">_Blog</a>
+        <a href="Contact" class="btn btn-secondary">_Contact</a>
+    </div>
+</section>
+
+<script type="text/javascript">
+        // Single Page Apps for GitHub Pages
+        // MIT License
+        // https://github.com/rafgraph/spa-github-pages
+        
+        var pathSegmentsToKeep = 0;
+        var l = window.location;
+        
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash
+        );
+    </script>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "404 Not Found - VVG ONLINE",
+            Description = "The page you were looking for was not found.",
+            Keywords = "404, not found, error"
+        });
+    }
+}

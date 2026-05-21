@@ -1,0 +1,62 @@
+@inject IJSRuntime JS
+@inject VVG.Web.Services.MetadataService MetadataService
+@implements IDisposable
+
+@code {
+    private VVG.Web.Models.Metadata? _defaultMetadata;
+    private VVG.Web.Models.TwitterCard? _defaultTwitterCard;
+    private VVG.Web.Models.OpenGraph? _defaultOpenGraph;
+    private string? _defaultJsonLd;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MetadataService.OnMetadataChanged += HandleMetadataChanged;
+        _defaultMetadata = await MetadataService.GetMetadataAsync();
+        _defaultTwitterCard = await MetadataService.GetTwitterCardAsync();
+        _defaultOpenGraph = await MetadataService.GetOpenGraphAsync();
+        _defaultJsonLd = await MetadataService.GetJsonLdAsync();
+        await UpdateMeta();
+    }
+
+    private async void HandleMetadataChanged()
+    {
+        await UpdateMeta();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task UpdateMeta()
+    {
+        var pageMeta = MetadataService.PageMetadata;
+
+        var description = pageMeta?.Description ?? _defaultMetadata?.DefaultDescription ?? _defaultOpenGraph?.Description;
+        var image = pageMeta?.Image ?? _defaultOpenGraph?.Image ?? _defaultTwitterCard?.Image;
+
+        var meta = new Dictionary<string, object?>
+        {
+            ["title"] = pageMeta?.Title ?? _defaultMetadata?.DefaultTitle,
+            ["description"] = description,
+            ["keywords"] = pageMeta?.Keywords ?? _defaultMetadata?.Keywords,
+            ["image"] = image,
+            ["jsonLd"] = pageMeta?.JsonLd ?? _defaultJsonLd,
+
+            ["ogType"] = pageMeta?.OgType ?? _defaultOpenGraph?.Type,
+            ["ogTitle"] = pageMeta?.OgTitle ?? pageMeta?.Title ?? _defaultOpenGraph?.Title,
+            ["ogDescription"] = pageMeta?.OgDescription ?? description,
+            ["ogImage"] = pageMeta?.OgImage ?? image,
+            ["ogUrl"] = pageMeta?.OgUrl ?? _defaultOpenGraph?.Url,
+
+            ["twitterCard"] = pageMeta?.TwitterCard ?? _defaultTwitterCard?.Card,
+            ["twitterSite"] = pageMeta?.TwitterSite ?? _defaultTwitterCard?.Site,
+            ["twitterCreator"] = pageMeta?.TwitterCreator ?? _defaultTwitterCard?.Creator,
+            ["twitterTitle"] = pageMeta?.TwitterTitle ?? pageMeta?.OgTitle ?? pageMeta?.Title ?? _defaultTwitterCard?.Title,
+            ["twitterDescription"] = pageMeta?.TwitterDescription ?? pageMeta?.OgDescription ?? description,
+            ["twitterImage"] = pageMeta?.TwitterImage ?? pageMeta?.OgImage ?? image
+        };
+        await JS.InvokeVoidAsync("vvg.updateMeta", meta);
+    }
+
+    public void Dispose()
+    {
+        MetadataService.OnMetadataChanged -= HandleMetadataChanged;
+    }
+}

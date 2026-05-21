@@ -1,0 +1,81 @@
+@inherits LayoutComponentBase
+@namespace VVG.Web.Layout
+
+<CascadingValue Value="this" IsFixed="true">
+    <MetaTags />
+    <div @onkeydown="HandleKeyDown" @ref="mainLayoutDiv" tabindex="0">
+        <SystemPanel />
+
+        <main>
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
+
+        <div id="ai-terminal" class="@(isTerminalOpen ? "" : "terminal-closed")">
+            <div class="terminal-header" @onclick="ToggleTerminal">
+                <span class="terminal-title">
+                    <i class="bi bi-robot me-2"></i>
+                    VIKAS_AI_AGENT_v0.108
+                </span>
+            </div>
+            <div id="terminal-body" class="terminal-body">
+                <div id="chat-output" class="chat-output">
+                    @foreach (var message in _chatHistory)
+                    {
+                        <div class="@(message.Role == "user" ? "user-msg" : "system-msg")">
+                            @if(message.Role == "user")
+                            {
+                                <span class="terminal-prompt">&gt;</span>
+                            }
+                            <span>@((MarkupString)message.Content)</span>
+                        </div>
+                    }
+                    @if (_isModelLoading)
+                    {
+                        <div class="system-msg">
+                            <span>// Model is loading, please wait...</span>
+                        </div>
+                    }
+                </div>
+                <div class="terminal-input-area">
+                    <span class="terminal-prompt">&gt;</span>
+                    <input @bind="_userInput"
+                           @bind:event="oninput"
+                           @onkeydown="HandleTerminalInput"
+                           class="terminal-input"
+                           type="text"
+                           id="user-input"
+                           placeholder="Ask Vikas AI..."
+                           autocomplete="off"
+                           disabled="@_isModelLoading" />
+                </div>
+            </div>
+        </div>
+        <div id="canvas-container"></div>
+    </div>
+</CascadingValue>
+
+<footer class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="serif h2 mb-4">VVG ONLINE</h3>
+            <p class="mono small">// ACCESS THE FUTURE</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <p class="mono small mb-1">CONNECT WITH US</p>
+            <div class="d-flex gap-2 justify-content-md-end">
+                <a class="social-link" href="https://wa.me/919893261959" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a class="social-link" href="https://www.youtube.com/@@vvgonline" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+                <a class="social-link" href="https://github.com/vvgonline" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+                <a class="social-link" href="https://x.com/vvgonline" target="_blank" title="X/Twitter"><i class="bi bi-twitter-x"></i></a>
+            </div>
+            <div class="mt-4">
+                <code class="bg-dark text-white px-2 py-1 opacity-75">
+                    © 2025 VVG ONLINE. ALL_RIGHTS_RESERVED.<br>
+                    // ESTABLISHED_2017
+                </code>
+            </div>
+        </div>
+    </div>
+</footer>

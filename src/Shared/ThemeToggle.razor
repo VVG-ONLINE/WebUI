@@ -1,0 +1,41 @@
+@inject VVG.Web.Services.ThemeService ThemeService
+
+<button class="theme-toggle-btn" @onclick="ToggleTheme">
+    @if (currentThemeClass == "dark-theme")
+    {
+        <i class="bi bi-sun-fill"></i> <!-- Sun icon for light theme -->
+    }
+    else
+    {
+        <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark theme -->
+    }
+</button>
+
+@code {
+    private string currentThemeClass = "light-theme";
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentThemeClass = await ThemeService.GetCurrentThemeAsync();
+        ThemeService.OnThemeChanged += OnThemeChangedHandler;
+    }
+
+    private async Task ToggleTheme()
+    {
+        await ThemeService.ToggleThemeAsync();
+    }
+
+    private void OnThemeChangedHandler()
+    {
+        InvokeAsync(async () =>
+        {
+            currentThemeClass = await ThemeService.GetCurrentThemeAsync();
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= OnThemeChangedHandler;
+    }
+}

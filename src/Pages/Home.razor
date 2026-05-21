@@ -1,0 +1,157 @@
+@page "/"
+@using System.Net.Http.Json
+@using VVG.Web.Models
+@inject HttpClient Http
+@inject VVG.Web.Services.MetadataService MetadataService
+
+<PageTitle>Home</PageTitle>
+
+<HeroBanner Title="Transform Your Vision into Reality."
+    Subtitle="Driving you beyond growth, through unique, innovative, and result-oriented digital consulting."
+    TagUser="// SYSTEM_ARCHITECTURE" TagPath="// EVENT_DRIVEN_ARCHITECTURE" />
+
+<section class="container py-5" id="services">
+    <div class="row g-0 border-top border-start">
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">01.</span>
+            <h3 class="mt-3">Strategy & Innovation</h3>
+            <p class="opacity-75 small">Develop tailored strategies and roadmaps that align with your business goals.
+            </p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">02.</span>
+            <h3 class="mt-3">Digital Transformation</h3>
+            <p class="opacity-75 small">Leverage technology to implement and sustain transformations that create lasting
+                value.</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">03.</span>
+            <h3 class="mt-3">Capability Building</h3>
+            <p class="opacity-75 small">Strengthen your team's skills to ensure changes are sustained internally.</p>
+        </div>
+    </div>
+    <div>
+        <NavLink href="services" class="btn btn-vvg text-center mt-5">Explore All Services</NavLink>
+    </div>
+</section>
+
+<section class="py-5" id="insights">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+            <h2 class="display-4">Latest Insights</h2>
+            <NavLink href="/BlogArchives" class="mono  mb-2">View Archive</NavLink>
+        </div>
+        @if (latestPosts is not null)
+        {
+            <div class="row g-4">
+                @foreach (var post in latestPosts)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4">
+                            <div class="mb-3"><span class="insight-tag">@post.Category</span></div>
+                            <h4 class="serif mb-3"><a href="/blog/@post.Slug" class="">@post.Title</a></h4>
+                            <p class="small opacity-75 mb-4">@post.Excerpt</p>
+                            <div class="mt-auto mono border-top pt-3 d-flex justify-content-between">
+                                <span class="opacity-75">@post.TimeToRead min read</span>
+                                <a href="/blog/@post.Slug" class="">READ -></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>Loading insights...</p>
+        }
+    </div>
+</section>
+
+<section class="container py-5" id="workflow">
+    <div class="mb-5">
+        <div class="terminal-tag-group">
+            <div class="tag-segment tag-user">// Event_Driven_Architecture</div>
+            <div class="tag-segment tag-path">// Result_Oriented_Actions</div>
+        </div>
+        <h2 class="display-5">Operational Logic</h2>
+    </div>
+
+    <div class="workflow-container">
+        <div class="workflow-node">
+            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x01: TRIGGER</code>
+            <h5 class="serif">Event Identification</h5>
+            <p class="small mb-0">We capture real-time business signals and data triggers.</p>
+        </div>
+        <div class="workflow-connector"></div>
+        <div class="workflow-node">
+            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x02: PROCESS</code>
+            <h5 class="serif">Strategic Analysis</h5>
+            <p class="small mb-0">Decoupled processing ensures agile response to market shifts.</p>
+        </div>
+        <div class="workflow-connector"></div>
+        <div class="workflow-node">
+            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x03: EXECUTE</code>
+            <h5 class="serif">Result-Oriented Action</h5>
+            <p class="small mb-0">Automated workflows turning insights into measurable ROI.</p>
+        </div>
+        <div class="workflow-connector"></div>
+        <div class="workflow-node">
+            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x04: OUTPUT</code>
+            <h5 class="serif">Continuous Evolution</h5>
+            <p class="small mb-0">System feedback loops drive permanent business growth.</p>
+        </div>
+    </div>
+</section>
+
+@code {
+    private Models.BlogPost[]? latestPosts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "VVG ONLINE - Digital Business Consulting & Innovation",
+            Description = "Transform your business with VVG ONLINE's cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.",
+            Keywords = "digital business consulting, technology consulting, digital transformation, innovation, business strategy, VVG ONLINE",
+            Image = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            
+            OgType = "website",
+            OgTitle = "VVG ONLINE - Digital Business Consulting",
+            OgDescription = "Transform your enterprise with cutting-edge digital business consulting. We decode complexity, design strategies, and deliver results.",
+            OgImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgUrl = "https://test.vvgonline.net/",
+
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonlinedotnet",
+            TwitterCreator = "@vvgonlinedotnet",
+            TwitterTitle = "VVG ONLINE - Digital Business Consulting",
+            TwitterDescription = "Transform your enterprise with cutting-edge digital business consulting. Decode. Design. Deliver.",
+            TwitterImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+        });
+
+        try
+        {
+            Console.WriteLine("Home: Starting to load blog posts...");
+
+            var allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+
+            Console.WriteLine($"Home: Loaded {allPosts?.Length ?? 0} posts");
+
+            if (allPosts != null)
+            {
+                latestPosts = allPosts
+                .Where(p => !p.Draft)
+                .OrderByDescending(p => p.PublishedAt)
+                .Take(3)
+                .ToArray();
+
+                Console.WriteLine($"Home: Filtered to {latestPosts.Length} latest posts");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Home ERROR: {ex.Message}");
+            Console.WriteLine($"Home STACK: {ex.StackTrace}");
+        }
+    }
+}

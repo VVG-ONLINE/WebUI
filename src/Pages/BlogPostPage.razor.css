@@ -1,0 +1,148 @@
+/* src/Pages/BlogPost.razor.css */
+
+/* General styling for the blog post content */
+.blog-post-content {
+  max-width: 856px; /* Set maximum width for the content container */
+  margin: 0 auto; /* Center the content on the page */
+  padding: 1.2rem 0; /* Add vertical padding to the content */
+  line-height: 1.7; /* Set line height for better readability */
+}
+
+/* Styling for rendered markdown elements */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  font-family: var(--bs-font-serif); /* Use serif font for headings */
+  margin-top: 1.5em; /* Add top margin to headings */
+  margin-bottom: 0.75em; /* Add bottom margin to headings */
+}
+
+/* Specific styling for each heading level */
+.markdown-content h1 {
+  font-size: 2.5rem; /* Larger font size for h1 */
+}
+.markdown-content h2 {
+  font-size: 2rem; /* Medium font size for h2 */
+}
+.markdown-content h3 {
+  font-size: 1.75rem; /* Smaller font size for h3 */
+}
+.markdown-content h4 {
+  font-size: 1.5rem; /* Slightly smaller font size for h4 */
+}
+.markdown-content h5 {
+  font-size: 1.25rem; /* Smaller font size for h5 */
+}
+.markdown-content h6 {
+  font-size: 1rem; /* Smallest font size for h6 */
+}
+
+/* Styling for paragraphs */
+.markdown-content p {
+  margin-bottom: 1em; /* Add bottom margin to paragraphs */
+}
+
+/* Styling for links */
+.markdown-content a {
+  color: var(--bs-link-color); /* Bootstrap link color */
+  text-decoration: underline; /* Underline links for better visibility */
+}
+
+/* Styling for lists (unordered and ordered) */
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1em; /* Add bottom margin to lists */
+  padding-left: 1.5em; /* Indent list items */
+}
+
+/* Styling for list items */
+.markdown-content li {
+  margin-bottom: 0.5em; /* Add vertical spacing between list items */
+}
+
+/* Styling for blockquotes */
+.markdown-content blockquote {
+  border-left: 4px solid var(--bs-warning); /* Warning color border for blockquotes */
+  padding-left: 1em; /* Indent blockquote content */
+  margin: 1.5em 0; /* Add top and bottom margin to blockquotes */
+  color: var(--bs-gray-600); /* Lighter gray text color for blockquote */
+  font-style: italic; /* Italicize blockquote text */
+}
+
+/* Styling for code blocks */
+.markdown-content pre {
+  background-color: var(--bs-dark); /* Dark background for code blocks */
+  color: var(--bs-gray-300); /* Lighter gray text color for code */
+  padding: 1em; /* Add padding around the code block */
+  border-radius: 0.25rem; /* Round corners for the code block */
+  overflow-x: auto; /* Enable horizontal scrolling for long lines */
+  margin-bottom: 1em; /* Add bottom margin to code blocks */
+}
+
+/* Styling for inline code */
+.markdown-content code {
+  font-family: "IBM Plex Mono", monospace; /* Use monospace font for inline code */
+  font-size: 0.875em; /* Slightly smaller font size */
+  color: var(--bs-danger); /* Red color for inline code */
+  background-color: var(--bs-light); /* Light background for inline code */
+  padding: 0.2em 0.4em; /* Add padding around the inline code */
+  border-radius: 0.25rem; /* Round corners for the inline code */
+}
+
+/* Styling for preformatted text within code blocks */
+.markdown-content pre code {
+  background-color: transparent; /* Remove background color for nested code */
+  color: inherit; /* Inherit text color from parent */
+  padding: 0; /* Remove padding around nested code */
+}
+
+/* Styling for images */
+.markdown-content img {
+  max-width: 100%; /* Ensure images don't exceed the container width */
+  height: auto; /* Maintain image aspect ratio */
+  display: block; /* Center images horizontally */
+  margin: 1.5em auto; /* Add vertical spacing around images */
+  border-radius: 0.25rem; /* Round corners for images */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Subtle shadow for images */
+}
+
+/* Styling for tables */
+.markdown-content table {
+  width: 100%; /* Ensure tables span the full width of their container */
+  margin-bottom: 1em; /* Add bottom margin to tables */
+  border-collapse: collapse; /* Collapse borders between cells */
+}
+
+/* Styling for table headers and data cells */
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid var(--bs-gray-300); /* Add borders around cells */
+  padding: 0.75em; /* Add padding around cell content */
+  text-align: left; /* Align text to the left */
+}
+
+/* Styling for table headers */
+.markdown-content th {
+  background-color: var(--bs-light); /* Light background color for headers */
+  font-weight: bold; /* Bold text in headers */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .blog-post-content {
+    padding: 1rem 0.5rem; /* Reduce padding on smaller screens */
+  }
+
+  .markdown-content h1 {
+    font-size: 2rem; /* Smaller font size for h1 on smaller screens */
+  }
+  .markdown-content h2 {
+    font-size: 1.75rem; /* Smaller font size for h2 on smaller screens */
+  }
+  .markdown-content h3 {
+    font-size: 1.5rem; /* Smaller font size for h3 on smaller screens */
+  }
+}

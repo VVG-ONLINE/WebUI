@@ -1,0 +1,43 @@
+@page "/time"
+@using System
+
+<span class="mono">@currentTime</span>
+
+@code {
+    public static class TimeService
+    {
+        /// <summary>
+        /// Gets the current local time
+        /// </summary>
+        /// <returns>Current DateTime</returns>
+        public static DateTime GetCurrentTime()
+        {
+            return DateTime.Now;
+        }
+
+        /// <summary>
+        /// Gets the current UTC time
+        /// </summary>
+        /// <returns>Current UTC DateTime</returns>
+        public static DateTime GetUtcTime()
+        {
+            return DateTime.UtcNow;
+        }
+
+        /// <summary>
+        /// Gets current time as formatted string
+        /// </summary>
+        /// <param name="format">DateTime format string</param>
+        /// <returns>Formatted time string</returns>
+        public static string GetCurrentTimeString(string format = "HH:mm:ss")
+        {
+            return DateTime.Now.ToString(format);
+        }
+    }
+    private string currentTime = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        currentTime = TimeService.GetCurrentTimeString();
+    }
+}
