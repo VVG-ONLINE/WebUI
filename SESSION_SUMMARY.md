@@ -2,14 +2,16 @@
 
 ## Project Overview
 
-Successfully created a small ONNX intent classifier model from JSONL dataset and integrated it with a Blazor WASM app for GitHub Pages deployment, while keeping the JSONL as backup for Q&A retrieval.
+Successfully created a small ONNX intent classifier model from JSONL dataset and integrated it with a Blazor WASM app for GitHub Pages deployment (`/WebUI/` subpath), while keeping the JSONL as backup for Q&A retrieval.
+
+**Live Site**: https://vvg-online.github.io/WebUI/
 
 ## Key Accomplishments
 
 ### 1. ONNX Model Creation
 
 - **Model Type**: DistilBERT-based intent classifier
-- **Training Data**: JSONL dataset with 710 Q&A pairs
+- **Training Data**: JSONL dataset with 710+ Q&A pairs
 - **Intent Categories**: 7 classes (capability_building, design_thinking, digital_marketing, digital_transformation, general, it_management, strategy_innovation)
 - **Model Size**: 64.3MB (quantized ONNX format)
 - **Accuracy**: 92.5% on test set
@@ -18,7 +20,7 @@ Successfully created a small ONNX intent classifier model from JSONL dataset and
 
 ### 2. Blazor WASM Integration
 
-- **Chat Logic**: Rewritten `chat.js` to use ONNX Runtime Web for client-side inference
+- **Chat Logic**: `chat.js` uses ONNX Runtime Web for client-side inference
 - **ONNX Runtime**: Loaded from CDN (https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js)
 - **Inference Pipeline**: Tokenization → ONNX inference → Intent classification → Q&A retrieval
 - **Fallback System**: Rule-based responses when no Q&A match found
@@ -34,12 +36,14 @@ Successfully created a small ONNX intent classifier model from JSONL dataset and
   - Build/Integration tests (7 tests): Project build, publish, and deployment validation
 - **All Tests Passing**: 35/35
 
-### 4. Deployment Preparation
+### 4. GitHub Pages Deployment
 
-- **Published Output**: `docs/` folder configured for GitHub Pages
-- **Static Assets**: All models, data, and scripts properly copied to publish folder
-- **SPA Routing**: Added GitHub Pages redirect script to index.html
-- **Optimized Loading**: Deferred script loading for better performance
+- **Deploy URL**: https://vvg-online.github.io/WebUI/
+- **Subpath**: `/WebUI/` (configured via `<base href="/WebUI/">`)
+- **CI/CD**: GitHub Actions workflow (`.github/workflows/deploy.yml`) automates build, test, and deploy
+- **Branch**: `main` → builds → deploys to `gh-pages` branch
+- **SDK**: Pinned .NET `10.0.101` for stability
+- **License**: VVG ONLINE Proprietary License 1.0
 
 ## File Structure
 
@@ -52,15 +56,47 @@ WebUI/
 │  │  │  │  ├─ intent-classifier.onnx (64.3MB)
 │  │  │  │  └─ intent-labels.json
 │  │  │  ├─ data/
-│  │  │  │  └─ vikas-dataset-augmented.jsonl (JSONL backup)
+│  │  │  │  ├─ vikas-dataset-augmented.jsonl (JSONL backup)
+│  │  │  │  └─ blogs/ (markdown blog posts)
 │  │  │  └─ js/
 │  │  │     └─ chat.js (ONNX + Q&A logic)
+│  ├─ Pages/ (Blazor pages: Home, Blog, BlogPostPage, BlogArchives, etc.)
+│  ├─ Shared/ (reusable components)
 │  └─ VVG.Web.csproj
 ├─ tests/
-│  └─ VVG.Web.Tests/
-│     └─ VVG.Web.Tests.csproj (35 passing tests)
-└─ docs/ (published output for GitHub Pages)
+│  └─ VVG.Web.Tests/ (35 passing tests)
+├─ _jsonl-to-ONNX/ (model conversion pipeline)
+├─ .github/workflows/deploy.yml (CI/CD)
+├─ LICENSE.txt (proprietary)
+└─ README.md
 ```
+
+## Deployment Configuration
+
+### Base Href & Subpath
+
+All links use **relative paths** (e.g., `blog/`, `contact`, `services`) to resolve correctly under `/WebUI/`:
+
+```html
+<base href="/WebUI/">
+```
+
+### GitHub Actions Workflow
+
+```yaml
+# .github/workflows/deploy.yml
+- Publish with StaticWebAssetBasePath=/
+- Fix Base Href via sed (release/wwwroot/index.html)
+- Fix service worker path to /WebUI/service-worker.js
+- Generate blog index from markdown files
+- Deploy release/wwwroot → gh-pages branch
+```
+
+### SPA Routing
+
+- **404.html**: Redirects to `/WebUI/?encoded_path` for direct URL access
+- **index.html**: Reads query param and restores correct URL via `history.replaceState`
+- No external SPA redirect scripts (removed rafgraph/spa-github-pages)
 
 ## Technical Implementation Details
 
@@ -101,16 +137,15 @@ window.transformersChat = {
 
 ## Deployment Instructions
 
-### GitHub Pages Deployment
+### CI/CD (Automated)
 
-1. Push the `docs/` folder to the `gh-pages` branch
-2. Or configure repository to serve from `/docs` folder on main branch
-3. Ensure GitHub Pages is enabled in repository settings
-4. Site will be available at `https://[username].github.io/[repository]/`
+Push to `main` branch → GitHub Actions builds, tests, and deploys automatically.
 
 ### Local Development
 
 ```bash
+cd C:\_repos\WebUI
+
 # Run the Blazor WASM app
 dotnet run --project src/VVG.Web.csproj
 
@@ -118,7 +153,7 @@ dotnet run --project src/VVG.Web.csproj
 dotnet test tests/VVG.Web.Tests/VVG.Web.Tests.csproj
 
 # Publish for deployment
-dotnet publish src/VVG.Web.csproj -c Release -o docs
+dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/
 ```
 
 ## Performance Metrics
@@ -129,6 +164,12 @@ dotnet publish src/VVG.Web.csproj -c Release -o docs
 - **Cache Efficiency**: Service worker caches model for subsequent visits
 - **Fallback Availability**: Chat functions even if model fails to load
 
+## Known Issues & Workarounds
+
+### ONNX Model via Git LFS
+
+GitHub Pages doesn't serve Git LFS files natively. The model file is tracked via LFS but may serve as a pointer. **Workaround**: Host the model on GitHub Releases or a CDN and update `chat.js` model URL.
+
 ## Future Enhancements
 
 1. **Model Optimization**: Further quantization or pruning to reduce size
@@ -136,6 +177,7 @@ dotnet publish src/VVG.Web.csproj -c Release -o docs
 3. **Confidence Thresholding**: Only use Q&A retrieval when intent confidence > threshold
 4. **User Feedback Loop**: Collect corrections to improve model over time
 5. **Multi-language Support**: Expand intent classification to other languages
+6. **ONNX Model Hosting**: Move model to CDN/GitHub Releases for reliable delivery
 
 ## Summary
 
@@ -145,9 +187,10 @@ Successfully delivered a production-ready AI chatbot for VVG ONLINE that:
 - Uses a compact ONNX model (64.3MB) for intent classification
 - Maintains a JSONL backup for reliable Q&A retrieval
 - Implements comprehensive testing (35/35 tests passing)
-- Is ready for GitHub Pages deployment with static hosting
+- Is deployed on GitHub Pages at https://vvg-online.github.io/WebUI/
 - Provides intelligent responses to business consulting queries
 - Falls back gracefully to rule-based responses when needed
+- Uses proprietary licensing to protect IP
 
 The solution meets all specified constraints while delivering a sophisticated AI-powered user experience.
 
