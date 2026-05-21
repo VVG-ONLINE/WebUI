@@ -39,7 +39,19 @@ jobs:
         run: dotnet test tests/VVG.Web.Tests/VVG.Web.Tests.csproj -c Release --no-build --verbosity normal
 
       - name: Publish Project
-        run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
+        run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/WebUI/ --nologo
+
+      - name: Fix Service Worker Base Path
+        run: |
+          # Replace base path in service-worker.js for GitHub Pages
+          if [ -f "release/wwwroot/service-worker.js" ]; then
+            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/wwwroot/service-worker.js
+            echo "✅ Fixed service-worker.js base path"
+          fi
+          if [ -f "release/wwwroot/service-worker-assets.js" ]; then
+            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/wwwroot/service-worker-assets.js
+            echo "✅ Fixed service-worker-assets.js base path"
+          fi
 
       - name: Generate Blog Index
         run: |
