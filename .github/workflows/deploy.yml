@@ -142,13 +142,20 @@ jobs:
           # Ensure folders starting with '_' are served
           touch release/wwwroot/.nojekyll
 
-          # Copy custom 404.html for SPA routing
-          if [ -f "release/wwwroot/404.html" ]; then
-            echo "✅ 404.html already exists"
-          else
-            echo "⚠️ Creating 404.html from index.html"
-            cp release/wwwroot/index.html release/wwwroot/404.html
-          fi
+          # Create 404.html for SPA routing on GitHub Pages
+          cat > release/wwwroot/404.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <script>
+                  var path = window.location.pathname;
+                  var redirect = '/WebUI/?' + encodeURIComponent(path + window.location.search + window.location.hash);
+                  window.location.replace(redirect);
+              </script>
+          </head>
+          <body>Redirecting...</body>
+          </html>
+          HTMLEOF
 
           # Copy CNAME if it exists (for custom domain)
           if [ -f "CNAME" ]; then
