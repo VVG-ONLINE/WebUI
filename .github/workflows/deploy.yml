@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,66 +15,48 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.101'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Restore dependencies
-        run: dotnet restore src/VVG.Web.csproj
-
-      - name: Build
-        run: dotnet build src/VVG.Web.csproj -c Release --no-restore
-
-      - name: Run Tests
-        run: dotnet test tests/VVG.Web.Tests/VVG.Web.Tests.csproj -c Release --no-build --verbosity normal
+      - name: Clean Build Artifacts
+        run: dotnet clean src/VVG.Web.csproj -c Release
 
       - name: Publish Project
-        run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/WebUI/ --nologo
-
-      - name: Fix Service Worker Base Path
-        run: |
-          # Replace base path in service-worker.js for GitHub Pages
-          if [ -f "release/wwwroot/WebUI/service-worker.js" ]; then
-            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/wwwroot/WebUI/service-worker.js
-            echo "✅ Fixed service-worker.js base path"
-          fi
+        run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
 
       - name: Generate Blog Index
         run: |
           cat > generate-blog-index.js << 'EOF'
           const fs = require('fs');
           const path = require('path');
-          
+
           const blogDir = 'src/wwwroot/assets/data/blogs';
-          const outputFile = 'release/wwwroot/WebUI/data/blog-index.json';
-          
+          const outputFile = 'src/wwwroot/data/blog-index.json';
+
           const posts = [];
-          
+
+          // Create output directory if it doesn't exist
           fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-          
+
           if (fs.existsSync(blogDir)) {
             fs.readdirSync(blogDir).forEach(file => {
               if (file.endsWith('.md')) {
                 const content = fs.readFileSync(path.join(blogDir, file), 'utf8');
                 const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-                
+
                 if (frontMatterMatch) {
                   const frontMatter = frontMatterMatch[1];
                   const post = {};
-                  
+
                   frontMatter.split('\n').forEach(line => {
                     const match = line.match(/^(\w+):\s*(.+)$/);
                     if (match) {
                       const [, key, value] = match;
+
+                      // Handle arrays like ["tag1", "tag2"] or [tag1, tag2]
                       if (value.trim().startsWith('[')) {
                         try {
                           post[key] = JSON.parse(value.replace(/'/g, '"'));
@@ -83,79 +64,96 @@ jobs:
                           post[key] = [];
                         }
                       }
+                      // Handle booleans
                       else if (value.trim() === 'true' || value.trim() === 'false') {
                         post[key] = value.trim() === 'true';
                       }
+                      // Handle numbers
                       else if (!isNaN(value.trim())) {
                         post[key] = parseInt(value.trim());
                       }
+                      // Handle strings
                       else {
                         post[key] = value.replace(/^["']|["']$/g, '').trim();
                       }
                     }
                   });
-                  
+
+                  // Add filename property (without .md extension)
                   post.filename = file.replace('.md', '');
+
                   posts.push(post);
                 }
               }
             });
           }
-          
+
           fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
           console.log(`✅ Generated blog index with ${posts.length} posts`);
+          console.log(JSON.stringify(posts, null, 2));
           EOF
-          
+
           node generate-blog-index.js
+
+      - name: Copy Blog Index to Release
+        run: |
+          mkdir -p release/wwwroot/data
+          cp src/wwwroot/data/blog-index.json release/wwwroot/data/
 
       - name: Copy Markdown Files to Release
         run: |
           echo "📝 Copying markdown blog files..."
-          mkdir -p release/wwwroot/WebUI/assets/data/blogs
-          
+          mkdir -p release/wwwroot/assets/data/blogs
+
           if [ -d "src/wwwroot/assets/data/blogs" ]; then
-            cp -v src/wwwroot/assets/data/blogs/*.md release/wwwroot/WebUI/assets/data/blogs/
+            cp -v src/wwwroot/assets/data/blogs/*.md release/wwwroot/assets/data/blogs/
             echo "✅ Markdown files copied successfully"
+            echo "Files in release:"
+            ls -la release/wwwroot/assets/data/blogs/
           else
-            echo "❌ Source directory not found"
+            echo "❌ Source directory not found: src/wwwroot/assets/data/blogs"
             exit 1
           fi
 
       - name: Verify Deployment Files
         run: |
           echo "=== 📁 Checking deployment structure ==="
-          ls -la release/wwwroot/WebUI/ | head -20
           echo ""
-          echo "_framework:"
-          ls release/wwwroot/WebUI/_framework/ | head -5
+          echo "Root files:"
+          ls -la release/wwwroot/ | head -20
           echo ""
-          echo "Blog files:"
-          ls release/wwwroot/WebUI/assets/data/blogs/ 2>/dev/null | head -5 || echo "none"
+          echo "Data folder:"
+          ls -la release/wwwroot/data/ || echo "❌ data folder not found"
+          echo ""
+          echo "Blog markdown files:"
+          ls -la release/wwwroot/assets/data/blogs/ || echo "❌ blogs folder not found"
+          echo ""
+          echo "File count:"
+          echo "  - MD files: $(find release/wwwroot/assets/data/blogs/ -name '*.md' 2>/dev/null | wc -l)"
+          echo "  - JSON files: $(find release/wwwroot/data/ -name '*.json' 2>/dev/null | wc -l)"
 
       - name: Prepare GitHub Pages Artifacts
         run: |
           # Ensure folders starting with '_' are served
-          touch release/wwwroot/WebUI/.nojekyll
-          
-          # Fix base href for GitHub Pages
-          sed -i 's|<base href="./">|<base href="/WebUI/">|g' release/wwwroot/WebUI/index.html
-          echo "✅ Fixed base href to /WebUI/"
-          
-          # Copy 404.html for SPA routing
-          if [ -f "release/wwwroot/WebUI/404.html" ]; then
-            echo "✅ 404.html exists"
+          touch release/wwwroot/.nojekyll
+
+          # Copy custom 404.html for SPA routing
+          if [ -f "release/wwwroot/404.html" ]; then
+            echo "✅ 404.html already exists"
           else
-            cp release/wwwroot/WebUI/index.html release/wwwroot/WebUI/404.html
+            echo "⚠️ Creating 404.html from index.html"
+            cp release/wwwroot/index.html release/wwwroot/404.html
           fi
-          
-          # Copy CNAME if it exists
+
+          # Copy CNAME if it exists (for custom domain)
           if [ -f "CNAME" ]; then
-            cp CNAME release/wwwroot/WebUI/CNAME
+            cp CNAME release/wwwroot/CNAME
+            echo "✅ CNAME copied"
           fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: release/wwwroot/WebUI
+          folder: release/wwwroot
           branch: gh-pages
           clean: true

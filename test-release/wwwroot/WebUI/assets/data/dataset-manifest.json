@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-01-22",
+  "files": {
+    "markdown": [
+      "assets/data/blogs/Communication-Mastery-for-Digital-Business-Success.md",
+      "assets/data/blogs/Digital-Assets-The-Real-Estate-of-the-Virtual-World.md",
+      "assets/data/blogs/Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence.md",
+      "assets/data/blogs/GST-Rate-Deductions-for-E-commerce-A-Complete-Guide-by-VVG-ONLINE.md",
+      "assets/data/blogs/Key-Performance-Indicators-KPIs.md",
+      "assets/data/blogs/Operating-Model-Design.md",
+      "assets/data/blogs/The-Digital-Marketing-Investment-Imperative.md"
+    ],
+    "json": [
+      "data/dataset/services/web-development.json",
+      "data/dataset/services/digital-marketing.json",
+      "data/dataset/services/consulting.json"
+    ],
+    "csv": [
+      "data/dataset/knowledge/pricing.csv",
+      "data/dataset/knowledge/faq.csv",
+      "data/dataset/knowledge/testimonials.csv"
+    ],
+    "txt": [
+      "data/dataset/docs/about.txt",
+      "data/dataset/docs/services-overview.txt",
+      "data/dataset/docs/contact-info.txt"
+    ]
+  }
+}

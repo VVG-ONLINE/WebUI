@@ -1,0 +1,15 @@
+{
+  "service": "Web Development",
+  "description": "Custom website design and development services",
+  "offerings": [
+    "Responsive Web Design",
+    "E-commerce Solutions",
+    "Progressive Web Apps (PWA)",
+    "Blazor WebAssembly Applications",
+    "ASP.NET Core Development",
+    "API Development & Integration"
+  ],
+  "technologies": ["Blazor", ".NET", "JavaScript", "HTML5", "CSS3"],
+  "pricing": "Custom quotes based on project scope",
+  "contact": "+91 9893261959"
+}

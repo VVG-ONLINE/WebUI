@@ -1,0 +1,87 @@
+# VVG ONLINE - Digital Business Consulting
+
+> https://test.vvgonline.net
+
+## About VVG ONLINE
+
+VVG ONLINE is a digital business consulting firm dedicated to transforming enterprises through innovative technology solutions and strategic guidance. We are the architects of the digital future, founded on the principle of relentless innovation.
+
+## Mission
+
+Decode, Design, Deliver
+
+- **Decode**: We decode the complex digital landscape to provide clarity in a world saturated with data and trends
+- **Design**: We design bespoke strategies that are both ambitious and achievable
+- **Deliver**: We deliver transformative results that create lasting value
+
+## Core Principles
+
+### 1. Strategic Foresight
+We operate with a view of the future, ensuring the solutions we build today are robust enough for the challenges of tomorrow. We prioritize long-term sustainability over short-term gains.
+
+### 2. Radical Transparency
+Our process is an open book. We provide clear, honest communication and full visibility into our methodologies, progress, and results. Trust is our most important metric.
+
+### 3. Integrated Partnership
+We are not vendors; we are partners. We succeed when you succeed. This means deeply integrating with your team and aligning our goals with your business objectives.
+
+## Services
+
+- **Technology Solutions**: Transforming existing technology systems into efficient and effective solutions
+- **Digital Marketing & Social Media Optimization**: Ensuring proper use of digital marketing strategies to increase brand visibility and engagement
+- **Data Analysis and Insights**: Using advanced analytics tools to understand customer behavior, market trends, and competitive analysis
+- **Customized Solutions**: Developing unique solutions tailored to each organization's specific needs and challenges
+- **Market Research & Analysis**: Conducting detailed analyses of the digital landscape to identify trends and opportunities
+- **User Experience (UX) Design**: Creating user-friendly interfaces that enhance the digital experience
+
+## Technology Stack
+
+- Blazor WebAssembly (.NET 10.0)
+- Progressive Web App (PWA)
+- AI Integration (Transformers.js, ONNX Runtime Web)
+- Markdown-driven content management
+- Bootstrap 5.3 with custom SCSS
+- GitHub Pages deployment
+
+## Contact Information
+
+- **Website**: https://test.vvgonline.net
+- **Company Site**: https://vvgonline.net
+- **Twitter**: @vvgonlinedotnet
+- **GitHub**: https://github.com/vvgonline
+- **Location**: Indore, Madhya Pradesh, India
+- **Company**: VVG ONLINE
+
+## Site Structure
+
+- `/`: Home page - Introduction and overview
+- `/About`: About VVG ONLINE - Mission, philosophy, and team
+- `/Services`: Our services - Detailed service offerings
+- `/Blog`: Technical blog - Insights and thought leadership
+- `/BlogArchives`: Blog archives - Searchable blog posts by year and tags
+- `/Contact`: Get in touch - Contact form and information
+
+## Key Features
+
+- AI-powered chatbot for business consulting queries
+- Markdown-first blog with Git as source of truth
+- Category-based blog filtering
+- SEO-optimized with dynamic meta tags
+- PWA with offline capabilities
+- Golden ratio typography and design system
+- Responsive and accessible design
+
+## Target Audience
+
+- Startups looking to build digital foundations
+- Established businesses seeking digital transformation
+- Enterprises requiring technology solutions and strategic consulting
+- Organizations seeking data-driven insights and UX improvements
+
+## Business Model
+
+Integrated Partnership - We embed with client teams, share knowledge, and build capabilities that empower organizations to thrive long after our engagement ends.
+
+## Last Updated
+
+2026-02-05
