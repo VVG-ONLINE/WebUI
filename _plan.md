@@ -199,3 +199,81 @@
 5. Phase 4 (all items) — Cleanup and optimization
 
 **Total estimated effort:** 8-12 hours
+
+---
+
+## Future Considerations (Revisit Later)
+
+### Deployment
+- **Upgrade .NET version**: Change `10.0.101` to `10.0.x` in `deploy.yml` for automatic patch updates (currently pinned for stability)
+- **Verify publish output path**: Confirm whether `dotnet publish -o release` outputs to `release/` or `release/wwwroot/` on CI runner. If files are at `release/`, update all copy/verify/deploy steps accordingly
+- **Switch to official GitHub Pages action**: Consider migrating from `JamesIves/github-pages-deploy-action@v4` to `actions/deploy-pages@v4` with `actions/upload-pages-artifact@v3` for native GitHub Pages integration
+- **ONNX model size warning**: GitHub flagged 64MB model exceeding 50MB recommendation. Consider Git LFS enforcement or model splitting if issues arise
+
+### Performance
+- **Enable Brotli compression**: Verify `.br` files are served with `Content-Encoding: br` on GitHub Pages
+- **Service worker optimization**: Review cache strategy for 64MB ONNX model — consider IndexedDB instead of HTTP cache
+- **Lazy-load ONNX model**: Only load when user opens chat, not on page load
+
+### Security
+- **Content Security Policy**: Add CSP headers via `<meta>` tags in `index.html`
+- **Subresource Integrity**: Add `integrity` attributes to CDN script tags (Bootstrap, ONNX Runtime, etc.)
+
+---
+
+## Suggested Future Features
+
+### AI/ML Enhancements
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Confidence thresholding | Only use Q&A retrieval when intent confidence > 0.7, otherwise fallback | 2 hrs |
+| Proper BERT tokenizer | Replace simple whitespace tokenizer with actual DistilBERT tokenizer via ONNX | 4 hrs |
+| User feedback loop | Thumbs up/down on responses to collect training data | 3 hrs |
+| Multi-intent detection | Support queries that span multiple intent categories | 4 hrs |
+| Model fine-tuning pipeline | Automated retraining when new Q&A pairs are added | 8 hrs |
+| Smaller model option | Explore MiniLM or TinyBERT for faster loading (<20MB) | 6 hrs |
+
+### UX Improvements
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Chat typing indicator | Show "thinking..." animation while model processes | 1 hr |
+| Reading progress bar | Visual indicator on blog post pages | 1 hr |
+| Keyboard shortcuts | Ctrl+K for search, Esc to close chat, etc. | 2 hrs |
+| Dark/light auto-detect | Follow OS preference with `prefers-color-scheme` | 30 min |
+| Smooth page transitions | Fade/slide animations between pages | 2 hrs |
+| Scroll-to-top on navigation | Auto-scroll when navigating between pages | 15 min |
+
+### Content & SEO
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Dynamic sitemap.xml | Generate from blog posts and pages at build time | 2 hrs |
+| RSS/Atom feed | Auto-generated feed for blog subscribers | 2 hrs |
+| Open Graph image generation | Dynamic OG images per blog post with title/author | 4 hrs |
+| Case studies section | Dedicated page for client success stories | 4 hrs |
+| Video presentations embed | Embed YouTube/Vimeo presentations on Services page | 2 hrs |
+| Multi-language support | Hindi/English toggle for content | 8 hrs |
+
+### Analytics & Insights
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Privacy-friendly analytics | Plausible or Fathom for page views (no cookies) | 1 hr |
+| Chat interaction tracking | Track intents, fallbacks, satisfaction (anonymous) | 3 hrs |
+| Search analytics | Track what users search for in chat | 2 hrs |
+| Lighthouse CI | Automated performance audits on every PR | 2 hrs |
+
+### Developer Experience
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Playwright E2E tests | Browser-level tests for chat flow, navigation | 6 hrs |
+| Accessibility testing | axe-core integration in CI pipeline | 2 hrs |
+| PR preview deployments | Deploy PRs to temporary URLs for review | 3 hrs |
+| Automated dependency updates | Dependabot for NuGet and npm packages | 30 min |
+| Code coverage reporting | Coverlet + Codecov integration | 2 hrs |
+
+### Infrastructure
+| Feature | Description | Effort |
+|---------|-------------|--------|
+| Custom domain SSL | Configure CNAME for test.vvgonline.net with HTTPS | 1 hr |
+| CDN caching headers | Optimize Cache-Control for static assets | 1 hr |
+| Staging environment | Separate branch for pre-production testing | 2 hrs |
+| Automated backups | Scheduled backup of JSONL dataset and model | 2 hrs |
