@@ -27,6 +27,11 @@ jobs:
       - name: Publish Project
         run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
 
+      - name: Fix Base Href for GitHub Pages
+        run: |
+          sed -i 's|<base href="/">|<base href="/WebUI/">|g' release/wwwroot/index.html
+          sed -i "s|navigator.serviceWorker.register('service-worker.js'|navigator.serviceWorker.register('/WebUI/service-worker.js'|g" release/wwwroot/index.html
+
       - name: Generate Blog Index
         run: |
           cat > generate-blog-index.js << 'EOF'
