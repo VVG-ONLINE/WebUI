@@ -1,0 +1,136 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "title": "Strategy & Innovation",
+      "description": "Develop tailored strategies and roadmaps that align with your business goals and drive innovation.",
+      "icon": "bi-lightbulb",
+      "subservices": [
+        {
+          "name": "Strategy Development",
+          "description": "Create comprehensive strategies that align with your business objectives"
+        },
+        {
+          "name": "Innovation Roadmaps",
+          "description": "Design roadmaps that foster continuous innovation and adaptation"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Digital Transformation",
+      "description": "Leverage technology to implement and sustain transformations that create lasting value.",
+      "icon": "bi-globe",
+      "subservices": [
+        {
+          "name": "Digital Transformation Consulting",
+          "description": "Expert guidance to navigate digital transformation journeys"
+        },
+        {
+          "name": "Sustainable Transformation",
+          "description": "Ensure that digital changes are sustainable and create long-term value"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Capability Building",
+      "description": "Strengthen your team's skills and resources to ensure changes are not just implemented, but sustained.",
+      "icon": "bi-people-fill",
+      "subservices": [
+        {
+          "name": "Training & Development",
+          "description": "Provide ongoing training to enhance your team's skills and capabilities"
+        },
+        {
+          "name": "Resource Optimization",
+          "description": "Ensure that your team has the resources needed to sustain digital changes"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Strategic Digital Marketing",
+      "description": "Transform your digital presence and reach your target audience effectively.",
+      "icon": "bi-megaphone",
+      "subservices": [
+        {
+          "name": "SEO Optimization",
+          "description": "Improve visibility in search engine results and drive organic traffic"
+        },
+        {
+          "name": "Social Media Management",
+          "description": "Build strong brand presence and engage with your audience"
+        },
+        {
+          "name": "Content Marketing",
+          "description": "Create high-quality, valuable content that attracts and converts leads"
+        },
+        {
+          "name": "Paid Advertising Campaigns",
+          "description": "Reach your target audience with targeted ads on Google, social media, and other platforms"
+        },
+        {
+          "name": "Analytics & KPIs",
+          "description": "Data-driven insights to measure and optimize your marketing success"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Innovative Design Thinking Workshops",
+      "description": "Foster innovation and solve complex business challenges.",
+      "icon": "bi-pencil-square",
+      "subservices": [
+        {
+          "name": "User-Centered Design",
+          "description": "Develop products and services that meet customer needs"
+        },
+        {
+          "name": "Problem-Solving Workshops",
+          "description": "Identify and solve complex business challenges through collaborative design thinking"
+        },
+        {
+          "name": "Innovation Strategy",
+          "description": "Foster a culture of innovation within your organization"
+        },
+        {
+          "name": "Digital Transformation Roadmaps",
+          "description": "Strategic planning for sustainable digital evolution"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Comprehensive IT Management Solutions",
+      "description": "Optimize your technology infrastructure and operations.",
+      "icon": "bi-tools",
+      "subservices": [
+        {
+          "name": "Cloud Infrastructure",
+          "description": "Migrate to the cloud for increased scalability and efficiency"
+        },
+        {
+          "name": "Cybersecurity",
+          "description": "Protect your business from cyber threats with comprehensive security solutions"
+        },
+        {
+          "name": "IT Support & Training",
+          "description": "Reliable and responsive IT support to keep your business running smoothly"
+        },
+        {
+          "name": "Digital Platform Enablement",
+          "description": "Seamless integration and measurable transformation"
+        },
+        {
+          "name": "Vendor Management",
+          "description": "Strategic technology partnerships and oversight"
+        },
+        {
+          "name": "Creating Custom AI Models",
+          "description": "Create custom AI models to solve complex problems"
+        }
+      ]
+    }
+  ]
+}
