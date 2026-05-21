@@ -44,13 +44,9 @@ jobs:
       - name: Fix Service Worker Base Path
         run: |
           # Replace base path in service-worker.js for GitHub Pages
-          if [ -f "release/service-worker.js" ]; then
-            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/service-worker.js
+          if [ -f "release/wwwroot/WebUI/service-worker.js" ]; then
+            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/wwwroot/WebUI/service-worker.js
             echo "✅ Fixed service-worker.js base path"
-          fi
-          if [ -f "release/service-worker-assets.js" ]; then
-            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/service-worker-assets.js
-            echo "✅ Fixed service-worker-assets.js base path"
           fi
 
       - name: Generate Blog Index
@@ -60,11 +56,10 @@ jobs:
           const path = require('path');
           
           const blogDir = 'src/wwwroot/assets/data/blogs';
-          const outputFile = 'release/data/blog-index.json';
+          const outputFile = 'release/wwwroot/WebUI/data/blog-index.json';
           
           const posts = [];
           
-          // Create output directory if it doesn't exist
           fs.mkdirSync(path.dirname(outputFile), { recursive: true });
           
           if (fs.existsSync(blogDir)) {
@@ -81,8 +76,6 @@ jobs:
                     const match = line.match(/^(\w+):\s*(.+)$/);
                     if (match) {
                       const [, key, value] = match;
-                      
-                      // Handle arrays like ["tag1", "tag2"] or [tag1, tag2]
                       if (value.trim().startsWith('[')) {
                         try {
                           post[key] = JSON.parse(value.replace(/'/g, '"'));
@@ -90,24 +83,19 @@ jobs:
                           post[key] = [];
                         }
                       }
-                      // Handle booleans
                       else if (value.trim() === 'true' || value.trim() === 'false') {
                         post[key] = value.trim() === 'true';
                       }
-                      // Handle numbers
                       else if (!isNaN(value.trim())) {
                         post[key] = parseInt(value.trim());
                       }
-                      // Handle strings
                       else {
                         post[key] = value.replace(/^["']|["']$/g, '').trim();
                       }
                     }
                   });
                   
-                  // Add filename property (without .md extension)
                   post.filename = file.replace('.md', '');
-                  
                   posts.push(post);
                 }
               }
@@ -116,7 +104,6 @@ jobs:
           
           fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
           console.log(`✅ Generated blog index with ${posts.length} posts`);
-          console.log(JSON.stringify(posts, null, 2));
           EOF
           
           node generate-blog-index.js
@@ -124,132 +111,51 @@ jobs:
       - name: Copy Markdown Files to Release
         run: |
           echo "📝 Copying markdown blog files..."
-          mkdir -p release/assets/data/blogs
+          mkdir -p release/wwwroot/WebUI/assets/data/blogs
           
           if [ -d "src/wwwroot/assets/data/blogs" ]; then
-            cp -v src/wwwroot/assets/data/blogs/*.md release/assets/data/blogs/
+            cp -v src/wwwroot/assets/data/blogs/*.md release/wwwroot/WebUI/assets/data/blogs/
             echo "✅ Markdown files copied successfully"
-            echo "Files in release:"
-            ls -la release/assets/data/blogs/
           else
-            echo "❌ Source directory not found: src/wwwroot/assets/data/blogs"
+            echo "❌ Source directory not found"
             exit 1
           fi
-          if [ -f "release/wwwroot/service-worker-assets.js" ]; then
-            sed -i 's|const base = "/";|const base = "/WebUI/";|g' release/wwwroot/service-worker-assets.js
-            echo "✅ Fixed service-worker-assets.js base path"
-          fi
-
-      - name: Generate Blog Index
-        run: |
-          cat > generate-blog-index.js << 'EOF'
-          const fs = require('fs');
-          const path = require('path');
-          
-          const blogDir = 'src/wwwroot/assets/data/blogs';
-          const outputFile = 'src/wwwroot/data/blog-index.json';
-          
-          const posts = [];
-          
-          // Create output directory if it doesn't exist
-          fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-          
-          if (fs.existsSync(blogDir)) {
-            fs.readdirSync(blogDir).forEach(file => {
-              if (file.endsWith('.md')) {
-                const content = fs.readFileSync(path.join(blogDir, file), 'utf8');
-                const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-                
-                if (frontMatterMatch) {
-                  const frontMatter = frontMatterMatch[1];
-                  const post = {};
-                  
-                  frontMatter.split('\n').forEach(line => {
-                    const match = line.match(/^(\w+):\s*(.+)$/);
-                    if (match) {
-                      const [, key, value] = match;
-                      
-                      // Handle arrays like ["tag1", "tag2"] or [tag1, tag2]
-                      if (value.trim().startsWith('[')) {
-                        try {
-                          post[key] = JSON.parse(value.replace(/'/g, '"'));
-                        } catch {
-                          post[key] = [];
-                        }
-                      }
-                      // Handle booleans
-                      else if (value.trim() === 'true' || value.trim() === 'false') {
-                        post[key] = value.trim() === 'true';
-                      }
-                      // Handle numbers
-                      else if (!isNaN(value.trim())) {
-                        post[key] = parseInt(value.trim());
-                      }
-                      // Handle strings
-                      else {
-                        post[key] = value.replace(/^["']|["']$/g, '').trim();
-                      }
-                    }
-                  });
-                  
-                  // Add filename property (without .md extension)
-                  post.filename = file.replace('.md', '');
-                  
-                  posts.push(post);
-                }
-              }
-            });
-          }
-          
-          fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
-          console.log(`✅ Generated blog index with ${posts.length} posts`);
-          console.log(JSON.stringify(posts, null, 2));
-          EOF
-          
-          node generate-blog-index.js
 
       - name: Verify Deployment Files
         run: |
           echo "=== 📁 Checking deployment structure ==="
+          ls -la release/wwwroot/WebUI/ | head -20
           echo ""
-          echo "Root files:"
-          ls -la release/ | head -20
+          echo "_framework:"
+          ls release/wwwroot/WebUI/_framework/ | head -5
           echo ""
-          echo "_framework folder:"
-          ls -la release/_framework/ | head -10 || echo "❌ _framework folder not found"
-          echo ""
-          echo "Data folder:"
-          ls -la release/data/ || echo "❌ data folder not found"
-          echo ""
-          echo "Blog markdown files:"
-          ls -la release/assets/data/blogs/ || echo "❌ blogs folder not found"
-          echo ""
-          echo "File count:"
-          echo "  - MD files: $(find release/assets/data/blogs/ -name '*.md' 2>/dev/null | wc -l)"
-          echo "  - JSON files: $(find release/data/ -name '*.json' 2>/dev/null | wc -l)"
+          echo "Blog files:"
+          ls release/wwwroot/WebUI/assets/data/blogs/ 2>/dev/null | head -5 || echo "none"
 
       - name: Prepare GitHub Pages Artifacts
         run: |
           # Ensure folders starting with '_' are served
-          touch release/.nojekyll
+          touch release/wwwroot/WebUI/.nojekyll
           
-          # Copy custom 404.html for SPA routing
-          if [ -f "release/404.html" ]; then
-            echo "✅ 404.html already exists"
+          # Fix base href for GitHub Pages
+          sed -i 's|<base href="/">|<base href="/WebUI/">|g' release/wwwroot/WebUI/index.html
+          echo "✅ Fixed base href to /WebUI/"
+          
+          # Copy 404.html for SPA routing
+          if [ -f "release/wwwroot/WebUI/404.html" ]; then
+            echo "✅ 404.html exists"
           else
-            echo "⚠️ Creating 404.html from index.html"
-            cp release/index.html release/404.html
+            cp release/wwwroot/WebUI/index.html release/wwwroot/WebUI/404.html
           fi
           
-          # Copy CNAME if it exists (for custom domain)
+          # Copy CNAME if it exists
           if [ -f "CNAME" ]; then
-            cp CNAME release/CNAME
-            echo "✅ CNAME copied"
+            cp CNAME release/wwwroot/WebUI/CNAME
           fi
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: release
+          folder: release/wwwroot/WebUI
           branch: gh-pages
           clean: true
