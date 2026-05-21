@@ -55,7 +55,7 @@ interface SiteConfig {
   heroText: string;
   tagline: string;
   social: { linkedin: string; github: string; twitter: string };
-  navItems: { label: string; href: string; icon: string; action?: string }[];
+  navItems: { label: string; href: string; icon: string }[];
   siteUrl: string;
   siteName: string;
   siteDescription: string;

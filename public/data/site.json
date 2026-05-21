@@ -9,10 +9,9 @@
   "navItems": [
     { "label": "SERVICES", "href": "services.html", "icon": "bi-cpu" },
     { "label": "ABOUT", "href": "about.html", "icon": "bi-info-circle" },
-    { "label": "WORKFLOW", "href": "/index.html#workflow", "icon": "bi-diagram-3" },
+    { "label": "WORKFLOW", "href": "#workflow", "icon": "bi-diagram-3" },
     { "label": "INSIGHTS", "href": "blog.html", "icon": "bi-newspaper" },
-    { "label": "CONTACT", "href": "contact.html", "icon": "bi-envelope-fill" },
-    { "label": "[F10]", "href": "#", "icon": "bi-terminal", "action": "toggleTerminal" }
+    { "label": "CONTACT", "href": "contact.html", "icon": "bi-terminal" }
   ],
   "siteUrl": "https://vvgonline.net",
   "siteName": "VVG ONLINE",

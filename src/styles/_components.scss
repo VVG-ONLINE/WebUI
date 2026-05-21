@@ -37,27 +37,6 @@
   color: var(--accent);
 }
 
-.system-panel .nav-action-btn {
-  color: #fff;
-  text-decoration: none;
-  padding: 0 10px;
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  border-right: 1px solid #333;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  transition: all 0.2s;
-}
-
-.system-panel .nav-action-btn:hover {
-  background: #222;
-  color: var(--accent);
-}
-
 .system-panel .status-right {
   margin-left: auto;
   display: flex;
@@ -265,10 +244,8 @@ a:not(.no-cursor):hover::after {
   background: #1a1a1a;
 }
 
-// Theme-aware icon styling
 .bi {
-  color: var(--accent);
-  transition: color 0.2s;
+  color: var(--accent) !important;
 }
 
 #insights {

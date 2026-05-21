@@ -8,15 +8,8 @@ class InsightsGrid extends HTMLElement {
     try {
       const res = await fetch('data/blog-index.json');
       const posts: BlogIndexEntry[] = await res.json();
-      // Sort by featured status first, then by date
       const publishedPosts = posts.filter((p) => !p.draft)
-        .sort((a, b) => {
-          // Featured posts first
-          if (a.featured && !b.featured) return -1;
-          if (!a.featured && b.featured) return 1;
-          // Then by date
-          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-        })
+        .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
         .slice(0, 3);
 
       grid.innerHTML = publishedPosts

@@ -37,12 +37,13 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
+      base: base,
       manifest: {
         name: 'VVG ONLINE - Digital Business Consulting',
         short_name: 'VVG ONLINE',
         description: 'Driving you beyond growth through unique, innovative, and result-oriented digital consulting.',
-        start_url: '/index.html',
-        scope: '/',
+        start_url: `${base}index.html`,
+        scope: base,
         display: 'standalone',
         orientation: 'any',
         background_color: '#ffffff',
@@ -52,13 +53,13 @@ export default defineConfig({
         dir: 'ltr',
         icons: [
           {
-            src: '/pwa/icon-192.png',
+            src: `${base}pwa/icon-192.png`,
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any maskable'
           },
           {
-            src: '/pwa/icon-512.png',
+            src: `${base}pwa/icon-512.png`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -69,22 +70,22 @@ export default defineConfig({
             name: 'Services',
             short_name: 'Services',
             description: 'View our digital consulting services',
-            url: '/services.html',
-            icons: [{ src: '/pwa/icon-192.png', sizes: '192x192' }]
+            url: `${base}services.html`,
+            icons: [{ src: `${base}pwa/icon-192.png`, sizes: '192x192' }]
           },
           {
             name: 'Insights',
             short_name: 'Blog',
             description: 'Read our latest insights and articles',
-            url: '/blog.html',
-            icons: [{ src: '/pwa/icon-192.png', sizes: '192x192' }]
+            url: `${base}blog.html`,
+            icons: [{ src: `${base}pwa/icon-192.png`, sizes: '192x192' }]
           },
           {
             name: 'Contact',
             short_name: 'Contact',
             description: 'Get in touch with us',
-            url: '/contact.html',
-            icons: [{ src: '/pwa/icon-192.png', sizes: '192x192' }]
+            url: `${base}contact.html`,
+            icons: [{ src: `${base}pwa/icon-192.png`, sizes: '192x192' }]
           }
         ]
       },
@@ -92,8 +93,8 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,svg,json,woff,woff2,ttf,eot,md}'],
         globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/data\//, /^\/content\//],
+        navigateFallback: `${base}index.html`,
+        navigateFallbackDenylist: [new RegExp(`^${base}data/`), new RegExp(`^${base}content/`)],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -163,7 +164,7 @@ export default defineConfig({
             }
           },
           {
-            urlPattern: ({ url }) => url.pathname.startsWith('/data/'),
+            urlPattern: new RegExp(`^${base}data/`),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-data-cache',
@@ -174,7 +175,7 @@ export default defineConfig({
             }
           },
           {
-            urlPattern: ({ url }) => url.pathname.startsWith('/content/'),
+            urlPattern: new RegExp(`^${base}content/`),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'blog-content-cache',
