@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "TwLy8YRu",
+  "version": "PgRIg8Zi",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,8 +454,8 @@ self.assetsManifest = {
       "url": "_framework/System.x4983syfn1.wasm"
     },
     {
-      "hash": "sha256-vFFONLE231+Fx+Fx6pSk2BG46J72df4ku+QisRO3v+w=",
-      "url": "_framework/VVG.Web.ojkx06bhmf.wasm"
+      "hash": "sha256-nz6HxYmauaooZR5inooZyu/IHEsHs2OEI/MRc2VGsY8=",
+      "url": "_framework/VVG.Web.r9g1mw27wb.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
@@ -474,8 +474,8 @@ self.assetsManifest = {
       "url": "_framework/dotnet.runtime.r2kbxkuujc.js"
     },
     {
-      "hash": "sha256-yvyd9utzENU4xqlQWsTPQtEkD36UscTCPfayo4H5ybU=",
-      "url": "_framework/dotnet.yebcgagzd0.js"
+      "hash": "sha256-tPqW364QMfnjXOXpn5Ki7uLkDSTxQ3LeICLdExs3j04=",
+      "url": "_framework/dotnet.s81wzt6dd3.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -750,7 +750,7 @@ self.assetsManifest = {
       "url": "data/twitter-card.json"
     },
     {
-      "hash": "sha256-l3wNWgUcR6xHYVmcVFbYAnyWOtHIFMjfzQc8pjmIQfQ=",
+      "hash": "sha256-0Dv6FbXf1k0xZj+3Zlew+VeUfPvts7ghKCPMR3mj2qo=",
       "url": "index.html"
     },
     {
