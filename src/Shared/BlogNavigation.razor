@@ -5,20 +5,20 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <a href="/blog" class="btn btn-outline">
+                    <a href="blog" class="btn btn-outline">
                         <i class="bi bi-arrow-left me-2"></i>Back to Blog
                     </a>
 
                     <div class="d-flex gap-2">
                         @if (PreviousPost != null)
                         {
-                            <a href="/blog/@PreviousPost.Slug" class="btn btn-outline" title="@PreviousPost.Title">
+                            <a href="blog/@PreviousPost.Slug" class="btn btn-outline" title="@PreviousPost.Title">
                                 <i class="bi bi-chevron-left"></i> Previous
                             </a>
                         }
                         @if (NextPost != null)
                         {
-                            <a href="/blog/@NextPost.Slug" class="btn btn-outline" title="@NextPost.Title">
+                            <a href="blog/@NextPost.Slug" class="btn btn-outline" title="@NextPost.Title">
                                 Next <i class="bi bi-chevron-right"></i>
                             </a>
                         }
