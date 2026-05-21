@@ -138,7 +138,7 @@ jobs:
           touch release/wwwroot/WebUI/.nojekyll
           
           # Fix base href for GitHub Pages
-          sed -i 's|<base href="/">|<base href="/WebUI/">|g' release/wwwroot/WebUI/index.html
+          sed -i 's|<base href="./">|<base href="/WebUI/">|g' release/wwwroot/WebUI/index.html
           echo "✅ Fixed base href to /WebUI/"
           
           # Copy 404.html for SPA routing
