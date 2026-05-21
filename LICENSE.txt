@@ -1,0 +1,293 @@
+VVG ONLINE Proprietary License 1.0
+
+IMPORTANT: READ CAREFULLY. BY ACCESSING, VIEWING, USING, COPYING,
+MODIFYING, OR DISTRIBUTING ANY PORTION OF THIS SOFTWARE, CONTENT, OR
+ASSOCIATED MATERIALS, YOU AGREE TO BE BOUND BY THIS LICENSE. IF YOU DO
+NOT AGREE TO THESE TERMS, YOU MUST IMMEDIATELY CEASE ALL USE AND DELETE
+ALL COPIES IN YOUR POSSESSION.
+
+========================================================================
+PLAIN-ENGLISH SUMMARY (NON-BINDING)
+========================================================================
+
+Everything in this repository — code, designs, text, images, models,
+data, documentation, and all other materials — belongs to VVG ONLINE.
+
+You may NOT:
+  - Copy, duplicate, or reproduce any part of this project.
+  - Use any code, content, or ideas from this project in your own work.
+  - Modify, adapt, or create derivative works from any material here.
+  - Redistribute, sell, license, or share any part of this project.
+  - Use this project to build a competing product or service.
+  - Scrape, extract, or harvest any content, data, or models.
+
+The only thing you MAY do is:
+  - View this repository for informational purposes.
+  - Contact VVG ONLINE to request a commercial license.
+
+All rights reserved. No permissions are granted beyond viewing.
+
+If this summary conflicts with the binding terms below, the binding
+terms below control.
+
+========================================================================
+1. DEFINITIONS
+========================================================================
+
+1.1 "Licensor" means VVG ONLINE, the copyright holder and owner of all
+    rights in the Software and Content.
+
+1.2 "Software" means all source code, object code, scripts,
+    configurations, build tools, deployment scripts, algorithms,
+    architectures, and any other executable or runnable material
+    contained in this repository.
+
+1.3 "Content" means all text, images, graphics, logos, icons,
+    illustrations, designs, blog posts, articles, documentation,
+    training data, datasets, JSONL files, machine learning models,
+    model weights, ONNX models, prompts, templates, stylesheets,
+    fonts, videos, audio, and any other creative or informational
+    material contained in this repository.
+
+1.4 "Materials" means the Software and Content collectively, including
+    all modifications, derivative works, translations, adaptations,
+    compilations, and any other form derived from or based upon the
+    Materials.
+
+1.5 "User" means any individual, entity, organization, or system that
+    accesses, views, downloads, clones, forks, or otherwise interacts
+    with this repository or any portion of the Materials.
+
+1.6 "Derivative Work" means any modification, adaptation, translation,
+    enhancement, revision, improvement, or other work based upon or
+    derived from the Materials, in whole or in part.
+
+========================================================================
+2. OWNERSHIP AND INTELLECTUAL PROPERTY RIGHTS
+========================================================================
+
+2.1 All Materials in this repository are the exclusive property of
+    VVG ONLINE and are protected by copyright, trade secret, and other
+    intellectual property laws and treaties.
+
+2.2 VVG ONLINE retains all right, title, and interest in and to the
+    Materials, including all intellectual property rights therein.
+
+2.3 No license, express or implied, is granted to any User under any
+    patent, copyright, trade secret, trademark, or other intellectual
+    property right of VVG ONLINE, except the limited right to view
+    the Materials as expressly stated in Section 3.
+
+2.4 The structure, organization, design, architecture, algorithms,
+    and logic of the Software are valuable trade secrets of VVG ONLINE.
+
+========================================================================
+3. LIMITED RIGHT TO VIEW
+========================================================================
+
+3.1 Subject to this License, VVG ONLINE grants User a limited,
+    non-exclusive, non-transferable, non-sublicensable, revocable
+    right to access and view the Materials solely for informational
+    purposes.
+
+3.2 This limited right does NOT include the right to:
+    (a) download, clone, fork, or copy the Materials;
+    (b) modify, adapt, translate, or create Derivative Works;
+    (c) distribute, publish, display, perform, or transmit the
+        Materials to any third party;
+    (d) use the Materials in any commercial product, service, or
+        offering;
+    (e) reverse engineer, decompile, disassemble, or extract the
+        source code from any object code;
+    (f) scrape, mine, harvest, or extract any data, content, models,
+        or information from the Materials;
+    (g) train, fine-tune, or otherwise use the Materials to develop,
+        improve, or create any machine learning model, AI system, or
+        algorithm;
+    (h) incorporate any portion of the Materials into any other
+        software, project, repository, or product; or
+    (i) remove, obscure, or alter any copyright, trademark, patent,
+        or other proprietary notices.
+
+========================================================================
+4. PROHIBITED USES
+========================================================================
+
+4.1 User shall NOT, directly or indirectly:
+    (a) copy, reproduce, duplicate, or replicate any Materials;
+    (b) create Derivative Works based on any Materials;
+    (c) distribute, sublicense, lease, rent, lend, sell, or otherwise
+        transfer any Materials to any third party;
+    (d) use any Materials to develop, build, or operate any competing
+        product, service, or business;
+    (e) use any Materials in connection with any commercial activity
+        without a separate written commercial license from VVG ONLINE;
+    (f) use any Materials to train, fine-tune, evaluate, benchmark,
+        or improve any machine learning model, neural network, AI
+        system, or algorithm;
+    (g) extract, scrape, crawl, or harvest any data, content, text,
+        images, models, or information from the Materials;
+    (h) circumvent, disable, or interfere with any technological
+        measures designed to protect the Materials;
+    (i) misrepresent the origin, ownership, or authorship of any
+        Materials; or
+    (j) use the Materials in any manner that violates applicable law.
+
+4.2 The prohibitions in this Section apply to the Materials in any
+    form, including original, modified, compiled, obfuscated, or
+    transformed versions.
+
+========================================================================
+5. NO REDISTRIBUTION
+========================================================================
+
+5.1 User shall not redistribute, republish, rehost, mirror, or make
+    available the Materials or any portion thereof through any medium,
+    platform, service, or mechanism, including but not limited to:
+    (a) public or private repositories on GitHub, GitLab, Bitbucket,
+        or similar platforms;
+    (b) package registries such as npm, NuGet, PyPI, Maven, or similar;
+    (c) cloud storage, file sharing, or content delivery services;
+    (d) websites, blogs, forums, or social media platforms;
+    (e) physical media, USB drives, or other tangible storage devices;
+    (f) any other means of distribution or transmission.
+
+5.2 Any attempt to redistribute the Materials is void and shall
+    automatically terminate all rights granted under this License.
+
+========================================================================
+6. MACHINE LEARNING AND AI RESTRICTIONS
+========================================================================
+
+6.1 User shall not use any Materials, including but not limited to
+    datasets, JSONL files, training data, model weights, ONNX models,
+    prompts, or configurations, to:
+    (a) train, fine-tune, or adapt any machine learning model;
+    (b) create, develop, or improve any AI system or algorithm;
+    (c) evaluate, benchmark, or test any AI system or model;
+    (d) generate synthetic data or augment existing datasets;
+    (e) extract knowledge, patterns, or representations for use in
+        any AI or ML system; or
+    (f) distill, compress, or transfer knowledge from any model
+        contained in the Materials.
+
+6.2 This restriction applies regardless of whether the use is
+    commercial, academic, research, personal, or otherwise.
+
+========================================================================
+7. TRADEMARKS AND BRANDING
+========================================================================
+
+7.1 All trademarks, service marks, logos, trade names, and branding
+    associated with VVG ONLINE are the exclusive property of VVG ONLINE.
+
+7.2 User shall not use any VVG ONLINE trademarks, logos, or branding
+    without prior written permission from VVG ONLINE.
+
+7.3 User shall not use VVG ONLINE's name, trademarks, or branding in
+    any way that suggests sponsorship, endorsement, affiliation, or
+    approval by VVG ONLINE.
+
+========================================================================
+8. CONFIDENTIALITY
+========================================================================
+
+8.1 User acknowledges that certain Materials may constitute trade
+    secrets and confidential information of VVG ONLINE.
+
+8.2 User shall maintain the confidentiality of all non-public Materials
+    and shall not disclose them to any third party without prior
+    written consent from VVG ONLINE.
+
+========================================================================
+9. COMMERCIAL LICENSING
+========================================================================
+
+9.1 VVG ONLINE may offer commercial licenses for the Materials on
+    separate terms.
+
+9.2 To inquire about commercial licensing, contact VVG ONLINE through
+    the official website at www.vvgonline.net.
+
+9.3 No commercial use of any Materials is permitted without a separate
+    written commercial license from VVG ONLINE.
+
+========================================================================
+10. WARRANTY DISCLAIMER
+========================================================================
+
+10.1 THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+     EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF
+     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
+     NON-INFRINGEMENT.
+
+10.2 VVG ONLINE DOES NOT WARRANT THAT THE MATERIALS WILL BE ERROR-FREE,
+     UNINTERRUPTED, SECURE, OR FREE FROM VIRUSES OR OTHER HARMFUL
+     COMPONENTS.
+
+========================================================================
+11. LIMITATION OF LIABILITY
+========================================================================
+
+11.1 TO THE MAXIMUM EXTENT PERMITTED BY LAW, VVG ONLINE SHALL NOT BE
+     LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN
+     ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR
+     IN CONNECTION WITH THE MATERIALS OR THIS LICENSE OR THE USE OF OR
+     OTHER DEALINGS IN THE MATERIALS.
+
+11.2 USER ACKNOWLEDGES THAT THE LIMITATIONS OF LIABILITY SET FORTH IN
+     THIS SECTION ARE AN ESSENTIAL BASIS OF THE BARGAIN BETWEEN VVG
+     ONLINE AND USER.
+
+========================================================================
+12. TERMINATION
+========================================================================
+
+12.1 This License remains in effect until terminated.
+
+12.2 VVG ONLINE may terminate this License at any time, with or without
+     cause, by providing notice to User or by making the Materials
+     unavailable.
+
+12.3 User's rights under this License terminate automatically upon any
+     breach of this License.
+
+12.4 Upon termination, User must immediately cease all use of the
+     Materials and delete all copies in User's possession or control.
+
+12.5 Sections 2, 7, 8, 9, 10, 11, 12.4, and 13 survive termination.
+
+========================================================================
+13. GENERAL
+========================================================================
+
+13.1 This License constitutes the entire agreement between User and
+     VVG ONLINE regarding the Materials and supersedes all prior or
+     contemporaneous understandings.
+
+13.2 If any provision of this License is held unenforceable, that
+     provision shall be enforced to the maximum extent permitted by
+     law, and the remainder shall remain in full force and effect.
+
+13.3 No waiver of any provision of this License shall be deemed a
+     further or continuing waiver of such provision or any other
+     provision.
+
+13.4 This License shall be governed by and construed in accordance
+     with applicable law, without regard to conflict of law principles.
+
+13.5 VVG ONLINE reserves all rights not expressly granted in this
+     License.
+
+========================================================================
+ALL RIGHTS RESERVED. (C) VVG ONLINE.
+========================================================================
+
+No part of this repository may be copied, reproduced, distributed,
+transmitted, displayed, performed, modified, adapted, translated,
+sublicensed, sold, or otherwise used without the prior written
+permission of VVG ONLINE.
+
+For licensing inquiries, visit: www.vvgonline.net
+
+END OF LICENSE
