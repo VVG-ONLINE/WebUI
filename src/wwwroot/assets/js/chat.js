@@ -6,6 +6,7 @@ window.transformersChat = {
     dotnetHelper: null,
     qaData: [],
     intentLabels: null,
+    modelLoaded: false,
 
     async init(dotnetHelper) {
         this.dotnetHelper = dotnetHelper;
@@ -14,20 +15,28 @@ window.transformersChat = {
             await this.dotnetHelper.invokeMethodAsync('UpdateProgress', 'Loading AI libraries...');
             await this.loadOnnxRuntime();
 
-            await this.dotnetHelper.invokeMethodAsync('UpdateProgress', 'Loading intent classifier (~64MB)...');
-            await this.loadModel();
-
             await this.dotnetHelper.invokeMethodAsync('UpdateProgress', 'Loading Q&A dataset...');
             await this.loadQaData();
 
-            console.log('Model ready');
+            await this.dotnetHelper.invokeMethodAsync('UpdateProgress', 'Loading intent classifier (~64MB)...');
+            await this.loadModel();
+
+            if (this.modelLoaded) {
+                console.log('AI ready: ONNX + JSONL mode');
+                await this.dotnetHelper.invokeMethodAsync('OnSystemPromptReady', 'AI model ready');
+            } else {
+                console.log('AI ready: JSONL back-up mode only');
+                await this.dotnetHelper.invokeMethodAsync('OnSystemPromptReady', 'AI ready (limited mode)');
+            }
+
             await this.dotnetHelper.invokeMethodAsync('UpdateProgress', '');
             await this.dotnetHelper.invokeMethodAsync('OnModelReady');
-            await this.dotnetHelper.invokeMethodAsync('OnSystemPromptReady', 'AI model ready');
 
         } catch (error) {
             console.error('INIT ERROR:', error);
-            await this.dotnetHelper.invokeMethodAsync('UpdateProgress', 'Error: Failed to load AI model. Please try again later.');
+            await this.dotnetHelper.invokeMethodAsync('UpdateProgress', '');
+            await this.dotnetHelper.invokeMethodAsync('OnModelReady');
+            await this.dotnetHelper.invokeMethodAsync('OnSystemPromptReady', 'AI ready (limited mode)');
         }
     },
 
@@ -49,22 +58,31 @@ window.transformersChat = {
     },
 
     async loadModel() {
-        const modelUrl = 'assets/models/intent-classifier.onnx';
-        const labelsUrl = 'assets/models/intent-labels.json';
+        try {
+            const modelUrl = 'assets/models/intent-classifier.onnx';
+            const labelsUrl = 'assets/models/intent-labels.json';
 
-        const [labelsRes, session] = await Promise.all([
-            fetch(labelsUrl).then(r => r.json()),
-            ort.InferenceSession.create(modelUrl, {
-                executionProviders: ['wasm'],
-                graphOptimizationLevel: 'all',
-                enableMemPattern: true,
-                enableCpuMemArena: true
-            })
-        ]);
+            const [labelsRes, session] = await Promise.all([
+                fetch(labelsUrl).then(r => r.json()),
+                ort.InferenceSession.create(modelUrl, {
+                    executionProviders: ['wasm'],
+                    graphOptimizationLevel: 'all',
+                    enableMemPattern: true,
+                    enableCpuMemArena: true
+                })
+            ]);
 
-        this.intentLabels = labelsRes.labels;
-        this.session = session;
-        console.log('Intent classifier loaded, classes:', Object.values(this.intentLabels));
+            this.intentLabels = labelsRes.labels;
+            this.session = session;
+            this.modelLoaded = true;
+            console.log('Intent classifier loaded, classes:', Object.values(this.intentLabels));
+
+        } catch (error) {
+            console.warn('[AI] ONNX model failed to load, using back-up mode');
+            console.warn('[AI] Error details:', error.message);
+            this.session = null;
+            this.modelLoaded = false;
+        }
     },
 
     async loadQaData() {
