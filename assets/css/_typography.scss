@@ -1,0 +1,56 @@
+// =================================================================================
+// BASE TYPOGRAPHY
+// =================================================================================
+//
+// Here we define the fundamental typographic styles for our project.
+// Think of this as setting the stage for our content.
+// We are establishing a clear visual hierarchy, from headings to body text,
+// ensuring readability and a consistent look and feel.
+
+body {
+  // We start with the body, the foundation of our text styles.
+  // We use a system font stack for a clean, modern, and native feel.
+  // The line-height is set to 1.6 for optimal readability.
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // For headings, we use the same font stack for consistency.
+  // The font-weight is bolded to give headings prominence.
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 600;
+  color: var(--text);
+}
+
+h1:focus {
+  // When a heading is focused (e.g., by keyboard navigation), we remove the
+  // default outline to maintain our clean aesthetic.
+  border: none;
+  outline: none;
+}
+
+a {
+  // Links are a fundamental part of the web, so we give them a base style.
+  // We set the color to the primary text color, and remove the underline.
+  color: var(--text);
+  text-decoration: none;
+}
+
+blockquote,
+code,
+pre,
+.mono {
+  // For blockquotes, code snippets, and any element with the .mono class,
+  // we use a standard monospace font stack.
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem; // A slightly smaller font size for these elements.
+  color: var(--text);
+}

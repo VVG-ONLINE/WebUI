@@ -1,0 +1,376 @@
+// =================================================================================
+// COMPONENTS
+// =================================================================================
+//
+// Welcome to the component library. This file, `_components.scss`, is where we
+// style our reusable UI elements. Think of buttons, cards, and other custom
+// widgets. By keeping them here, we ensure they look consistent wherever they
+// are used.
+
+// --- VVG Button ---
+// Our primary custom button style.
+.btn-vvg {
+  background: var(--accent);
+  border: 1px solid var(--text);
+  border-radius: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+
+  &:hover {
+    /**
+     * On hover, we invert the colors to provide clear feedback to the user.
+     * The background becomes dark, and the text takes on the accent color.
+     */
+    background-color: var(--text);
+    color: var(--accent);
+  }
+}
+
+// --- Card ---
+// The base style for a card component.
+.card {
+  border: 1px solid var(--text);
+  border-radius: 0;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+// --- Accent Box ---
+// A simple highlighted box.
+.accent-box {
+  background-color: var(--accent);
+  padding: 2px 6px;
+  display: inline-block;
+
+  &:hover {
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    background: var(--text);
+    color: var(--accent);
+  }
+}
+
+// --- Insight Tag ---
+// A tag for blog posts or insights.
+.insight-tag {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  font-size: 11px;
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 2px 8px;
+  border: 1px solid var(--text);
+}
+
+// --- Navigation Logo ---
+.vvg-logo-nav {
+  height: 22px;
+  width: auto;
+  transition: all 0.3s ease;
+  pointer-events: none; // from .nav-logo
+}
+
+// --- Workflow/Event-Driven UI ---
+.workflow-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.workflow-node {
+  border: 1px solid var(--text);
+  padding: 15px;
+  background: var(--card-bg);
+  color: var(--text);
+  width: 22%;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+
+  &:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 221, 51, 0.4);
+  }
+
+  &.active,
+  &.visible {
+    opacity: 1;
+  }
+
+  &.active {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  &.visible {
+    transform: translateY(0) scale(1.02);
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
+      opacity 0.4s ease;
+  }
+
+  &.loop-fade {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
+      opacity 0.45s ease;
+  }
+
+  .flow-el {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+    transition:
+      opacity 0.36s ease,
+      transform 0.36s cubic-bezier(0.2, 0.9, 0.3, 1);
+
+    &.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  h5,
+  p,
+  code {
+    opacity: 1;
+    transition:
+      opacity 0.6s ease,
+      transform 0.4s ease;
+    transform-origin: center center;
+  }
+}
+
+.workflow-connector {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--text);
+  position: relative;
+  opacity: 0;
+  transform: scaleX(0.6) translateY(-6px);
+  transition: all 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  &.connector-active {
+    opacity: 1;
+    transform: scaleX(1) translateY(0);
+  }
+
+  &::after {
+    content: "▶";
+    position: absolute;
+    right: -5px;
+    top: -8px;
+    font-size: 10px;
+  }
+}
+
+// --- AI Terminal ---
+/**
+ * The AI terminal is a chat interface that is fixed to the bottom right of the screen.
+ * It has a dark, semi-transparent background to give it a futuristic feel.
+ * The accent color is used for the border and the text.
+ */
+#ai-terminal {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10000;
+  box-shadow: 0 0 20px rgba(255, 221, 51, 0.15);
+  max-height: 90vh;
+}
+
+.terminal-closed {
+  height: 40px;
+  overflow: hidden;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.terminal-header {
+  background: var(--accent);
+  color: var(--text);
+  padding: 8px 15px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.terminal-body {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.chat-output {
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.system-msg {
+  color: gray;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.user-msg {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.ai-msg {
+  margin-bottom: 15px;
+  line-height: 1.4;
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+}
+
+.terminal-input-area {
+  display: flex;
+  border-top: 1px solid rgba(255, 221, 51, 0.3);
+  padding-top: 10px;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#user-input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+// --- Terminal Style Tags (Oh My Posh) ---
+/**
+ * These styles are inspired by the "Oh My Posh" terminal prompt.
+ * We use them to create a stylish and informative tag.
+ */
+.terminal-tag-group {
+  display: inline-flex;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.15));
+}
+
+.tag-segment {
+  padding: 4px 15px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-user {
+  background: var(--text);
+  color: var(--bg);
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  padding-right: 25px;
+  z-index: 2;
+}
+
+.tag-path {
+  background: var(--accent);
+  color: var(--text);
+  margin-left: -10px; /* Overlap */
+  padding-left: 20px;
+  clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 8% 50%);
+  z-index: 1;
+}
+
+// --- Responsive Adjustments for Components ---
+@media (max-width: 768px) {
+  .workflow-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .workflow-node {
+    width: 100%;
+  }
+
+  .workflow-connector {
+    width: 1px;
+    height: 30px;
+
+    &::after {
+      right: -4px;
+      bottom: -5px;
+      top: auto;
+      transform: rotate(90deg);
+    }
+  }
+
+  #ai-terminal {
+    width: 90vw;
+    right: 5vw;
+    left: auto;
+    max-width: 100%;
+  }
+
+  .terminal-body {
+    height: 300px !important;
+  }
+
+  .terminal-tag-group {
+    margin-bottom: 1rem;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.1));
+  }
+
+  .tag-segment {
+    padding: 3px 12px;
+    font-size: 10px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ai-terminal {
+    width: 95vw;
+    right: 2.5vw;
+    bottom: 10px;
+  }
+
+  .terminal-body {
+    height: 250px !important;
+  }
+
+  .terminal-tag-group {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .tag-segment {
+    width: 100%;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%) !important;
+    padding: 3px 10px !important;
+    margin: 0 !important;
+  }
+}
