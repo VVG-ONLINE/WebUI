@@ -2,7 +2,7 @@
 
 > Blazor WebAssembly PWA with AI-powered chatbot, hosted on GitHub Pages
 
-**Live Demo**: [test.vvgonline.net](https://test.vvgonline.net)
+**Live Demo**: [test.vvgonline.net](https://vvgonline.net)
 
 ## Features
 

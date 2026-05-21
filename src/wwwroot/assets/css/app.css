@@ -187,6 +187,10 @@ button,
   pointer-events: none;
 }
 
+.tag-path, .terminal-title {
+  color: #111113 !important;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);

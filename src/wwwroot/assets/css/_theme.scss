@@ -86,3 +86,8 @@ button,
   // Disable pointer events on the logo, making it non-interactive
   pointer-events: none;
 }
+
+// dark text classes regardless of theme
+.tag-path, .terminal-title {
+  color: #111113 !important; // Dark text color for better readability
+}
