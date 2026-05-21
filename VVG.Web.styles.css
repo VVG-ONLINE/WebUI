@@ -1,4 +1,4 @@
-/* WebUI/Layout/MainLayout.razor.rz.scp.css */
+/* /Layout/MainLayout.razor.rz.scp.css */
 .page[b-ubjt4cbuq7] {
     position: relative;
     display: flex;
@@ -76,7 +76,7 @@ main[b-ubjt4cbuq7] {
         padding-right: 1.5rem !important; */
     }
 }
-/* WebUI/Layout/NavMenu.razor.rz.scp.css */
+/* /Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-vw66pkwtjz] {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -160,7 +160,7 @@ main[b-ubjt4cbuq7] {
         overflow-y: auto;
     }
 }
-/* WebUI/Pages/Blog.razor.rz.scp.css */
+/* /Pages/Blog.razor.rz.scp.css */
 /* Blog Listing Page Styles */
 .blog-post-card[b-b7ertj9owu] {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -299,7 +299,7 @@ img[loading="lazy"][b-b7ertj9owu] {
     background: url('/images/placeholder.png') center center no-repeat;
     background-size: contain;
 } */
-/* WebUI/Pages/BlogPostPage.razor.rz.scp.css */
+/* /Pages/BlogPostPage.razor.rz.scp.css */
 /* src/Pages/BlogPost.razor.css */
 
 /* General styling for the blog post content */
@@ -448,7 +448,7 @@ img[loading="lazy"][b-b7ertj9owu] {
     font-size: 1.5rem; /* Smaller font size for h3 on smaller screens */
   }
 }
-/* WebUI/Shared/BlogPostSidebar.razor.rz.scp.css */
+/* /Shared/BlogPostSidebar.razor.rz.scp.css */
 /* =====================================================================
    BLOG POST SIDEBAR STYLES
    ===================================================================== */
@@ -931,7 +931,7 @@ img[loading="lazy"][b-b7ertj9owu] {
     grid-column: 1 / -1 !important;
   }
 }
-/* WebUI/Shared/TableOfContents.razor.rz.scp.css */
+/* /Shared/TableOfContents.razor.rz.scp.css */
 /* =====================================================================
    TABLE OF CONTENTS COMPONENT STYLES
    ===================================================================== */
