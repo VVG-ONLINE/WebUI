@@ -31,8 +31,13 @@ jobs:
 
       - name: Fix Base Href for GitHub Pages
         run: |
-          sed -i 's|<base href="/">|<base href="/WebUI/">|g' release/wwwroot/index.html
-          sed -i "s|navigator.serviceWorker.register('service-worker.js'|navigator.serviceWorker.register('/WebUI/service-worker.js'|g" release/wwwroot/index.html
+          if [ -f "CNAME" ]; then
+            echo "✅ Custom domain detected - keeping base href as /"
+          else
+            echo "⚠️ No CNAME - setting base href to /WebUI/ for GitHub Pages subpath"
+            sed -i 's|<base href="/">|<base href="/WebUI/">|g' release/wwwroot/index.html
+            sed -i "s|navigator.serviceWorker.register('service-worker.js'|navigator.serviceWorker.register('/WebUI/service-worker.js'|g" release/wwwroot/index.html
+          fi
 
       - name: Generate Blog Index
         run: |
@@ -145,19 +150,39 @@ jobs:
           touch release/wwwroot/.nojekyll
 
           # Create 404.html for SPA routing on GitHub Pages
-          cat > release/wwwroot/404.html << 'HTMLEOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <script>
-                  var path = window.location.pathname;
-                  var redirect = '/WebUI/?' + encodeURIComponent(path + window.location.search + window.location.hash);
-                  window.location.replace(redirect);
-              </script>
-          </head>
-          <body>Redirecting...</body>
-          </html>
-          HTMLEOF
+          if [ -f "CNAME" ]; then
+            # Custom domain - root path
+            cat > release/wwwroot/404.html << 'HTMLEOF'
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <script>
+                    var path = window.location.pathname;
+                    var redirect = '/?' + encodeURIComponent(path + window.location.search + window.location.hash);
+                    window.location.replace(redirect);
+                </script>
+            </head>
+            <body>Redirecting...</body>
+            </html>
+            HTMLEOF
+            echo "✅ 404.html created for custom domain (root path)"
+          else
+            # GitHub Pages subpath
+            cat > release/wwwroot/404.html << 'HTMLEOF'
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <script>
+                    var path = window.location.pathname;
+                    var redirect = '/WebUI/?' + encodeURIComponent(path + window.location.search + window.location.hash);
+                    window.location.replace(redirect);
+                </script>
+            </head>
+            <body>Redirecting...</body>
+            </html>
+            HTMLEOF
+            echo "✅ 404.html created for GitHub Pages subpath (/WebUI/)"
+          fi
 
           # Copy CNAME if it exists (for custom domain)
           if [ -f "CNAME" ]; then
