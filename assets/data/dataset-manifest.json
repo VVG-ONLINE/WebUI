@@ -12,19 +12,19 @@
       "assets/data/blogs/The-Digital-Marketing-Investment-Imperative.md"
     ],
     "json": [
-      "data/dataset/services/web-development.json",
-      "data/dataset/services/digital-marketing.json",
-      "data/dataset/services/consulting.json"
+      "assets/data/dataset/services/web-development.json",
+      "assets/data/dataset/services/digital-marketing.json",
+      "assets/data/dataset/services/consulting.json"
     ],
     "csv": [
-      "data/dataset/knowledge/pricing.csv",
-      "data/dataset/knowledge/faq.csv",
-      "data/dataset/knowledge/testimonials.csv"
+      "assets/data/dataset/knowledge/pricing.csv",
+      "assets/data/dataset/knowledge/faq.csv",
+      "assets/data/dataset/knowledge/testimonials.csv"
     ],
     "txt": [
-      "data/dataset/docs/about.txt",
-      "data/dataset/docs/services-overview.txt",
-      "data/dataset/docs/contact-info.txt"
+      "assets/data/dataset/docs/about.txt",
+      "assets/data/dataset/docs/services-overview.txt",
+      "assets/data/dataset/docs/contact-info.txt"
     ]
   }
 }

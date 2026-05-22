@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "s6gII4N7",
+  "version": "NU/z6xZk",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,8 +454,8 @@ self.assetsManifest = {
       "url": "_framework/System.x4983syfn1.wasm"
     },
     {
-      "hash": "sha256-8Blers8wDDDnY2bRPWirBGQwxj4rwBGL00OuqRhD4fA=",
-      "url": "_framework/VVG.Web.k3xa8a3qjs.wasm"
+      "hash": "sha256-gqNG92Ce7F356qSS0Gu5yOLp7FydcnhP9qvUt7Sf7pM=",
+      "url": "_framework/VVG.Web.eswuz6k56m.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
@@ -470,8 +470,8 @@ self.assetsManifest = {
       "url": "_framework/dotnet.native.rjbmzc4jpg.js"
     },
     {
-      "hash": "sha256-lVKSHyj+7OYSqsej73mCqVA8LnIuuU0AD83oj/OZP9g=",
-      "url": "_framework/dotnet.p7cnxtqz58.js"
+      "hash": "sha256-kanQ6TB3HpaK6md1xousEEmSejVxUEKmvdGbSkq0gfA=",
+      "url": "_framework/dotnet.r1vhfcszqc.js"
     },
     {
       "hash": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU=",
@@ -622,7 +622,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/strategy-and-innovation.md"
     },
     {
-      "hash": "sha256-X6FYAI2muMOCsII/FUAADqyFDjMmFYqfiLtVAfkif6c=",
+      "hash": "sha256-0DZ4IBudU2cXmVj+I8xR5qSWR45noumeIn1pOX1k+08=",
       "url": "assets/data/dataset-manifest.json"
     },
     {
@@ -662,20 +662,32 @@ self.assetsManifest = {
       "url": "assets/data/facts-figures.json"
     },
     {
+      "hash": "sha256-22CRubuz6nNG/mJh7xJ0H/d37aXf2BLx/Et3OmtRmDE=",
+      "url": "assets/data/json/blog-index.json"
+    },
+    {
+      "hash": "sha256-++mKJbMFq73earbY85dFdXxAVq2wHnwNOoDB7BF4Hrg=",
+      "url": "assets/data/json/faq.json"
+    },
+    {
+      "hash": "sha256-03WfsfFhLjgARrmUlZ16wsyg0cMC5dyfj8TMmpCZvpM=",
+      "url": "assets/data/json/json-ld.json"
+    },
+    {
       "hash": "sha256-dnhwqstJmkm68FDnJVYdVQ4G1oy881NUmok1OQ5eMlA=",
-      "url": "assets/data/metadata.json"
+      "url": "assets/data/json/metadata.json"
     },
     {
       "hash": "sha256-TsjnbKtaKN76DWXpC0NdKIKzGJTmw+1OXe0MTGlLPo4=",
-      "url": "assets/data/open-graph.json"
+      "url": "assets/data/json/open-graph.json"
+    },
+    {
+      "hash": "sha256-uZrhkSr0jl6ICBQfUBTkRgbZIWrwrevQq6UvmDmb+dQ=",
+      "url": "assets/data/json/twitter-card.json"
     },
     {
       "hash": "sha256-aTKj0tJI12sYs/+V0dqKLejTS90eZcREcPwWcd2Cc1k=",
       "url": "assets/data/services.json"
-    },
-    {
-      "hash": "sha256-uZrhkSr0jl6ICBQfUBTkRgbZIWrwrevQq6UvmDmb+dQ=",
-      "url": "assets/data/twitter-card.json"
     },
     {
       "hash": "sha256-GmLdKrprt/cHQ0KYyn8NG7UhY/cDJQb0T04coaQSQXg=",
@@ -718,7 +730,7 @@ self.assetsManifest = {
       "url": "assets/js/theme.js"
     },
     {
-      "hash": "sha256-H3nJpZXw+QrqAnCLZIxgPwAZ6sBuoC2noYWQjfu08zA=",
+      "hash": "sha256-HB7WNmrbunYy8hPFDoz6kPapp61XwVRnulO8BzXKaPw=",
       "url": "assets/models/intent-classifier.onnx"
     },
     {
@@ -726,31 +738,7 @@ self.assetsManifest = {
       "url": "assets/models/intent-labels.json"
     },
     {
-      "hash": "sha256-22CRubuz6nNG/mJh7xJ0H/d37aXf2BLx/Et3OmtRmDE=",
-      "url": "data/blog-index.json"
-    },
-    {
-      "hash": "sha256-++mKJbMFq73earbY85dFdXxAVq2wHnwNOoDB7BF4Hrg=",
-      "url": "data/faq.json"
-    },
-    {
-      "hash": "sha256-03WfsfFhLjgARrmUlZ16wsyg0cMC5dyfj8TMmpCZvpM=",
-      "url": "data/json-ld.json"
-    },
-    {
-      "hash": "sha256-Kw5gbu5uuV3lHkJyFdWw+hdyLCF4YeM42dNW8fEJrYQ=",
-      "url": "data/metadata.json"
-    },
-    {
-      "hash": "sha256-4jmr5qttgkvW2TyMnc1EOyd0QFizc+Z9FLGoqM3x0LE=",
-      "url": "data/open-graph.json"
-    },
-    {
-      "hash": "sha256-h7A0UEA4ZQd7zjESxH62B/IIWFB0ZFp12sDs9tfxGh4=",
-      "url": "data/twitter-card.json"
-    },
-    {
-      "hash": "sha256-4NOTBrD4+VgfUkhZUR6Xm2gEZegUA+Cg80fnU2CQqxE=",
+      "hash": "sha256-G5VRUyMZmYQPRrjds0Q3vMmATsS8KSmNMqJ6194hbsI=",
       "url": "index.html"
     },
     {
