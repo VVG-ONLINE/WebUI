@@ -5,8 +5,7 @@
         private static string GetProjectRoot()
         {
             var current = AppContext.BaseDirectory;
-            while (!Directory.Exists(Path.Combine(current, "src")) ||
-                   !Directory.Exists(Path.Combine(current, "scripts")))
+            while (!Directory.Exists(Path.Combine(current, "src")))
             {
                 var parent = Directory.GetParent(current);
                 if (parent == null) throw new DirectoryNotFoundException("Could not find project root");

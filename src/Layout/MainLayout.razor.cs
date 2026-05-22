@@ -68,7 +68,7 @@ namespace VVG.Web.Layout
             try
             {
                 // Load manifest
-                var manifestJson = await Http.GetStringAsync("data/dataset-manifest.json");
+                var manifestJson = await Http.GetStringAsync("assets/data/dataset-manifest.json");
                 var manifest = JsonSerializer.Deserialize<DatasetManifest>(manifestJson);
                 
                 Console.WriteLine($"Loading manifest version {manifest?.Version}");

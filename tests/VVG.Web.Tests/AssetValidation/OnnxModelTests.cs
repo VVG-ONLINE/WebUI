@@ -5,13 +5,12 @@ namespace VVG.Web.Tests.AssetValidation
     public class OnnxModelTests
     {
         private static readonly string WebRoot = Path.Combine(GetProjectRoot(), "src", "wwwroot");
-        private static readonly string ScriptsDir = Path.Combine(GetProjectRoot(), "scripts");
+        private static readonly string ScriptsDir = Path.Combine(GetProjectRoot(), "..", "_WebUI-related-folders-and-files", "scripts");
 
         private static string GetProjectRoot()
         {
             var current = AppContext.BaseDirectory;
-            while (!Directory.Exists(Path.Combine(current, "src")) ||
-                   !Directory.Exists(Path.Combine(current, "scripts")))
+            while (!Directory.Exists(Path.Combine(current, "src")))
             {
                 var parent = Directory.GetParent(current);
                 if (parent == null) throw new DirectoryNotFoundException("Could not find project root");

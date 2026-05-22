@@ -352,7 +352,7 @@
         {
             // Load all posts from static JSON file
             // API returns BlogPost[] - we store as List for easier manipulation
-            allPosts = await Http.GetFromJsonAsync<BlogPost[]>("data/blog-index.json");
+            allPosts = await Http.GetFromJsonAsync<BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts != null && allPosts.Length > 0)
             {
@@ -664,7 +664,7 @@
             return _tagCounts[key];
 
         // Calculate and cache
-        int count = allPosts.Count(p => p.Tags?.Any(t => t.ToLowerInvariant() == key) ?? false);
+        int count = allPosts?.Count(p => p.Tags?.Any(t => t.ToLowerInvariant() == key) ?? false) ?? 0;
         _tagCounts[key] = count;
 
         return count;

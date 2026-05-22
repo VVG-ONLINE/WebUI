@@ -86,7 +86,7 @@ else if (blogPost != null)
             isLoading = true;
             errorMessage = null;
 
-            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts == null || allPosts.Length == 0)
             {

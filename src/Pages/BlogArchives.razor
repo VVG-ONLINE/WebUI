@@ -130,7 +130,7 @@
         try
         {
             // Load posts directly as array
-            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+            allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts != null && allPosts.Length > 0)
             {

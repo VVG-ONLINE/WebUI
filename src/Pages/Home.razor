@@ -133,7 +133,7 @@
         {
             Console.WriteLine("Home: Starting to load blog posts...");
 
-            var allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("data/blog-index.json");
+            var allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             Console.WriteLine($"Home: Loaded {allPosts?.Length ?? 0} posts");
 

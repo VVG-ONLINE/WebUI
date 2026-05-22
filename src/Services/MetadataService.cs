@@ -52,7 +52,7 @@ namespace VVG.Web.Services
             {
                 try
                 {
-                    _metadata = await _http.GetFromJsonAsync<Metadata>("assets/data/metadata.json");
+                    _metadata = await _http.GetFromJsonAsync<Metadata>("assets/data/json/metadata.json");
                 }
                 catch (Exception ex)
                 {
@@ -71,7 +71,7 @@ namespace VVG.Web.Services
             {
                 try
                 {
-                    _twitterCard = await _http.GetFromJsonAsync<TwitterCard>("assets/data/twitter-card.json");
+                    _twitterCard = await _http.GetFromJsonAsync<TwitterCard>("assets/data/json/twitter-card.json");
                 }
                 catch (Exception ex)
                 {
@@ -90,7 +90,7 @@ namespace VVG.Web.Services
             {
                 try
                 {
-                    _openGraph = await _http.GetFromJsonAsync<OpenGraph>("assets/data/open-graph.json");
+                    _openGraph = await _http.GetFromJsonAsync<OpenGraph>("assets/data/json/open-graph.json");
                 }
                 catch (Exception ex)
                 {
@@ -109,7 +109,7 @@ namespace VVG.Web.Services
             {
                 try
                 {
-                    _jsonLd = await _http.GetStringAsync("assets/data/json-ld.json");
+                    _jsonLd = await _http.GetStringAsync("assets/data/json/json-ld.json");
                 }
                 catch (Exception ex)
                 {

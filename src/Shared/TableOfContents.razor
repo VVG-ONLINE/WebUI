@@ -193,8 +193,9 @@
     *
     * Example: /blog/dont-normalize-common-things-a-philosophy-for-business-excellence#heading-3-key-section
     */
-    private string GetHeadingUrl(string headingId)
+    private string GetHeadingUrl(string? headingId)
     {
+        if (string.IsNullOrEmpty(headingId)) return "#";
         try
         {
             var uri = NavigationManager.Uri;

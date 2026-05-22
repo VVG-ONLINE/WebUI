@@ -176,7 +176,7 @@
             {
                 PropertyNameCaseInsensitive = true
             };
-            faqData = await Http.GetFromJsonAsync<FaqData>("data/faq.json", options);
+            faqData = await Http.GetFromJsonAsync<FaqData>("assets/data/json/faq.json", options);
         }
         catch (Exception ex)
         {

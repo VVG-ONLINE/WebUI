@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
@@ -39,7 +41,7 @@ jobs:
           const path = require('path');
 
           const blogDir = 'src/wwwroot/assets/data/blogs';
-          const outputFile = 'src/wwwroot/data/blog-index.json';
+          const outputFile = 'src/wwwroot/assets/data/json/blog-index.json';
 
           const posts = [];
 
@@ -102,8 +104,8 @@ jobs:
 
       - name: Copy Blog Index to Release
         run: |
-          mkdir -p release/wwwroot/data
-          cp src/wwwroot/data/blog-index.json release/wwwroot/data/
+          mkdir -p release/wwwroot/assets/data/json
+          cp src/wwwroot/assets/data/json/blog-index.json release/wwwroot/assets/data/json/
 
       - name: Copy Markdown Files to Release
         run: |
@@ -127,15 +129,15 @@ jobs:
           echo "Root files:"
           ls -la release/wwwroot/ | head -20
           echo ""
-          echo "Data folder:"
-          ls -la release/wwwroot/data/ || echo "❌ data folder not found"
+          echo "JSON data folder:"
+          ls -la release/wwwroot/assets/data/json/ || echo "❌ json folder not found"
           echo ""
           echo "Blog markdown files:"
           ls -la release/wwwroot/assets/data/blogs/ || echo "❌ blogs folder not found"
           echo ""
           echo "File count:"
           echo "  - MD files: $(find release/wwwroot/assets/data/blogs/ -name '*.md' 2>/dev/null | wc -l)"
-          echo "  - JSON files: $(find release/wwwroot/data/ -name '*.json' 2>/dev/null | wc -l)"
+          echo "  - JSON files: $(find release/wwwroot/assets/data/json/ -name '*.json' 2>/dev/null | wc -l)"
 
       - name: Prepare GitHub Pages Artifacts
         run: |

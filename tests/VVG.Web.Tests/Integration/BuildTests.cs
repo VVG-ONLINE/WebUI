@@ -9,8 +9,7 @@ namespace VVG.Web.Tests.Integration
         private static string GetProjectRoot()
         {
             var current = AppContext.BaseDirectory;
-            while (!Directory.Exists(Path.Combine(current, "src")) ||
-                   !Directory.Exists(Path.Combine(current, "scripts")))
+            while (!Directory.Exists(Path.Combine(current, "src")))
             {
                 var parent = Directory.GetParent(current);
                 if (parent == null) throw new DirectoryNotFoundException("Could not find project root");
@@ -63,7 +62,7 @@ namespace VVG.Web.Tests.Integration
         [Fact]
         public void JSONL_Dataset_Accessible_From_Web()
         {
-            var jsonlPath = Path.Combine(ProjectRoot, "scripts", "vikas-dataset-augmented.jsonl");
+            var jsonlPath = Path.Combine(ProjectRoot, "..", "_WebUI-related-folders-and-files", "scripts", "vikas-dataset-augmented.jsonl");
             Assert.True(File.Exists(jsonlPath), "JSONL dataset not found: " + jsonlPath);
 
             var lines = File.ReadAllLines(jsonlPath);
