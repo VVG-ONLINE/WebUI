@@ -41,7 +41,7 @@ jobs:
 
       - name: Generate Blog Index
         run: |
-          cat > generate-blog-index.js << 'EOF'
+          node -e "
           const fs = require('fs');
           const path = require('path');
 
@@ -50,17 +50,17 @@ jobs:
 
           const posts = [];
 
-          // Create output directory if it doesn't exist
           fs.mkdirSync(path.dirname(outputFile), { recursive: true });
 
           if (fs.existsSync(blogDir)) {
             fs.readdirSync(blogDir).forEach(file => {
               if (file.endsWith('.md')) {
                 const content = fs.readFileSync(path.join(blogDir, file), 'utf8');
-                const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+                const frontMatterMatch = content.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
 
                 if (frontMatterMatch) {
                   const frontMatter = frontMatterMatch[1];
+                  const markdownContent = frontMatterMatch[2] || '';
                   const post = {};
 
                   frontMatter.split('\n').forEach(line => {
@@ -68,31 +68,30 @@ jobs:
                     if (match) {
                       const [, key, value] = match;
 
-                      // Handle arrays like ["tag1", "tag2"] or [tag1, tag2]
                       if (value.trim().startsWith('[')) {
                         try {
-                          post[key] = JSON.parse(value.replace(/'/g, '"'));
+                          post[key] = JSON.parse(value.replace(/'/g, '\"'));
                         } catch {
                           post[key] = [];
                         }
                       }
-                      // Handle booleans
                       else if (value.trim() === 'true' || value.trim() === 'false') {
                         post[key] = value.trim() === 'true';
                       }
-                      // Handle numbers
                       else if (!isNaN(value.trim())) {
                         post[key] = parseInt(value.trim());
                       }
-                      // Handle strings
                       else {
-                        post[key] = value.replace(/^["']|["']$/g, '').trim();
+                        post[key] = value.replace(/^[\x22']|[\x22']$/g, '').trim();
                       }
                     }
                   });
 
-                  // Add filename property (without .md extension)
                   post.filename = file.replace('.md', '');
+
+                  // Calculate timeToRead (equivalent to C# Indexer: wordCount / 200)
+                  const wordCount = (markdownContent.match(/[\w-]+/g) || []).length;
+                  post.timeToRead = Math.ceil(wordCount / 200);
 
                   posts.push(post);
                 }
@@ -101,11 +100,8 @@ jobs:
           }
 
           fs.writeFileSync(outputFile, JSON.stringify(posts, null, 2));
-          console.log(`✅ Generated blog index with ${posts.length} posts`);
-          console.log(JSON.stringify(posts, null, 2));
-          EOF
-
-          node generate-blog-index.js
+          console.log('✅ Generated blog index with ' + posts.length + ' posts');
+          "
 
       - name: Copy Blog Index to Release
         run: |

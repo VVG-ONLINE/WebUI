@@ -13,7 +13,7 @@ public class Program
     {
         var workspaceRoot = GetWorkspaceRoot();
         var blogDir = Path.Combine(workspaceRoot, "src", "wwwroot", "assets", "data", "blogs");
-        var outputFile = Path.Combine(workspaceRoot, "src", "wwwroot", "data", "blog-index.json");
+        var outputFile = Path.Combine(workspaceRoot, "src", "wwwroot", "assets", "data", "json", "blog-index.json");
 
         var index = new BlogIndex
         {
