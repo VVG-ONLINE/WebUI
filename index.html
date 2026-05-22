@@ -17,7 +17,7 @@
         content="https://github.com/vvgonline/test.vvgonline.net/blob/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png?raw=true" />
 
     <!-- Open Graph -->
-    <meta property="og:url" content="https://test.vvgonline.net" />
+    <meta property="og:url" content="https://vvgonline.net" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="vvgonline.net" />
     <meta property="og:description" content="A test website for VVG online." />
@@ -26,11 +26,11 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="test.vvgonline.net" />
+    <meta name="twitter:title" content="vvgonline.net" />
     <meta name="twitter:description" content="A test website for VVG online." />
     <meta name="twitter:image"
         content="https://github.com/vvgonline/test.vvgonline.net/blob/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png?raw=true" />
-    <base href="/WebUI/">
+    <base href="/">
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -48,7 +48,7 @@
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.66stpp682q.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.ijj1gzduqa.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.2jlkb8bww2.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.rjbmzc4jpg.js",
     "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.r2kbxkuujc.js"
   },
@@ -56,8 +56,8 @@
   "integrity": {
     "./_framework/blazor.webassembly.66stpp682q.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
     "./_framework/blazor.webassembly.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
-    "./_framework/dotnet.ijj1gzduqa.js": "sha256-LuWwlCCTukAoSUe8m9gekhvyz3uRAJIDlrRxwXuqvEs=",
-    "./_framework/dotnet.js": "sha256-LuWwlCCTukAoSUe8m9gekhvyz3uRAJIDlrRxwXuqvEs=",
+    "./_framework/dotnet.2jlkb8bww2.js": "sha256-ApusQ0OiCwvD6BzLJp6SJow3WVnUEXS1jSPT1XtIEU8=",
+    "./_framework/dotnet.js": "sha256-ApusQ0OiCwvD6BzLJp6SJow3WVnUEXS1jSPT1XtIEU8=",
     "./_framework/dotnet.native.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
     "./_framework/dotnet.native.rjbmzc4jpg.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
     "./_framework/dotnet.runtime.js": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU=",
@@ -82,7 +82,7 @@
     <script src="assets/js/meta.js" defer async></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="_framework/blazor.webassembly.66stpp682q.js"></script>
-    <script>navigator.serviceWorker.register('/WebUI/service-worker.js', { updateViaCache: 'none' });</script>
+    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer async></script>
     <script type="text/javascript">
         window.hidePreloader = function () {
@@ -177,9 +177,8 @@
             var match = window.location.search.match(/^\?([^&]+)/);
             if (match) {
                 var path = decodeURIComponent(match[1]);
-                if (path.startsWith('/WebUI/')) {
-                    window.history.replaceState(null, '', path);
-                }
+                // Restore the original path (works for both /WebUI/ and root)
+                window.history.replaceState(null, '', path);
             }
         })();
     </script>
