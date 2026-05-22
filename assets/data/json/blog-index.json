@@ -12,7 +12,8 @@
     "draft": false,
     "category": "Business",
     "featured": true,
-    "filename": "Communication-Mastery-for-Digital-Business-Success"
+    "filename": "Communication-Mastery-for-Digital-Business-Success",
+    "timeToRead": 7
   },
   {
     "title": "Digital Assets: The Real Estate of the Virtual World",
@@ -27,7 +28,8 @@
     "draft": false,
     "category": "Business",
     "featured": false,
-    "filename": "Digital-Assets-The-Real-Estate-of-the-Virtual-World"
+    "filename": "Digital-Assets-The-Real-Estate-of-the-Virtual-World",
+    "timeToRead": 4
   },
   {
     "title": "Don't Normalize Common Things: A Philosophy for Business Excellence",
@@ -42,7 +44,8 @@
     "draft": false,
     "category": "Business",
     "featured": false,
-    "filename": "Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence"
+    "filename": "Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence",
+    "timeToRead": 4
   },
   {
     "title": "GST Rate Deductions for E-commerce: A Complete Guide by VVG ONLINE",
@@ -57,7 +60,8 @@
     "draft": false,
     "category": "Business",
     "featured": false,
-    "filename": "GST-Rate-Deductions-for-E-commerce-A-Complete-Guide-by-VVG-ONLINE"
+    "filename": "GST-Rate-Deductions-for-E-commerce-A-Complete-Guide-by-VVG-ONLINE",
+    "timeToRead": 8
   },
   {
     "title": "Key Performance Indicators (KPIs)",
@@ -72,7 +76,8 @@
     "draft": false,
     "category": "Marketing",
     "featured": true,
-    "filename": "Key-Performance-Indicators-KPIs"
+    "filename": "Key-Performance-Indicators-KPIs",
+    "timeToRead": 4
   },
   {
     "title": "Operating Model Design",
@@ -87,7 +92,8 @@
     "draft": false,
     "category": "Business",
     "featured": false,
-    "filename": "Operating-Model-Design"
+    "filename": "Operating-Model-Design",
+    "timeToRead": 6
   },
   {
     "title": "The Digital Marketing Investment Imperative",
@@ -102,42 +108,49 @@
     "draft": false,
     "category": "Marketing",
     "featured": false,
-    "filename": "The-Digital-Marketing-Investment-Imperative"
+    "filename": "The-Digital-Marketing-Investment-Imperative",
+    "timeToRead": 11
   },
   {
     "title": "Capability Building",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "capability-building"
+    "filename": "capability-building",
+    "timeToRead": 1
   },
   {
     "title": "Design Thinking Workshops",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "design-thinking-workshops"
+    "filename": "design-thinking-workshops",
+    "timeToRead": 1
   },
   {
     "title": "Digital Transformation",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "digital-transformation"
+    "filename": "digital-transformation",
+    "timeToRead": 1
   },
   {
     "title": "IT Management Solutions",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "it-management-solutions"
+    "filename": "it-management-solutions",
+    "timeToRead": 1
   },
   {
     "title": "Strategic Digital Marketing",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "strategic-digital-marketing"
+    "filename": "strategic-digital-marketing",
+    "timeToRead": 1
   },
   {
     "title": "Strategy & Innovation",
     "date": "2026-01-29",
     "author": "Vikas Gupta",
-    "filename": "strategy-and-innovation"
+    "filename": "strategy-and-innovation",
+    "timeToRead": 7
   }
 ]
