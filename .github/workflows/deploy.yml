@@ -152,35 +152,11 @@ jobs:
           # Create 404.html for SPA routing on GitHub Pages
           if [ -f "CNAME" ]; then
             # Custom domain - root path
-            cat > release/wwwroot/404.html << 'HTMLEOF'
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <script>
-                    var path = window.location.pathname;
-                    var redirect = '/?' + encodeURIComponent(path + window.location.search + window.location.hash);
-                    window.location.replace(redirect);
-                </script>
-            </head>
-            <body>Redirecting...</body>
-            </html>
-            HTMLEOF
+            printf '<!DOCTYPE html>\n<html>\n<head>\n    <script>\n        var path = window.location.pathname;\n        var redirect = "/?" + encodeURIComponent(path + window.location.search + window.location.hash);\n        window.location.replace(redirect);\n    </script>\n</head>\n<body>Redirecting...</body>\n</html>\n' > release/wwwroot/404.html
             echo "✅ 404.html created for custom domain (root path)"
           else
             # GitHub Pages subpath
-            cat > release/wwwroot/404.html << 'HTMLEOF'
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <script>
-                    var path = window.location.pathname;
-                    var redirect = '/WebUI/?' + encodeURIComponent(path + window.location.search + window.location.hash);
-                    window.location.replace(redirect);
-                </script>
-            </head>
-            <body>Redirecting...</body>
-            </html>
-            HTMLEOF
+            printf '<!DOCTYPE html>\n<html>\n<head>\n    <script>\n        var path = window.location.pathname;\n        var redirect = "/WebUI/?" + encodeURIComponent(path + window.location.search + window.location.hash);\n        window.location.replace(redirect);\n    </script>\n</head>\n<body>Redirecting...</body>\n</html>\n' > release/wwwroot/404.html
             echo "✅ 404.html created for GitHub Pages subpath (/WebUI/)"
           fi
 
