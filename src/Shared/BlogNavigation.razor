@@ -1,5 +1,6 @@
 @using VVG.Web.Models
 
+@* ── PREVIOUS / NEXT POST NAVIGATION ── *@
 <section class="blog-navigation py-5 order-top border-warning">
     <div class="container-fluid">
         <div class="row">
@@ -9,6 +10,7 @@
                         <i class="bi bi-arrow-left me-2"></i>Back to Blog
                     </a>
 
+                    @* Previous / Next arrow buttons *@
                     <div class="d-flex gap-2">
                         @if (PreviousPost != null)
                         {
@@ -25,6 +27,7 @@
                     </div>
                 </div>
 
+                @* Preview cards for previous and next posts (desktop only) *@
                 @if (PreviousPost != null || NextPost != null)
                 {
                     <div class="row mt-4 g-3">
@@ -44,6 +47,7 @@
                         {
                             <div class="col-md-6">
                                 <div class="card h-100">
+                                    @* Next post card is right-aligned *@
                                     <div class="card-body text-end">
                                         <h6 class="opacity-75 small mb-2">NEXT POST →</h6>
                                         <h5 class="card-title">@NextPost.Title</h5>
@@ -60,9 +64,11 @@
 </section>
 
 @code {
+    /// <summary>The chronologically previous blog post (null = this is the newest).</summary>
     [Parameter]
     public BlogPost? PreviousPost { get; set; }
 
+    /// <summary>The chronologically next blog post (null = this is the oldest).</summary>
     [Parameter]
     public BlogPost? NextPost { get; set; }
 }

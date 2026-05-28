@@ -1,4 +1,11 @@
-﻿using System.Diagnostics;
+﻿/// <summary>
+/// Integration/build-level tests that verify the project compiles correctly
+/// and that all required static assets are present in the source tree.
+///
+/// These tests touch the real file system and run dotnet build as a
+/// subprocess — they are NOT unit tests and can be slow.
+/// </summary>
+using System.Diagnostics;
 
 namespace VVG.Web.Tests.Integration
 {
@@ -6,6 +13,10 @@ namespace VVG.Web.Tests.Integration
     {
         private static readonly string ProjectRoot = GetProjectRoot();
 
+        /// <summary>
+        /// Walks up from the test assembly's bin directory to find the
+        /// project root (the folder containing src/).
+        /// </summary>
         private static string GetProjectRoot()
         {
             var current = AppContext.BaseDirectory;
@@ -18,6 +29,7 @@ namespace VVG.Web.Tests.Integration
             return current;
         }
 
+        /// <summary>Runs dotnet build on the main project and asserts it succeeds.</summary>
         [Fact]
         public void Project_Builds_Successfully()
         {
@@ -33,6 +45,7 @@ namespace VVG.Web.Tests.Integration
             };
 
             using var process = Process.Start(psi);
+            Assert.NotNull(process);
             process.WaitForExit();
 
             var output = process.StandardOutput.ReadToEnd();
@@ -41,6 +54,7 @@ namespace VVG.Web.Tests.Integration
             Assert.True(process.ExitCode == 0, "Build failed:" + Environment.NewLine + error + Environment.NewLine + output);
         }
 
+        /// <summary>Verifies that critical static assets exist in wwwroot.</summary>
         [Fact]
         public void StaticAssets_Included_In_Build_Output()
         {
@@ -59,6 +73,7 @@ namespace VVG.Web.Tests.Integration
             }
         }
 
+        /// <summary>The JSONL dataset must have 700+ non-empty lines.</summary>
         [Fact]
         public void JSONL_Dataset_Accessible_From_Web()
         {
@@ -70,6 +85,7 @@ namespace VVG.Web.Tests.Integration
             Assert.True(nonEmptyLines.Length >= 700, "Expected 700+ Q&A entries, found " + nonEmptyLines.Length);
         }
 
+        /// <summary>At least one service worker file must exist for PWA support.</summary>
         [Fact]
         public void ServiceWorker_Exists()
         {
@@ -81,6 +97,10 @@ namespace VVG.Web.Tests.Integration
                 "Service worker file not found");
         }
 
+        /// <summary>
+        /// Checks that the .csproj references all critical NuGet packages:
+        /// Blazor WASM SDK, bUnit, xUnit, Moq, and the TransformersJS bridge.
+        /// </summary>
         [Fact]
         public void All_Required_NuGet_Packages_Referenced()
         {
@@ -102,6 +122,10 @@ namespace VVG.Web.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// The ONNX model must be between 10 MB and 100 MB for web delivery.
+        /// Below 10 MB = probably corrupted; above 100 MB = too slow to download.
+        /// </summary>
         [Fact]
         public void ONNX_Model_Size_Suitable_For_Web_Delivery()
         {
@@ -113,6 +137,7 @@ namespace VVG.Web.Tests.Integration
             Assert.True(sizeInMB > 10, "Model suspiciously small: " + sizeInMB.ToString("F1") + " MB");
         }
 
+        /// <summary>The solution file must contain a reference to the test project.</summary>
         [Fact]
         public void Solution_Contains_Test_Project()
         {

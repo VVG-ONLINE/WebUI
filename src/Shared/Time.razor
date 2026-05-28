@@ -1,39 +1,31 @@
 @page "/time"
 @using System
 
+<!-- Displays the current time in monospace font -->
 <span class="mono">@currentTime</span>
 
 @code {
+    /// <summary>
+    /// Static helper that provides time utilities for any component.
+    /// Returns the local or UTC time using the system clock.
+    /// </summary>
     public static class TimeService
     {
-        /// <summary>
-        /// Gets the current local time
-        /// </summary>
-        /// <returns>Current DateTime</returns>
-        public static DateTime GetCurrentTime()
-        {
-            return DateTime.Now;
-        }
+        /// <summary>Returns the current local date and time of the user's machine.</summary>
+        public static DateTime GetCurrentTime() => DateTime.Now;
+
+        /// <summary>Returns the current UTC date and time.</summary>
+        public static DateTime GetUtcTime() => DateTime.UtcNow;
 
         /// <summary>
-        /// Gets the current UTC time
+        /// Returns the current time as a formatted string.
+        /// Default format is "HH:mm:ss" (24-hour with seconds).
         /// </summary>
-        /// <returns>Current UTC DateTime</returns>
-        public static DateTime GetUtcTime()
-        {
-            return DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Gets current time as formatted string
-        /// </summary>
-        /// <param name="format">DateTime format string</param>
-        /// <returns>Formatted time string</returns>
-        public static string GetCurrentTimeString(string format = "HH:mm:ss")
-        {
-            return DateTime.Now.ToString(format);
-        }
+        /// <param name="format">Standard or custom DateTime format string.</param>
+        public static string GetCurrentTimeString(string format = "HH:mm:ss") =>
+            DateTime.Now.ToString(format);
     }
+
     private string currentTime = string.Empty;
 
     protected override void OnInitialized()

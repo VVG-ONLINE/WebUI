@@ -1,4 +1,19 @@
-﻿namespace VVG.Web.Tests.JSInterop
+﻿/// <summary>
+/// Validates that chat.js has the structure C# expects for JS interop.
+///
+/// These tests don't run the JavaScript — they read chat.js as text and
+/// verify that specific function names, method signatures, and data paths
+/// exist. If chat.js is renamed, refactored, or a method is removed,
+/// these tests will catch the mismatch before runtime.
+///
+/// What gets checked:
+///   - init() and generate() functions are callable from C#
+///   - UpdateProgress, OnModelReady, OnSystemPromptReady callbacks exist
+///   - classifyIntent and findRelevantQA logic is present
+///   - ONNX Runtime loads from CDN
+///   - JSONL dataset path matches what the server expects
+/// </summary>
+namespace VVG.Web.Tests.JSInterop
 {
     public class ChatJsInteropTests
     {
@@ -14,6 +29,7 @@
             return current;
         }
 
+        /// <summary>Reads the chat.js file from wwwroot as a string.</summary>
         private static string GetChatJsContent()
         {
             return File.ReadAllText(Path.Combine(GetProjectRoot(), "src", "wwwroot", "assets", "js", "chat.js"));

@@ -1,13 +1,20 @@
+@* ── Service injection ── *@
 @inject IJSRuntime JS
 @inject VVG.Web.Services.MetadataService MetadataService
 @implements IDisposable
 
 @code {
+    // Cached site-wide defaults loaded from JSON files
     private VVG.Web.Models.Metadata? _defaultMetadata;
     private VVG.Web.Models.TwitterCard? _defaultTwitterCard;
     private VVG.Web.Models.OpenGraph? _defaultOpenGraph;
     private string? _defaultJsonLd;
 
+    /// <summary>
+    /// On startup, loads the default metadata from JSON files and subscribes
+    /// to the MetadataService's change event so the <head> tags update whenever
+    /// a page changes its metadata.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         MetadataService.OnMetadataChanged += HandleMetadataChanged;
@@ -18,19 +25,35 @@
         await UpdateMeta();
     }
 
+    /// <summary>
+    /// Called whenever the current page updates its metadata.
+    /// Rebuilds the <meta> tags in the browser via JavaScript.
+    /// </summary>
     private async void HandleMetadataChanged()
     {
         await UpdateMeta();
         await InvokeAsync(StateHasChanged);
     }
 
+    /// <summary>
+    /// Merges the current page's metadata with the site-wide defaults,
+    /// then sends the merged values to JavaScript so meta.js can update
+    /// the actual <title>, <meta>, <link>, and <script type="application/ld+json">
+    /// tags in the <head>.
+    /// </summary>
     private async Task UpdateMeta()
     {
         var pageMeta = MetadataService.PageMetadata;
 
-        var description = pageMeta?.Description ?? _defaultMetadata?.DefaultDescription ?? _defaultOpenGraph?.Description;
-        var image = pageMeta?.Image ?? _defaultOpenGraph?.Image ?? _defaultTwitterCard?.Image;
+        // Use the page-specific value, or fall back to the site default
+        var description = pageMeta?.Description
+            ?? _defaultMetadata?.DefaultDescription
+            ?? _defaultOpenGraph?.Description;
+        var image = pageMeta?.Image
+            ?? _defaultOpenGraph?.Image
+            ?? _defaultTwitterCard?.Image;
 
+        // Build a dictionary of all tag values — JavaScript will iterate this
         var meta = new Dictionary<string, object?>
         {
             ["title"] = pageMeta?.Title ?? _defaultMetadata?.DefaultTitle,
@@ -39,12 +62,14 @@
             ["image"] = image,
             ["jsonLd"] = pageMeta?.JsonLd ?? _defaultJsonLd,
 
+            // Open Graph (Facebook, LinkedIn, Discord)
             ["ogType"] = pageMeta?.OgType ?? _defaultOpenGraph?.Type,
             ["ogTitle"] = pageMeta?.OgTitle ?? pageMeta?.Title ?? _defaultOpenGraph?.Title,
             ["ogDescription"] = pageMeta?.OgDescription ?? description,
             ["ogImage"] = pageMeta?.OgImage ?? image,
             ["ogUrl"] = pageMeta?.OgUrl ?? _defaultOpenGraph?.Url,
 
+            // Twitter Card
             ["twitterCard"] = pageMeta?.TwitterCard ?? _defaultTwitterCard?.Card,
             ["twitterSite"] = pageMeta?.TwitterSite ?? _defaultTwitterCard?.Site,
             ["twitterCreator"] = pageMeta?.TwitterCreator ?? _defaultTwitterCard?.Creator,
@@ -52,6 +77,8 @@
             ["twitterDescription"] = pageMeta?.TwitterDescription ?? pageMeta?.OgDescription ?? description,
             ["twitterImage"] = pageMeta?.TwitterImage ?? pageMeta?.OgImage ?? image
         };
+
+        // Send to JavaScript: vvg.updateMeta(...) in meta.js
         await JS.InvokeVoidAsync("vvg.updateMeta", meta);
     }
 

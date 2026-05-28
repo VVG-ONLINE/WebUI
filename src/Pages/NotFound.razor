@@ -1,11 +1,24 @@
-﻿@page "/404"
+﻿@* ──────────────────────────────────────────────────────────
+   NotFound.razor — 404 error page shown when a user navigates
+   to a URL that doesn't match any @page route in the app.
+   
+   This page does two things:
+   1. Renders a friendly "not found" UI with navigation links
+   2. Runs a JavaScript redirect script that fixes URLs when
+      the app is hosted on GitHub Pages (which doesn't support
+      proper SPA history-mode routing out of the box)
+   ────────────────────────────────────────────────────────── *@
+
+@page "/404"
 @inject VVG.Web.Services.MetadataService MetadataService
 
 <PageTitle>Not Found</PageTitle>
 
+@* Terminal-style hero banner with Oh-My-Posh tags *@
 <HeroBanner Title="404 - Page Not Found" 
     Subtitle="The page you are looking for does not exist." TagUser="// 404_ERROR" TagPath="// NOT_FOUND" />
 
+@* Quick navigation — the empty href goes to the root / *@
 <section class="container py-5 text-center">
     <p class="lead">Here are some useful links to get you back on track:</p>
     <div class="d-flex justify-content-center gap-3 mt-4">
@@ -16,14 +29,27 @@
     </div>
 </section>
 
+@* ── GitHub Pages SPA redirect hack ─────────────────────
+   When a user manually types a deep URL (e.g. /Blog/Some-Post)
+   on a GitHub Pages-hosted site, the server doesn't know about
+   that route — it would normally return a real 404.
+   
+   This script catches that situation by redirecting to
+   /?/Blog/Some-Post, and the 404.html host page then reads
+   that query parameter to restore the correct Blazor route.
+   
+   See: https://github.com/rafgraph/spa-github-pages (MIT)
+   ───────────────────────────────────────────────────── *@
 <script type="text/javascript">
         // Single Page Apps for GitHub Pages
         // MIT License
         // https://github.com/rafgraph/spa-github-pages
         
-        var pathSegmentsToKeep = 0;
+        var pathSegmentsToKeep = 0;       // number of URL segments to keep before the redirect marker
         var l = window.location;
         
+        // Rewrite /Blog/Some-Post → /?/Blog/Some-Post so the
+        // host page can extract the intended route from the URL
         l.replace(
             l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
             l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
@@ -34,6 +60,10 @@
     </script>
 
 @code {
+    /// <summary>
+    /// Sets the page title and SEO meta tags so search engines
+    /// know this is a 404 page and don't index it as real content.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         await MetadataService.SetPageMetadata(new PageMetadata

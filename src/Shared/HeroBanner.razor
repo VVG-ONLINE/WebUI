@@ -1,31 +1,39 @@
 @implements IDisposable
 
 @code {
+    // ── Parameters (set by the parent page when using this component) ──
     [Microsoft.AspNetCore.Components.Parameter]
     public string Title { get; set; } = "Transform Your Vision into Reality.";
 
     [Microsoft.AspNetCore.Components.Parameter]
-    public string Subtitle { get; set; } = "Driving you beyond growth, through unique, innovative, and result-oriented digital consulting.";
+    public string Subtitle { get; set; } =
+        "Driving you beyond growth, through unique, innovative, and result-oriented digital consulting.";
 
+    /// <summary>Left segment of the Oh-My-Posh style tag (e.g., "USER").</summary>
     [Microsoft.AspNetCore.Components.Parameter]
     public string TagUser { get; set; } = "";
 
+    /// <summary>Right segment of the Oh-My-Posh style tag (e.g., "~/home").</summary>
     [Microsoft.AspNetCore.Components.Parameter]
     public string TagPath { get; set; } = "";
 
+    // The characters that have been "typed" so far (empty = nothing shown yet)
     private string? displayedTitle;
+
+    // Timer that fires every 72ms to reveal the next character
     private System.Timers.Timer? _timer;
     private int _charIndex;
 
     protected override void OnInitialized()
     {
-        _timer = new System.Timers.Timer(72); // 72ms delay between characters
+        _timer = new System.Timers.Timer(72);
         _timer.Elapsed += TypeCharacter;
         _timer.AutoReset = true;
     }
 
     protected override void OnParametersSet()
     {
+        // Reset the typewriter whenever the Title parameter changes
         if (Title != null)
         {
             _charIndex = 0;
@@ -34,13 +42,17 @@
         }
     }
 
+    /// <summary>
+    /// Typewriter effect: each timer tick reveals one more character of the
+    /// title text, creating a "typing" animation.
+    /// </summary>
     private void TypeCharacter(object? sender, System.Timers.ElapsedEventArgs e)
     {
         if (_charIndex < Title.Length)
         {
             displayedTitle += Title[_charIndex];
             _charIndex++;
-            InvokeAsync(StateHasChanged);
+            InvokeAsync(StateHasChanged); // Must use InvokeAsync — timer fires on a non-UI thread
         }
         else
         {
@@ -54,25 +66,29 @@
     }
 }
 
+<!-- The hero banner with Oh-My-Posh tag, typewriter title, subtitle, and CTA button -->
 <header class="container py-5 hero">
     <div class="row align-items-center">
         <div class="col-lg-8 col-12">
+            <!-- Terminal-style tag: USER ~/path -->
             <div class="terminal-tag-group mb-3">
                 <div class="tag-segment tag-user">@TagUser</div>
                 <div class="tag-segment tag-path">@TagPath</div>
             </div>
 
+            <!-- Title rendered character by character, with a blinking cursor -->
             <h1 class="hero-title"><span>@displayedTitle</span><span class="blink">_</span></h1>
             <p class="lead fs-4 opacity-75 serif">@Subtitle</p>
+
             <div class="mt-4">
+                <!-- Primary CTA button -->
                 <NavLink href="Services" class="btn btn-vvg me-3">Start_Transformation</NavLink>
-                <code
-                    class="d-block d-md-inline mt-3 mt-md-0">
-                    <span class="text-dark bg-accent px-2 py-1">&gt;</span><span class="text-white bg-dark px-2 py-1"> locate --services --all</span>
-                    @* <span>
-                        > ./run_audit.sh --verbose
-                    </span> *@
-                    </code>
+
+                <!-- Terminal-style command hint -->
+                <code class="d-block d-md-inline mt-3 mt-md-0">
+                    <span class="text-dark bg-accent px-2 py-1">&gt;</span>
+                    <span class="text-white bg-dark px-2 py-1"> locate --services --all</span>
+                </code>
             </div>
         </div>
     </div>

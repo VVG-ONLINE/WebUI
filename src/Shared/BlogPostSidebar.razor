@@ -1,7 +1,8 @@
 @using VVG.Web.Models
 
+@* ── BLOG POST SIDEBAR — author, metadata, tags, key points, TOC ── *@
 <aside class="blog-sidebar" id="blogSidebar" role="complementary" aria-label="Blog Post Sidebar">
-    <!-- About/Profile Card -->
+    @* ── Author card ── *@
     @if (!string.IsNullOrEmpty(AuthorName))
     {
         <div class="sidebar-card author-card mb-4">
@@ -21,7 +22,7 @@
         </div>
     }
 
-    <!-- Post Metadata Card -->
+    @* ── Post metadata card (date, category, reading time) ── *@
     @if (Post != null)
     {
         <div class="sidebar-card meta-card mb-4">
@@ -45,7 +46,7 @@
         </div>
     }
 
-    <!-- Tags Card -->
+    @* ── Tags card — all tags for this post ── *@
     @if (Post?.Tags != null && Post.Tags.Length > 0)
     {
         <div class="sidebar-card tags-card mb-4">
@@ -65,7 +66,7 @@
         </div>
     }
 
-    <!-- Highlights Card -->
+    @* ── Key points / highlights card — bulleted list of takeaways ── *@
     @if (!string.IsNullOrEmpty(Highlights))
     {
         <div class="sidebar-card highlights-card mb-4">
@@ -74,7 +75,9 @@
             </div>
             <div class="card-body">
                 <ul class="highlights-list">
-                    @foreach (var highlight in Highlights.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+                    @* Split the highlights string on newlines to create a bullet list *@
+                    @foreach (var highlight in Highlights.Split(
+                        new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
                     {
                         <li>@highlight.Trim()</li>
                     }
@@ -83,7 +86,7 @@
         </div>
     }
 
-    <!-- Table of Contents (Sticky) -->
+    @* ── Table of Contents (commented out — can be enabled for longer posts) ── *@
     @if (!string.IsNullOrEmpty(HtmlContent))
     {
         @* <div class="sidebar-card toc-card sticky-top">
@@ -93,27 +96,42 @@
 </aside>
 
 @code {
+    /// <summary>The blog post to render sidebar data for.</summary>
     [Parameter]
     public BlogPost? Post { get; set; }
 
+    /// <summary>
+    /// The full HTML content of the post — passed to TableOfContents
+    /// for heading extraction.
+    /// </summary>
     [Parameter]
     public string? HtmlContent { get; set; }
 
+    /// <summary>Author display name.</summary>
     [Parameter]
     public string? AuthorName { get; set; } = "VVG ONLINE";
 
+    /// <summary>Short bio shown under the author name.</summary>
     [Parameter]
-    public string? AuthorBio { get; set; } = "Delivering cutting-edge digital solutions and strategic insights for modern businesses.";
+    public string? AuthorBio { get; set; } =
+        "Delivering cutting-edge digital solutions and strategic insights for modern businesses.";
 
+    /// <summary>Link to the author's profile or website.</summary>
     [Parameter]
     public string? AuthorUrl { get; set; }
 
+    /// <summary>
+    /// Newline-separated list of key takeaways for the post.
+    /// Each line becomes a bullet point in the sidebar.
+    /// </summary>
     [Parameter]
     public string? Highlights { get; set; }
 
+    /// <summary>Callback for the copy-link button (unused in sidebar? kept for consistency).</summary>
     [Parameter]
     public EventCallback OnCopyLink { get; set; }
 
+    /// <summary>Callback for the share button.</summary>
     [Parameter]
     public EventCallback OnShare { get; set; }
 }

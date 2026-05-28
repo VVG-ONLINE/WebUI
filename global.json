@@ -1,5 +1,9 @@
 {
   "sdk": {
+    // Pins the .NET SDK to version 10.0.100.
+    // "rollForward": "latestFeature" means if 10.0.100 isn't installed,
+    // .NET will automatically use the latest 10.0.1xx patch (e.g. 10.0.105).
+    // This prevents "SDK not found" errors when minor patches are released.
     "version": "10.0.100",
     "rollForward": "latestFeature"
   }

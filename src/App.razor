@@ -1,10 +1,24 @@
+@* ==============================================================================
+    App.razor — ROOT COMPONENT of the Blazor application
+    Defines the routing system: which component to show for each URL.
+    Every Blazor WASM app has exactly one App.razor as its root.
+    ============================================================================== *@
+
+@* IJSRuntime lets us call JavaScript functions from C# *@
 @inject IJSRuntime JS
 
+@* MetaTags component renders SEO meta tags (title, description, OG, Twitter) *@
 <MetaTags />
 
+@* 
+    The <Router> compares the browser URL against all @page directives in the app.
+    - Found: renders the matching page inside MainLayout
+    - NotFound: shows a 404 page also inside MainLayout
+*@
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        @* FocusOnNavigate moves keyboard focus to the <h1> after page navigation *@
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
@@ -18,14 +32,15 @@
 @code {
     private bool _hasInitialized = false;
 
+    @* Runs AFTER every render — firstRender=true only on the very first load *@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender && !_hasInitialized)
         {
             _hasInitialized = true;
-            // Initialize your custom JS logic
+            @* Initialize our custom JavaScript (Three.js background, effects) *@
             await JS.InvokeVoidAsync("vvg.initPage");
-            // Hide the preloader after Blazor is ready
+            @* Remove the terminal-style loading screen after Blazor is ready *@
             await JS.InvokeVoidAsync("hidePreloader");
         }
     }

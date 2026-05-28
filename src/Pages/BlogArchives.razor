@@ -1,3 +1,10 @@
+@* ============================================================
+    BLOG ARCHIVES PAGE — Alternative blog browsing with year-grouped layout
+    - Shows all published posts grouped by year
+    - Search, tag filter, and year filter
+    - Unlike Blog.razor: no pagination, groups by year instead
+    ============================================================ *@
+
 @page "/BlogArchives"
 @using System.Net.Http.Json
 @using VVG.Web.Models
@@ -6,12 +13,12 @@
 
 <PageTitle>Blog Archives - VVG ONLINE</PageTitle>
 
-<!-- Hero Section -->
+@* -- HERO: Terminal-style archive banner -- *@
 <HeroBanner Title="DIGITAL INSIGHTS ARCHIVES"
     Subtitle="Explore our extensive collection of articles, tutorials, and insights on digital trends, technology, and innovation. Dive into topics ranging from AI and cybersecurity to software development and digital marketing. Stay informed and ahead in the ever-evolving digital landscape."
     TagUser="// DIGITAL_INSIGHTS_ARCHIVES" TagPath="// STAY_UPDATED" />
 
-<!-- Search and Filters -->
+@* -- SEARCH & FILTERS: Dark-themed toolbar for searching and filtering -- *@
 <section class="bg-dark border-bottom border-secondary py-4">
     <div class="container">
         <div class="row g-3">
@@ -32,6 +39,7 @@
                 </div>
             </div>
             <div class="col-md-3">
+    @* Year filter: dropdown showing years with post counts *@
                 <select class="form-select bg-dark text-white border-secondary" @bind="selectedYear"
                     @bind:after="ApplyFilters">
                     <option value="All">All Years (@(allPosts?.Length ?? 0))</option>
@@ -45,6 +53,7 @@
                 </select>
             </div>
             <div class="col-md-3">
+                @* Tag filter: priority tags (Must/Recommended/Top) first, then all others *@
                 <select class="form-select bg-dark text-white border-secondary" @bind="selectedTag"
                     @bind:after="ApplyFilters">
                     <option value="All">All Tags</option>
@@ -114,33 +123,44 @@
     </div>
 </section>
 
+@*
+    ============================================================
+    CODE-BEHIND: Fetch all blog posts, generate summaries, group by year
+    ============================================================
+*@
 @code {
+    // All published blog posts (drafts already filtered out)
     private Models.BlogPost[]? allPosts;
+    // Posts grouped by year for display: { "2026": [post1, post2], "2025": [post3] }
     private Dictionary<string, List<Models.BlogPost>>? groupedPosts;
+    // Tag summary: key = tag name, value = count of posts with that tag
     private Dictionary<string, int>? tagsSummary;
+    // Year summary: key = year, value = count of posts in that year
     private Dictionary<int, int>? yearsSummary;
 
+    // Filter state
     private string searchTerm = string.Empty;
     private string selectedYear = "All";
     private string selectedTag = "All";
     private bool isLoading = true;
 
+    // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            // Load posts directly as array
+            // Load blog-index.json (array of all posts including drafts)
             allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts != null && allPosts.Length > 0)
             {
-                // Filter out drafts
+                // Remove draft posts (they shouldn't appear in archives)
                 allPosts = allPosts.Where(p => !p.Draft).ToArray();
 
-                // Generate summaries
+                // Calculate tag and year counts for filter dropdowns
                 GenerateSummaries();
 
-                // Group posts
+                // Group posts by year for the main display
                 GroupPosts();
             }
         }
@@ -154,22 +174,24 @@
         }
     }
 
+    // Creates tag and year summary dictionaries for the filter dropdowns
     private void GenerateSummaries()
     {
         if (allPosts == null) return;
 
-        // Year summary
+        // Group posts by their PublishedAt.Year and count how many per year
         yearsSummary = allPosts
         .GroupBy(p => p.PublishedAt.Year)
         .ToDictionary(g => g.Key, g => g.Count());
 
-        // Tag summary
+        // Flatten all tags from all posts, group by tag, count occurrences
         tagsSummary = allPosts
         .SelectMany(p => p.Tags ?? Array.Empty<string>())
         .GroupBy(t => t)
         .ToDictionary(g => g.Key, g => g.Count());
     }
 
+    // Counts posts that have a specific tag (used in the dropdown options)
     private int GetTagCount(string tag)
     {
         if (allPosts == null) return 0;

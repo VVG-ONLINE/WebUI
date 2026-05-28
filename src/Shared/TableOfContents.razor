@@ -4,6 +4,7 @@
 @implements IDisposable
 @inject NavigationManager NavigationManager
 
+@* ── TABLE OF CONTENTS — auto-generated from h2/h3 tags in the HTML content ── *@
 <div class="toc-container" id="tableOfContents">
     @if (headings != null && headings.Any())
     {
@@ -12,10 +13,10 @@
                 <i class="bi bi-list"></i> ON THIS PAGE
             </div>
             <ul class="card-body toc-list px-3">
+                @* Each heading becomes a list item, indented by level (h2 = level-2, h3 = level-3) *@
                 @foreach (var heading in headings)
                 {
                     <li class="toc-item level-@heading.Level">
-                        @* <span href="@GetHeadingUrl(heading.Id)" class="" @onclick="() => ScrollToHeading(heading.Id)"> *@
                         <span href="@GetHeadingUrl(heading.Id)" class="">
                             @heading.Text
                         </span>
@@ -24,7 +25,8 @@
             </ul>
 
             <div class="toc-actions mt-3 pt-3 border-top border-secondary">
-                <button class="btn btn-sm btn-outline-secondary w-100" @onclick="ScrollToTop" title="Scroll to top of page">
+                <button class="btn btn-sm btn-outline-secondary w-100" @onclick="ScrollToTop"
+                        title="Scroll to top of page">
                     <i class="bi bi-arrow-up"></i> RETURN TO TOP
                 </button>
             </div>
@@ -33,138 +35,66 @@
 </div>
 
 @code {
-    /*
-    * //============================================================================
-    * // PUBLIC INTERFACE
-    * //============================================================================
-    */
-
+    /// <summary>HTML content from which to extract h2 and h3 headings.</summary>
     [Parameter]
-    // HTML content to extract table of contents from
-    // Supports rich formatting with headings, links, etc.
     public string? HtmlContent { get; set; }
 
-    /*
-    * //============================================================================
-    * // PRIVATE STATE
-    * //============================================================================
-    */
-
-    // List of extracted headings sorted by position and level
+    /// <summary>All extracted headings, sorted by their position in the document.</summary>
     private List<HeadingInfo>? headings;
 
-    /*
-    * //============================================================================
-    * // LIFECYCLE & EVENT HANDLING
-    * //============================================================================
-    */
-
-    // Automatically calls heading extraction when parameters are set
-    // Fires before OnParametersChanged, ensuring HtmlContent is ready
+    /// <summary>
+    /// Runs whenever the HtmlContent parameter changes.
+    /// Parses the HTML to find every h2 and h3 tag.
+    /// </summary>
     protected override void OnParametersSet()
     {
         if (!string.IsNullOrEmpty(HtmlContent))
         {
-            // Safety check - avoid null reference exceptions
             ExtractHeadings();
         }
     }
 
-    /*
-    * //============================================================================
-    * // CORE LOGIC: HEADINGS EXTRACTION
-    * //============================================================================
-    */
-
-    /*
-    * Phase 1: Scan for Headings
-    * Uses regex to capture:
-    * - H2 tags: Level 2, <h2>...</h2> structure
-    * - H3 tags: Level 3, <h3>...</h3> structure
-    * - Captures text content between tags while ignoring attributes
-    */
+    /// <summary>
+    /// Uses regex to find all h2 and h3 tags, strips any inner HTML from
+    /// the heading text, sorts them by document position, and generates
+    /// unique anchor IDs for each heading.
+    /// </summary>
     private void ExtractHeadings()
     {
-        // Storage array for all extracted headings
-        // Each element = (level, text, position-in-html)
         headings = new List<HeadingInfo>();
-
         try
         {
             if (string.IsNullOrEmpty(HtmlContent)) return;
 
-            /*
-            * Regex Pattern Breakdown:
-            * - @"<h2[^>]*>" - Matches <h2> opening tag
-            * [^>]* - Matches any characters until > (handles attributes)
-            * Group 1 (.*) captures content between tags
-            * - @"</h2>" - Matches closing tag
-            */
+            // Regex patterns: match opening tag, capture inner text, closing tag
+            // (.*?) = non-greedy capture of everything between <h2> and </h2>
             var h2Pattern = @"<h2[^>]*>(.*?)</h2>";
             var h3Pattern = @"<h3[^>]*>(.*?)</h3>";
 
-            // Find all matches
             var h2Matches = Regex.Matches(HtmlContent, h2Pattern, RegexOptions.IgnoreCase);
             var h3Matches = Regex.Matches(HtmlContent, h3Pattern, RegexOptions.IgnoreCase);
 
-            // Combine matches for comprehensive sorting
+            // Combine all matches so we can sort by document position
             var allMatches = new List<(int level, string text, int position)>();
 
-            /*
-            * //========================================================================
-            * // PHASE 2: PROCESS H2 HEADINGS
-            * //========================================================================
-            */
             foreach (Match match in h2Matches)
             {
-                // Extract and clean text
                 var text = StripHtmlTags(match.Groups[1].Value).Trim();
-
-                // Skip empty matches (prevents invalid IDs)
                 if (!string.IsNullOrEmpty(text))
-                {
-                    // Position starts at 2 for h2 level
                     allMatches.Add((2, text, match.Index));
-                }
             }
 
-            /*
-            * //========================================================================
-            * // PHASE 3: PROCESS H3 HEADINGS
-            * //========================================================================
-            */
             foreach (Match match in h3Matches)
             {
                 var text = StripHtmlTags(match.Groups[1].Value).Trim();
                 if (!string.IsNullOrEmpty(text))
-                {
-                    allMatches.Add((3, text, match.Index)); // Position starts at 3
-                }
+                    allMatches.Add((3, text, match.Index));
             }
 
-            /*
-            * //========================================================================
-            * // PHASE 4: SORT BY DOCUMENT POSITION
-            * //========================================================================
-            *
-            * Critical: Headings must appear in browser order
-            * Since regex finds matches but doesn't guarantee order,
-            * we sort by match.Index to maintain original document flow
-            */
+            // Sort by position in the HTML so headings appear in document order
             allMatches = allMatches.OrderBy(m => m.position).ToList();
 
-            /*
-            * //========================================================================
-            * // PHASE 5: GENERATE UNIQUE IDs
-            * //========================================================================
-            *
-            * Algorithm: Create semantic-safe IDs
-            * - Convert text to lowercase for consistency
-            * - Remove invalid characters (- keeps words together)
-            * - Replace spaces with hyphens
-            * - Trim excess hyphens
-            * - Append index for absolute uniqueness
-            */
+            // Generate unique IDs: "heading-0-introduction", "heading-1-getting-started", etc.
             int headingIndex = 0;
             foreach (var (level, text, _) in allMatches)
             {
@@ -175,24 +105,15 @@
         }
         catch (Exception ex)
         {
-            // Log to console but don't crash component
-            // Error will be visible in browser console in development mode
-            Console.Error.WriteLine($"⚠️ Error extracting headings: {ex.Message}");
+            // Don't crash the page — just log and show nothing
+            Console.Error.WriteLine($"Error extracting headings: {ex.Message}");
         }
     }
 
-    /*
-    * //============================================================================
-    * // HELPER METHOD: URL GENERATION
-    * //============================================================================
-    */
-
-    /*
-    * Generates full URL with current blog path and heading anchor
-    * Dynamically extracts the blog slug from the current URI
-    *
-    * Example: /blog/dont-normalize-common-things-a-philosophy-for-business-excellence#heading-3-key-section
-    */
+    /// <summary>
+    /// Builds a full URL with the current page's path and a heading anchor.
+    /// Example: /blog/my-post#heading-3-key-section
+    /// </summary>
     private string GetHeadingUrl(string? headingId)
     {
         if (string.IsNullOrEmpty(headingId)) return "#";
@@ -201,70 +122,32 @@
             var uri = NavigationManager.Uri;
             var baseUri = NavigationManager.BaseUri;
 
-            // Remove base URI and fragment to get path
+            // Strip the base URL and any existing fragment to get the clean path
             var currentPath = uri.Replace(baseUri, "").Split('#')[0];
 
-            // Return full path with heading anchor
             return $"{currentPath}#{headingId}";
         }
         catch (Exception)
         {
-            // Fallback to just anchor if URI parsing fails
             return $"#{headingId}";
         }
     }
 
-    /*
-    * //============================================================================
-    * // HELPER METHOD: TEXT CLEANING
-    * //============================================================================
-    */
+    /// <summary>Removes all HTML tags from a string, keeping only the text content.</summary>
+    private string StripHtmlTags(string html) =>
+        Regex.Replace(html, "<[^>]+>", string.Empty);
 
-    /*
-    * Strips all HTML tags while preserving whitespace
-    * Used to get pure text from matches
-    *
-    * Example: "<strong>Hello</strong>" → "Hello"
-    */
-    private string StripHtmlTags(string html)
-    {
-        return Regex.Replace(html, "<[^>]+>", string.Empty);
-    }
-
-    /*
-    * //============================================================================
-    * // HELPER METHOD: ID GENERATION
-    * //============================================================================
-    */
-
-    /*
-    * Core algorithm for creating heading IDs:
-    *
-    * Steps:
-    * 1. Convert text to lowercase: "My Section" → "my section"
-    * 2. Remove non-word characters: "my section" → "my-section"
-    * 3. Replace multiple spaces with single hyphen: "my-section" → "my-section"
-    * 4. Trim trailing hyphens: "my-section-" → "my-section"
-    *
-    * Uniqueness: Append "heading-{index}" to prevent collisions
-    * Example: "heading-0-my-section"
-    */
+    /// <summary>
+    /// Creates a URL-safe heading ID from text.
+    /// Example: "My Section!" → "heading-0-my-section"
+    /// </summary>
     private string GenerateHeadingId(string text, int index)
     {
-        string normalized = text;
+        // Normalise accented characters (e.g., é → e)
+        string normalized = text.Normalize(NormalizationForm.FormD);
 
-        try
-        {
-            // MODERN .NET (recommended)
-            normalized = text.Normalize(NormalizationForm.FormD);
-        }
-        catch (Exception)
-        {
-            // OLDER .NET - manual approach
-            normalized = Regex.Replace(text, @"[\p{Mnp}\p{M}\p{P}]", ""); // Removes diacritics
-        }
-
-        // Create slug
+        // Remove all non-word characters, replace spaces with hyphens,
+        // collapse multiple hyphens, and trim trailing hyphens
         var slug = Regex.Replace(normalized, @"[^\w\s-]", "");
         slug = Regex.Replace(slug, @"\s+", "-");
         slug = Regex.Replace(slug, @"-+", "-").Trim('-');
@@ -272,61 +155,25 @@
         return $"heading-{index}-{slug}";
     }
 
-    /*
-    * //============================================================================
-    * // INTERACTIONS & ANIMATION
-    * //============================================================================
-    */
+    // Placeholder methods (scroll implementation uses JS interop in production)
+    private async Task ScrollToHeading(string headingId) => await Task.Delay(50);
+    private async Task ScrollToTop() => await Task.Delay(50);
 
-    /*
-    * Smooth-scrolling animation for accessibility
-    * @param headingId - The ID generated by GenerateHeadingId()
-    */
-    private async Task ScrollToHeading(string headingId)
-    {
-        // Simulates smooth scroll (in real impl: uses scrollIntoViewOptions)
-        // Delay gives animation time to render
-        await Task.Delay(50);
-    }
+    public void Dispose() { }
 
-    /*
-    * Scrolls to top with a gentle animation
-    * Used for "RETURN TO TOP" button
-    */
-    private async Task ScrollToTop()
-    {
-        await Task.Delay(50);
-    }
-
-    /*
-    * //============================================================================
-    * // CLEANUP
-    * //============================================================================
-    */
-    // Called when component is removed - minimal cleanup needed
-    public void Dispose()
-    {
-        // Optional: unsubscribe from events if using async operations
-        // Not needed here as all operations are synchronous
-    }
-
-    /*
-    * //============================================================================
-    * // PRIVATE MODEL
-    * //============================================================================
-    */
-    // Inner class to store structured heading information
-    // Encapsulates the relationship between HTML level and user-facing data
+    /// <summary>Stores one extracted heading — its level, text, and anchor ID.</summary>
     private class HeadingInfo
     {
-        // Semantic HTML level (H2=2, H3=3)
+        /// <summary>Semantic heading level (2 = h2, 3 = h3).</summary>
         public int Level { get; set; }
 
-        // Extracted text content
+        /// <summary>The plain text of the heading.</summary>
         public string? Text { get; set; }
 
-        // Generated unique ID for anchor links
-        // Follows pattern: "heading-{index}-{slug}" (e.g., "heading-0-introduction")
+        /// <summary>
+        /// Generated anchor ID, e.g., "heading-0-introduction".
+        /// Matches the id attribute on the target heading in the rendered HTML.
+        /// </summary>
         public string? Id { get; set; }
     }
 }

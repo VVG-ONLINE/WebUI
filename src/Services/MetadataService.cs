@@ -1,21 +1,33 @@
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 using Microsoft.JSInterop;
 using VVG.Web.Models;
 
 namespace VVG.Web.Services
 {
+    // ==========================================================================
+    // MetadataService — manages all SEO-related data for the website
+    //
+    // Loads metadata from static JSON files (metadata.json, open-graph.json,
+    // twitter-card.json, json-ld.json) and caches them after first load.
+    // When a page changes, it pushes updated meta tags to the browser DOM
+    // via JavaScript interop (calls setPageMetadata in meta.js).
+    // ==========================================================================
     public class MetadataService
     {
         private readonly HttpClient _http;
         private readonly IJSRuntime _jsRuntime;
+
+        // Cached data — each is loaded only once from its JSON file
         private Metadata? _metadata;
         private TwitterCard? _twitterCard;
         private OpenGraph? _openGraph;
         private string? _jsonLd;
 
+        // Holds the CURRENT page's metadata (changes on every navigation)
         public PageMetadata PageMetadata { get; private set; } = new PageMetadata();
+
+        // Fired when SetPageMetadata is called — MetaTags.razor subscribes to this
         public event Action? OnMetadataChanged;
 
         public MetadataService(HttpClient http, IJSRuntime jsRuntime)
@@ -24,17 +36,15 @@ namespace VVG.Web.Services
             _jsRuntime = jsRuntime;
         }
 
-        /// <summary>
-        /// Sets page metadata and updates DOM meta tags via JavaScript
-        /// </summary>
+        // Called by pages when they want to update the <title>, <meta>, OG, Twitter tags
         public async Task SetPageMetadata(PageMetadata newMetadata)
         {
             PageMetadata = newMetadata;
-            OnMetadataChanged?.Invoke();
+            OnMetadataChanged?.Invoke(); // Notify MetaTags.razor to re-render
 
             try
             {
-                // Update DOM meta tags using JavaScript
+                // Push metadata to the browser's <head> via JavaScript
                 await _jsRuntime.InvokeVoidAsync("setPageMetadata", newMetadata);
             }
             catch (Exception ex)
@@ -43,9 +53,8 @@ namespace VVG.Web.Services
             }
         }
 
-        /// <summary>
-        /// Gets default metadata from configuration file
-        /// </summary>
+        // Loads default site metadata (title, description, keywords, author)
+        // Only fetches from the network the first time — caches result
         public async Task<Metadata?> GetMetadataAsync()
         {
             if (_metadata == null)
@@ -62,9 +71,7 @@ namespace VVG.Web.Services
             return _metadata;
         }
 
-        /// <summary>
-        /// Gets Twitter Card configuration
-        /// </summary>
+        // Loads Twitter Card defaults (card type, site handle, creator, image)
         public async Task<TwitterCard?> GetTwitterCardAsync()
         {
             if (_twitterCard == null)
@@ -81,9 +88,7 @@ namespace VVG.Web.Services
             return _twitterCard;
         }
 
-        /// <summary>
-        /// Gets Open Graph configuration
-        /// </summary>
+        // Loads Open Graph defaults (og:type, og:title, og:image, og:url)
         public async Task<OpenGraph?> GetOpenGraphAsync()
         {
             if (_openGraph == null)
@@ -100,9 +105,8 @@ namespace VVG.Web.Services
             return _openGraph;
         }
 
-        /// <summary>
-        /// Gets JSON-LD structured data
-        /// </summary>
+        // Loads JSON-LD structured data (schema.org — helps search engines)
+        // Returns raw string because JSON-LD is injected as-is into a <script> tag
         public async Task<string?> GetJsonLdAsync()
         {
             if (_jsonLd == null)
@@ -119,9 +123,8 @@ namespace VVG.Web.Services
             return _jsonLd;
         }
 
-        /// <summary>
-        /// Resets metadata to default values
-        /// </summary>
+        // Resets page metadata back to the default site-wide values
+        // Useful when navigating from a blog post to the home page
         public async Task ResetToDefaultMetadata()
         {
             var defaultMetadata = await GetMetadataAsync();

@@ -1,9 +1,11 @@
 @using VVG.Web.Models
 
+@* ── BLOG POST HERO — title, category badge, tags, excerpt, date, reading time ── *@
 <section class="blog-hero py-5 border-bottom border-warning">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
+                @* Category badge (e.g., Technology, Business) *@
                 @if (Post.Category != null)
                 {
                     <div class="mb-3">
@@ -12,22 +14,23 @@
                 }
 
                 <h1 class="display-4 fw-bold mb-3">@Post.Title</h1>
-                
+
+                @* Tag pills — each tag is a small badge with a # prefix *@
                 @if (Post.Tags != null && Post.Tags.Length > 0)
                 {
                     <div class="mb-3">
                         @foreach (var tag in Post.Tags)
                         {
                             <span class="badge bg-secondary me-2">
-                                <i class="text-warning me-1">#</i>
-                                @tag
-                                </span>
+                                <i class="text-warning me-1">#</i>@tag
+                            </span>
                         }
                     </div>
                 }
 
                 <p class="lead opacity-75 mb-4">@Post.Excerpt</p>
 
+                @* Publication date and estimated reading time *@
                 <div class="d-flex gap-3 align-items-center opacity-75 small">
                     <span><i class="bi bi-calendar3 me-1"></i>@Post.PublishedAt.ToString("MMMM dd, yyyy")</span>
                     <span><i class="bi bi-clock me-1"></i>@Post.TimeToRead min read</span>
@@ -38,6 +41,7 @@
 </section>
 
 @code {
+    /// <summary>The blog post whose metadata to display in the hero.</summary>
     [Parameter, EditorRequired]
     public BlogPost Post { get; set; } = null!;
 }

@@ -1,3 +1,7 @@
+/// <summary>
+/// Tests that BlogPostPage initialises correctly with mocked dependencies.
+/// (Located in Pages/ rather than tests/ for convenience during development.)
+/// </summary>
 using Bunit;
 using Xunit;
 using Moq;

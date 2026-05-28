@@ -1,12 +1,30 @@
-﻿using System.Text.Json;
+﻿/// <summary>
+/// Validates the ONNX AI model assets and dataset files that power the
+/// Vikas AI chatbot. These tests do NOT run inference — they only check
+/// that the required files exist, have sensible sizes, and are well-formed.
+///
+/// What gets checked:
+///   - ONNX model (intent-classifier.onnx) exists, isn't empty, is < 100 MB
+///   - Intent labels JSON is valid and contains all expected categories
+///   - JSONL Q&A dataset has 700+ valid entries with user/assistant pairs
+///   - Backup JSONL file exists and matches the original
+///   - chat.js references the correct model and dataset paths
+/// </summary>
+using System.Text.Json;
 
 namespace VVG.Web.Tests.AssetValidation
 {
     public class OnnxModelTests
     {
+        // The wwwroot folder under src/ where static assets live
         private static readonly string WebRoot = Path.Combine(GetProjectRoot(), "src", "wwwroot");
+        // External scripts directory (outside the src/ tree)
         private static readonly string ScriptsDir = Path.Combine(GetProjectRoot(), "..", "_WebUI-related-folders-and-files", "scripts");
 
+        /// <summary>
+        /// Walks up from the test assembly's output directory to find the
+        /// project root (the folder that contains src/).
+        /// </summary>
         private static string GetProjectRoot()
         {
             var current = AppContext.BaseDirectory;
@@ -19,6 +37,7 @@ namespace VVG.Web.Tests.AssetValidation
             return current;
         }
 
+        /// <summary>Ensures the ONNX model file exists at the expected path.</summary>
         [Fact]
         public void ONNX_Model_Exists_At_Expected_Path()
         {
@@ -26,6 +45,8 @@ namespace VVG.Web.Tests.AssetValidation
             Assert.True(File.Exists(modelPath), "ONNX model not found at: " + modelPath);
         }
 
+        /// <summary>The model must be between 0 and 100 MB — anything outside
+        /// this range indicates a corrupted or missing download.</summary>
         [Fact]
         public void ONNX_Model_Size_Within_Limits()
         {
@@ -36,6 +57,7 @@ namespace VVG.Web.Tests.AssetValidation
             Assert.True(sizeInMB < 100, "ONNX model too large: " + sizeInMB.ToString("F1") + " MB (limit: 100 MB)");
         }
 
+        /// <summary>A valid ONNX model must contain more than 1000 bytes of data.</summary>
         [Fact]
         public void ONNX_Model_Is_Not_Empty()
         {
@@ -44,6 +66,11 @@ namespace VVG.Web.Tests.AssetValidation
             Assert.True(bytes.Length > 1000, "ONNX model file is too small to be valid");
         }
 
+        /// <summary>
+        /// Validates intent-labels.json: must contain "labels" and "num_labels"
+        /// properties that agree with each other, and include all 7 expected
+        /// intent categories used by the chatbot.
+        /// </summary>
         [Fact]
         public void Intent_Labels_Json_Valid()
         {
@@ -60,6 +87,7 @@ namespace VVG.Web.Tests.AssetValidation
             var labelCount = labels.EnumerateObject().Count();
             Assert.Equal(numLabels.GetInt32(), labelCount);
 
+            // The 7 intent categories the chatbot knows about
             var expectedIntents = new[] {
                 "capability_building", "design_thinking", "digital_marketing",
                 "digital_transformation", "general", "it_management", "strategy_innovation"
@@ -80,6 +108,11 @@ namespace VVG.Web.Tests.AssetValidation
             }
         }
 
+        /// <summary>
+        /// Validates the JSONL Q&A dataset: 700+ entries, each with at least
+        /// one user message and one assistant message, no empty content.
+        /// This dataset is the fallback when the ONNX model can't download.
+        /// </summary>
         [Fact]
         public void JSONL_Dataset_Valid()
         {
@@ -97,6 +130,7 @@ namespace VVG.Web.Tests.AssetValidation
                 var doc = JsonDocument.Parse(line);
                 var root = doc.RootElement;
 
+                // Every entry must have a "messages" array with at least 2 items
                 Assert.True(root.TryGetProperty("messages", out var messages));
                 Assert.True(messages.GetArrayLength() >= 2, "Each entry must have at least 2 messages");
 
@@ -120,6 +154,7 @@ namespace VVG.Web.Tests.AssetValidation
             Assert.True(validEntries >= 700, "Expected at least 700 valid entries, found " + validEntries);
         }
 
+        /// <summary>The backup file must exist and have the same byte count as the original.</summary>
         [Fact]
         public void JSONL_Backup_Exists()
         {
@@ -133,6 +168,10 @@ namespace VVG.Web.Tests.AssetValidation
             Assert.Equal(originalBytes.Length, backupBytes.Length);
         }
 
+        /// <summary>
+        /// chat.js must reference the ONNX model, JSONL dataset, and contain
+        /// the key functions that C# calls via JS interop.
+        /// </summary>
         [Fact]
         public void Chat_JS_Exists()
         {

@@ -1,5 +1,13 @@
+@* ============================================================
+    CONTACT PAGE — Contact form that opens user's default email client
+    - Uses Blazor EditForm with data annotations validation
+    - On submit: builds a mailto: link and navigates to it (no server needed)
+    - Required fields: Name, Email, Message
+    ============================================================ *@
+
 @page "/contact"
 @inject VVG.Web.Services.MetadataService MetadataService
+@* Allows redirecting to mailto: URL *@
 @inject NavigationManager NavigationManager
 
 <PageTitle>Contact</PageTitle>
@@ -13,14 +21,15 @@
     <p>Get in touch with us to discuss your project or partnership opportunities.</p>
 </div>
 
+@* -- CONTACT FORM: Server-less form using mailto: protocol -- *@
 <section class="container py-5">
-
     <div class="row ">
         <div class="col-lg-8">
             <div class="card p-4 p-md-5">
+                @* EditForm: Blazor's built-in form component with validation *@
                 <EditForm Model="@contactForm" OnValidSubmit="@HandleSubmit">
-                    <DataAnnotationsValidator />
-                    <ValidationSummary />
+                    <DataAnnotationsValidator />  @* Enables validation using [Required] attributes *@
+                    <ValidationSummary />  @* Shows all validation errors at the top *@
 
                     <div class="mb-3">
                         <label for="name" class="form-label mono">Full Name</label>
@@ -44,29 +53,38 @@
 </section>
 
 @code {
+    // Holds the form field values
     private ContactFormModel contactForm = new ContactFormModel();
 
+    // Form model with validation rules
     public class ContactFormModel
     {
         [System.ComponentModel.DataAnnotations.Required]
         public string? Name { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
-        [System.ComponentModel.DataAnnotations.EmailAddress]
+        [System.ComponentModel.DataAnnotations.EmailAddress]  @* Validates email format *@
         public string? Email { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
         public string? Message { get; set; }
     }
 
+    // Called when the form is submitted and passes validation
+    // Builds a mailto: URL and opens the user's default email app
     private void HandleSubmit()
     {
+        // Subject line for the email
         var subject = $"Contact Form Submission from {contactForm.Name}";
+        // Body with the message + sender info
         var body = $"{contactForm.Message}%0A%0AFrom: {contactForm.Name} ({contactForm.Email})";
+        // mailto: protocol — the browser opens the user's email client (Outlook, Gmail, etc.)
         var mailtoUrl = $"mailto:vvgonline.net@gmail.com?subject={Uri.EscapeDataString(subject)}&body={Uri.EscapeDataString(body)}";
+        // Navigate to the mailto URL (triggers email client)
         NavigationManager.NavigateTo(mailtoUrl);
     }
 
+    // Called once when the page first loads — sets SEO metadata
     protected override async Task OnInitializedAsync()
     {
         await MetadataService.SetPageMetadata(new PageMetadata

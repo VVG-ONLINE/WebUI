@@ -1,9 +1,11 @@
 @using Microsoft.JSInterop
 
+@* ── BLOG CONTENT SECTION ── *@
 <section class="blog-content px-3">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
+                @* Render the Markdown-to-HTML content — Cast to MarkupString so Blazor does not HTML-encode it *@
                 @if (!string.IsNullOrEmpty(HtmlContent))
                 {
                     <article class="content-body prose">
@@ -13,6 +15,7 @@
 
                 <hr class="my-5" />
 
+                @* Action buttons below the article *@
                 <div class="d-flex justify-content-center gap-3 flex-wrap">
                     <button class="btn btn-warning px-4 py-2" @onclick="HandleCopyLink">
                         <i class="bi bi-link-45deg me-2"></i>COPY LINK
@@ -22,6 +25,7 @@
                     </button>
                 </div>
 
+                @* Toast notification when link is copied *@
                 @if (ShowCopyToast)
                 {
                     <div class="position-fixed top-0 start-50 translate-middle-x mt-5 p-3" style="z-index: 9999;">
@@ -40,25 +44,22 @@
 </section>
 
 @code {
+    /// <summary>The full blog post body as HTML (pre-converted from Markdown).</summary>
     [Parameter, EditorRequired]
     public string? HtmlContent { get; set; }
 
+    /// <summary>Callback to the parent page when the user clicks "Copy Link".</summary>
     [Parameter]
     public EventCallback OnCopyLink { get; set; }
 
+    /// <summary>Callback to the parent page when the user clicks "Share".</summary>
     [Parameter]
     public EventCallback OnShare { get; set; }
 
+    /// <summary>Whether to show the "Link copied" toast notification.</summary>
     [Parameter]
     public bool ShowCopyToast { get; set; }
 
-    private async Task HandleCopyLink()
-    {
-        await OnCopyLink.InvokeAsync();
-    }
-
-    private async Task HandleShare()
-    {
-        await OnShare.InvokeAsync();
-    }
+    private async Task HandleCopyLink() => await OnCopyLink.InvokeAsync();
+    private async Task HandleShare() => await OnShare.InvokeAsync();
 }

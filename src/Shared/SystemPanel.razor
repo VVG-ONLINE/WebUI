@@ -1,35 +1,42 @@
+@* ── Service injection ── *@
 @inject IJSRuntime JS
 @implements IDisposable
 
+@* ── TOP NAVIGATION BAR (the "system panel") ── *@
 <nav class="system-panel">
+    @* Logo + brand name linking to Home *@
     <NavLink href="" class="no-cursor">
         <img
             src="https://raw.githubusercontent.com/vvgonline/vvgonline/d6ce91fa38831bf3009b2070a2c9a0f323faa8f8/public/logo-2025.svg"
-            alt="VVG ONLINE" class="vvg-logo-nav me-2"><span class="text-accent">&nbsp;VVG_ONLINE</span>
+            alt="VVG ONLINE" class="vvg-logo-nav me-2">
+        <span class="text-accent">&nbsp;VVG_ONLINE</span>
     </NavLink>
-    <NavLink href="Services" class="no-cursor"><i class="bi bi-cpu text-accent me-2"></i><span
-            class="text-light">SERVICES</span>
+    @* Navigation links with Bootstrap icons *@
+    <NavLink href="Services" class="no-cursor">
+        <i class="bi bi-cpu text-accent me-2"></i>
+        <span class="text-light">SERVICES</span>
     </NavLink>
-    <NavLink href="About" class="no-cursor"><i class="bi bi-info-circle text-accent me-2"></i><span
-            class="text-light">ABOUT</span>
+    <NavLink href="About" class="no-cursor">
+        <i class="bi bi-info-circle text-accent me-2"></i>
+        <span class="text-light">ABOUT</span>
     </NavLink>
-    <NavLink href="Blog" class="no-cursor"><i class="bi bi-newspaper text-accent me-2"></i><span
-            class="text-light">INSIGHTS</span>
+    <NavLink href="Blog" class="no-cursor">
+        <i class="bi bi-newspaper text-accent me-2"></i>
+        <span class="text-light">INSIGHTS</span>
     </NavLink>
-    <NavLink href="Contact" class="no-cursor"><i class="bi bi-phone me-2 text-accent"></i><span
-            class="text-light">CONTACT</span>
+    <NavLink href="Contact" class="no-cursor">
+        <i class="bi bi-phone me-2 text-accent"></i>
+        <span class="text-light">CONTACT</span>
     </NavLink>
-    <div class="status-right d-flex align-items-center">
-        <!-- <button id="nav-terminal-toggle" @onclick="() => Layout?.ToggleTerminal()"
-            class="btn btn-sm py-0 px-1 btn-terminal text-dark bg-accent" title="toggle terminal">
-            <i class="bi bi-terminal me-1 text-dark"></i>
-            <span class="text-dark">Vikas AI</span>
-        </button> -->
 
+    @* Right side: theme toggle + live clock *@
+    <div class="status-right d-flex align-items-center">
+        @* Theme toggle button — icon changes between sun (when dark) and moon (when light) *@
         <button @onclick="ToggleTheme" class="btn btn-sm btn-theme" title="theme toggler">
             <i class="text-accent bi @(isDarkMode ? "bi-brightness-high-fill" : "bi-moon-fill")"></i>
         </button>
 
+        @* Live clock visible on desktop *@
         <span class="d-none d-md-inline">
             <span class="d-none d-md-inline">
                 <span id="clock" class="text-center text-light bg-dark w-75 p-1">@currentTime</span>
@@ -39,30 +46,43 @@
 </nav>
 
 @code {
+    @* The parent layout — allows the system panel to interact with MainLayout *@
     [CascadingParameter]
     public MainLayout? Layout { get; set; }
 
+    @* Timer that updates the clock every second *@
     private System.Timers.Timer? _timer;
     private string currentTime = "[ 00:00:00 ]";
     private bool isDarkMode = true;
 
+    /// <summary>
+    /// Starts the live clock and checks the current theme so the toggle icon
+    /// shows the correct sun/moon.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
+        // Start the clock ticking every second
         _timer = new System.Timers.Timer(1000);
         _timer.Elapsed += (sender, args) => OnTimerElapsed();
         _timer.Start();
 
+        // Read the current theme from JavaScript and update the THREE.js grid colour
         var theme = await JS.InvokeAsync<string>("vvg.theme.current");
         isDarkMode = theme == "dark";
         await JS.InvokeVoidAsync("vvg.updateGridColor", theme);
     }
 
+    /// <summary>Updates the clock display. Runs every second on a timer thread.</summary>
     private void OnTimerElapsed()
     {
         currentTime = $"[ {DateTime.Now:HH:mm:ss} ]";
         InvokeAsync(StateHasChanged);
     }
 
+    /// <summary>
+    /// Flips between light and dark themes by calling into the JavaScript
+    /// theme module, then updates the THREE.js background grid colour.
+    /// </summary>
     private async Task ToggleTheme()
     {
         var theme = await JS.InvokeAsync<string>("vvg.theme.toggle");

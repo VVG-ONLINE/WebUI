@@ -1,3 +1,10 @@
+@* ============================================================
+    SERVICES PAGE — Comprehensive listing of all VVG ONLINE services
+    - Loads service data from assets/data/services.json
+    - Each service card shows title, description, and subservices list
+    - JSON structure: { "services": [ { "id", "title", "description", "subservices": [...] } ] }
+    ============================================================ *@
+
 @page "/services"
 @using System.Net.Http.Json
 @inject HttpClient Http
@@ -9,26 +16,33 @@
     Subtitle="A comprehensive suite of services designed to architect, build, and scale your digital ambitions into market-leading realities."
     TagUser="// DIGITAL_SOLUTIONS" TagPath="// MARKET_LEADING_REALITIES" />
 
+@* -- PLACEHOLDER HEADER (can be expanded with intro text) -- *@
 <div class="container">
     <h2>Services</h2>
     <p>We offer a range of services tailored to meet your</p>
 </div>
 
+@* -- SERVICES GRID: Auto-generated from JSON data -- *@
 <section class="container py-5">
 
     @if (services is null)
     {
+        @* Loading state while JSON is being fetched *@
         <p class="text-center">Loading...</p>
     }
     else
     {
+        @* 3-column grid using border-only separator lines (terminal aesthetic) *@
         <div class="row g-0 border-top border-start">
+            @* Select with index to get 0-based numbering for the "0X" prefix *@
             @foreach (var (s, index) in services.Select((value, i) => (value, i)))
             {
                 <div class="col-md-6 col-lg-4 p-4 border-bottom border-end @((index + 1) % 2 == 0 ? "" : "")">
+                    @* Number prefix: 01, 02, 03... *@
                     <span class="mono">0@(index + 1).</span>
                     <h3 class="mt-3">@s.title</h3>
                     <p class="opacity-75 small">@s.description</p>
+                    @* Subservices nested list: shown if the service has sub-services *@
                     @if (s.subservices != null && s.subservices.Length > 0)
                     {
                         <ul class="list-unstyled mt-3">
@@ -49,23 +63,27 @@
 </section>
 
 @code {
+    // Matches a single service entry in services.json
     class Service
     {
         public int id { get; set; }
         public string? title { get; set; }
         public string? description { get; set; }
-        public string? icon { get; set; } // New field for the icon
-        public Subservice[]? subservices { get; set; } // New field for subservices
+        public string? icon { get; set; }
+        public Subservice[]? subservices { get; set; }
     }
 
+    // Matches a subservice entry inside a service
     class Subservice
     {
         public string? name { get; set; }
         public string? description { get; set; }
     }
 
+    // Holds all services after JSON deserialization
     Service[]? services;
 
+    // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
         await MetadataService.SetPageMetadata(new PageMetadata
@@ -89,9 +107,11 @@
             TwitterImage = "https://test.vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
         });
 
+        // Fetch services.json and extract the inner "services" array
         var doc = await Http.GetFromJsonAsync<ServiceDoc>("assets/data/services.json");
         services = doc?.services;
     }
 
+    // Wrapper class: services.json has a top-level object with a "services" property
     class ServiceDoc { public Service[]? services { get; set; } }
 }

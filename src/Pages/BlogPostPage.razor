@@ -1,11 +1,21 @@
+@* ============================================================
+    BLOG POST PAGE — Renders a single blog post from Markdown
+    - Route: /blog/{slug}  (e.g., /blog/digital-transformation)
+    - Loads blog-index.json to find post metadata (title, tags, etc.)
+    - Loads individual .md file from assets/data/blogs/ and converts to HTML
+    - Shows hero, content, navigation (prev/next), and CTA
+    ============================================================ *@
+
 @page "/blog/{slug}"
 @using VVG.Web.Models
-@using Markdig
+@using Markdig  @* Markdown-to-HTML conversion library *@
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @inject MetadataService MetadataService
+@* JavaScript interop for clipboard and share *@
 @inject IJSRuntime JSRuntime
 
+@* -- LOADING STATE: Shown while blog data is being fetched -- *@
 @if (isLoading)
 {
     <div class="container py-5 text-center">
@@ -17,6 +27,7 @@
 }
 else if (!string.IsNullOrEmpty(errorMessage))
 {
+    @* ERROR STATE: Something went wrong (post not found, file missing, etc.) *@
     <div class="container py-5">
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">Error</h4>
@@ -28,19 +39,22 @@ else if (!string.IsNullOrEmpty(errorMessage))
 }
 else if (blogPost != null)
 {
+    @* -- SUCCESS STATE: Post loaded and ready to display -- *@
+
+    @* BlogHero: Shows title, category badge, tags, excerpt, date, reading time *@
     <BlogHero Post="@blogPost" />
 
-    @* Main Content with Sidebar Layout *@
+    @* Main content with sidebar layout (sidebar currently commented out for full-width) *@
     <section class="blog-post-section py-5">
         <div class="container">
             <div class="row g-2">
-                @* Sidebar *@
-                @* <div class="col-lg-3">
+                @* Sidebar (disabled for now — use full-width content)
+                <div class="col-lg-3">
                     <BlogPostSidebar Post="@blogPost" HtmlContent="@blogPostHtml"
                         OnCopyLink="@(async () => await CopyLink())" OnShare="@(async () => await SharePost())" />
                 </div> *@
 
-                @* Main Content *@
+                @* Main Content: Full-width Markdown-rendered HTML *@
                 <div class="col-lg-12">
                     <BlogContent HtmlContent="@blogPostHtml" OnCopyLink="@CopyLink" OnShare="@SharePost"
                         ShowCopyToast="@showCopyConfirmation" />
@@ -49,28 +63,37 @@ else if (blogPost != null)
         </div>
     </section>
 
+    @* Previous/Next post navigation + CTA banner *@
     <BlogNavigation PreviousPost="@previousPost" NextPost="@nextPost" />
     <BlogCallToAction Post="@blogPost" />
 }
 
 @code {
+    // The slug from the URL (e.g., "digital-transformation" from /blog/digital-transformation)
     [Parameter]
     public string? Slug { get; set; }
 
+    // Current post being displayed
     private Models.BlogPost? blogPost;
+    // All posts (loaded for prev/next navigation)
     private Models.BlogPost[]? allPosts;
+    // Previous and next posts for navigation
     private Models.BlogPost? previousPost;
     private Models.BlogPost? nextPost;
+    // Rendered HTML from Markdown
     private string? blogPostHtml;
+    // UI state
     private bool isLoading = true;
     private string? errorMessage;
     private bool showCopyConfirmation = false;
 
+    // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
         await LoadBlogPost();
     }
 
+    // Called when navigation parameters change (e.g., clicking from one blog post to another)
     protected override async Task OnParametersSetAsync()
     {
         if (Slug != null)
@@ -79,6 +102,7 @@ else if (blogPost != null)
         }
     }
 
+    // Core logic: loads post metadata, fetches Markdown file, renders HTML
     private async Task LoadBlogPost()
     {
         try
@@ -86,6 +110,7 @@ else if (blogPost != null)
             isLoading = true;
             errorMessage = null;
 
+            // Step 1: Load the blog index to find post metadata
             allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts == null || allPosts.Length == 0)
@@ -94,7 +119,9 @@ else if (blogPost != null)
                 return;
             }
 
+            // Filter out drafts and sort by date
             allPosts = allPosts.Where(p => !p.Draft).OrderByDescending(p => p.PublishedAt).ToArray();
+            // Find the specific post matching the URL slug
             blogPost = allPosts.FirstOrDefault(p => p.Slug == Slug);
 
             if (blogPost == null)
@@ -105,13 +132,19 @@ else if (blogPost != null)
 
             try
             {
+                // Step 2: Load the Markdown file for this post
+                // Uses Filename if set, otherwise falls back to Slug
                 var fileName = !string.IsNullOrEmpty(blogPost.Filename)
                 ? blogPost.Filename
                 : Slug;
 
+                // Fetch raw .md file from assets/data/blogs/
                 var markdownContent = await Http.GetStringAsync($"assets/data/blogs/{fileName}.md");
+                // Strip YAML frontmatter (the --- header block containing metadata)
                 markdownContent = RemoveFrontmatter(markdownContent);
 
+                // Step 3: Convert Markdown to HTML using Markdig with advanced extensions
+                // UseAdvancedExtensions enables: tables, footnotes, math, diagrams, etc.
                 var pipeline = new MarkdownPipelineBuilder()
                 .UseAdvancedExtensions()
                 .Build();
@@ -123,10 +156,15 @@ else if (blogPost != null)
                 return;
             }
 
+            // Step 4: Find previous and next posts for navigation
+            // Array is sorted newest-first, so:
+            //   previousPost = lower index (older) → currentIndex + 1
+            //   nextPost = higher index (newer) → currentIndex - 1
             var currentIndex = Array.IndexOf(allPosts, blogPost);
             previousPost = currentIndex < allPosts.Length - 1 ? allPosts[currentIndex + 1] : null;
             nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
+            // Step 5: Set page metadata for SEO
             await SetMetadata();
         }
         catch (Exception ex)
@@ -140,19 +178,24 @@ else if (blogPost != null)
         }
     }
 
+    // Removes the YAML frontmatter block from the top of a Markdown file
+    // Frontmatter looks like:  ---\nkey: value\n---\n\n# Content starts here
     private string RemoveFrontmatter(string markdown)
     {
+        // Frontmatter starts and ends with "---" on its own line
         if (markdown.StartsWith("---"))
         {
-            var endIndex = markdown.IndexOf("---", 3);
+            var endIndex = markdown.IndexOf("---", 3);  // Start searching after the first "---"
             if (endIndex > 0)
             {
+                // Return everything after the closing "---"
                 return markdown.Substring(endIndex + 3).Trim();
             }
         }
         return markdown;
     }
 
+    // Sets dynamic SEO metadata for this specific blog post
     private async Task SetMetadata()
     {
         if (blogPost == null) return;
@@ -178,16 +221,20 @@ else if (blogPost != null)
         });
     }
 
+    // Copies the current blog post URL to the clipboard using JavaScript
     private async Task CopyLink()
     {
         var url = Navigation.ToAbsoluteUri($"/blog/{Slug}").ToString();
+        // navigator.clipboard.writeText() — modern clipboard API (HTTPS only)
         await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", url);
+        // Show a "Copied!" toast for 3 seconds
         showCopyConfirmation = true;
         await Task.Delay(3000);
         showCopyConfirmation = false;
         StateHasChanged();
     }
 
+    // Opens the native share dialog (mobile) or falls back to copy link (desktop)
     private async Task SharePost()
     {
         var url = Navigation.ToAbsoluteUri($"/blog/{Slug}").ToString();

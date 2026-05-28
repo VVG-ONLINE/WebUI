@@ -1,3 +1,19 @@
+# ============================================================================
+# GitHub Actions CI/CD — builds the Blazor WASM app and deploys to GitHub Pages
+#
+# Trigger: every push to the "main" branch
+# Output:  the gh-pages branch is updated with compiled static files
+#
+# Steps:
+#   1. Checkout repo (with Git LFS for large files like ONNX model)
+#   2. Install .NET SDK 10.0.101
+#   3. dotnet publish → release/
+#   4. Fix <base href> for custom domain vs. GitHub Pages subpath
+#   5. Generate blog-index.json from Markdown YAML frontmatter (Node script)
+#   6. Copy blog index + .md files to release output
+#   7. Create .nojekyll + SPA 404.html + CNAME
+#   8. Deploy to gh-pages branch (JamesIves/github-pages-deploy-action)
+# ============================================================================
 name: Deploy VVG System to GitHub Pages
 
 on:

@@ -1,3 +1,14 @@
+/// <summary>
+/// bUnit tests for blog sidebar components: TableOfContents, BlogPostSidebar,
+/// and BlogPostPage sidebar integration.
+///
+/// Tests cover:
+///   - TableOfContents: heading extraction (h2/h3), anchor generation, level classes,
+///     edge cases (empty content, null, no headings)
+///   - BlogPostSidebar: author card, post metadata, tags, highlights, copy/share
+///     buttons, callback invocation, missing data handling
+///   - Integration: sidebar loads with blog post data from mocked HTTP
+/// </summary>
 using Bunit;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +18,10 @@ using Xunit;
 
 namespace VVG.Web.Pages;
 
+/// <summary>
+/// Tests the TableOfContents component which extracts h2/h3 headings from
+/// rendered HTML and generates anchor-based navigation links.
+/// </summary>
 public class TableOfContentsTests : TestContext
 {
     private string GetSampleHtmlContent()
@@ -158,6 +173,10 @@ public class TableOfContentsTests : TestContext
     }
 }
 
+/// <summary>
+/// Tests the BlogPostSidebar component — the right-hand panel on blog post
+/// pages showing author info, metadata, tags, highlights, and actions.
+/// </summary>
 public class BlogPostSidebarTests : TestContext
 {
     private BlogPost GetSamplePost()
@@ -391,6 +410,10 @@ public class BlogPostSidebarTests : TestContext
     }
 }
 
+/// <summary>
+/// Placeholder for integration tests that verify the full blog post page
+/// with sidebar loads correctly from mocked HTTP data.
+/// </summary>
 public class BlogPostPageSidebarIntegrationTests : TestContext
 {
     private HttpClient SetupHttpClient()
@@ -434,7 +457,9 @@ public class BlogPostPageSidebarIntegrationTests : TestContext
     }
 }
 
-// Mock HTTP Message Handler for testing
+/// <summary>
+/// Mock HTTP handler that returns blog-index.json data for integration tests.
+/// </summary>
 public class MockHttpMessageHandler : HttpMessageHandler
 {
     private readonly BlogPost[] _posts;
