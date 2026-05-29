@@ -143,41 +143,54 @@ jobs:
 
           const blogIndex = JSON.parse(fs.readFileSync('src/wwwroot/assets/data/json/blog-index.json', 'utf8'));
 
+          // Read card-mapping.json for per-page image resolution
+          const cardMappingPath = 'src/wwwroot/assets/images/twitter-cards/card-mapping.json';
+          const cardMapping = fs.existsSync(cardMappingPath)
+            ? JSON.parse(fs.readFileSync(cardMappingPath, 'utf8'))
+            : {};
+
+          function getImageUrl(slug) {
+            if (cardMapping[slug]) {
+              return BASE_URL + '/assets/images/twitter-cards/' + cardMapping[slug];
+            }
+            return DEFAULT_IMAGE;
+          }
+
           const pages = {
             'contact': {
               dir: 'contact',
               title: 'Contact Us - VVG ONLINE',
               description: "Get in touch with VVG ONLINE for digital business consulting. Let's start a conversation about your vision and digital transformation goals.",
               type: 'website',
-              image: DEFAULT_IMAGE
+              image: getImageUrl('contact')
             },
             'services': {
               dir: 'services',
               title: 'Our Services - VVG ONLINE',
               description: 'Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies.',
               type: 'website',
-              image: DEFAULT_IMAGE
+              image: getImageUrl('services')
             },
             'about': {
               dir: 'about',
               title: 'About VVG ONLINE',
               description: "Learn about VVG ONLINE's mission, philosophy, and our commitment to driving digital transformation and innovation.",
               type: 'website',
-              image: DEFAULT_IMAGE
+              image: getImageUrl('about')
             },
             'blog': {
               dir: 'blog',
               title: 'Blog - VVG ONLINE | Digital Insights & Expertise',
               description: 'Explore insights on digital transformation, business strategy, technology innovation, and leadership from VVG ONLINE experts.',
               type: 'website',
-              image: DEFAULT_IMAGE
+              image: getImageUrl('blog')
             },
             'blog-archives': {
               dir: 'blog-archives',
               title: 'Blog Archives - VVG ONLINE',
               description: 'Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.',
               type: 'website',
-              image: DEFAULT_IMAGE
+              image: getImageUrl('blog-archives')
             }
           };
 
@@ -268,12 +281,14 @@ jobs:
               tags: post.tags || []
             };
 
+            const imageUrl = getImageUrl(slug);
+
             const html = generateMetaHTML(
               'blog/' + slug,
               post.title + ' - VVG ONLINE',
               post.excerpt || '',
               'article',
-              DEFAULT_IMAGE,
+              imageUrl,
               articleMeta,
               false
             );
