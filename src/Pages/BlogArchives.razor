@@ -8,8 +8,10 @@
 @page "/BlogArchives"
 @using System.Net.Http.Json
 @using VVG.Web.Models
+@using VVG.Web.Services
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject MetadataService MetadataService
 
 <PageTitle>Blog Archives - VVG ONLINE</PageTitle>
 
@@ -147,6 +149,25 @@
     // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "Blog Archives - VVG ONLINE",
+            Description = "Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.",
+            Keywords = "blog archives, articles, digital transformation, technology, business consulting",
+            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgType = "website",
+            OgTitle = "Blog Archives - VVG ONLINE",
+            OgDescription = "Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.",
+            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgUrl = "https://vvgonline.net/blog-archives",
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonline",
+            TwitterCreator = "@vvgonline",
+            TwitterTitle = "Blog Archives - VVG ONLINE",
+            TwitterDescription = "Browse all articles from VVG ONLINE.",
+            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+        });
+
         try
         {
             // Load blog-index.json (array of all posts including drafts)

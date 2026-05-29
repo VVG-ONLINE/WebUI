@@ -2,6 +2,7 @@
 @using VVG.Web.Models
 @using VVG.Web.Services
 @inject HttpClient Http
+@inject MetadataService MetadataService
 @implements IDisposable
 
 <PageTitle>Blog - VVG Online | Digital Insights & Expertise</PageTitle>
@@ -347,6 +348,25 @@
     protected override async Task OnInitializedAsync()
     {
         isLoading = true;
+
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "Blog - VVG ONLINE | Digital Insights & Expertise",
+            Description = "Explore insights on digital transformation, business strategy, technology innovation, and leadership from VVG ONLINE experts.",
+            Keywords = "blog, digital transformation, business strategy, technology, innovation, leadership, digital consulting",
+            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgType = "website",
+            OgTitle = "Blog - VVG ONLINE | Digital Insights & Expertise",
+            OgDescription = "Explore insights on digital transformation, business strategy, technology innovation, and leadership from VVG ONLINE experts.",
+            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgUrl = "https://vvgonline.net/blog",
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonline",
+            TwitterCreator = "@vvgonline",
+            TwitterTitle = "Blog - VVG ONLINE | Digital Insights & Expertise",
+            TwitterDescription = "Explore insights on digital transformation, business strategy, and technology innovation.",
+            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+        });
 
         try
         {
