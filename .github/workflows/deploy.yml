@@ -45,6 +45,12 @@ jobs:
       - name: Publish Project
         run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
 
+      - name: Install Fonts & Generate Twitter Cards
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig fonts-ebgaramond fonts-firacode fonts-ibm-plex
+          dotnet run --project tools/TwitterCardGenerator
+
       - name: Fix Base Href for GitHub Pages
         run: |
           if [ -f "CNAME" ]; then

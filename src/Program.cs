@@ -28,9 +28,10 @@ builder.Services.AddScoped(sp => new HttpClient
     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
 });
 
-// Register our custom services — these handle SEO metadata and dark/light theme
+// Register our custom services — these handle SEO metadata, dark/light theme, and Twitter card images
 builder.Services.AddScoped<VVG.Web.Services.MetadataService>();
 builder.Services.AddScoped<VVG.Web.Services.ThemeService>();
+builder.Services.AddScoped<VVG.Web.Services.CardImageService>();
 
 // Tell the server which MIME types to use for serving .onnx (AI model) and .json files
 // Without this, the browser may reject these files as unknown types

@@ -12,6 +12,7 @@
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @inject MetadataService MetadataService
+@inject VVG.Web.Services.CardImageService CardImage
 @* JavaScript interop for clipboard and share *@
 @inject IJSRuntime JSRuntime
 
@@ -202,19 +203,23 @@ else if (blogPost != null)
 
         var url = Navigation.ToAbsoluteUri($"/blog/{blogPost.Slug}").ToString();
         var keywords = blogPost.Tags != null ? string.Join(", ", blogPost.Tags) : "";
+        var cardUrl = await CardImage.GetImageUrlAsync(blogPost.Slug ?? "");
 
         await MetadataService.SetPageMetadata(new PageMetadata
         {
             Title = blogPost.Title,
             Description = blogPost.Excerpt,
             Keywords = keywords,
+            Image = cardUrl,
             OgTitle = blogPost.Title,
             OgDescription = blogPost.Excerpt,
             OgType = "article",
             OgUrl = url,
+            OgImage = cardUrl,
             TwitterCard = "summary_large_image",
             TwitterTitle = blogPost.Title,
             TwitterDescription = blogPost.Excerpt,
+            TwitterImage = cardUrl,
             ArticlePublishedTime = blogPost.PublishedAt.ToString("o"),
             ArticleSection = blogPost.Category?.ToString(),
             ArticleTags = blogPost.Tags

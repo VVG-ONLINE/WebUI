@@ -3,6 +3,7 @@
 @using VVG.Web.Services
 @inject HttpClient Http
 @inject MetadataService MetadataService
+@inject CardImageService CardImage
 @implements IDisposable
 
 <PageTitle>Blog - VVG Online | Digital Insights & Expertise</PageTitle>
@@ -349,27 +350,28 @@
     {
         isLoading = true;
 
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "Blog - VVG ONLINE | Digital Insights & Expertise",
-            Description = "Explore insights on digital transformation, business strategy, technology innovation, and leadership from VVG ONLINE experts.",
-            Keywords = "blog, digital transformation, business strategy, technology, innovation, leadership, digital consulting",
-            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
-            OgType = "website",
-            OgTitle = "Blog - VVG ONLINE | Digital Insights & Expertise",
-            OgDescription = "Explore insights on digital transformation, business strategy, technology innovation, and leadership from VVG ONLINE experts.",
-            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
-            OgUrl = "https://vvgonline.net/blog",
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "Blog - VVG ONLINE | Digital Insights & Expertise",
-            TwitterDescription = "Explore insights on digital transformation, business strategy, and technology innovation.",
-            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
-        });
-
         try
         {
+            // Set SEO metadata for blog listing page
+            var cardUrl = await CardImage.GetImageUrlAsync("blog");
+            await MetadataService.SetPageMetadata(new PageMetadata
+            {
+                Title = "Blog - VVG Online | Digital Insights & Expertise",
+                Description = "Digital insights, expert analysis, and strategic perspectives on technology, innovation, and business transformation.",
+                Keywords = "digital business blog, technology insights, innovation, strategy, digital transformation",
+                Image = cardUrl,
+                OgType = "website",
+                OgTitle = "Blog - VVG Online",
+                OgDescription = "Expert insights on digital business, technology strategy, and innovation from VVG ONLINE.",
+                OgImage = cardUrl,
+                OgUrl = "https://vvgonline.net/blog",
+                TwitterCard = "summary_large_image",
+                TwitterSite = "@vvgonline",
+                TwitterTitle = "Blog - VVG Online",
+                TwitterDescription = "Expert insights on digital business, technology strategy, and innovation.",
+                TwitterImage = cardUrl
+            });
+
             // Load all posts from static JSON file
             // API returns BlogPost[] - we store as List for easier manipulation
             allPosts = await Http.GetFromJsonAsync<BlogPost[]>("assets/data/json/blog-index.json");

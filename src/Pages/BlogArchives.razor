@@ -5,13 +5,13 @@
     - Unlike Blog.razor: no pagination, groups by year instead
     ============================================================ *@
 
-@page "/BlogArchives"
+@page "/blog-archives"
 @using System.Net.Http.Json
 @using VVG.Web.Models
-@using VVG.Web.Services
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
-@inject MetadataService MetadataService
+@inject VVG.Web.Services.MetadataService MetadataService
+@inject VVG.Web.Services.CardImageService CardImage
 
 <PageTitle>Blog Archives - VVG ONLINE</PageTitle>
 
@@ -149,27 +149,28 @@
     // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "Blog Archives - VVG ONLINE",
-            Description = "Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.",
-            Keywords = "blog archives, articles, digital transformation, technology, business consulting",
-            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
-            OgType = "website",
-            OgTitle = "Blog Archives - VVG ONLINE",
-            OgDescription = "Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.",
-            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
-            OgUrl = "https://vvgonline.net/blog-archives",
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "Blog Archives - VVG ONLINE",
-            TwitterDescription = "Browse all articles from VVG ONLINE.",
-            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
-        });
-
         try
         {
+            // Set SEO metadata for blog archives page
+            var cardUrl = await CardImage.GetImageUrlAsync("blog-archives");
+            await MetadataService.SetPageMetadata(new PageMetadata
+            {
+                Title = "Blog Archives - VVG ONLINE",
+                Description = "Browse our complete collection of digital business insights, case studies, and thought leadership articles.",
+                Keywords = "blog archives, digital business articles, technology insights, innovation articles",
+                Image = cardUrl,
+                OgType = "website",
+                OgTitle = "Blog Archives - VVG ONLINE",
+                OgDescription = "Browse our complete collection of digital business insights and thought leadership.",
+                OgImage = cardUrl,
+                OgUrl = "https://vvgonline.net/blog-archives",
+                TwitterCard = "summary_large_image",
+                TwitterSite = "@vvgonline",
+                TwitterTitle = "Blog Archives - VVG ONLINE",
+                TwitterDescription = "Browse our complete collection of digital business insights.",
+                TwitterImage = cardUrl
+            });
+
             // Load blog-index.json (array of all posts including drafts)
             allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 

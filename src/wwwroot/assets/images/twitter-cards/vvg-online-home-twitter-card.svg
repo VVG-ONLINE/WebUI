@@ -7,7 +7,7 @@
    viewBox="0 0 211.66666 110.59583"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
    sodipodi:docname="vvg-online-home-twitter-card.svg"
    xml:space="preserve"
    inkscape:export-filename="/home/vvgoncachyos/vvg-online-home-twitter-card.png"
@@ -28,13 +28,13 @@
      inkscape:document-units="mm"
      inkscape:zoom="0.87625"
      inkscape:cx="400"
-     inkscape:cy="208.84451"
-     inkscape:window-width="1575"
-     inkscape:window-height="1053"
-     inkscape:window-x="975"
-     inkscape:window-y="27"
+     inkscape:cy="208.27389"
+     inkscape:window-width="1150"
+     inkscape:window-height="981"
+     inkscape:window-x="-8"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g5"
+     inkscape:current-layer="layer1"
      showgrid="false" /><defs
      id="defs1" /><g
      inkscape:label="Layer 1"
@@ -88,12 +88,14 @@
                id="path1"
                inkscape:label="v2" /></g></g></g></g><g
        id="g5"
-       transform="translate(0,-12.222825)"><text
+       transform="translate(0,-12.222825)"
+       inkscape:label="_text-grp"><text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777px;font-family:'FiraCode Nerd Font';-inkscape-font-specification:'FiraCode Nerd Font, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke-width:0.264583"
          x="15.814722"
          y="58.869106"
-         id="text1"><tspan
+         id="text1"
+         inkscape:label="_punchline"><tspan
            sodipodi:role="line"
            id="tspan1"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777px;font-family:'FiraCode Nerd Font';-inkscape-font-specification:'FiraCode Nerd Font, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
@@ -103,7 +105,8 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.2889px;font-family:'EB Garamond';-inkscape-font-specification:'EB Garamond, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke-width:0.264583;font-variation-settings:'wght' 600"
          x="15.439875"
          y="74.687737"
-         id="text3"><tspan
+         id="text3"
+         inkscape:label="_title"><tspan
            sodipodi:role="line"
            id="tspan2"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888889px;font-family:'EB Garamond';-inkscape-font-specification:'EB Garamond, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583;font-variation-settings:'wght' 600"
@@ -118,7 +121,8 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:lr-tb;direction:ltr;fill:#000000;fill-opacity:1;stroke-width:0.264583"
          x="15.360271"
          y="100.49956"
-         id="text4"><tspan
+         id="text4"
+         inkscape:label="_description"><tspan
            sodipodi:role="line"
            id="tspan4"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444007px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"

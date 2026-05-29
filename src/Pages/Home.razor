@@ -15,8 +15,8 @@
 @using VVG.Web.Models
 @* Built-in HTTP client (pre-configured by Blazor) *@
 @inject HttpClient Http
-@* Sets page title, OG tags, Twitter card via JS *@
 @inject VVG.Web.Services.MetadataService MetadataService
+@inject VVG.Web.Services.CardImageService CardImage
 
 <PageTitle>Home</PageTitle>
 
@@ -136,17 +136,18 @@
     protected override async Task OnInitializedAsync()
     {
         // Set all SEO metadata for the home page (title, OG tags, Twitter card)
+        var cardUrl = await CardImage.GetImageUrlAsync("home");
         await MetadataService.SetPageMetadata(new PageMetadata
         {
             Title = "VVG ONLINE - Digital Business Consulting & Innovation",
             Description = "Transform your business with VVG ONLINE's cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.",
             Keywords = "digital business consulting, technology consulting, digital transformation, innovation, business strategy, VVG ONLINE",
-            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            Image = cardUrl,
             
             OgType = "website",
             OgTitle = "VVG ONLINE - Digital Business Consulting",
             OgDescription = "Transform your enterprise with cutting-edge digital business consulting. We decode complexity, design strategies, and deliver results.",
-            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgImage = cardUrl,
             OgUrl = "https://vvgonline.net/",
 
             TwitterCard = "summary_large_image",
@@ -154,7 +155,7 @@
             TwitterCreator = "@vvgonline",
             TwitterTitle = "VVG ONLINE - Digital Business Consulting",
             TwitterDescription = "Transform your enterprise with cutting-edge digital business consulting. Decode. Design. Deliver.",
-            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+            TwitterImage = cardUrl
         });
 
         try

@@ -7,6 +7,7 @@
 
 @page "/contact"
 @inject VVG.Web.Services.MetadataService MetadataService
+@inject VVG.Web.Services.CardImageService CardImage
 @* Allows redirecting to mailto: URL *@
 @inject NavigationManager NavigationManager
 
@@ -87,17 +88,18 @@
     // Called once when the page first loads — sets SEO metadata
     protected override async Task OnInitializedAsync()
     {
+        var cardUrl = await CardImage.GetImageUrlAsync("contact");
         await MetadataService.SetPageMetadata(new PageMetadata
         {
             Title = "Contact Us - VVG ONLINE",
             Description = "Get in touch with VVG ONLINE for digital business consulting. Let's start a conversation about your vision and digital transformation goals.",
             Keywords = "contact, get in touch, consultation, digital consulting, VVG ONLINE, business inquiry",
-            Image = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            Image = cardUrl,
             
             OgType = "website",
             OgTitle = "Contact Us - VVG ONLINE",
             OgDescription = "Ready to transform your business? Get in touch with VVG ONLINE today for expert digital consulting services.",
-            OgImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+            OgImage = cardUrl,
             OgUrl = "https://vvgonline.net/contact",
 
             TwitterCard = "summary_large_image",
@@ -105,7 +107,7 @@
             TwitterCreator = "@vvgonline",
             TwitterTitle = "Contact Us - VVG ONLINE",
             TwitterDescription = "Ready to transform your business? Let's talk about your digital transformation journey.",
-            TwitterImage = "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+            TwitterImage = cardUrl
         });
     }
 }
