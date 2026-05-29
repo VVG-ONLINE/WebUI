@@ -138,13 +138,6 @@ jobs:
           const blogIndex = JSON.parse(fs.readFileSync('src/wwwroot/assets/data/json/blog-index.json', 'utf8'));
 
           const pages = {
-            '': {
-              dir: '',
-              title: 'VVG ONLINE - Digital Business Consulting',
-              description: "Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation.",
-              type: 'website',
-              image: DEFAULT_IMAGE
-            },
             'contact': {
               dir: 'contact',
               title: 'Contact Us - VVG ONLINE',
