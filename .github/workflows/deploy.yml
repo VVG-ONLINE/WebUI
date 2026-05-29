@@ -126,7 +126,7 @@ jobs:
 
       - name: Generate Static Meta HTML for SEO
         run: |
-          node -e "
+          cat > generate-meta.js << 'SCRIPT_EOF'
           const fs = require('fs');
           const path = require('path');
 
@@ -135,22 +135,20 @@ jobs:
           const SITE_NAME = 'VVG ONLINE';
           const TWITTER_SITE = '@vvgonline';
 
-          // Read blog index for blog post pages
           const blogIndex = JSON.parse(fs.readFileSync('src/wwwroot/assets/data/json/blog-index.json', 'utf8'));
 
-          // Page metadata definitions
           const pages = {
             '': {
               dir: '',
               title: 'VVG ONLINE - Digital Business Consulting',
-              description: 'Transform your business with VVG ONLINE\\'s cutting-edge digital consulting, technology solutions, and strategic innovation.',
+              description: "Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation.",
               type: 'website',
               image: DEFAULT_IMAGE
             },
             'contact': {
               dir: 'contact',
               title: 'Contact Us - VVG ONLINE',
-              description: 'Get in touch with VVG ONLINE for digital business consulting. Let\\'s start a conversation about your vision and digital transformation goals.',
+              description: "Get in touch with VVG ONLINE for digital business consulting. Let's start a conversation about your vision and digital transformation goals.",
               type: 'website',
               image: DEFAULT_IMAGE
             },
@@ -164,7 +162,7 @@ jobs:
             'about': {
               dir: 'about',
               title: 'About VVG ONLINE',
-              description: 'Learn about VVG ONLINE\\'s mission, philosophy, and our commitment to driving digital transformation and innovation.',
+              description: "Learn about VVG ONLINE's mission, philosophy, and our commitment to driving digital transformation and innovation.",
               type: 'website',
               image: DEFAULT_IMAGE
             },
@@ -184,107 +182,109 @@ jobs:
             }
           };
 
-          function generateMetaHTML(pageUrl, title, description, type, image, articleMeta = {}, isRoot = false) {
+          function generateMetaHTML(pageUrl, title, description, type, image, articleMeta, isRoot) {
             const url = BASE_URL + (pageUrl ? '/' + pageUrl : '');
-            const articleTags = articleMeta.tags || [];
+            const articleTags = articleMeta ? (articleMeta.tags || []) : [];
             const prefix = isRoot ? '' : '../';
-            
+
             let articleMetaHTML = '';
-            if (articleMeta.publishedTime) {
-              articleMetaHTML += '    <meta property=\"article:published_time\" content=\"' + articleMeta.publishedTime + '\" />\\n';
+            if (articleMeta && articleMeta.publishedTime) {
+              articleMetaHTML += '    <meta property="article:published_time" content="' + articleMeta.publishedTime + '" />\n';
             }
-            if (articleMeta.section) {
-              articleMetaHTML += '    <meta property=\"article:section\" content=\"' + articleMeta.section + '\" />\\n';
+            if (articleMeta && articleMeta.section) {
+              articleMetaHTML += '    <meta property="article:section" content="' + articleMeta.section + '" />\n';
             }
-            articleTags.forEach(tag => {
-              articleMetaHTML += '    <meta property=\"article:tag\" content=\"' + tag + '\" />\\n';
+            articleTags.forEach(function(tag) {
+              articleMetaHTML += '    <meta property="article:tag" content="' + tag + '" />\n';
             });
 
-            return \`<!DOCTYPE html>
-<html lang=\"en-in\">
-<head>
-    <meta charset=\"utf-8\" />
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-    <title>\${title}</title>
-    <meta name=\"description\" content=\"\${description}\" />
-    <meta name=\"author\" content=\"\${SITE_NAME}\" />
-    <meta itemprop=\"name\" content=\"\${title}\" />
-    <meta itemprop=\"description\" content=\"\${description}\" />
-    <meta itemprop=\"image\" content=\"\${image}\" />
-    <meta property=\"og:url\" content=\"\${url}\" />
-    <meta property=\"og:type\" content=\"\${type}\" />
-    <meta property=\"og:title\" content=\"\${title}\" />
-    <meta property=\"og:description\" content=\"\${description}\" />
-    <meta property=\"og:image\" content=\"\${image}\" />
-    <meta property=\"og:site_name\" content=\"\${SITE_NAME}\" />
-\${articleMetaHTML}    <meta name=\"twitter:card\" content=\"summary_large_image\" />
-    <meta name=\"twitter:title\" content=\"\${title}\" />
-    <meta name=\"twitter:description\" content=\"\${description}\" />
-    <meta name=\"twitter:image\" content=\"\${image}\" />
-    <meta name=\"twitter:site\" content=\"\${TWITTER_SITE}\" />
-    <base href=\"/\" />
-    <link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap\" rel=\"stylesheet\">
-    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css\">
-    <link rel=\"stylesheet\" href=\"\${prefix}assets/css/app.css\" />
-    <link rel=\"icon\" type=\"image/png\" href=\"\${prefix}assets/images/profiles/logo-2025.svg\" />
-    <link href=\"\${prefix}VVG.Web.styles.css\" rel=\"stylesheet\" />
-    <link href=\"\${prefix}manifest.webmanifest\" rel=\"manifest\" />
-    <meta http-equiv=\"refresh\" content=\"0;url=/\" />
-</head>
-<body>
-    <div id=\"app\"><div class=\"preloader\"><div class=\"loading-box\"><div class=\"loader\"></div><div class=\"terminal-output msg-1\">_</div><div class=\"terminal-output msg-2\">SYSTEM BOOTING...</div></div></div></div>
-    <script>
-        // Redirect to SPA for users with JavaScript enabled
-        var path = window.location.pathname;
-        if (path !== '/' && path !== '/index.html') {
-            window.location.replace('/?' + encodeURIComponent(path + window.location.search + window.location.hash));
-        }
-    </script>
-</body>
-</html>\`;
+            return '<!DOCTYPE html>\n' +
+            '<html lang="en-in">\n' +
+            '<head>\n' +
+            '    <meta charset="utf-8" />\n' +
+            '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n' +
+            '    <title>' + title + '</title>\n' +
+            '    <meta name="description" content="' + description + '" />\n' +
+            '    <meta name="author" content="' + SITE_NAME + '" />\n' +
+            '    <meta itemprop="name" content="' + title + '" />\n' +
+            '    <meta itemprop="description" content="' + description + '" />\n' +
+            '    <meta itemprop="image" content="' + image + '" />\n' +
+            '    <meta property="og:url" content="' + url + '" />\n' +
+            '    <meta property="og:type" content="' + type + '" />\n' +
+            '    <meta property="og:title" content="' + title + '" />\n' +
+            '    <meta property="og:description" content="' + description + '" />\n' +
+            '    <meta property="og:image" content="' + image + '" />\n' +
+            '    <meta property="og:site_name" content="' + SITE_NAME + '" />\n' +
+            articleMetaHTML +
+            '    <meta name="twitter:card" content="summary_large_image" />\n' +
+            '    <meta name="twitter:title" content="' + title + '" />\n' +
+            '    <meta name="twitter:description" content="' + description + '" />\n' +
+            '    <meta name="twitter:image" content="' + image + '" />\n' +
+            '    <meta name="twitter:site" content="' + TWITTER_SITE + '" />\n' +
+            '    <base href="/" />\n' +
+            '    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">\n' +
+            '    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">\n' +
+            '    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">\n' +
+            '    <link rel="stylesheet" href="' + prefix + 'assets/css/app.css" />\n' +
+            '    <link rel="icon" type="image/png" href="' + prefix + 'assets/images/profiles/logo-2025.svg" />\n' +
+            '    <link href="' + prefix + 'VVG.Web.styles.css" rel="stylesheet" />\n' +
+            '    <link href="' + prefix + 'manifest.webmanifest" rel="manifest" />\n' +
+            '    <meta http-equiv="refresh" content="0;url=/" />\n' +
+            '</head>\n' +
+            '<body>\n' +
+            '    <div id="app"><div class="preloader"><div class="loading-box"><div class="loader"></div><div class="terminal-output msg-1">_</div><div class="terminal-output msg-2">SYSTEM BOOTING...</div></div></div></div>\n' +
+            '    <script>\n' +
+            '        var path = window.location.pathname;\n' +
+            '        if (path !== "/" && path !== "/index.html") {\n' +
+            '            window.location.replace("/?" + encodeURIComponent(path + window.location.search + window.location.hash));\n' +
+            '        }\n' +
+            '    </script>\n' +
+            '</body>\n' +
+            '</html>';
           }
 
-          // Generate static HTML for main pages
-          Object.entries(pages).forEach(([key, page]) => {
+          Object.entries(pages).forEach(function(entry) {
+            const key = entry[0];
+            const page = entry[1];
             const dir = page.dir ? 'release/wwwroot/' + page.dir : 'release/wwwroot';
             fs.mkdirSync(dir, { recursive: true });
-            
+
             const isRoot = !page.dir;
             const html = generateMetaHTML(key, page.title, page.description, page.type, page.image, {}, isRoot);
             fs.writeFileSync(path.join(dir, 'index.html'), html);
-            console.log('✅ Generated: ' + (page.dir || '/') + '/index.html');
+            console.log('Generated: ' + (page.dir || '/') + '/index.html');
           });
 
-          // Generate static HTML for each blog post
-          blogIndex.forEach(post => {
+          blogIndex.forEach(function(post) {
             if (post.draft) return;
-            
+
             const slug = post.slug;
             const dir = 'release/wwwroot/blog/' + slug;
             fs.mkdirSync(dir, { recursive: true });
-            
+
             const publishedTime = post.publishedAt ? new Date(post.publishedAt).toISOString() : '';
             const articleMeta = {
               publishedTime: publishedTime,
               section: post.category || '',
               tags: post.tags || []
             };
-            
+
             const html = generateMetaHTML(
               'blog/' + slug,
               post.title + ' - VVG ONLINE',
               post.excerpt || '',
               'article',
               DEFAULT_IMAGE,
-              articleMeta
+              articleMeta,
+              false
             );
             fs.writeFileSync(path.join(dir, 'index.html'), html);
-            console.log('✅ Generated: blog/' + slug + '/index.html');
+            console.log('Generated: blog/' + slug + '/index.html');
           });
 
-          console.log('✅ Generated static meta HTML for ' + Object.keys(pages).length + ' pages + ' + blogIndex.filter(p => !p.draft).length + ' blog posts');
-          "
+          console.log('Generated static meta HTML for ' + Object.keys(pages).length + ' pages + ' + blogIndex.filter(function(p) { return !p.draft; }).length + ' blog posts');
+          SCRIPT_EOF
+          node generate-meta.js
 
       - name: Copy Markdown Files to Release
         run: |
