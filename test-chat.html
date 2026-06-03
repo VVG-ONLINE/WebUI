@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VVG ONLINE - Chat Engine Test Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #2d3133;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 { color: #ffdd33; margin-bottom: 12px; }
+        h1 { font-size: 22px; }
+        h2 { font-size: 17px; border-bottom: 1px solid #555; padding-bottom: 6px; margin-top: 32px; }
+        h3 { font-size: 14px; color: #ccc; margin-top: 16px; }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .status-bar {
+            background: #1a1a1c;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: #aaa;
+            min-height: 34px;
+        }
+        .status-bar.active { color: #ffdd33; border-color: #ffdd33; }
+        .status-bar.error { color: #ff4444; border-color: #ff4444; }
+        .status-bar.success { color: #44ff44; border-color: #44ff44; }
+
+        button {
+            background: #ffdd33;
+            color: #2d3133;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 24px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background: #ffe866; }
+        button:disabled { background: #666; color: #999; cursor: not-allowed; }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffdd33;
+            border: 1px solid #ffdd33;
+        }
+        .btn-secondary:hover { background: rgba(255, 221, 51, 0.1); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+
+        th {
+            background: #1a1a1c;
+            color: #ffdd33;
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 2px solid #ffdd33;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #444;
+            vertical-align: top;
+            word-break: break-word;
+        }
+
+        tr:nth-child(even) td { background: #2c2c2e; }
+        tr:nth-child(odd) td { background: #3a3a3c; }
+
+        .col-num { width: 40px; text-align: center; color: #888; }
+        .col-query { max-width: 320px; }
+        .col-intent { width: 160px; }
+        .col-match { width: 60px; text-align: center; font-size: 16px; }
+        .col-time { width: 80px; text-align: right; color: #aaa; }
+
+        .pass { color: #44ff44; }
+        .fail { color: #ff4444; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .summary-card {
+            background: #1a1a1c;
+            border: 1px solid #555;
+            border-radius: 6px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .summary-card .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .summary-card .value { font-size: 24px; font-weight: 700; color: #ffdd33; margin-top: 4px; }
+        .summary-card .value.good { color: #44ff44; }
+        .summary-card .value.bad { color: #ff4444; }
+
+        .table-wrapper {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar { width: 8px; }
+        .table-wrapper::-webkit-scrollbar-track { background: #1a1a1c; }
+        .table-wrapper::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+
+        .progress-bar-container {
+            background: #1a1a1c;
+            border-radius: 4px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #ffdd33;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .section { margin-top: 32px; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .badge-intent { background: rgba(255, 221, 51, 0.15); color: #ffdd33; }
+
+        .edge-desc { color: #aaa; font-size: 11px; }
+
+        .benchmark-result {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .benchmark-item { font-size: 13px; }
+        .benchmark-item span { color: #ffdd33; font-weight: 700; }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; font-size: 11px; }
+            .col-query { max-width: 160px; }
+            .col-intent { width: 110px; font-size: 11px; }
+            table { font-size: 11px; }
+            th, td { padding: 4px 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vikas AI - Chat Engine Test Suite</h1>
+            <div>
+                <button id="btnRunTests" onclick="runAllTests()">Run Tests</button>
+                <button id="btnExport" class="btn-secondary" onclick="exportResults()" disabled>Export CSV</button>
+            </div>
+        </div>
+
+        <div id="statusBar" class="status-bar">Ready. Click "Run Tests" to begin.</div>
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar-fill"></div>
+        </div>
+
+        <div class="section">
+            <h2>Intent Classification Results</h2>
+            <div class="table-wrapper">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th class="col-num">#</th>
+                            <th class="col-query">Query</th>
+                            <th class="col-intent">Expected Intent</th>
+                            <th class="col-intent">Actual Intent</th>
+                            <th class="col-match">Match</th>
+                            <th class="col-time">Time (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Summary</h2>
+            <div id="summaryGrid" class="summary-grid"></div>
+        </div>
+
+        <div class="section">
+            <h2>Edge Cases</h2>
+            <p class="edge-desc">These tests are not counted in accuracy. They verify the engine handles unusual input gracefully.</p>
+            <div class="table-wrapper">
+                <table id="edgeTable">
+                    <thead>
+                        <tr>
+                            <th class="col-num">#</th>
+                            <th class="col-query">Query</th>
+                            <th>Description</th>
+                            <th class="col-intent">Result Intent</th>
+                            <th class="col-time">Time (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="edgeBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mobile Benchmark</h2>
+            <p class="edge-desc">Runs 10 iterations of the same query to measure inference consistency.</p>
+            <div id="benchmarkResults" class="benchmark-result">
+                <div class="benchmark-item">Status: <span id="benchStatus">Not started</span></div>
+            </div>
+            <table id="benchTable" style="margin-top: 12px; display: none;">
+                <thead>
+                    <tr>
+                        <th>Iteration</th>
+                        <th>Intent</th>
+                        <th>Confidence</th>
+                        <th>Time (ms)</th>
+                    </tr>
+                </thead>
+                <tbody id="benchBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js" defer></script>
+    <script src="assets/js/wordpiece-tokenizer.js" defer></script>
+    <script src="assets/js/modelCache.js" defer></script>
+    <script src="assets/js/chat.js?v=4" defer></script>
+
+    <script>
+        const TEST_QUERIES = [
+            { q: "What is digital transformation?", expected: "digital_transformation" },
+            { q: "How can we modernize our legacy systems?", expected: "digital_transformation" },
+            { q: "What are the benefits of cloud adoption?", expected: "digital_transformation" },
+            { q: "How do we create a digital roadmap?", expected: "digital_transformation" },
+            { q: "What does digital maturity mean?", expected: "digital_transformation" },
+            { q: "How to implement serverless architecture?", expected: "digital_transformation" },
+            { q: "What is a digital-first strategy?", expected: "digital_transformation" },
+            { q: "How to build digital culture in organization?", expected: "digital_transformation" },
+
+            { q: "What are design thinking workshops?", expected: "design_thinking" },
+            { q: "How does prototyping help innovation?", expected: "design_thinking" },
+            { q: "What is user empathy in design?", expected: "design_thinking" },
+            { q: "How long is a typical design thinking workshop?", expected: "design_thinking" },
+            { q: "What is ideation process?", expected: "design_thinking" },
+            { q: "How to run problem solving sessions?", expected: "design_thinking" },
+            { q: "What is human-centered design?", expected: "design_thinking" },
+
+            { q: "How to build team capabilities?", expected: "capability_building" },
+            { q: "What training programs do you offer?", expected: "capability_building" },
+            { q: "How to improve team skills?", expected: "capability_building" },
+            { q: "What is capability gap analysis?", expected: "capability_building" },
+            { q: "How does skill rotation work?", expected: "capability_building" },
+            { q: "What learning programs are available?", expected: "capability_building" },
+            { q: "How to develop workforce competency?", expected: "capability_building" },
+
+            { q: "How to improve SEO ranking?", expected: "digital_marketing" },
+            { q: "What is content marketing strategy?", expected: "digital_marketing" },
+            { q: "How does social media help business?", expected: "digital_marketing" },
+            { q: "What is lead nurturing?", expected: "digital_marketing" },
+            { q: "How to do A/B testing?", expected: "digital_marketing" },
+            { q: "What is growth hacking?", expected: "digital_marketing" },
+            { q: "How to optimize ecommerce conversion?", expected: "digital_marketing" },
+            { q: "What is martech stack?", expected: "digital_marketing" },
+
+            { q: "How to improve cybersecurity?", expected: "it_management" },
+            { q: "What IT infrastructure solutions do you offer?", expected: "it_management" },
+            { q: "How to protect against cyber threats?", expected: "it_management" },
+            { q: "What is IoT implementation?", expected: "it_management" },
+            { q: "How to ensure data quality?", expected: "it_management" },
+            { q: "What API management best practices?", expected: "it_management" },
+            { q: "How to manage internet of things?", expected: "it_management" },
+
+            { q: "How to develop business strategy?", expected: "strategy_innovation" },
+            { q: "What is innovation management?", expected: "strategy_innovation" },
+            { q: "How to measure ROI on projects?", expected: "strategy_innovation" },
+            { q: "What KPIs should we track?", expected: "strategy_innovation" },
+            { q: "How to build competitive advantage?", expected: "strategy_innovation" },
+            { q: "What is change management?", expected: "strategy_innovation" },
+            { q: "How to create business case?", expected: "strategy_innovation" },
+
+            { q: "What is agile methodology?", expected: "it_management" },
+            { q: "How to improve user experience?", expected: "design_thinking" },
+            { q: "What is accessibility in web design?", expected: "design_thinking" },
+            { q: "How to build an MVP?", expected: "general" },
+            { q: "What is low-code development?", expected: "capability_building" },
+            { q: "How to use CDN for performance?", expected: "it_management" },
+            { q: "What is composable architecture?", expected: "general" },
+        ];
+
+        const EDGE_CASES = [
+            { q: "helo wrld", desc: "Typos" },
+            { q: "WHAT IS DIGITAL TRANSFORMATION???", desc: "All caps" },
+            { q: "digital transformation and marketing strategy combined", desc: "Multi-intent" },
+            { q: "", desc: "Empty query" },
+            { q: "a", desc: "Single character" },
+            { q: "How can we leverage cutting-edge artificial intelligence paradigms to revolutionize our organizational digital transformation journey while simultaneously optimizing our strategic marketing campaigns for maximum return on investment across multiple business verticals and geographic regions?", desc: "Very long query" },
+            { q: "seo tips", desc: "Very short query" },
+            { q: "123 456 789", desc: "Numbers only" },
+            { q: "\u00bfQu\u00e9 es la transformaci\u00f3n digital?", desc: "Non-English" },
+            { q: "digital transformation digital transformation digital transformation", desc: "Repeated words" },
+        ];
+
+        const BENCHMARK_QUERY = "What is digital transformation?";
+        const BENCHMARK_ITERATIONS = 10;
+
+        let testResults = [];
+        let edgeResults = [];
+        let benchData = [];
+
+        const mockDotNet = {
+            invokeMethodAsync: async (method, ...args) => {
+                if (method === 'UpdateProgress') updateStatus(args[0]);
+                if (method === 'OnModelReady') updateStatus('Model ready.', 'success');
+                if (method === 'OnSystemPromptReady') {}
+                if (method === 'OnChatOnline') {}
+            }
+        };
+
+        function updateStatus(msg, type) {
+            const bar = document.getElementById('statusBar');
+            bar.textContent = msg || '...';
+            bar.className = 'status-bar' + (type ? ' ' + type : ' active');
+        }
+
+        function setProgress(pct) {
+            document.getElementById('progressBar').style.width = pct + '%';
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        async function runAllTests() {
+            const btn = document.getElementById('btnRunTests');
+            btn.disabled = true;
+            document.getElementById('btnExport').disabled = true;
+            testResults = [];
+            edgeResults = [];
+            benchData = [];
+
+            document.getElementById('resultsBody').innerHTML = '';
+            document.getElementById('edgeBody').innerHTML = '';
+            document.getElementById('benchBody').innerHTML = '';
+            document.getElementById('summaryGrid').innerHTML = '';
+            document.getElementById('benchTable').style.display = 'none';
+            document.getElementById('benchStatus').textContent = 'Waiting for model...';
+
+            updateStatus('Initializing AI engine...', 'active');
+            setProgress(0);
+
+            try {
+                await window.transformersChat.init(mockDotNet);
+            } catch (e) {
+                updateStatus('Init error: ' + e.message, 'error');
+                btn.disabled = false;
+                return;
+            }
+
+            updateStatus('Running ' + TEST_QUERIES.length + ' test queries...', 'active');
+
+            for (let i = 0; i < TEST_QUERIES.length; i++) {
+                const query = TEST_QUERIES[i];
+                const start = performance.now();
+                let result;
+                try {
+                    result = await window.transformersChat.classifyAndCorrect(query.q);
+                } catch (e) {
+                    result = { intents: ['ERROR: ' + e.message], confidences: [0] };
+                }
+                const elapsed = Math.round(performance.now() - start);
+                const actualIntent = result.intents[0] || 'none';
+                const match = actualIntent === query.expected;
+
+                testResults.push({
+                    num: i + 1,
+                    query: query.q,
+                    expected: query.expected,
+                    actual: actualIntent,
+                    match: match,
+                    time: elapsed
+                });
+
+                appendResultRow(i + 1, query.q, query.expected, actualIntent, match, elapsed);
+                setProgress(((i + 1) / TEST_QUERIES.length) * 60);
+            }
+
+            renderSummary();
+            updateStatus('Running edge case tests...', 'active');
+
+            for (let i = 0; i < EDGE_CASES.length; i++) {
+                const ec = EDGE_CASES[i];
+                const start = performance.now();
+                let result;
+                try {
+                    result = await window.transformersChat.classifyAndCorrect(ec.q);
+                } catch (e) {
+                    result = { intents: ['ERROR: ' + e.message], confidences: [0] };
+                }
+                const elapsed = Math.round(performance.now() - start);
+                const intent = result.intents[0] || 'none';
+
+                edgeResults.push({ num: i + 1, query: ec.q, desc: ec.desc, intent: intent, time: elapsed });
+                appendEdgeRow(i + 1, ec.q, ec.desc, intent, elapsed);
+                setProgress(60 + ((i + 1) / EDGE_CASES.length) * 20);
+            }
+
+            updateStatus('Running mobile benchmark...', 'active');
+            await runBenchmark();
+
+            setProgress(100);
+            updateStatus('All tests complete.', 'success');
+            btn.disabled = false;
+            document.getElementById('btnExport').disabled = false;
+        }
+
+        function appendResultRow(num, query, expected, actual, match, time) {
+            const tbody = document.getElementById('resultsBody');
+            const tr = document.createElement('tr');
+            tr.innerHTML =
+                '<td class="col-num">' + num + '</td>' +
+                '<td class="col-query">' + escapeHtml(query) + '</td>' +
+                '<td class="col-intent"><span class="badge badge-intent">' + escapeHtml(expected) + '</span></td>' +
+                '<td class="col-intent"><span class="badge badge-intent">' + escapeHtml(actual) + '</span></td>' +
+                '<td class="col-match ' + (match ? 'pass' : 'fail') + '">' + (match ? '&#10003;' : '&#10007;') + '</td>' +
+                '<td class="col-time">' + time + '</td>';
+            tbody.appendChild(tr);
+        }
+
+        function appendEdgeRow(num, query, desc, intent, time) {
+            const tbody = document.getElementById('edgeBody');
+            const tr = document.createElement('tr');
+            const displayQ = query.length > 80 ? query.substring(0, 80) + '...' : query;
+            tr.innerHTML =
+                '<td class="col-num">' + num + '</td>' +
+                '<td class="col-query" title="' + escapeHtml(query) + '">' + escapeHtml(displayQ || '(empty)') + '</td>' +
+                '<td>' + escapeHtml(desc) + '</td>' +
+                '<td class="col-intent"><span class="badge badge-intent">' + escapeHtml(intent) + '</span></td>' +
+                '<td class="col-time">' + time + '</td>';
+            tbody.appendChild(tr);
+        }
+
+        function renderSummary() {
+            const total = testResults.length;
+            const passed = testResults.filter(r => r.match).length;
+            const failed = total - passed;
+            const accuracy = total > 0 ? ((passed / total) * 100).toFixed(1) : 0;
+            const times = testResults.map(r => r.time);
+            const avgTime = times.length > 0 ? Math.round(times.reduce((a, b) => a + b, 0) / times.length) : 0;
+            const minTime = times.length > 0 ? Math.min(...times) : 0;
+            const maxTime = times.length > 0 ? Math.max(...times) : 0;
+
+            const accClass = accuracy >= 80 ? 'good' : accuracy >= 50 ? '' : 'bad';
+
+            document.getElementById('summaryGrid').innerHTML =
+                '<div class="summary-card"><div class="label">Total</div><div class="value">' + total + '</div></div>' +
+                '<div class="summary-card"><div class="label">Passed</div><div class="value good">' + passed + '</div></div>' +
+                '<div class="summary-card"><div class="label">Failed</div><div class="value ' + (failed > 0 ? 'bad' : 'good') + '">' + failed + '</div></div>' +
+                '<div class="summary-card"><div class="label">Accuracy</div><div class="value ' + accClass + '">' + accuracy + '%</div></div>' +
+                '<div class="summary-card"><div class="label">Avg Time</div><div class="value">' + avgTime + 'ms</div></div>' +
+                '<div class="summary-card"><div class="label">Min Time</div><div class="value">' + minTime + 'ms</div></div>' +
+                '<div class="summary-card"><div class="label">Max Time</div><div class="value">' + maxTime + 'ms</div></div>';
+        }
+
+        async function runBenchmark() {
+            const tbody = document.getElementById('benchBody');
+            tbody.innerHTML = '';
+            benchData = [];
+
+            for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
+                const start = performance.now();
+                let result;
+                try {
+                    result = await window.transformersChat.classifyAndCorrect(BENCHMARK_QUERY);
+                } catch (e) {
+                    result = { intents: ['ERROR'], confidences: [0] };
+                }
+                const elapsed = Math.round(performance.now() - start);
+                const intent = result.intents[0] || 'none';
+                const confidence = result.confidences[0] ? (result.confidences[0] * 100).toFixed(1) + '%' : 'N/A';
+
+                benchData.push({ iteration: i + 1, intent: intent, confidence: confidence, time: elapsed });
+
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td>' + (i + 1) + '</td>' +
+                    '<td><span class="badge badge-intent">' + escapeHtml(intent) + '</span></td>' +
+                    '<td>' + confidence + '</td>' +
+                    '<td class="col-time">' + elapsed + '</td>';
+                tbody.appendChild(tr);
+
+                setProgress(80 + ((i + 1) / BENCHMARK_ITERATIONS) * 20);
+            }
+
+            document.getElementById('benchTable').style.display = 'table';
+
+            const times = benchData.map(d => d.time);
+            const avg = Math.round(times.reduce((a, b) => a + b, 0) / times.length);
+            const min = Math.min(...times);
+            const max = Math.max(...times);
+            const stddev = Math.round(Math.sqrt(times.reduce((sum, t) => sum + Math.pow(t - avg, 2), 0) / times.length));
+
+            document.getElementById('benchStatus').textContent = 'Complete';
+            document.getElementById('benchmarkResults').innerHTML =
+                '<div class="benchmark-item">Query: <span>' + escapeHtml(BENCHMARK_QUERY) + '</span></div>' +
+                '<div class="benchmark-item">Iterations: <span>' + BENCHMARK_ITERATIONS + '</span></div>' +
+                '<div class="benchmark-item">Avg: <span>' + avg + 'ms</span></div>' +
+                '<div class="benchmark-item">Min: <span>' + min + 'ms</span></div>' +
+                '<div class="benchmark-item">Max: <span>' + max + 'ms</span></div>' +
+                '<div class="benchmark-item">StdDev: <span>' + stddev + 'ms</span></div>';
+        }
+
+        function exportResults() {
+            let csv = 'Num,Query,Expected Intent,Actual Intent,Match,Time (ms)\n';
+            for (const r of testResults) {
+                csv += r.num + ',"' + r.query.replace(/"/g, '""') + '",' + r.expected + ',' + r.actual + ',' + (r.match ? 'PASS' : 'FAIL') + ',' + r.time + '\n';
+            }
+            csv += '\nEdge Cases\nNum,Query,Description,Result Intent,Time (ms)\n';
+            for (const r of edgeResults) {
+                csv += r.num + ',"' + r.query.replace(/"/g, '""') + '",' + r.desc + ',' + r.intent + ',' + r.time + '\n';
+            }
+            csv += '\nBenchmark\nIteration,Intent,Confidence,Time (ms)\n';
+            for (const r of benchData) {
+                csv += r.iteration + ',' + r.intent + ',' + r.confidence + ',' + r.time + '\n';
+            }
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            // Include date and timestamp in filename: chat-test-results-YYYY-MM-DD-HHmmss.csv
+            const now = new Date();
+            const timestamp = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                String(now.getDate()).padStart(2, '0') + '-' +
+                String(now.getHours()).padStart(2, '0') +
+                String(now.getMinutes()).padStart(2, '0') +
+                String(now.getSeconds()).padStart(2, '0');
+            a.download = 'chat-test-results-' + timestamp + '.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

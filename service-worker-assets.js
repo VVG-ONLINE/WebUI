@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "tG9npUkp",
+  "version": "Fxd3I08I",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,12 @@ self.assetsManifest = {
       "url": "_framework/System.x4983syfn1.wasm"
     },
     {
-      "hash": "sha256-xLlolK01LR0la/86+HoyaifeEQmP+bu5vMzDSpNbqbw=",
-      "url": "_framework/VVG.Web.sef7s1z43g.wasm"
+      "hash": "sha256-ZKUwPOtCvuormreSCc1xyWMM3cD2S3jRZub8UpbqDsY=",
+      "url": "_framework/VVG.Web.g9xonsk9e7.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
-    },
-    {
-      "hash": "sha256-IFS3U9y00deCZkwsQqERKFx9WRvnpDesCuMa3lSBWEw=",
-      "url": "_framework/dotnet.0o4d7z807m.js"
     },
     {
       "hash": "sha256-i4MH1ttKidpkFY/9i4kRe+7ux5JQMZds+qXuSkJqeog=",
@@ -472,6 +468,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
       "url": "_framework/dotnet.native.rjbmzc4jpg.js"
+    },
+    {
+      "hash": "sha256-e9ulUr/42Ux6TTy7IyGdxqM/uXisbYlzIr9Vfo8dUEg=",
+      "url": "_framework/dotnet.r88vo2sa76.js"
     },
     {
       "hash": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU=",
@@ -522,7 +522,7 @@ self.assetsManifest = {
       "url": "assets/css/_canvas.scss"
     },
     {
-      "hash": "sha256-TE3y8LA8ctmxuTZ4rGWqNlkdIvIKv3kWJomXZqqbjJ8=",
+      "hash": "sha256-x5KWTfb+8LjabWdSA3tU9VnIULe/ZbOoKpRoH3j9jsw=",
       "url": "assets/css/_components.scss"
     },
     {
@@ -554,11 +554,11 @@ self.assetsManifest = {
       "url": "assets/css/_variables.scss"
     },
     {
-      "hash": "sha256-TplMeySs16mjPR//jg1ARPbJN5c8F3cz6BXyWXOAu6A=",
+      "hash": "sha256-UzW3sqw/XiKkKqlfYHE4fnaYB5neuFlLqUWXn8cqCgs=",
       "url": "assets/css/app.css"
     },
     {
-      "hash": "sha256-syD/X4DXohXOWEbR9u6vvCh45w0dFGf6+KCnsbelZaM=",
+      "hash": "sha256-/fR6zQ0lQzd/HlMgNFTBI3610RXhKKt92KIkq8MhWhA=",
       "url": "assets/css/app.css.map"
     },
     {
@@ -691,6 +691,10 @@ self.assetsManifest = {
     },
     {
       "hash": "sha256-GmLdKrprt/cHQ0KYyn8NG7UhY/cDJQb0T04coaQSQXg=",
+      "url": "assets/data/vikas-dataset-augmented-v1-backup.jsonl"
+    },
+    {
+      "hash": "sha256-/LMdRce08Br6ATNTmYss9NIAkhx1WODAQVWUggbvUmY=",
       "url": "assets/data/vikas-dataset-augmented.jsonl"
     },
     {
@@ -770,12 +774,20 @@ self.assetsManifest = {
       "url": "assets/js/boot-sequence.js"
     },
     {
-      "hash": "sha256-sW1hHiBpuzL4BrcfLQr/Z5aclfLBq9amkYgu2/u1udU=",
+      "hash": "sha256-UgQ3/Svn+a8VSXM0OX7Qj4Z9Se7eonDblfJuQegq8q0=",
+      "url": "assets/js/chat-worker.js"
+    },
+    {
+      "hash": "sha256-qG4Th75axq07xY57mwLKCw2Tnn6jZRsleJHHLb7Y68k=",
       "url": "assets/js/chat.js"
     },
     {
       "hash": "sha256-NFJWB5h1vMZ+UJj4ODHqSs/QQN7iZYETPZ3GjEJqY2w=",
       "url": "assets/js/meta.js"
+    },
+    {
+      "hash": "sha256-Ufg2vQry2tyfkK1iA96/BBTViZVM8x7X4Y2YrpsYJ8Q=",
+      "url": "assets/js/modelCache.js"
     },
     {
       "hash": "sha256-cdqdXYxOKFSZ3j6xHn2U14XnPeZk8aWK3Ni0KngpisY=",
@@ -786,15 +798,35 @@ self.assetsManifest = {
       "url": "assets/js/theme.js"
     },
     {
-      "hash": "sha256-HB7WNmrbunYy8hPFDoz6kPapp61XwVRnulO8BzXKaPw=",
+      "hash": "sha256-V8QA46rRrEQ7nMrJNVdHDTujpSGl5CTdEHyklV1Ac5E=",
+      "url": "assets/js/wordpiece-tokenizer.js"
+    },
+    {
+      "hash": "sha256-t9m+spSadqxLjNdGtfQTta4UzgGBxLV8V+91mL1ZaNA=",
       "url": "assets/models/intent-classifier.onnx"
     },
     {
-      "hash": "sha256-s0anlv6DfSAMxV/3haGB6vrHQktFiNtqZxfd3dSaMTA=",
+      "hash": "sha256-BsJRVZ2YQem/z4Q/WAaGWuZxjR4TXngbrnNnvb7s53U=",
+      "url": "assets/models/intent-classifier.onnx.bak"
+    },
+    {
+      "hash": "sha256-C6Bt6q2cMCFtbnE6ct6tnMbGCLEM/IOh9cGJ+5D4eMA=",
       "url": "assets/models/intent-labels.json"
     },
     {
-      "hash": "sha256-THxGxnNsNQE1D0JbK7XiTji5pvAszQ/Yf459ziFFdDw=",
+      "hash": "sha256-WNIu78HhSpXL7Y9Ju04Nqci5+4LTGv1ibwTrZ4TMnQg=",
+      "url": "assets/models/tokenizer-vocab.json"
+    },
+    {
+      "hash": "sha256-mE9ZtmWjspoEeq95nB8hind8EmhGMa2BUYFlJf0N3Pw=",
+      "url": "icon-192.png"
+    },
+    {
+      "hash": "sha256-WKPPx24VUnPQx0TNcu+N7vLFnMbAcF4nVfGh/n4/8/Y=",
+      "url": "icon-512.png"
+    },
+    {
+      "hash": "sha256-1YkLW3nSdXu3A973fJRYjm0p0kajoRH74m3x8LZMStI=",
       "url": "index.html"
     },
     {
@@ -996,6 +1028,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-Ytt6X82mMknnBs5cwyzFJKDiC5RR0OZQT7L9BW3j/a8=",
       "url": "sitemap.xml"
+    },
+    {
+      "hash": "sha256-/vTwhZ8FHgUB76wrd2jlpJfn8NVUCc2MtE2vEEDlz3I=",
+      "url": "test-chat.html"
     }
   ]
 };

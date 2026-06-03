@@ -47,18 +47,18 @@
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.66stpp682q.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.0o4d7z807m.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.rjbmzc4jpg.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.r88vo2sa76.js",
     "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.r2kbxkuujc.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.66stpp682q.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
     "./_framework/blazor.webassembly.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
-    "./_framework/dotnet.0o4d7z807m.js": "sha256-IFS3U9y00deCZkwsQqERKFx9WRvnpDesCuMa3lSBWEw=",
-    "./_framework/dotnet.js": "sha256-IFS3U9y00deCZkwsQqERKFx9WRvnpDesCuMa3lSBWEw=",
+    "./_framework/dotnet.js": "sha256-e9ulUr/42Ux6TTy7IyGdxqM/uXisbYlzIr9Vfo8dUEg=",
     "./_framework/dotnet.native.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
     "./_framework/dotnet.native.rjbmzc4jpg.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
+    "./_framework/dotnet.r88vo2sa76.js": "sha256-e9ulUr/42Ux6TTy7IyGdxqM/uXisbYlzIr9Vfo8dUEg=",
     "./_framework/dotnet.runtime.js": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU=",
     "./_framework/dotnet.runtime.r2kbxkuujc.js": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU="
   }
@@ -182,10 +182,12 @@
         })();
     </script>
 
-    <!-- AI Models -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0" defer></script>
     <!-- ONNX Runtime Web -->
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js" defer></script>
+    <!-- WordPiece Tokenizer (pure JS, no dependencies) -->
+    <script src="assets/js/wordpiece-tokenizer.js" defer></script>
+    <!-- Model Cache (IndexedDB) -->
+    <script src="assets/js/modelCache.js" defer></script>
     <!-- Chat Logic -->
     <script src="assets/js/chat.js" crossorigin="anonymous" defer></script>
 </body>
