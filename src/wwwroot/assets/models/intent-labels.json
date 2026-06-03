@@ -1,12 +1,9 @@
 {
-  "labels": {
-    "0": "capability_building",
-    "1": "design_thinking",
-    "2": "digital_marketing",
-    "3": "digital_transformation",
-    "4": "general",
-    "5": "it_management",
-    "6": "strategy_innovation"
-  },
-  "num_labels": 7
+  "0": "capability_building",
+  "1": "design_thinking",
+  "2": "digital_marketing",
+  "3": "digital_transformation",
+  "4": "general",
+  "5": "it_management",
+  "6": "strategy_innovation"
 }

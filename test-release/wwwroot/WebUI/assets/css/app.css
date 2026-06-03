@@ -537,7 +537,7 @@ footer a {
 #user-input {
   background: transparent;
   border: none;
-  color: var(--text);
+  color: #d9d9d9;
   width: 100%;
   outline: none;
   font-family: inherit;
