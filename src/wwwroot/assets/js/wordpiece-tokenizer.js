@@ -54,7 +54,7 @@
  * const { inputIds, attentionMask } = tokenizer.tokenize("What is digital transformation?", 128);
  */
 
-window.WordPieceTokenizer = class WordPieceTokenizer {
+(typeof self !== 'undefined' ? self : window).WordPieceTokenizer = class WordPieceTokenizer {
     constructor() {
         // Vocabulary mapping: token string → token ID
         this.vocab = null;

@@ -234,16 +234,54 @@ window.transformersChat = {
     async loadOnnxRuntime() {
         if (typeof ort === 'undefined') {
             return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js';
-                script.onload = () => {
-                    ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/';
-                    ort.env.wasm.numThreads = 1;
-                    console.log('[AI] ONNX Runtime loaded');
-                    resolve();
+                const LOCAL_PATH = 'assets/js/onnxruntime/ort.min.js';
+                const CDN_PATH = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js';
+                let loaded = false;
+
+                const tryLocal = () => {
+                    const script = document.createElement('script');
+                    script.src = LOCAL_PATH;
+                    script.onload = () => {
+                        if (loaded) return;
+                        loaded = true;
+                        ort.env.wasm.wasmPaths = '/assets/js/onnxruntime/';
+                        ort.env.wasm.numThreads = 1;
+                        console.log('[AI] ONNX Runtime loaded from local');
+                        resolve();
+                    };
+                    script.onerror = () => {
+                        if (loaded) return;
+                        console.warn('[AI] Local ONNX Runtime failed, trying CDN...');
+                        tryCdn();
+                    };
+                    document.head.appendChild(script);
                 };
-                script.onerror = () => reject(new Error('Failed to load ONNX Runtime'));
-                document.head.appendChild(script);
+
+                const tryCdn = () => {
+                    const script = document.createElement('script');
+                    script.src = CDN_PATH;
+                    script.onload = () => {
+                        if (loaded) return;
+                        loaded = true;
+                        ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/';
+                        ort.env.wasm.numThreads = 1;
+                        console.log('[AI] ONNX Runtime loaded from CDN');
+                        resolve();
+                    };
+                    script.onerror = () => {
+                        if (loaded) return;
+                        reject(new Error('Failed to load ONNX Runtime'));
+                    };
+                    document.head.appendChild(script);
+                };
+
+                tryLocal();
+
+                setTimeout(() => {
+                    if (!loaded) {
+                        reject(new Error('ONNX Runtime loading timed out'));
+                    }
+                }, 8000);
             });
         }
     },
