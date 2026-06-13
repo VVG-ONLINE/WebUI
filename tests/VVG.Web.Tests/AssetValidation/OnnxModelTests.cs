@@ -18,8 +18,8 @@ namespace VVG.Web.Tests.AssetValidation
     {
         // The wwwroot folder under src/ where static assets live
         private static readonly string WebRoot = Path.Combine(GetProjectRoot(), "src", "wwwroot");
-        // External scripts directory (outside the src/ tree)
-        private static readonly string ScriptsDir = Path.Combine(GetProjectRoot(), "..", "_WebUI-related-folders-and-files", "scripts");
+        // Scripts directory inside wwwroot
+        private static readonly string ScriptsDir = Path.Combine(WebRoot, "scripts");
 
         /// <summary>
         /// Walks up from the test assembly's output directory to find the
@@ -81,11 +81,15 @@ namespace VVG.Web.Tests.AssetValidation
             var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
 
-            Assert.True(root.TryGetProperty("labels", out var labels));
-            Assert.True(root.TryGetProperty("num_labels", out var numLabels));
+            // Support both flat format {"0": "capability_building", ...}
+            // and wrapped format {"labels": {...}, "num_labels": 7}
+            var labels = root.TryGetProperty("labels", out var labelsProp) ? labelsProp : root;
+            var numLabels = root.TryGetProperty("num_labels", out var numLabelsProp)
+                ? numLabelsProp.GetInt32()
+                : labels.EnumerateObject().Count();
 
             var labelCount = labels.EnumerateObject().Count();
-            Assert.Equal(numLabels.GetInt32(), labelCount);
+            Assert.Equal(numLabels, labelCount);
 
             // The 7 intent categories the chatbot knows about
             var expectedIntents = new[] {

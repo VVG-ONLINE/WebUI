@@ -13,10 +13,11 @@ namespace VVG.Web.Layout
 {
     /// <summary>
     /// Code-behind for MainLayout — the shell that wraps every page.
-    /// Handles the AI chatbot terminal, knowledge base loading, and
+    /// Handles the AI chat pipeline, knowledge base loading, and
     /// communication between Blazor (C#) and JavaScript (ONNX model).
     /// 
-    /// The terminal lives in the bottom-right corner and is toggled with F10.
+    /// The hero terminal is rendered in HeroBanner.razor and uses
+    /// CascadingValue to access this layout's state.
     /// </summary>
     public partial class MainLayout : LayoutComponentBase, IAsyncDisposable
     {
@@ -27,24 +28,20 @@ namespace VVG.Web.Layout
 
         // ── Fields ──
 
-        // Reference to the outermost <div> so we can attach keyboard events to it
-        private ElementReference mainLayoutDiv;
-
         // A .NET object reference sent to JavaScript so JS can call C# methods
         private DotNetObjectReference<MainLayout>? _dotNetHelper;
 
-        // Whether the AI terminal panel is visible
-        public bool isTerminalOpen = false;
+        // Whether the AI chat is online (model loaded)
         public bool IsChatOnline { get; private set; } = false;
+
+        // Whether the ONNX model is still downloading / warming up
+        public bool IsModelLoading { get; private set; } = true;
 
         // List of all messages in the chat (assistant, user, system)
         private List<ChatMessage> _chatHistory = new();
 
-        // What the user is currently typing into the terminal input
-        private string _userInput = "";
-
-        // True while the ONNX model is still downloading / warming up
-        private bool _isModelLoading = true;
+        // Exposed as read-only for HeroBanner
+        public IReadOnlyList<ChatMessage> ChatHistory => _chatHistory;
 
         // The system-level instruction given to the AI model
         private string _systemPrompt = "";
@@ -91,11 +88,19 @@ namespace VVG.Web.Layout
         {
             try
             {
+                for (int i = 0; i < 100; i++)
+                {
+                    var ready = await JS.InvokeAsync<bool>("eval",
+                        "typeof transformersChat !== 'undefined' && typeof transformersChat.init === 'function'");
+                    if (ready) break;
+                    await Task.Delay(100);
+                }
                 await JS.InvokeVoidAsync("transformersChat.init", _dotNetHelper);
             }
             catch (Exception ex)
             {
                 UpdateProgress($"// Error: {ex.Message}");
+                OnModelReady();
             }
         }
 
@@ -253,28 +258,23 @@ namespace VVG.Web.Layout
             }
         }
 
-        // ── Chat message pipeline ──
+        // ── Public API for HeroBanner ──
 
         /// <summary>
-        /// Called when the user presses Enter in the terminal input box.
-        /// Sends their message + the last 10 history entries + knowledge base
-        /// to the JavaScript ONNX model and displays the response.
+        /// Called by HeroBanner when the user submits a message.
+        /// Adds the user message to history, sends it to the ONNX model,
+        /// and adds the assistant response.
         /// </summary>
-        private async Task HandleTerminalInput(KeyboardEventArgs e)
+        public async Task<string?> SendMessage(string userText)
         {
-            // Ignore any key that isn't Enter, or empty input
-            if (e.Key != "Enter" || string.IsNullOrWhiteSpace(_userInput)) return;
+            if (string.IsNullOrWhiteSpace(userText)) return null;
 
-            // 1. Save the user's message and clear the input box
-            var userMessageText = _userInput;
+            // 1. Save the user's message
             _chatHistory.Add(new ChatMessage
             {
                 Role = "user",
-                Content = userMessageText
+                Content = userText
             });
-            _userInput = "";
-            StateHasChanged();        // Re-render the Blazor component
-            await ScrollToBottom();    // Keep the terminal scrolled to newest
 
             // 2. Build the message list JavaScript needs
             var messagesForJs = new List<JsChatMessage>
@@ -305,44 +305,15 @@ namespace VVG.Web.Layout
             _chatHistory.Add(new ChatMessage
             {
                 Role = "assistant",
-                Content = response
+                Content = response ?? ""
             });
-            StateHasChanged();
-            await ScrollToBottom();
-        }
 
-        /// <summary>
-        /// Scrolls the chat output panel to the bottom so the newest message
-        /// is always visible. Uses JavaScript eval() because Blazor doesn't
-        /// have a built-in scroll-to-element API.
-        /// </summary>
-        private async Task ScrollToBottom()
-        {
-            try
-            {
-                await JS.InvokeVoidAsync("eval",
-                    "document.getElementById('chat-output').scrollTop = " +
-                    "document.getElementById('chat-output').scrollHeight");
-            }
-            catch (JSException)
-            {
-                // Quietly ignore if the chat panel isn't rendered yet
-            }
+            StateHasChanged();
+
+            return response;
         }
 
         // ── Terminal toggling ──
-
-        /// <summary>Flips the terminal open/closed.</summary>
-        public void ToggleTerminal() => isTerminalOpen = !isTerminalOpen;
-
-        /// <summary>
-        /// Listens for F10 anywhere in the layout and toggles the terminal.
-        /// Wired up via @onkeydown on the main <div> in MainLayout.razor.
-        /// </summary>
-        public void HandleKeyDown(KeyboardEventArgs e)
-        {
-            if (e.Key == "F10") ToggleTerminal();
-        }
 
         /// <summary>
         /// Clean up the .NET object reference when the layout is destroyed,
@@ -425,6 +396,9 @@ namespace VVG.Web.Layout
         [JSInvokable]
         public void UpdateProgress(string message)
         {
+            if (!message.StartsWith("//"))
+                message = $"// {message}";
+
             if (_chatHistory.Count > 0 && _chatHistory.Last().Role == "assistant")
             {
                 // Replace the last progress line instead of stacking messages
@@ -455,7 +429,7 @@ namespace VVG.Web.Layout
         [JSInvokable]
         public void OnModelReady()
         {
-            _isModelLoading = false;
+            IsModelLoading = false;
 
             // Remove all loading/connecting placeholder messages
             _chatHistory.RemoveAll(m => m.Content.Contains("Connecting"));

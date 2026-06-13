@@ -1,95 +1,30 @@
 @* ==============================================================================
-    MainLayout.razor — the SHELL that wraps every page
-    Every page (Home, Blog, About, etc.) is rendered inside this layout.
-    It provides: system panel nav bar, AI chat terminal, and footer.
-    ============================================================================== *@
+     MainLayout.razor — the SHELL that wraps every page
+     Every page (Home, Blog, About, etc.) is rendered inside this layout.
+     It provides: system panel nav bar, hero AI terminal, and footer.
+     ============================================================================== *@
 
-@* LayoutComponentBase gives us the @Body placeholder for page content *@
 @inherits LayoutComponentBase
 @namespace VVG.Web.Layout
 
-@* Pass THIS layout to child components so they can call ToggleTerminal() *@
 <CascadingValue Value="this" IsFixed="true">
 
-    @* MetaTags handles SEO: <title>, <meta>, OG, Twitter Card, JSON-LD *@
     <MetaTags />
 
-    @* The outer div captures keyboard events (F10 toggles terminal) *@
-    <div @onkeydown="HandleKeyDown" @ref="mainLayoutDiv" tabindex="0">
+    <div tabindex="0">
 
-        @* Fixed top navigation bar with logo, nav links, clock, theme toggle *@
         <SystemPanel />
 
-        @* ===== PAGE CONTENT AREA =====
-             @Body is replaced by whatever page the router selects
-             (e.g., Home.razor, Blog.razor, Contact.razor) *@
         <main>
             <article class="content px-4">
                 @Body
             </article>
         </main>
 
-        @* ===== AI CHAT TERMINAL =====
-             Slides up from the bottom-right corner. Press F10 to toggle.
-             Uses an ONNX intent classifier to match questions to answers
-             from a 710+ entry JSONL knowledge base. *@
-        <div id="ai-terminal" class="@(isTerminalOpen ? "" : "terminal-closed")">
-            @* Clicking the header toggles the terminal open/closed *@
-            <div class="terminal-header" @onclick="ToggleTerminal">
-                <span class="terminal-title">
-                    <span class="chat-status-indicator @(IsChatOnline ? "online" : "offline")"></span>
-                    VIKAS_AI_AGENT_v0.108
-                </span>
-            </div>
-
-            <div id="terminal-body" class="terminal-body">
-
-                @* Chat message display area — scrolls to show latest messages *@
-                <div id="chat-output" class="chat-output">
-                    @foreach (var message in _chatHistory)
-                    {
-                        <div class="@(message.Role == "user" ? "user-msg" : "system-msg")">
-                            @if (message.Role == "user")
-                            {
-                                @* > prompt before user messages (terminal aesthetic) *@
-                                <span class="terminal-prompt">&gt;</span>
-                            }
-                            @* MarkupString renders HTML (e.g., bold, links) from the AI response *@
-                            <span>@((MarkupString)message.Content)</span>
-                        </div>
-                    }
-
-                    @* Loading indicator shown while ONNX model downloads (~64MB) *@
-                    @if (_isModelLoading)
-                    {
-                        <div class="system-msg">
-                            <span>// Model is loading, please wait...</span>
-                        </div>
-                    }
-                </div>
-
-                @* Input area at the bottom of the terminal *@
-                <div class="terminal-input-area">
-                    <span class="terminal-prompt">&gt;</span>
-                    <input @bind="_userInput"
-                           @bind:event="oninput"
-                           @onkeydown="HandleTerminalInput"
-                           class="terminal-input"
-                           type="text"
-                           id="user-input"
-                           placeholder="Ask Vikas AI..."
-                           autocomplete="off"
-                           disabled="@_isModelLoading" />
-                </div>
-            </div>
-        </div>
-
-        @* Container for the Three.js animated grid background *@
         <div id="canvas-container"></div>
     </div>
 </CascadingValue>
 
-@* ===== FOOTER ===== *@
 <footer class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-6">

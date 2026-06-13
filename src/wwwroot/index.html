@@ -34,12 +34,12 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" /> -->
-    <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/app.css" />
+    <link href="assets/vendor/bootstrap/bootstrap.min.css?v=2" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/bootstrap-icons.min.css?v=2" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/app.css?v=2" />
 
     <link rel="icon" type="image/png" href="assets/images/profiles/logo-2025.svg" />
-    <link href="VVG.Web.styles.css" rel="stylesheet" />
+    <link href="VVG.Web.styles.css?v=2" rel="stylesheet" />
     <link href="manifest.webmanifest" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="assets/images/profiles/logo-2025.svg" />
     <link rel="apple-touch-icon" sizes="192x192" href="assets/images/profiles/logo-2025.svg" />
@@ -62,7 +62,16 @@
     <script src="assets/js/meta.js" defer async></script>
     <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" async></script>
     <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
+    <script>
+        // Unregister any existing service workers, then register dev SW
+        navigator.serviceWorker.getRegistrations().then(regs => {
+            return Promise.all(regs.map(reg => reg.unregister()));
+        }).then(() => {
+            navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });
+        }).catch(err => {
+            console.warn('[SW] Registration skipped:', err.message);
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer async></script>
     <script type="text/javascript">
         window.hidePreloader = function () {
@@ -167,6 +176,8 @@
     <script src="assets/js/wordpiece-tokenizer.js" defer></script>
     <!-- Model Cache (IndexedDB) -->
     <script src="assets/js/modelCache.js" defer></script>
+    <!-- Random Question Picker -->
+    <script src="assets/js/randomQuestion.js" defer></script>
     <!-- Chat Logic -->
     <script src="assets/js/chat.js" crossorigin="anonymous" defer></script>
 </body>

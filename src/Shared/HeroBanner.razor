@@ -1,4 +1,5 @@
 @implements IDisposable
+@inject Microsoft.JSInterop.IJSRuntime JS
 
 @code {
     // ── Parameters (set by the parent page when using this component) ──
@@ -9,86 +10,275 @@
     public string Subtitle { get; set; } =
         "Driving you beyond growth, through unique, innovative, and result-oriented digital consulting.";
 
-    /// <summary>Left segment of the Oh-My-Posh style tag (e.g., "USER").</summary>
     [Microsoft.AspNetCore.Components.Parameter]
     public string TagUser { get; set; } = "";
 
-    /// <summary>Right segment of the Oh-My-Posh style tag (e.g., "~/home").</summary>
     [Microsoft.AspNetCore.Components.Parameter]
     public string TagPath { get; set; } = "";
 
-    // The characters that have been "typed" so far (empty = nothing shown yet)
+    // Cascading value from MainLayout — gives access to chat state and SendMessage
+    [CascadingParameter] private Layout.MainLayout Layout { get; set; } = null!;
+
+    // ── Title typewriter ──
     private string? displayedTitle;
+    private System.Timers.Timer? _titleTimer;
+    private int _titleCharIndex;
 
-    // Timer that fires every 72ms to reveal the next character
-    private System.Timers.Timer? _timer;
-    private int _charIndex;
+    // ── Placeholder typewriter ──
+    private string _placeholderProgress = "";
+    private string _placeholderTarget = "// Model is loading, please wait...";
+    private string _placeholderRandomQuestion = "// Start Transformation. Try asking 'What is digital Transformation?'";
+    private System.Timers.Timer? _placeholderTimer;
+    private int _placeholderCharIndex;
+    private int _lastHistoryCount = 0;
+    private bool _lastModelLoading = true;
+    private string _lastStatusContent = "";
 
-    protected override void OnInitialized()
+    // ── Processing message typewriter ──
+    private string _processingProgress = "";
+    private string _processingTarget = "";
+    private System.Timers.Timer? _processingTimer;
+    private int _processingCharIndex;
+    private bool _isProcessing = false;
+
+    // ── Terminal input ──
+    private string _heroInput = "";
+    private ElementReference _chatOutputContainer;
+    private const string ReadyPlaceholder = "// Start Transformation. Try asking 'What is digital Transformation?'";
+
+    protected override async Task OnInitializedAsync()
     {
-        _timer = new System.Timers.Timer(72);
-        _timer.Elapsed += TypeCharacter;
-        _timer.AutoReset = true;
+        _titleTimer = new System.Timers.Timer(72);
+        _titleTimer.Elapsed += TypeTitleCharacter;
+        _titleTimer.AutoReset = true;
+
+        _placeholderTimer = new System.Timers.Timer(50);
+        _placeholderTimer.Elapsed += TypePlaceholderCharacter;
+        _placeholderTimer.AutoReset = true;
+
+        _processingTimer = new System.Timers.Timer(50);
+        _processingTimer.Elapsed += TypeProcessingCharacter;
+        _processingTimer.AutoReset = true;
+
+        _lastHistoryCount = Layout.ChatHistory.Count;
+        _lastModelLoading = Layout.IsModelLoading;
+
+        // Fetch random question from JS
+        _placeholderRandomQuestion = await JS.InvokeAsync<string>("getRandomQuestion");
+        StartPlaceholderTypewriter(_placeholderRandomQuestion);
     }
 
     protected override void OnParametersSet()
     {
-        // Reset the typewriter whenever the Title parameter changes
         if (Title != null)
         {
-            _charIndex = 0;
+            _titleCharIndex = 0;
             displayedTitle = "";
-            _timer?.Start();
+            _titleTimer?.Start();
         }
     }
 
-    /// <summary>
-    /// Typewriter effect: each timer tick reveals one more character of the
-    /// title text, creating a "typing" animation.
-    /// </summary>
-    private void TypeCharacter(object? sender, System.Timers.ElapsedEventArgs e)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (_charIndex < Title.Length)
+        DetectPlaceholderChange();
+
+        try
         {
-            displayedTitle += Title[_charIndex];
-            _charIndex++;
-            InvokeAsync(StateHasChanged); // Must use InvokeAsync — timer fires on a non-UI thread
+            await JS.InvokeVoidAsync("eval",
+                "$('.hero-terminal-row-2').scrollTop = $('.hero-terminal-row-2')[0].scrollHeight");
+        }
+        catch (Microsoft.JSInterop.JSException)
+        {
+        }
+    }
+
+    private void DetectPlaceholderChange()
+    {
+        var historyChanged = Layout.ChatHistory.Count != _lastHistoryCount;
+        var loadingChanged = Layout.IsModelLoading != _lastModelLoading;
+
+        var currentStatus = "";
+        for (int i = Layout.ChatHistory.Count - 1; i >= 0; i--)
+        {
+            var msg = Layout.ChatHistory[i];
+            if (msg.Role == "assistant" && msg.Content.StartsWith("//"))
+            {
+                currentStatus = msg.Content;
+                break;
+            }
+        }
+
+        var statusContentChanged = currentStatus != _lastStatusContent;
+
+        if (!historyChanged && !loadingChanged && !statusContentChanged && _placeholderCharIndex > 0)
+            return;
+
+        _lastHistoryCount = Layout.ChatHistory.Count;
+        _lastModelLoading = Layout.IsModelLoading;
+        _lastStatusContent = currentStatus;
+
+        if (!Layout.IsModelLoading)
+        {
+            StartPlaceholderTypewriter(ReadyPlaceholder);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(currentStatus))
+        {
+            StartPlaceholderTypewriter(currentStatus);
+        }
+        else if (loadingChanged)
+        {
+            // Reset placeholder to random question when model starts loading and there's no status message
+            StartPlaceholderTypewriter(_placeholderRandomQuestion);
+        }
+    }
+
+    private void StartPlaceholderTypewriter(string target)
+    {
+        // Only skip if target is the same and already fully typed
+        if (target == _placeholderTarget && _placeholderCharIndex >= target.Length)
+            return;
+
+        _placeholderTarget = target;
+        _placeholderProgress = target.Length > 0 ? target[0].ToString() : "";
+        _placeholderCharIndex = target.Length > 0 ? 1 : 0;
+        _placeholderTimer?.Start();
+    }
+
+    private void TypePlaceholderCharacter(object? sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (_placeholderCharIndex < _placeholderTarget.Length)
+        {
+            _placeholderProgress += _placeholderTarget[_placeholderCharIndex];
+            _placeholderCharIndex++;
+            InvokeAsync(StateHasChanged);
         }
         else
         {
-            _timer?.Stop();
+            _placeholderTimer?.Stop();
+        }
+    }
+
+    private void TypeTitleCharacter(object? sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (_titleCharIndex < Title.Length)
+        {
+            displayedTitle += Title[_titleCharIndex];
+            _titleCharIndex++;
+            InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+            _titleTimer?.Stop();
+        }
+    }
+
+    private async Task SubmitHeroInput()
+    {
+        if (string.IsNullOrWhiteSpace(_heroInput)) return;
+
+        _isProcessing = true;
+        _processingTarget = "// Processing query...";
+        _processingProgress = "";
+        _processingCharIndex = 0;
+        _processingTimer?.Start();
+
+        await Task.Delay(800);
+
+        await Layout.SendMessage(_heroInput);
+
+        _heroInput = "";
+    }
+
+    private async Task HandleHeroKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SubmitHeroInput();
+        }
+    }
+
+    private string GetPlaceholder()
+    {
+        if (!Layout.IsModelLoading)
+            return ReadyPlaceholder;
+        return _placeholderProgress;
+    }
+
+    private void TypeProcessingCharacter(object? sender, System.Timers.ElapsedEventArgs e)
+    {
+        if (_processingCharIndex < _processingTarget.Length)
+        {
+            _processingProgress += _processingTarget[_processingCharIndex];
+            _processingCharIndex++;
+            InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+            _processingTimer?.Stop();
         }
     }
 
     public void Dispose()
     {
-        _timer?.Dispose();
+        _titleTimer?.Dispose();
+        _placeholderTimer?.Dispose();
+        _processingTimer?.Dispose();
     }
 }
 
-<!-- The hero banner with Oh-My-Posh tag, typewriter title, subtitle, and CTA button -->
 <header class="container py-5 hero">
     <div class="row align-items-center">
         <div class="col-lg-8 col-12">
-            <!-- Terminal-style tag: USER ~/path -->
             <div class="terminal-tag-group mb-3">
-                <div class="tag-segment tag-user">@TagUser</div>
-                <div class="tag-segment tag-path">@TagPath</div>
-            </div>
-
-            <!-- Title rendered character by character, with a blinking cursor -->
+                <div class="tag-segment tag-user">// SYSTEM_ARCHITECTURE</div><!--!-->
+                <div class="tag-segment tag-path">// EVENT_DRIVEN_ARCHITECTURE</div>
+            </div><!--!-->
             <h1 class="hero-title"><span>@displayedTitle</span><span class="blink">_</span></h1>
             <p class="lead fs-4 opacity-75 serif">@Subtitle</p>
+            <div class="terminal-tag-group p-2">
+                <div class="tag-segment tag-user">// VIKAS_AI_INTERFACE</div>
+                <div class="tag-segment tag-path">// VERSION_0.0.108</div>
+            </div>
+            <div class="hero-terminal p-2">
+                <div class="hero-terminal-row-1">
+                    <span class="chat-status-indicator @(Layout.IsChatOnline ? "online" : "offline")"></span>
+                    <div class="hero-terminal-input-group">
+                        <input @bind="_heroInput" @bind:event="oninput" @onkeydown="HandleHeroKeyDown"
+                               class="hero-terminal-input" type="text" placeholder="@GetPlaceholder()" autocomplete="off"
+                               disabled="@Layout.IsModelLoading" />
+                    </div>
+                    <button @onclick="SubmitHeroInput" class="hero-terminal-submit"
+                            disabled="@Layout.IsModelLoading || string.IsNullOrWhiteSpace(_heroInput)">
+                        →
+                    </button>
+                </div>
 
-            <div class="mt-4">
-                <!-- Primary CTA button -->
-                <NavLink href="Services" class="btn btn-vvg me-3">Start_Transformation</NavLink>
+                <div class="hero-terminal-row-2" @ref="_chatOutputContainer">
+                    @foreach (var message in Layout.ChatHistory)
+                    {
+                        @if (message.Role == "assistant" && message.Content.StartsWith("//"))
+                        {
+                            continue;
+                        }
+                        <div class="@(message.Role == "user" ? "user-msg" : "system-msg")">
+                            @if (message.Role == "user")
+                            {
+                                <span class="terminal-prompt">&gt;</span>
+                            }
+                            <span>@((Microsoft.AspNetCore.Components.MarkupString)message.Content)</span>
+                        </div>
+                    }
 
-                <!-- Terminal-style command hint -->
-                <code class="d-block d-md-inline mt-3 mt-md-0">
-                    <span class="text-dark bg-accent px-2 py-1">&gt;</span>
-                    <span class="text-white bg-dark px-2 py-1"> locate --services --all</span>
-                </code>
+                    @if (_isProcessing)
+                    {
+                        <div class="system-msg processing-msg">
+                            <span class="terminal-prompt">&gt;</span>
+                            <span>@((Microsoft.AspNetCore.Components.MarkupString)_processingProgress)</span>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>

@@ -32,10 +32,17 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <!-- Add this temporarily during development -->
-    <BlazorEnableCompression>false</BlazorEnableCompression>
-</PropertyGroup>
 
+  <!--
+    Post-build: remove compressed framework assets and manifest entries.
+    The DevServer's gzip template substitution ({0} -> gzip) is buggy in .NET 10,
+    returning 0 bytes instead of falling back to uncompressed.
+  -->
+  <Target Name="RemoveCompressedFrameworkAssets" AfterTargets="Build">
+    <PropertyGroup>
+      <_Script>$(MSBuildProjectDirectory)/../scripts/remove-compressed-endpoints.py</_Script>
+    </PropertyGroup>
+    <Exec Command='python3 "$(_Script)" "$(IntermediateOutputPath)"' />
+  </Target>
 
 </Project>

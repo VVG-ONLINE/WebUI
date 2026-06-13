@@ -1,9 +1,8 @@
 ﻿/// <summary>
 /// bUnit component tests for MainLayout — the shell that wraps every page.
 ///
-/// These tests verify that the AI terminal, chat interface, content area,
-/// and footer all render correctly. JS interop calls are mocked so the
-/// tests run without a real browser or ONNX model.
+/// These tests verify that the content area and footer render correctly.
+/// JS interop calls are mocked so the tests run without a real browser.
 ///
 /// bUnit provides a simulated DOM (Find/FindAll), mocks JS interop
 /// (JSInterop.Setup...), and renders Blazor components in-memory.
@@ -34,6 +33,7 @@ namespace VVG.Web.Tests.Components
             JSInterop.SetupVoid("transformersChat.init", _ => true).SetVoidResult();
             JSInterop.SetupVoid("eval", _ => true).SetVoidResult();
             JSInterop.SetupVoid("setPageMetadata", _ => true).SetVoidResult();
+            JSInterop.Setup<string>("transformersChat.generate", _ => true).SetResult("// Response");
 
             var mockHandler = new MockHttpHandler();
             var httpClient = new HttpClient(mockHandler) { BaseAddress = new Uri("http://localhost/") };
@@ -41,71 +41,6 @@ namespace VVG.Web.Tests.Components
             Services.AddSingleton(httpClient);
             Services.AddSingleton<ThemeService>(sp => new ThemeService(JSInterop.JSRuntime));
             Services.AddSingleton<MetadataService>(sp => new MetadataService(httpClient, JSInterop.JSRuntime));
-        }
-
-        [Fact]
-        public void MainLayout_Renders_AITerminal()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var terminal = cut.Find("#ai-terminal");
-            Assert.NotNull(terminal);
-        }
-
-        [Fact]
-        public void MainLayout_Terminal_Has_Correct_Header()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var header = cut.Find(".terminal-title");
-            Assert.NotNull(header);
-            Assert.Contains("VIKAS_AI_AGENT", header.TextContent);
-        }
-
-        [Fact]
-        public void MainLayout_Terminal_Closed_Has_Correct_Class()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var terminal = cut.Find("#ai-terminal");
-            Assert.Contains("terminal-closed", terminal.ClassList);
-        }
-
-        [Fact]
-        public void MainLayout_Renders_Chat_Output_Area()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var chatOutput = cut.Find("#chat-output");
-            Assert.NotNull(chatOutput);
-        }
-
-        [Fact]
-        public void MainLayout_Renders_User_Input()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var input = cut.Find("#user-input");
-            Assert.NotNull(input);
-            Assert.Equal("Ask Vikas AI...", input.GetAttribute("placeholder"));
-        }
-
-        [Fact]
-        public void MainLayout_Input_Has_Autocomplete_Off()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var input = cut.Find("#user-input");
-            Assert.Equal("off", input.GetAttribute("autocomplete"));
-        }
-
-        [Fact]
-        public void MainLayout_Renders_Terminal_Prompt()
-        {
-            RegisterRequiredServices();
-            var cut = RenderComponent<MainLayout>();
-            var prompts = cut.FindAll(".terminal-prompt");
-            Assert.NotEmpty(prompts);
         }
 
         [Fact]

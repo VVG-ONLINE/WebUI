@@ -22,11 +22,12 @@
 
 @* -- HERO BANNER: Shared component with typewriter animation and Oh-My-Posh terminal tags -- *@
 <HeroBanner Title="Transform Your Vision into Reality."
-    Subtitle="Driving you beyond growth, through unique, innovative, and result-oriented digital consulting."
-    TagUser="// SYSTEM_ARCHITECTURE" TagPath="// EVENT_DRIVEN_ARCHITECTURE" />
+            Subtitle="Driving you beyond growth, through unique, innovative, and result-oriented digital consulting."
+            TagUser="// SYSTEM_ARCHITECTURE" TagPath="// EVENT_DRIVEN_ARCHITECTURE" />
 
 @* -- CORE SERVICES GRID: 3-column layout listing the main service categories -- *@
 <section class="container py-5" id="services">
+    <h2 class="display-4 mb-5">Top Services</h2>
     <div class="row g-0 border-top border-start">
         <div class="col-md-4 p-4 border-bottom border-end">
             <span class="mono">01.</span>
@@ -39,91 +40,91 @@
             <h3 class="mt-3">Digital Transformation</h3>
             <p class="opacity-75 small">Leverage technology to implement and sustain transformations that create lasting
                 value.</p>
+            </div>
+            <div class="col-md-4 p-4 border-bottom border-end">
+                <span class="mono">03.</span>
+                <h3 class="mt-3">Capability Building</h3>
+                <p class="opacity-75 small">Strengthen your team's skills to ensure changes are sustained internally.</p>
+            </div>
         </div>
-        <div class="col-md-4 p-4 border-bottom border-end">
-            <span class="mono">03.</span>
-            <h3 class="mt-3">Capability Building</h3>
-            <p class="opacity-75 small">Strengthen your team's skills to ensure changes are sustained internally.</p>
+        <div>
+            @* Terminal-style CTA button linking to the full services page *@
+            <NavLink href="services" class="btn btn-vvg text-center mt-5">Explore All Services</NavLink>
         </div>
-    </div>
-    <div>
-        @* Terminal-style CTA button linking to the full services page *@
-        <NavLink href="services" class="btn btn-vvg text-center mt-5">Explore All Services</NavLink>
-    </div>
-</section>
+    </section>
 
-@* -- LATEST INSIGHTS: Shows 3 most recent non-draft blog posts -- *@
-<section class="py-5" id="insights">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-5">
-            <h2 class="display-4">Latest Insights</h2>
-            <NavLink href="BlogArchives" class="mono  mb-2">View Archive</NavLink>
-        </div>
-        @if (latestPosts is not null)
-        {
-            <div class="row g-4">
-                @* Loop through up to 3 latest posts and render each as a card *@
-                @foreach (var post in latestPosts)
-                {
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 p-4">
-                            <div class="mb-3"><span class="insight-tag">@post.Category</span></div>
-                            <h4 class="serif mb-3"><a href="blog/@post.Slug" class="">@post.Title</a></h4>
-                            <p class="small opacity-75 mb-4">@post.Excerpt</p>
-                            <div class="mt-auto mono border-top pt-3 d-flex justify-content-between">
-                                <span class="opacity-75">@post.TimeToRead min read</span>
-                                <a href="blog/@post.Slug" class="">READ -></a>
+    @* -- LATEST INSIGHTS: Shows 3 most recent non-draft blog posts -- *@
+    <section class="py-5" id="insights">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <h2 class="display-4">Latest Insights</h2>
+                @* <NavLink href="BlogArchives" class="mono mb-2">View Archive</NavLink> *@
+            </div>
+            @if (latestPosts is not null)
+            {
+                <div class="row g-4">
+                    @* Loop through up to 3 latest posts and render each as a card *@
+                    @foreach (var post in latestPosts)
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 p-4">
+                                <div class="mb-3"><span class="insight-tag">@post.Category</span></div>
+                                <h4 class="serif mb-3"><a href="blog/@post.Slug" class="">@post.Title</a></h4>
+                                <p class="small opacity-75 mb-4">@post.Excerpt</p>
+                                <div class="mt-auto mono border-top pt-3 d-flex justify-content-between">
+                                    <span class="opacity-75">@post.TimeToRead min read</span>
+                                    <a href="blog/@post.Slug" class="">READ -></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
+            }
+            else
+            {
+                @* Fallback while blog data loads from JSON *@
+                <p>Loading insights...</p>
+            }
+        </div>
+    </section>
+
+    @* -- OPERATIONAL LOGIC: Visual pipeline showing how VVG ONLINE works (4-step event-driven workflow) -- *@
+    @* This uses the workflow-container CSS + JS animation system (see redesign.js) *@
+    <section class="container py-5" id="workflow">
+        <div class="mb-5">
+            <div class="terminal-tag-group">
+                <div class="tag-segment tag-user">// Event_Driven_Architecture</div>
+                <div class="tag-segment tag-path">// Result_Oriented_Actions</div>
             </div>
-        }
-        else
-        {
-            @* Fallback while blog data loads from JSON *@
-            <p>Loading insights...</p>
-        }
-    </div>
-</section>
+            <h2 class="display-5">Operational Logic</h2>
+        </div>
 
-@* -- OPERATIONAL LOGIC: Visual pipeline showing how VVG ONLINE works (4-step event-driven workflow) -- *@
-@* This uses the workflow-container CSS + JS animation system (see redesign.js) *@
-<section class="container py-5" id="workflow">
-    <div class="mb-5">
-        <div class="terminal-tag-group">
-            <div class="tag-segment tag-user">// Event_Driven_Architecture</div>
-            <div class="tag-segment tag-path">// Result_Oriented_Actions</div>
+        <div class="workflow-container">
+            <div class="workflow-node">
+                <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x01: TRIGGER</code>
+                <h5 class="serif">Event Identification</h5>
+                <p class="small mb-0">We capture real-time business signals and data triggers.</p>
+            </div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-node">
+                <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x02: PROCESS</code>
+                <h5 class="serif">Strategic Analysis</h5>
+                <p class="small mb-0">Decoupled processing ensures agile response to market shifts.</p>
+            </div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-node">
+                <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x03: EXECUTE</code>
+                <h5 class="serif">Result-Oriented Action</h5>
+                <p class="small mb-0">Automated workflows turning insights into measurable ROI.</p>
+            </div>
+            <div class="workflow-connector"></div>
+            <div class="workflow-node">
+                <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x04: OUTPUT</code>
+                <h5 class="serif">Continuous Evolution</h5>
+                <p class="small mb-0">System feedback loops drive permanent business growth.</p>
+            </div>
         </div>
-        <h2 class="display-5">Operational Logic</h2>
-    </div>
-
-    <div class="workflow-container">
-        <div class="workflow-node">
-            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x01: TRIGGER</code>
-            <h5 class="serif">Event Identification</h5>
-            <p class="small mb-0">We capture real-time business signals and data triggers.</p>
-        </div>
-        <div class="workflow-connector"></div>
-        <div class="workflow-node">
-            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x02: PROCESS</code>
-            <h5 class="serif">Strategic Analysis</h5>
-            <p class="small mb-0">Decoupled processing ensures agile response to market shifts.</p>
-        </div>
-        <div class="workflow-connector"></div>
-        <div class="workflow-node">
-            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x03: EXECUTE</code>
-            <h5 class="serif">Result-Oriented Action</h5>
-            <p class="small mb-0">Automated workflows turning insights into measurable ROI.</p>
-        </div>
-        <div class="workflow-connector"></div>
-        <div class="workflow-node">
-            <code class="d-block mb-2 text-warning bg-dark w-75 p-1">0x04: OUTPUT</code>
-            <h5 class="serif">Continuous Evolution</h5>
-            <p class="small mb-0">System feedback loops drive permanent business growth.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
 @* ============================================================
     CODE-BEHIND: Fetch latest blog posts and set page metadata
@@ -143,7 +144,7 @@
             Description = "Transform your business with VVG ONLINE's cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.",
             Keywords = "digital business consulting, technology consulting, digital transformation, innovation, business strategy, VVG ONLINE",
             Image = cardUrl,
-            
+
             OgType = "website",
             OgTitle = "VVG ONLINE - Digital Business Consulting",
             OgDescription = "Transform your enterprise with cutting-edge digital business consulting. We decode complexity, design strategies, and deliver results.",

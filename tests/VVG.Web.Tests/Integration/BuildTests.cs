@@ -77,9 +77,9 @@ namespace VVG.Web.Tests.Integration
         [Fact]
         public void JSONL_Dataset_Accessible_From_Web()
         {
-            var jsonlPath = Path.Combine(ProjectRoot, "..", "_WebUI-related-folders-and-files", "scripts", "vikas-dataset-augmented.jsonl");
+            var jsonlPath = Path.Combine(ProjectRoot, "src", "wwwroot", "scripts", "vikas-dataset-augmented.jsonl");
             Assert.True(File.Exists(jsonlPath), "JSONL dataset not found: " + jsonlPath);
-
+            
             var lines = File.ReadAllLines(jsonlPath);
             var nonEmptyLines = lines.Where(l => !string.IsNullOrWhiteSpace(l)).ToArray();
             Assert.True(nonEmptyLines.Length >= 700, "Expected 700+ Q&A entries, found " + nonEmptyLines.Length);
