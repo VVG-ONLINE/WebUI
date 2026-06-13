@@ -1,17 +1,10 @@
 import json, os, sys, glob
 
-obj_dir = os.path.normpath(sys.argv[1])
-compressed_dir = os.path.join(obj_dir, 'compressed')
-
-for gz in glob.glob(os.path.join(compressed_dir, '*{0}*.gz')):
-    os.remove(gz)
-    print(f'Removed: {gz}')
-
-for manifest in ['staticwebassets.development.json', 'staticwebassets.build.endpoints.json']:
-    path = os.path.join(obj_dir, manifest)
-    if not os.path.exists(path):
-        continue
-    with open(path) as f:
+def clean_manifest(manifest_path):
+    if not os.path.exists(manifest_path):
+        print(f'Skipped (not found): {manifest_path}')
+        return
+    with open(manifest_path) as f:
         data = json.load(f)
     if 'Endpoints' in data:
         data['Endpoints'] = [
@@ -29,6 +22,26 @@ for manifest in ['staticwebassets.development.json', 'staticwebassets.build.endp
                 elif isinstance(node[k], dict):
                     clean_children(node[k])
         clean_children(data['Root'])
-    with open(path, 'w') as f:
+    with open(manifest_path, 'w') as f:
         json.dump(data, f, separators=(',', ':'))
-    print(f'Cleaned compressed endpoints from {manifest}')
+    print(f'Cleaned: {manifest_path}')
+
+obj_dir = os.path.normpath(sys.argv[1])
+compressed_dir = os.path.join(obj_dir, 'compressed')
+
+for gz in glob.glob(os.path.join(compressed_dir, '*.gz')):
+    os.remove(gz)
+    print(f'Removed: {gz}')
+
+# Clean manifests in IntermediateOutputPath (obj/)
+for manifest in ['staticwebassets.development.json', 'staticwebassets.build.endpoints.json']:
+    clean_manifest(os.path.join(obj_dir, manifest))
+
+# Also clean manifests in OutputPath (bin/) if provided
+if len(sys.argv) > 2:
+    bin_dir = os.path.normpath(sys.argv[2])
+    for manifest in ['VVG.Web.staticwebassets.endpoints.json', 'VVG.Web.staticwebassets.runtime.json']:
+        clean_manifest(os.path.join(bin_dir, manifest))
+    for gz in glob.glob(os.path.join(bin_dir, 'wwwroot', '**', '*.gz'), recursive=True):
+        os.remove(gz)
+        print(f'Removed: {gz}')

@@ -3,14 +3,12 @@
 //
 // This is the first code that runs when the app starts in the browser.
 // It sets up the dependency injection container, registers services,
-// configures static file MIME types, and launches the Blazor app.
+// and launches the Blazor app.
 // ==============================================================================
 
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using VVG.Web;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.StaticFiles;
 
 // Create the host builder — this is the standard way to bootstrap a Blazor WASM app
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -32,16 +30,6 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddScoped<VVG.Web.Services.MetadataService>();
 builder.Services.AddScoped<VVG.Web.Services.ThemeService>();
 builder.Services.AddScoped<VVG.Web.Services.CardImageService>();
-
-// Tell the server which MIME types to use for serving .onnx (AI model) and .json files
-// Without this, the browser may reject these files as unknown types
-builder.Services.Configure<StaticFileOptions>(options =>
-{
-    var provider = new FileExtensionContentTypeProvider();
-    provider.Mappings[".onnx"] = "application/octet-stream";
-    provider.Mappings[".json"] = "application/json";
-    options.ContentTypeProvider = provider;
-});
 
 // Build the host and start the Blazor app — this blocks until the app closes
 await builder.Build().RunAsync();

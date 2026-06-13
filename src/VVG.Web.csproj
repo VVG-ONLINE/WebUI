@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <BlazorEnableCompression>false</BlazorEnableCompression>
   </PropertyGroup>
   <PropertyGroup>
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
@@ -42,7 +43,7 @@
     <PropertyGroup>
       <_Script>$(MSBuildProjectDirectory)/../scripts/remove-compressed-endpoints.py</_Script>
     </PropertyGroup>
-    <Exec Command='python3 "$(_Script)" "$(IntermediateOutputPath)"' />
+    <Exec Command='python3 "$(_Script)" "$(IntermediateOutputPath)" "$(OutputPath)"' />
   </Target>
 
 </Project>
