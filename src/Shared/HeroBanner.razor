@@ -27,7 +27,7 @@
     // ── Placeholder typewriter ──
     private string _placeholderProgress = "";
     private string _placeholderTarget = "// Model is loading, please wait...";
-    private string _placeholderRandomQuestion = "// Start Transformation. Try asking 'What is digital Transformation?'";
+    private string _placeholderRandomQuestion = "// Try asking 'What is digital Transformation?'";
     private System.Timers.Timer? _placeholderTimer;
     private int _placeholderCharIndex;
     private int _lastHistoryCount = 0;
@@ -44,7 +44,7 @@
     // ── Terminal input ──
     private string _heroInput = "";
     private ElementReference _chatOutputContainer;
-    private const string ReadyPlaceholder = "// Start Transformation. Try asking 'What is digital Transformation?'";
+    private string _readyPlaceholderText = "// Try asking 'What is digital Transformation?'";
 
     protected override async Task OnInitializedAsync()
     {
@@ -65,6 +65,7 @@
 
         // Fetch random question from JS
         _placeholderRandomQuestion = await JS.InvokeAsync<string>("getRandomQuestion");
+        _readyPlaceholderText = _placeholderRandomQuestion;
         StartPlaceholderTypewriter(_placeholderRandomQuestion);
     }
 
@@ -119,7 +120,8 @@
 
         if (!Layout.IsModelLoading)
         {
-            StartPlaceholderTypewriter(ReadyPlaceholder);
+            StartPlaceholderTypewriter(_readyPlaceholderText);
+            _ = RefreshReadyPlaceholderAsync();
             return;
         }
 
@@ -189,6 +191,8 @@
         await Layout.SendMessage(_heroInput);
 
         _heroInput = "";
+
+        _ = RefreshReadyPlaceholderAsync();
     }
 
     private async Task HandleHeroKeyDown(KeyboardEventArgs e)
@@ -202,8 +206,21 @@
     private string GetPlaceholder()
     {
         if (!Layout.IsModelLoading)
-            return ReadyPlaceholder;
+            return _readyPlaceholderText;
         return _placeholderProgress;
+    }
+
+    private async Task RefreshReadyPlaceholderAsync()
+    {
+        try
+        {
+            var fresh = await JS.InvokeAsync<string>("getFreshRandomQuestion");
+            if (!string.IsNullOrEmpty(fresh))
+                _readyPlaceholderText = fresh;
+        }
+        catch
+        {
+        }
     }
 
     private void TypeProcessingCharacter(object? sender, System.Timers.ElapsedEventArgs e)
