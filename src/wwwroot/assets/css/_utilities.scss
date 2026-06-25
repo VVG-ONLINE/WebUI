@@ -47,7 +47,7 @@ a:not(.no-cursor):not(.social-link):hover::after {
   display: inline-flex;
   align-items: center;
   padding: 0.3rem 0.6rem;
-  background: var(--bg-secondary);
+  background: var(--text);
   position: relative;
   overflow: hidden;
   transition: background 0.2s ease;
@@ -64,7 +64,7 @@ a:not(.no-cursor):not(.social-link):hover::after {
   }
 
   &:hover {
-    background: var(--bg-hover);
+    background: rgba(var(--text), 0.8);
 
     &::before {
       height: 100%;

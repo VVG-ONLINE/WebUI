@@ -33,6 +33,15 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Watch Include="wwwroot\assets\css\**\*.scss" />
+  </ItemGroup>
+
+
+  <!-- Pre-build: compile SCSS into CSS -->
+  <Target Name="CompileScss" BeforeTargets="BeforeBuild">
+    <Exec Command="sass wwwroot/assets/css:wwwroot/assets/css" />
+  </Target>
 
   <!--
     Post-build: remove compressed framework assets and manifest entries.

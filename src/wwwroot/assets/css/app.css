@@ -869,7 +869,7 @@ a:not(.no-cursor):not(.social-link):hover::after {
   display: inline-flex;
   align-items: center;
   padding: 0.3rem 0.6rem;
-  background: var(--bg-secondary);
+  background: var(--text);
   position: relative;
   overflow: hidden;
   transition: background 0.2s ease;
@@ -916,3 +916,5 @@ a:not(.no-cursor):not(.social-link):hover::after {
   border-bottom-color: var(--text);
   border-right-color: var(--text);
 }
+
+/*# sourceMappingURL=app.css.map */
