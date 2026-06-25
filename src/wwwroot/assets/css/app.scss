@@ -39,7 +39,7 @@
 // @import 'preloader';
 
 // 6. Utility classes
-// @import 'utilities';
+@import 'utilities';
 
 // Note: We are no longer importing `_main.scss` or `_theme.scss` as their
 // contents have been refactored into the new, more organized partials.
