@@ -101,6 +101,7 @@ namespace VVG.Web.Layout
             {
                 UpdateProgress($"// Error: {ex.Message}");
                 OnModelReady();
+                OnChatOnline();
             }
         }
 

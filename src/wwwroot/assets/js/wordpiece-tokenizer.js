@@ -86,7 +86,7 @@
      */
     async loadVocab(vocabUrl) {
         try {
-            const response = await fetch(vocabUrl);
+            const response = await fetch(vocabUrl, { signal: AbortSignal.timeout(30000) });
             if (!response.ok) {
                 throw new Error(`Failed to load vocab: HTTP ${response.status}`);
             }

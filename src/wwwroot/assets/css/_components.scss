@@ -283,7 +283,7 @@
 }
 
 .user-msg {
-  color: var(--text);
+  color: var(--light);
   margin-bottom: 10px;
 }
 
@@ -318,7 +318,7 @@
 // --- Hero Terminal (AI chat in header) ---
 .hero-terminal {
   border: 1px solid var(--accent);
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.90);
   color: var(--accent);
   font-family: "IBM Plex Mono", monospace;
   box-shadow: 0 0 15px rgba(255, 221, 51, 0.1);

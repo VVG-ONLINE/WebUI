@@ -44,3 +44,18 @@ window.getFreshRandomQuestion = async function () {
         return _fallbackQuestion;
     }
 };
+
+window.extractRawFromPlaceholder = function (formatted) {
+    const match = formatted.match(/'([^']+)'/);
+    return match ? match[1] : formatted;
+};
+
+window.getFreshRawQuestion = async function () {
+    try {
+        const lines = await _fetchAndParse();
+        return _pickRandom(lines);
+    } catch (error) {
+        console.error('Error fetching fresh raw question:', error);
+        return "What is digital Transformation?";
+    }
+};

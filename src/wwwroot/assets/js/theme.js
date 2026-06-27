@@ -36,6 +36,9 @@ window.vvg.theme = (function () {
         return t;
     }
 
+    // Auto-apply saved theme immediately so data-theme is set on <html> before any Blazor code runs
+    apply(current());
+
     // Reveal only these three functions to outside code
     return { current, apply, toggle };
 })();

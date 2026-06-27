@@ -45,6 +45,7 @@
     private string _heroInput = "";
     private ElementReference _chatOutputContainer;
     private string _readyPlaceholderText = "// Try asking 'What is digital Transformation?'";
+    private string _currentRawQuestion = "What is digital Transformation?";
 
     protected override async Task OnInitializedAsync()
     {
@@ -66,6 +67,7 @@
         // Fetch random question from JS
         _placeholderRandomQuestion = await JS.InvokeAsync<string>("getRandomQuestion");
         _readyPlaceholderText = _placeholderRandomQuestion;
+        _currentRawQuestion = await JS.InvokeAsync<string>("extractRawFromPlaceholder", _placeholderRandomQuestion);
         StartPlaceholderTypewriter(_placeholderRandomQuestion);
     }
 
@@ -178,6 +180,9 @@
 
     private async Task SubmitHeroInput()
     {
+        if (string.IsNullOrWhiteSpace(_heroInput))
+            _heroInput = _currentRawQuestion;
+
         if (string.IsNullOrWhiteSpace(_heroInput)) return;
 
         _isProcessing = true;
@@ -216,7 +221,10 @@
         {
             var fresh = await JS.InvokeAsync<string>("getFreshRandomQuestion");
             if (!string.IsNullOrEmpty(fresh))
+            {
                 _readyPlaceholderText = fresh;
+                _currentRawQuestion = await JS.InvokeAsync<string>("extractRawFromPlaceholder", fresh);
+            }
         }
         catch
         {
@@ -254,14 +262,16 @@
             </div><!--!-->
             <h1 class="hero-title"><span>@displayedTitle</span><span class="blink">_</span></h1>
             <p class="lead fs-4 opacity-75 serif">@Subtitle</p>
-            <div class="terminal-tag-group p-2">
-                <div class="tag-segment tag-user">// VIKAS_AI_INTERFACE</div>
-                <div class="tag-segment tag-path">// VERSION_0.0.108</div>
-            </div>
             <div class="hero-terminal p-2">
                 <div class="p-2">
-                    <img src="./assets/images/_vikas-ai-logo-1.svg" alt="Vikas AI Logo" loading="lazy" class="img-fluid" style="max-height: 32px;"><span class="ms-2">// VIKAS_AI_INIT_v_0_0_108</span>
+                    <!-- <img src="./assets/images/_vikas-ai-logo-1.svg" alt="Vikas AI Logo" loading="lazy" class="img-fluid" style="max-height: 32px;"> -->
+                    <!-- <span class="ms-2">// VIKAS_AI_INIT_v_0_0_108</span> -->
                 </div>
+                <div class="terminal-tag-group p-2">
+                <div class=" bg-dark text-accent">[ VIKAS_AI_INTERFACE ]</div>
+                <span class="">&nbsp;&nbsp;</span>
+                <div class=" bg-accent text-dark">[ VERSION_0.0.108 ]</div>
+            </div>
                 <div class="hero-terminal-row-1">
                     <span class="chat-status-indicator @(Layout.IsChatOnline ? "online" : "offline")"></span>
                     <div class="hero-terminal-input-group">
@@ -270,7 +280,7 @@
                                disabled="@Layout.IsModelLoading" />
                     </div>
                     <button @onclick="SubmitHeroInput" class="hero-terminal-submit"
-                            disabled="@Layout.IsModelLoading || string.IsNullOrWhiteSpace(_heroInput)">
+                            disabled="@Layout.IsModelLoading || (string.IsNullOrWhiteSpace(_heroInput) && string.IsNullOrWhiteSpace(_currentRawQuestion))">
                         →
                     </button>
                 </div>

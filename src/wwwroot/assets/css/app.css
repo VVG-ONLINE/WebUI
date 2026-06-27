@@ -576,7 +576,7 @@ footer a {
 }
 
 .user-msg {
-  color: var(--text);
+  color: var(--light);
   margin-bottom: 10px;
 }
 

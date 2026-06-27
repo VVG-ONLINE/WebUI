@@ -67,9 +67,16 @@
         _timer.Start();
 
         // Read the current theme from JavaScript and update the THREE.js grid colour
-        var theme = await JS.InvokeAsync<string>("vvg.theme.current");
-        isDarkMode = theme == "dark";
-        await JS.InvokeVoidAsync("vvg.updateGridColor", theme);
+        try
+        {
+            var theme = await JS.InvokeAsync<string>("vvg.theme.current");
+            isDarkMode = theme == "dark";
+            await JS.InvokeVoidAsync("vvg.updateGridColor", theme);
+        }
+        catch
+        {
+            isDarkMode = false;
+        }
     }
 
     /// <summary>Updates the clock display. Runs every second on a timer thread.</summary>
