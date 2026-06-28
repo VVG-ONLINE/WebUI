@@ -38,11 +38,6 @@
   </ItemGroup>
 
 
-  <!-- Pre-build: compile SCSS into CSS -->
-  <Target Name="CompileScss" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Release'">
-    <Exec Command="sass wwwroot/assets/css:wwwroot/assets/css" />
-  </Target>
-
   <!--
     Post-build: remove compressed framework assets and manifest entries.
     The DevServer's gzip template substitution ({0} -> gzip) is buggy in .NET 10,
