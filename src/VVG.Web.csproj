@@ -7,6 +7,7 @@
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <BlazorEnableCompression>false</BlazorEnableCompression>
+    <DisableBuildCompression>true</DisableBuildCompression>
   </PropertyGroup>
   <PropertyGroup>
     <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
@@ -39,9 +40,9 @@
 
 
   <!--
-    Post-build: remove compressed framework assets and manifest entries.
-    The DevServer's gzip template substitution ({0} -> gzip) is buggy in .NET 10,
-    returning 0 bytes instead of falling back to uncompressed.
+    Safety net: remove any residual compressed framework assets and manifest entries.
+    DisableBuildCompression=true prevents the {0} template bug in .NET 10,
+    but this script cleans up stale artifacts if compression was enabled.
   -->
   <Target Name="RemoveCompressedFrameworkAssets" AfterTargets="Build">
     <PropertyGroup>
