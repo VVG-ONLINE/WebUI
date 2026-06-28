@@ -54,7 +54,7 @@
  * const { inputIds, attentionMask } = tokenizer.tokenize("What is digital transformation?", 128);
  */
 
-window.WordPieceTokenizer = class WordPieceTokenizer {
+(typeof self !== 'undefined' ? self : window).WordPieceTokenizer = class WordPieceTokenizer {
     constructor() {
         // Vocabulary mapping: token string → token ID
         this.vocab = null;
@@ -86,7 +86,7 @@ window.WordPieceTokenizer = class WordPieceTokenizer {
      */
     async loadVocab(vocabUrl) {
         try {
-            const response = await fetch(vocabUrl);
+            const response = await fetch(vocabUrl, { signal: AbortSignal.timeout(30000) });
             if (!response.ok) {
                 throw new Error(`Failed to load vocab: HTTP ${response.status}`);
             }

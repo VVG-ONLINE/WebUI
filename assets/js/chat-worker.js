@@ -12,10 +12,10 @@
  * tokenizer (wordpiece-tokenizer.js) loaded via importScripts().
  */
 
-importScripts('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js');
+importScripts('onnxruntime/ort.min.js');
 importScripts('wordpiece-tokenizer.js');
 
-ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/';
+ort.env.wasm.wasmPaths = '/assets/js/onnxruntime/';
 ort.env.wasm.numThreads = 1;
 
 var session = null;
@@ -318,7 +318,7 @@ self.onmessage = async function (event) {
                 // Initialize WordPiece tokenizer
                 console.log('[Worker] Loading WordPiece tokenizer...');
                 tokenizer = new WordPieceTokenizer();
-                await tokenizer.loadVocab('assets/models/tokenizer-vocab.json');
+                await tokenizer.loadVocab('/assets/models/tokenizer-vocab.json');
                 console.log('[Worker] WordPiece tokenizer loaded');
                 
                 self.postMessage({ type: 'init-complete', success: true });

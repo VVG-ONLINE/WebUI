@@ -15,7 +15,18 @@
  * the .preloader element exists in the page.
  */
 
+// Force preloader removal after 8 seconds regardless of DOMContentLoaded
+const forceRemove = setTimeout(() => {
+    const el = document.querySelector('.preloader');
+    if (el && el.parentNode) {
+        el.style.transition = 'opacity 0.3s ease';
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 300);
+    }
+}, 8000);
+
 document.addEventListener("DOMContentLoaded", function () {
+    clearTimeout(forceRemove);
     const preloader = document.querySelector('.preloader');
     if (!preloader) return;
 

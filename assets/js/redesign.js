@@ -17,6 +17,11 @@ window.vvg = window.vvg || {};
 // ── Three.js scene globals (shared with theme toggle) ──
 let scene, camera, renderer;
 
+// Workflow abort / running / paused flags — used by restartWorkflow for safe re-entry
+let _workflowAbort = false;
+let _workflowRunning = false;
+let _workflowPaused = false;
+
 /**
  * Updates the Three.js grid colour when the theme changes.
  * Called from SystemPanel.razor via JS interop after toggling the theme.
@@ -59,6 +64,16 @@ function typeWriterElement(el, speed = 40) {
 }
 
 /**
+ * Checks the pause flag between animation steps.
+ * Polls every 100ms while paused, exits when unpaused or aborted.
+ */
+async function pauseCheck() {
+    while (_workflowPaused && !_workflowAbort) {
+        await new Promise(r => setTimeout(r, 100));
+    }
+}
+
+/**
  * Infinite loop that animates the workflow pipeline on the homepage.
  * Each cycle:
  *   1. Resets all nodes (hides text, removes animation classes)
@@ -69,9 +84,10 @@ function typeWriterElement(el, speed = 40) {
  * Timing constants are tuned for a smooth, unhurried reveal.
  */
 async function playWorkflowLoop() {
+    _workflowRunning = true;
     const nodes = Array.from(document.querySelectorAll('.workflow-node'));
     const connectors = Array.from(document.querySelectorAll('.workflow-connector'));
-    if (!nodes.length) return;
+    if (!nodes.length) { _workflowRunning = false; return; }
 
     // Animation timing (ms)
     const drawDuration = 520, perCharSpeed = 28, afterCodeDelay = 120;
@@ -90,6 +106,7 @@ async function playWorkflowLoop() {
 
     // Infinite animation loop
     while (true) {
+        if (_workflowAbort) break;
         connectors.forEach(c => c.classList.remove('connector-active'));
 
         for (let i = 0; i < nodes.length; i++) {
@@ -98,12 +115,14 @@ async function playWorkflowLoop() {
             // Step 1: Draw the rectangle outline
             n.classList.add('draw-rect', 'visible', 'active');
             await new Promise(r => setTimeout(r, drawDuration));
+            await pauseCheck();
 
             // Step 2: Type the <code> block (e.g. "[service]~#")
             const codeEl = n.querySelector('code');
             if (codeEl) {
                 codeEl.classList.add('flow-el', 'code-blink', 'visible');
                 await typeWriterElement(codeEl, perCharSpeed);
+                await pauseCheck();
                 codeEl.classList.remove('code-blink');
                 await new Promise(r => setTimeout(r, afterCodeDelay));
             }
@@ -113,6 +132,7 @@ async function playWorkflowLoop() {
             if (h5El) {
                 h5El.classList.add('flow-el', 'visible');
                 await typeWriterElement(h5El, perCharSpeed);
+                await pauseCheck();
                 await new Promise(r => setTimeout(r, afterH5Delay));
             }
 
@@ -121,6 +141,7 @@ async function playWorkflowLoop() {
             if (pEl) {
                 pEl.classList.add('flow-el', 'visible');
                 await typeWriterElement(pEl, perCharSpeed);
+                await pauseCheck();
                 await new Promise(r => setTimeout(r, afterPDelay));
             }
 
@@ -129,14 +150,17 @@ async function playWorkflowLoop() {
                 connectors[i].classList.add('connector-active');
                 await new Promise(r => setTimeout(r, connectorDelay));
             }
+            await pauseCheck();
             await new Promise(r => setTimeout(r, betweenNodesGap));
         }
 
         // All nodes shown — pause, then fade out
         await new Promise(r => setTimeout(r, endOfLoopPause));
+        await pauseCheck();
         nodes.forEach(n => n.classList.add('loop-fade'));
         connectors.forEach(c => c.classList.remove('connector-active'));
         await new Promise(r => setTimeout(r, nodeFadeDuration));
+        await pauseCheck();
 
         // Reset everything for the next loop
         nodes.forEach(n => {
@@ -147,8 +171,42 @@ async function playWorkflowLoop() {
             });
         });
         await new Promise(r => setTimeout(r, endOfLoopPause));
+        await pauseCheck();
+        if (_workflowAbort) break;
     }
+    _workflowRunning = false;
 }
+
+// ── Play/Pause toggle — toggles _workflowPaused and updates the button text ──
+// Called from Home.razor button onclick
+window.vvg.togglePlayPause = () => {
+    _workflowPaused = !_workflowPaused;
+    const btn = document.getElementById('wf-play-pause-btn');
+    if (btn) {
+        btn.textContent = _workflowPaused ? '[ RESUME ]' : '[ PAUSE ]';
+    }
+};
+
+// ── Workflow restart — called from Home.razor on every navigation ──
+window.vvg.restartWorkflow = () => {
+    _workflowPaused = false;
+    const btn = document.getElementById('wf-play-pause-btn');
+    if (btn) btn.textContent = '[ PAUSE ]';
+    if (_workflowRunning) {
+        _workflowAbort = true;
+        const wait = setInterval(() => {
+            if (!_workflowRunning) {
+                clearInterval(wait);
+                _workflowAbort = false;
+                const wf = document.getElementById('workflow');
+                if (wf) playWorkflowLoop();
+            }
+        }, 50);
+    } else {
+        const wf = document.getElementById('workflow');
+        if (wf) playWorkflowLoop();
+    }
+};
 
 /**
  * Creates the Three.js animated grid background.
@@ -200,7 +258,7 @@ function initBackground() {
  * and workflow nodes as they scroll into view.
  */
 window.vvg.initPage = () => {
-    initBackground();
+    try { initBackground(); } catch (e) { console.warn('[Workflow] 3D background unavailable:', e.message); }
 
     /**
      * IntersectionObserver watches for elements entering the viewport.
@@ -219,7 +277,8 @@ window.vvg.initPage = () => {
     }, { threshold: 0.1 });  // Trigger when at least 10% of the element is visible
 
     // Set initial state (invisible, slightly offset) then start observing
-    document.querySelectorAll('.card, .workflow-node').forEach(el => {
+    // Only observe .card elements — .workflow-node is managed by playWorkflowLoop
+    document.querySelectorAll('.card').forEach(el => {
         el.style.opacity = "0";
         el.style.transform = "translateY(20px)";
         el.style.transition = "all 0.6s ease-out";
@@ -227,11 +286,8 @@ window.vvg.initPage = () => {
     });
 
     // Start the workflow loop if the workflow section exists on this page
-    if (document.getElementById('workflow')) {
-        setTimeout(() => {
-            try { playWorkflowLoop(); } catch (e) { console.warn('workflow loop failed', e); }
-        }, 600);
-    }
+    // Use restartWorkflow so it can be safely called again on re-navigation
+    setTimeout(() => window.vvg.restartWorkflow(), 60);
 };
 
 // Handle browser window resize — update the Three.js camera and renderer

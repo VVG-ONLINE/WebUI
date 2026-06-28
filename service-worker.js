@@ -1,4 +1,4 @@
-/* Manifest version: Fxd3I08I */
+/* Manifest version: iOUCwmFv */
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
@@ -20,12 +20,23 @@ const manifestUrlList = self.assetsManifest.assets.map(asset => new URL(asset.ur
 async function onInstall(event) {
     console.info('Service worker: Install');
 
-    // Fetch and cache all matching items from the assets manifest
-    const assetsRequests = self.assetsManifest.assets
+    const cache = await caches.open(cacheName);
+    const assets = self.assetsManifest.assets
         .filter(asset => offlineAssetsInclude.some(pattern => pattern.test(asset.url)))
-        .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
-        .map(asset => new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' }));
-    await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+        .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)));
+
+    // Cache each asset individually so one failure doesn't break the entire install
+    let cached = 0;
+    for (const asset of assets) {
+        try {
+            const request = new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' });
+            await cache.add(request);
+            cached++;
+        } catch (e) {
+            console.warn('[SW] Failed to cache:', asset.url, e.message);
+        }
+    }
+    console.info(`[SW] Cached ${cached}/${assets.length} assets`);
 }
 
 async function onActivate(event) {

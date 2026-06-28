@@ -27,7 +27,7 @@
 // --- Blinking Cursor on Hover ---
 // This adds a blinking cursor at the end of a link when you hover over it.
 // It's a nice, subtle interactive touch.
-a:not(.no-cursor):hover::after {
+a:not(.no-cursor):not(.social-link):hover::after {
   content: "_";
   margin-left: 6px;
   animation: blinker 1s step-start infinite;
@@ -43,10 +43,33 @@ a:not(.no-cursor):hover::after {
 }
 
 // --- Social Links ---
-// A simple style for social media links.
 .social-link {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  background: var(--text);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.25s ease;
+  }
+
+  &:hover {
+    background: rgba(var(--text), 0.8);
+
+    &::before {
+      height: 100%;
+    }
+  }
 }
 
 // --- Icons ---

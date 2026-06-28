@@ -34,33 +34,32 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" /> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css" />
+    <link href="assets/vendor/bootstrap/bootstrap.min.css?v=20260627" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/bootstrap-icons.min.css?v=20260627" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/app.css?v=20260627" />
 
     <link rel="icon" type="image/png" href="assets/images/profiles/logo-2025.svg" />
-    <link href="VVG.Web.styles.css" rel="stylesheet" />
-    <link href="manifest.webmanifest" rel="manifest" />
+    <link href="VVG.Web.styles.css?v=20260627" rel="stylesheet" />
+    <link href="manifest.webmanifest?v=20260627" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="assets/images/profiles/logo-2025.svg" />
     <link rel="apple-touch-icon" sizes="192x192" href="assets/images/profiles/logo-2025.svg" />
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.66stpp682q.js",
-    "./_framework/dotnet.native.js": "./_framework/dotnet.native.rjbmzc4jpg.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.r88vo2sa76.js",
-    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.r2kbxkuujc.js"
+    "./_framework/dotnet.js": "./_framework/dotnet.g6v10d5v2x.js",
+    "./_framework/dotnet.native.js": "./_framework/dotnet.native.ikrs475e5v.js",
+    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.a6jcqbs390.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.66stpp682q.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
     "./_framework/blazor.webassembly.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
-    "./_framework/dotnet.js": "sha256-e9ulUr/42Ux6TTy7IyGdxqM/uXisbYlzIr9Vfo8dUEg=",
-    "./_framework/dotnet.native.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
-    "./_framework/dotnet.native.rjbmzc4jpg.js": "sha256-95bE510j3EADMNW2OKa/DMBhu8N632dl5HGeBfXNEf4=",
-    "./_framework/dotnet.r88vo2sa76.js": "sha256-e9ulUr/42Ux6TTy7IyGdxqM/uXisbYlzIr9Vfo8dUEg=",
-    "./_framework/dotnet.runtime.js": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU=",
-    "./_framework/dotnet.runtime.r2kbxkuujc.js": "sha256-YyudibIWETMKrLb+nAZdJ+xDY7HY6BWf6s32UAdcvCU="
+    "./_framework/dotnet.g6v10d5v2x.js": "sha256-GLi22Y9ZS1x7WKsXyDCA4jJ1GDZ+VemdOms9jgNg9hg=",
+    "./_framework/dotnet.js": "sha256-GLi22Y9ZS1x7WKsXyDCA4jJ1GDZ+VemdOms9jgNg9hg=",
+    "./_framework/dotnet.native.ikrs475e5v.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
+    "./_framework/dotnet.native.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
+    "./_framework/dotnet.runtime.a6jcqbs390.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
+    "./_framework/dotnet.runtime.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M="
   }
 }</script>
 </head>
@@ -75,17 +74,26 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/boot-sequence.js" defer async></script>
-    <script src="assets/js/theme.js" defer async></script>
-    <script src="assets/js/redesign.js" defer async></script>
-    <script src="assets/js/meta.js" defer async></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/boot-sequence.js?v=20260627" defer async></script>
+    <script src="assets/js/redesign.js?v=20260627" defer async></script>
+    <script src="assets/js/meta.js?v=20260627" defer async></script>
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js?v=20260627" async></script>
+    <script src="assets/js/theme.js?v=20260627"></script>
     <script src="_framework/blazor.webassembly.66stpp682q.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
+    <script>
+        // Unregister any existing service workers, then register dev SW
+        navigator.serviceWorker.getRegistrations().then(regs => {
+            return Promise.all(regs.map(reg => reg.unregister()));
+        }).then(() => {
+            navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });
+        }).catch(err => {
+            console.warn('[SW] Registration skipped:', err.message);
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer async></script>
     <script type="text/javascript">
         window.hidePreloader = function () {
-            var preloader = document.getElementById('preloader');
+            var preloader = document.querySelector('.preloader');
             if (preloader) {
                 preloader.style.transition = 'opacity 0.5s ease';
                 preloader.style.opacity = '0';
@@ -182,14 +190,14 @@
         })();
     </script>
 
-    <!-- ONNX Runtime Web -->
-    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js" defer></script>
     <!-- WordPiece Tokenizer (pure JS, no dependencies) -->
-    <script src="assets/js/wordpiece-tokenizer.js" defer></script>
+    <script src="assets/js/wordpiece-tokenizer.js?v=20260627" defer></script>
     <!-- Model Cache (IndexedDB) -->
-    <script src="assets/js/modelCache.js" defer></script>
+    <script src="assets/js/modelCache.js?v=20260627" defer></script>
+    <!-- Random Question Picker -->
+    <script src="assets/js/randomQuestion.js?v=20260627" defer></script>
     <!-- Chat Logic -->
-    <script src="assets/js/chat.js" crossorigin="anonymous" defer></script>
+    <script src="assets/js/chat.js?v=20260627" crossorigin="anonymous" defer></script>
 </body>
 
 </html>
