@@ -42,6 +42,9 @@ jobs:
       - name: Clean Build Artifacts
         run: dotnet clean src/VVG.Web.csproj -c Release
 
+      - name: Install Sass
+        run: npm install -g sass
+
       - name: Publish Project
         run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
 
