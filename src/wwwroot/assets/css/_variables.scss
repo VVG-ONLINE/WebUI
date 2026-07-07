@@ -23,6 +23,7 @@
   // --accent is our primary highlight color. It's used for buttons, links,
   // and other elements that need to grab the user's attention.
   --accent: #ffdd33;
+  --accent-rgb: 255, 221, 51;
 
   // --bg is the main background color for the entire page.
   --bg: #d9d9d9;
@@ -60,4 +61,5 @@
   // The accent color can also be changed for a theme, but we've kept it
   // consistent here for brand identity.
   --accent: #ffdd33;
+  --accent-rgb: 255, 221, 51;
 }

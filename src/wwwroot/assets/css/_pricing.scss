@@ -1,0 +1,40 @@
+// =================================================================================
+// PRICING — Card-based package design
+// =================================================================================
+.vvg-pricing {
+    .vvg-card {
+        border: 1px solid #333;
+        background-color: rgba(var(--accent-rgb), 0.2);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+
+        &.featured {
+            border-color: #ffdd33;
+            box-shadow: 0 2px 20px rgba(255, 221, 51, 0.08);
+        }
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            border-color: #555;
+        }
+    }
+
+    .btn-vvg {
+        background-color: #ffdd33;
+        color: #0a0a0a;
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: bold;
+        border-radius: 0;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #e6c72d;
+            color: #0a0a0a;
+        }
+    }
+}

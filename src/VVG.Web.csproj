@@ -38,6 +38,9 @@
     <Watch Include="wwwroot\assets\css\**\*.scss" />
   </ItemGroup>
 
+  <Target Name="CompileSass" BeforeTargets="PreBuildEvent">
+    <Exec Command="sass wwwroot/assets/css/app.scss wwwroot/assets/css/app.css" />
+  </Target>
 
   <!--
     Safety net: remove any residual compressed framework assets and manifest entries.
