@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "currency": "INR",
+    "currencySymbol": "\u20b9",
+    "lastUpdated": "2026-07-07",
+    "note": "All prices are indicative. Final pricing depends on scope, complexity, and duration of engagement. Contact us for a custom quote."
+  },
+  "servicePricing": [
+    {
+      "serviceId": 1,
+      "title": "Strategy & Innovation",
+      "icon": "bi-lightbulb",
+      "description": "Tailored strategies and roadmaps aligned with your business goals.",
+      "pricingModels": [
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer",
+          "startingPrice": 25000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        },
+        {
+          "type": "project",
+          "label": "Project-Based Engagement",
+          "startingPrice": 50000
+        }
+      ],
+      "subservices": [
+        { "name": "Strategy Development", "startingPrice": 25000, "unit": "month" },
+        { "name": "Innovation Roadmaps", "startingPrice": 50000, "unit": "project" },
+        { "name": "Market Analysis & Research", "startingPrice": 30000, "unit": "project" },
+        { "name": "Business Model Innovation", "startingPrice": 50000, "unit": "project" }
+      ]
+    },
+    {
+      "serviceId": 2,
+      "title": "Digital Transformation",
+      "icon": "bi-globe",
+      "description": "Technology-driven transformations that create lasting value.",
+      "pricingModels": [
+        {
+          "type": "project",
+          "label": "Project-Based",
+          "startingPrice": 75000
+        },
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer",
+          "startingPrice": 50000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        }
+      ],
+      "subservices": [
+        { "name": "Digital Transformation Consulting", "startingPrice": 50000, "unit": "month" },
+        { "name": "Technology Stack Assessment", "startingPrice": 40000, "unit": "project" },
+        { "name": "Process Automation", "startingPrice": 75000, "unit": "project" },
+        { "name": "Sustainable Transformation", "startingPrice": 50000, "unit": "month" }
+      ]
+    },
+    {
+      "serviceId": 3,
+      "title": "Capability Building",
+      "icon": "bi-people-fill",
+      "description": "Strengthen your team's skills for sustained digital success.",
+      "pricingModels": [
+        {
+          "type": "workshop",
+          "label": "Workshop (per session)",
+          "startingPrice": 20000
+        },
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer",
+          "startingPrice": 20000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        }
+      ],
+      "subservices": [
+        { "name": "Training & Development Programs", "startingPrice": 20000, "unit": "month" },
+        { "name": "Team Workshops", "startingPrice": 25000, "unit": "session" },
+        { "name": "Resource Optimization", "startingPrice": 20000, "unit": "month" },
+        { "name": "Leadership Coaching", "startingPrice": 30000, "unit": "month" }
+      ]
+    },
+    {
+      "serviceId": 4,
+      "title": "Strategic Digital Marketing",
+      "icon": "bi-megaphone",
+      "description": "Transform your digital presence with data-driven marketing.",
+      "pricingModels": [
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer \u2014 Starter",
+          "startingPrice": 15000
+        },
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer \u2014 Growth",
+          "startingPrice": 40000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        },
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer \u2014 Enterprise",
+          "startingPrice": 100000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        }
+      ],
+      "subservices": [
+        { "name": "SEO Optimization", "startingPrice": 12000, "unit": "month" },
+        { "name": "Social Media Management", "startingPrice": 8000, "unit": "month" },
+        { "name": "Content Marketing", "startingPrice": 5000, "unit": "month" },
+        { "name": "Paid Advertising (PPC)", "startingPrice": 10000, "unit": "month" },
+        { "name": "Email Marketing", "startingPrice": 5000, "unit": "month" },
+        { "name": "Analytics & KPIs", "startingPrice": 10000, "unit": "month" }
+      ]
+    },
+    {
+      "serviceId": 5,
+      "title": "Innovative Design Thinking Workshops",
+      "icon": "bi-pencil-square",
+      "description": "Foster innovation and solve complex business challenges.",
+      "pricingModels": [
+        {
+          "type": "workshop",
+          "label": "Half-Day Workshop (3-4 hrs)",
+          "startingPrice": 25000
+        },
+        {
+          "type": "workshop",
+          "label": "Full-Day Workshop (6-8 hrs)",
+          "startingPrice": 50000
+        },
+        {
+          "type": "workshop",
+          "label": "Multi-Day Program",
+          "startingPrice": 100000
+        }
+      ],
+      "subservices": [
+        { "name": "User-Centered Design Sessions", "startingPrice": 25000, "unit": "session" },
+        { "name": "Problem-Solving Workshops", "startingPrice": 30000, "unit": "session" },
+        { "name": "Innovation Strategy Sprints", "startingPrice": 50000, "unit": "program" },
+        { "name": "Digital Transformation Roadmapping", "startingPrice": 50000, "unit": "session" }
+      ]
+    },
+    {
+      "serviceId": 6,
+      "title": "Comprehensive IT Management Solutions",
+      "icon": "bi-tools",
+      "description": "Optimize your technology infrastructure and operations.",
+      "pricingModels": [
+        {
+          "type": "retainer",
+          "label": "Monthly Retainer",
+          "startingPrice": 50000,
+          "features": ["Custom AI/Chatbot", "Email Marketing", "SMS Marketing"]
+        },
+        {
+          "type": "project",
+          "label": "Project-Based",
+          "startingPrice": 75000
+        }
+      ],
+      "subservices": [
+        { "name": "Cloud Infrastructure", "startingPrice": 50000, "unit": "month" },
+        { "name": "Cybersecurity", "startingPrice": 30000, "unit": "month" },
+        { "name": "IT Support & Training", "startingPrice": 20000, "unit": "month" },
+        { "name": "Digital Platform Enablement", "startingPrice": 50000, "unit": "project" },
+        { "name": "Vendor Management", "startingPrice": 25000, "unit": "month" },
+        { "name": "Custom AI Model Development", "startingPrice": 100000, "unit": "project" }
+      ]
+    }
+  ],
+  "tieredPackages": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "tagline": "Perfect for startups and small businesses",
+      "price": 25000,
+      "yearlyPrice": 250000,
+      "unit": "month",
+      "popular": false,
+      "features": [
+        "Basic SEO audit & optimization",
+        "Social media management (2 platforms)",
+        "4 blog posts per month",
+        "Monthly performance report",
+        "Email support"
+      ],
+      "recommendedFor": "Startups, solopreneurs, local businesses"
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "tagline": "For growing businesses ready to scale",
+      "price": 75000,
+      "yearlyPrice": 750000,
+      "unit": "month",
+      "popular": true,
+      "features": [
+        "Advanced SEO (on-page + off-page)",
+        "Multi-platform social media (4 platforms)",
+        "8 blog posts + 2 infographics per month",
+        "Google Ads & Facebook Ads management",
+        "Lead generation campaigns",
+        "Email marketing automation",
+        "Monthly strategy review call",
+        "Dedicated account manager"
+      ],
+      "recommendedFor": "Mid-market businesses, e-commerce stores, B2B companies"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "tagline": "Full-stack digital partnership",
+      "price": 200000,
+      "yearlyPrice": 2000000,
+      "unit": "month",
+      "popular": false,
+      "features": [
+        "Comprehensive SEO + technical SEO",
+        "Full-scale social media marketing (all platforms)",
+        "Custom content strategy (blogs, video, infographics)",
+        "PPC campaign management with large ad budgets",
+        "Influencer marketing & partnerships",
+        "Reputation management",
+        "Custom AI/automation solutions",
+        "Weekly performance reviews",
+        "Dedicated strategist + account team",
+        "Priority 24/7 support"
+      ],
+      "recommendedFor": "Enterprises, established brands, high-growth companies"
+    }
+  ],
+  "customBundles": [
+    {
+      "id": "digital-presence",
+      "name": "Digital Presence Bundle",
+      "price": 30000,
+      "unit": "one-time",
+      "description": "Everything you need to establish your online presence.",
+      "items": [
+        "Static website (5 pages, responsive design)",
+        "100 custom social media image posts",
+        "2 short-form video posts (up to 60s each)",
+        "Basic SEO setup",
+        "Domain & hosting guidance"
+      ],
+      "timeline": "2-3 weeks"
+    },
+    {
+      "id": "brand-launch",
+      "name": "Brand Launch Kit",
+      "price": 75000,
+      "unit": "one-time",
+      "description": "Complete brand identity and digital launch package.",
+      "items": [
+        "Logo design & brand guidelines",
+        "Business website (5-7 pages)",
+        "Social media profile setup (3 platforms)",
+        "50 social media image posts",
+        "1 brand video (up to 2 min)",
+        "Email template design"
+      ],
+      "timeline": "4-6 weeks"
+    },
+    {
+      "id": "seo-boost",
+      "name": "SEO Accelerator",
+      "price": 40000,
+      "unit": "one-time",
+      "description": "One-time SEO audit and optimization sprint.",
+      "items": [
+        "Comprehensive SEO audit",
+        "Keyword research & strategy",
+        "On-page optimization (up to 20 pages)",
+        "Technical SEO fixes",
+        "Google Search Console setup",
+        "Monthly ranking report (3 months)"
+      ],
+      "timeline": "2-3 weeks"
+    },
+    {
+      "id": "social-sprint",
+      "name": "Social Media Sprint",
+      "price": 15000,
+      "unit": "month",
+      "description": "Short-term social media boost for campaigns or launches.",
+      "items": [
+        "Social media management (2 platforms)",
+        "20 custom posts per month",
+        "Weekly engagement tracking",
+        "One paid ad campaign setup"
+      ],
+      "timeline": "Minimum 3-month commitment"
+    },
+    {
+      "id": "workshop-sprint",
+      "name": "Innovation Workshop Sprint",
+      "price": 60000,
+      "unit": "one-time",
+      "description": "Intensive design thinking sprint for your team.",
+      "items": [
+        "Pre-workshop research & discovery",
+        "Full-day facilitated workshop (up to 15 participants)",
+        "Workshop materials & templates",
+        "Post-workshop summary report",
+        "30-day follow-up consultation"
+      ],
+      "timeline": "2-week delivery (including workshop)"
+    }
+  ],
+  "addons": [
+    {
+      "id": "video-production",
+      "name": "Video Production",
+      "items": [
+        { "name": "Short-form video (up to 60s)", "price": 5000, "unit": "per video" },
+        { "name": "Brand video (2-3 min)", "price": 15000, "unit": "per video" },
+        { "name": "Animated explainer video", "price": 25000, "unit": "per video" }
+      ]
+    },
+    {
+      "id": "content-creation",
+      "name": "Content Creation",
+      "items": [
+        { "name": "Blog post (500-1000 words)", "price": 2000, "unit": "per post" },
+        { "name": "Social media graphic", "price": 300, "unit": "per design" },
+        { "name": "Infographic", "price": 5000, "unit": "per piece" },
+        { "name": "Email newsletter design", "price": 3000, "unit": "per template" }
+      ]
+    },
+    {
+      "id": "consulting-extras",
+      "name": "Consulting Extras",
+      "items": [
+        { "name": "Strategy consultation call", "price": 5000, "unit": "per session" },
+        { "name": "Technology audit", "price": 25000, "unit": "per audit" },
+        { "name": "Custom proposal development", "price": 0, "unit": "free" }
+      ]
+    }
+  ]
+}

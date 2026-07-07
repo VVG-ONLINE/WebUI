@@ -1,0 +1,270 @@
+@* ============================================================
+    PRICING PAGE — VVG ONLINE pricing plans and packages
+    - Loads pricing data from assets/data/pricing.json
+    - Shows service-level pricing, tiered packages, and custom bundles
+    - Follows the same terminal-aesthetic pattern as Services.razor
+    ============================================================ *@
+
+@page "/pricing"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject MetadataService MetadataService
+@inject VVG.Web.Services.CardImageService CardImage
+
+<PageTitle>Pricing</PageTitle>
+
+<HeroBanner Title="Transparent Pricing, Real Value"
+    Subtitle="Flexible plans and packages designed to fit every stage of your business growth. No hidden fees, no surprises."
+    TagUser="// TRANSPARENT_PRICING" TagPath="// REAL_VALUE" />
+
+@* -- SECTION 1: TIERED PACKAGES -- *@
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2>Choose Your Plan</h2>
+        <p class="opacity-75">Monthly retainer packages for ongoing partnership</p>
+            <div class="mt-4">
+                <button class="btn-vvg px-4" @onclick="ToggleYearly">
+                    @(isYearly ? "Switch to Monthly" : "Switch to Yearly")
+                </button>
+            </div>
+
+    </div>
+
+    @if (packages is null && errorMessage is null)
+    {
+        <p class="text-center">Loading...</p>
+    }
+    else if (errorMessage is not null)
+    {
+        <div class="alert alert-danger text-center">
+            @errorMessage
+        </div>
+    }
+    else
+    {
+        <div class="row g-4 justify-content-center">
+            @foreach (var pkg in packages)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="pricing-card border p-4 h-100 d-flex flex-column @(pkg.popular ? "border-accent popular" : "")">
+                        @if (pkg.popular)
+                        {
+                            <div class="text-center mb-2">
+                                <span class="badge bg-accent text-dark">Most Popular</span>
+                            </div>
+                        }
+                        <h3 class="mono">@pkg.name</h3>
+                        <p class="opacity-75 small">@pkg.tagline</p>
+                        <div class="my-3">
+                            <span class="display-5 fw-bold">@($"{GetSymbol()}{((isYearly ? pkg.yearlyPrice : pkg.price) ?? 0):N0}")</span>
+                            <span class="opacity-50 small">/@(isYearly ? "year" : pkg.unit)</span>
+                        </div>
+                        <ul class="list-unstyled flex-grow-1">
+                            @foreach (var feature in pkg.features)
+                            {
+                                <li class="mb-2">
+                                    <i class="bi bi-check2 text-accent me-2"></i>
+                                    @feature
+                                </li>
+                            }
+                        </ul>
+                        <a href="/contact" class="btn-vvg w-100 mt-3">Get Started</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>
+
+@* -- SECTION 2: SERVICE-LEVEL PRICING -- *@
+<section class="container py-5 border-top">
+    <div class="text-center mb-5">
+        <h2>Service Pricing</h2>
+        <p class="opacity-75">Per-service pricing across all our solution areas</p>
+    </div>
+
+    @if (services is null)
+    {
+        <p class="text-center">Loading...</p>
+    }
+    else
+    {
+        <div class="row g-0 border-top border-start">
+            @foreach (var (svc, index) in services.Select((value, i) => (value, i)))
+            {
+                <div class="col-md-6 col-lg-4 p-4 border-bottom border-end">
+                    <span class="mono">0@(index + 1).</span>
+                    <h3 class="mt-3">@svc.title</h3>
+                    <p class="opacity-75 small">@svc.description</p>
+
+                    @if (svc.pricingModels != null && svc.pricingModels.Length > 0)
+                    {
+                        <div class="mt-2 mb-3">
+                            @foreach (var model in svc.pricingModels)
+                            {
+                                <div class="d-flex justify-content-between small border-bottom border-opacity-10 py-1">
+                                    <span class="opacity-75">@model.label</span>
+                                     <span class="mono">Starting from @($"{GetSymbol()}{(model.startingPrice ?? 0):N0}")</span>
+
+                                    @if (model.features != null)
+                                    {
+                                        <div class="small text-muted mt-1">
+                                            @string.Join(", ", model.features)
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    @if (svc.subservices != null && svc.subservices.Length > 0)
+                    {
+                        <details class="mt-2">
+                            <summary class="small mono opacity-75">Sub-services</summary>
+                            <ul class="list-unstyled mt-2">
+                                @foreach (var sub in svc.subservices)
+                                 {
+                                     <li class="mb-1 small d-flex justify-content-between">
+                                         <span>@sub.name</span>
+                                         <span class="mono ms-2">Starting from @($"{GetSymbol()}{(sub.startingPrice ?? 0):N0}")/@sub.unit</span>
+                                     </li>
+                                 }
+
+                            </ul>
+                        </details>
+                    }
+                </div>
+            }
+        </div>
+    }
+</section>
+
+
+
+@* -- FOOTER NOTE -- *@
+<section class="container py-4 border-top">
+    <div class="text-center small opacity-50">
+        <i class="bi bi-info-circle me-1"></i>
+        @(meta?.note != null ? meta.note : "All prices are indicative. Contact us for a custom quote tailored to your specific needs.")
+        <br>
+        <a href="/contact" class="text-accent">Get a free consultation</a>
+    </div>
+</section>
+
+@code {
+    // ===== TYPE DEFINITIONS =====
+
+    class PricingDoc
+    {
+        public PricingMeta? meta { get; set; }
+        public ServicePricing[]? servicePricing { get; set; }
+        public TieredPackage[]? tieredPackages { get; set; }
+    }
+
+    class PricingMeta
+    {
+        public string? currency { get; set; }
+        public string? currencySymbol { get; set; }
+        public string? note { get; set; }
+    }
+
+    class ServicePricing
+    {
+        public int serviceId { get; set; }
+        public string? title { get; set; }
+        public string? description { get; set; }
+        public PricingModel[]? pricingModels { get; set; }
+        public SubServicePricing[]? subservices { get; set; }
+    }
+
+    class PricingModel
+    {
+        public string? type { get; set; }
+        public string? label { get; set; }
+        public PriceRange? range { get; set; }
+        public int? startingPrice { get; set; }
+        public string[]? features { get; set; }
+    }
+
+    class PriceRange
+    {
+        public int min { get; set; }
+        public int max { get; set; }
+    }
+
+    class SubServicePricing
+    {
+        public string? name { get; set; }
+        public PriceRange? range { get; set; }
+        public int? startingPrice { get; set; }
+        public string? unit { get; set; }
+    }
+
+    class TieredPackage
+    {
+        public string? id { get; set; }
+        public string? name { get; set; }
+        public string? tagline { get; set; }
+        public int price { get; set; }
+        public int? yearlyPrice { get; set; }
+        public string? unit { get; set; }
+        public bool popular { get; set; }
+        public string[]? features { get; set; }
+    }
+
+    // ===== STATE =====
+
+    PricingMeta? meta;
+    ServicePricing[]? services;
+    TieredPackage[]? packages;
+    bool isYearly = false;
+    string? errorMessage;
+
+    string GetSymbol() => meta?.currencySymbol ?? "₹";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var cardUrl = await CardImage.GetImageUrlAsync("pricing");
+        await MetadataService.SetPageMetadata(new PageMetadata
+        {
+            Title = "Pricing - VVG ONLINE",
+            Description = "Transparent pricing for VVG ONLINE's digital consulting services. Explore our tiered packages, service-level pricing, and custom bundles for strategy, marketing, IT, and design thinking.",
+            Keywords = "pricing, digital consulting, packages, services, VVG ONLINE, digital marketing pricing, strategy consulting, IT management, design thinking workshops",
+            Image = cardUrl,
+
+            OgType = "website",
+            OgTitle = "Pricing - VVG ONLINE",
+            OgDescription = "Flexible plans and transparent pricing for digital business consulting services.",
+            OgImage = cardUrl,
+            OgUrl = "https://vvgonline.net/pricing",
+
+            TwitterCard = "summary_large_image",
+            TwitterSite = "@vvgonline",
+            TwitterCreator = "@vvgonline",
+            TwitterTitle = "Pricing - VVG ONLINE",
+            TwitterDescription = "Flexible plans and transparent pricing for digital transformation services.",
+            TwitterImage = cardUrl
+        });
+
+        try
+        {
+            var doc = await Http.GetFromJsonAsync<PricingDoc>("assets/data/pricing.json");
+            if (doc is not null)
+            {
+                meta = doc.meta;
+                services = doc.servicePricing;
+                packages = doc.tieredPackages;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to load pricing data. Please try again later or contact support.";
+            Console.WriteLine($"Pricing.razor: Error fetching pricing data - {ex.Message}");
+        }
+    }
+
+    private void ToggleYearly()
+    {
+        isYearly = !isYearly;
+    }
+}
