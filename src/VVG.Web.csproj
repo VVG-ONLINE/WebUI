@@ -38,8 +38,8 @@
     <Watch Include="wwwroot\assets\css\**\*.scss" />
   </ItemGroup>
 
-  <Target Name="GenerateTwitterCards" BeforeTargets="PreBuildEvent">
-    <Exec Command="NODE_PATH=$(MSBuildProjectDirectory)/node_modules node ../scripts/generate-cards.mjs" />
+  <Target Name="GenerateTwitterCards" BeforeTargets="PreBuildEvent" Condition="Exists('$(MSBuildProjectDirectory)/../node_modules/sharp/package.json')">
+    <Exec Command="NODE_PATH=$(MSBuildProjectDirectory)/../node_modules node ../scripts/generate-cards.mjs" />
   </Target>
 
   <Target Name="CompileSass" BeforeTargets="PreBuildEvent">
