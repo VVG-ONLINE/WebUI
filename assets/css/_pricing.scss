@@ -1,0 +1,131 @@
+// =================================================================================
+// PRICING — Card-based package design (Semrush-inspired 2x2 grid)
+// =================================================================================
+.vvg-pricing {
+    .vvg-card {
+        border: 1px solid #2a2a2a;
+        /*border-radius: 4px;*/
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+        &.featured {
+            border-color: #ffdd33;
+            box-shadow: 0 0 0 1px rgba(255, 221, 51, 0.15), 0 4px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border-color: #444;
+        }
+
+        .h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0.75rem 0 0.5rem;
+        }
+
+        .h1 .fs-6 {
+            font-size: 0.875rem !important;
+            font-weight: 400;
+            opacity: 0.6;
+        }
+
+        .fw-bold {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .list-unstyled {
+            font-size: 0.875rem;
+            line-height: 1.8;
+        }
+
+        .list-unstyled.small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        hr {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    .btn-vvg {
+        background-color: #ffdd33;
+        color: #0a0a0a;
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: 600;
+        border-radius: 4px;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #e6c72d;
+            color: #0a0a0a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 221, 51, 0.3);
+        }
+    }
+}
+
+// =================================================================================
+// MOBILE — Responsive overrides for small viewports
+// =================================================================================
+@media (max-width: 767.98px) {
+    .vvg-pricing {
+        .vvg-card {
+            padding: 1.25rem !important;
+
+            .h1 {
+                font-size: 2rem;
+            }
+
+            .badge {
+                font-size: 0.65rem;
+                white-space: nowrap;
+            }
+
+            .btn-vvg {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+                white-space: normal;
+                word-break: break-word;
+            }
+        }
+
+        .btn-vvg {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+            white-space: normal;
+            word-break: break-word;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .vvg-pricing {
+        .vvg-card {
+            padding: 1rem !important;
+
+            .h1 {
+                font-size: 1.8rem;
+            }
+
+            .list-unstyled {
+                font-size: 0.8rem;
+            }
+
+            .badge {
+                font-size: 0.6rem;
+            }
+        }
+    }
+}

@@ -38,7 +38,7 @@ main {
   height: 32px;
   background: linear-gradient(90deg, #000 0%, #111119 100%);
   border-bottom: 1px solid var(--accent);
-  box-shadow: 0 0 10px rgba(var(--accent), 0.2); // Green glow
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.2); // Green glow
   color: #fff;
   position: fixed; // Fixed position at the top of the screen
   top: 0;

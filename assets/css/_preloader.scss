@@ -6,46 +6,108 @@
 // website is loading. It's designed to look like a terminal window, with an
 // ASCII art logo.
 
-.preloader {
-  /**
-   * The main container for the preloader.
-   * It's fixed to the top of the screen and covers the entire viewport.
-   */
+// =============================================================================
+// OLD PRELOADER — replaced by new #preloader design below
+// =============================================================================
+// .preloader {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: var(--text);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 9999;
+//   font-family: "IBM Plex Mono", monospace;
+//   color: var(--accent);
+//   font-size: 14px;
+//   line-height: 1.4;
+// }
+//
+// .terminal-output-area {
+//   white-space: pre;
+//   text-align: left;
+//   font-weight: bold;
+//   text-shadow: 0 0 5px rgba(255, 221, 51, 0.3);
+// }
+//
+// @media (max-width: 768px) {
+//   .preloader {
+//     font-size: 11px;
+//   }
+// }
+
+// =============================================================================
+// PRELOADER — Terminal-box design with scan-line CRT effect
+// =============================================================================
+#preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--text);
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-
-  /**
-   * We use a monospaced font to complete the terminal aesthetic.
-   */
-  font-family: "IBM Plex Mono", monospace;
-  color: var(--accent);
-  font-size: 14px;
-  line-height: 1.4;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
-// Container for the ASCII output
-.terminal-output-area {
-  /**
-   * We use `white-space: pre` to preserve the spacing of the ASCII art.
-   * A subtle text shadow gives it a bit of a glow.
-   */
-  white-space: pre; /* Preserves ASCII spacing */
-  text-align: left; /* ASCII art aligns left */
-  font-weight: bold;
-  text-shadow: 0 0 5px rgba(255, 221, 51, 0.3);
+// Scan-line CRT overlay
+#preloader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
-// Mobile adjustment
-@media (max-width: 768px) {
-  .preloader {
-    font-size: 11px;
-  }
+// Subtle CRT glow vignette
+#preloader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 85%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.terminal-box {
+  position: relative;
+  z-index: 2;
+  border: 1px solid #111119;
+  padding: 2rem;
+  min-width: 320px;
+  box-shadow:
+    0 0 15px rgba(255, 221, 51, 0.15),
+    inset 0 0 30px rgba(255, 221, 51, 0.03);
+}
+
+#ascii-bar {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  min-height: 2rem;
+}
+
+#cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1rem;
+  background: #ffdd33;
+  margin-left: 4px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }

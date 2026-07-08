@@ -46,26 +46,27 @@
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.66stpp682q.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.g6v10d5v2x.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.ikrs475e5v.js",
-    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.a6jcqbs390.js"
+    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.a6jcqbs390.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.xaqiwepnmm.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.66stpp682q.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
     "./_framework/blazor.webassembly.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
-    "./_framework/dotnet.g6v10d5v2x.js": "sha256-GLi22Y9ZS1x7WKsXyDCA4jJ1GDZ+VemdOms9jgNg9hg=",
-    "./_framework/dotnet.js": "sha256-GLi22Y9ZS1x7WKsXyDCA4jJ1GDZ+VemdOms9jgNg9hg=",
+    "./_framework/dotnet.js": "sha256-qb30MJAX5BVixiDTp6Q6gKqh5uwHo40qLXDF4KJvvGA=",
     "./_framework/dotnet.native.ikrs475e5v.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
     "./_framework/dotnet.native.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
     "./_framework/dotnet.runtime.a6jcqbs390.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
-    "./_framework/dotnet.runtime.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M="
+    "./_framework/dotnet.runtime.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
+    "./_framework/dotnet.xaqiwepnmm.js": "sha256-qb30MJAX5BVixiDTp6Q6gKqh5uwHo40qLXDF4KJvvGA="
   }
 }</script>
 </head>
 
 <body>
     <div id="app">
+        <!-- OLD PRELOADER - replaced by new progress-bar design
         <div class="preloader">
             <div class="loading-box">
                 <div class="loader"></div>
@@ -73,8 +74,19 @@
                 <div class="terminal-output msg-2">SYSTEM BOOTING...</div>
             </div>
         </div>
+        -->
+        <div id="preloader">
+            <div class="terminal-box">
+                <p class="cmd">user@vvg:~$ ./initialize_connection --force</p>
+                <p class="status">SYSTEM_BOOT: <span id="progress">0%</span></p>
+                <pre id="ascii-bar">[....................]</pre>
+                <div><span id="cursor"></span></div>
+            </div>
+        </div>
     </div>
+    <!-- OLD boot-sequence - replaced by new inline progress-bar JS
     <script src="assets/js/boot-sequence.js?v=20260627" defer async></script>
+    -->
     <script src="assets/js/redesign.js?v=20260627" defer async></script>
     <script src="assets/js/meta.js?v=20260627" defer async></script>
     <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js?v=20260627" async></script>
@@ -91,6 +103,7 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer async></script>
+    <!-- OLD hidePreloader - replaced by new preloader progress JS below
     <script type="text/javascript">
         window.hidePreloader = function () {
             var preloader = document.querySelector('.preloader');
@@ -100,6 +113,60 @@
                 setTimeout(function () {
                     preloader.style.display = 'none';
                 }, 500);
+            }
+        };
+    </script>
+    -->
+    <script type="text/javascript">
+        const progressText = document.getElementById('progress');
+        const asciiBar = document.getElementById('ascii-bar');
+        const barLen = 20;
+        let percent = 0;
+        let frame = 0;
+        const spinner = ['|', '/', '--', '\\\\'];
+
+        function getBar(pct) {
+            if (pct >= 100) return '[COMPLETE]  SYSTEM_READY.';
+            const pos = Math.floor(pct / 100 * barLen);
+            const bar = '█'.repeat(pos);
+            const head = pos < barLen ? '▸' : '';
+            const empty = ' '.repeat(Math.max(0, barLen - pos - 1));
+            return '[' + bar + head + empty + ']';
+        }
+
+        const interval = setInterval(() => {
+            frame++;
+            if (percent >= 100) {
+                clearInterval(interval);
+                progressText.innerText = '100%';
+                asciiBar.innerText = getBar(100);
+                setTimeout(() => {
+                    var el = document.getElementById('preloader');
+                    if (el) {
+                        el.style.opacity = '0';
+                        setTimeout(() => el.remove(), 500);
+                    }
+                }, 600);
+            } else {
+                percent += 2;
+                if (percent > 100) percent = 100;
+                progressText.innerText = percent + '% ' + spinner[frame % spinner.length];
+                asciiBar.innerText = getBar(percent);
+            }
+        }, 50);
+
+        window.hidePreloader = function () {
+            var preloader = document.getElementById('preloader');
+            if (preloader) {
+                percent = 100;
+                progressText.innerText = '100%';
+                asciiBar.innerText = getBar(100);
+                clearInterval(interval);
+                preloader.style.transition = 'opacity 0.3s ease';
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.remove();
+                }, 300);
             }
         };
     </script>

@@ -1,22 +1,40 @@
 @charset "UTF-8";
 :root {
   --accent: #ffdd33;
+  --accent-rgb: 255, 221, 51;
   --bg: #d9d9d9;
+  --bg-rgb: 217, 217, 217;
   --bg-secondary: #f5f5f7;
+  --bg-secondary-rgb: 245, 245, 247;
   --bg-hover: #e9e9e9;
+  --bg-hover-rgb: 233, 233, 233;
   --text: #111113;
+  --text-rgb: 17, 17, 19;
   --card-bg: #f5f5f7;
+  --card-bg-rgb: 245, 245, 247;
   --border-color: #e5e5e5;
+  --border-color-rgb: 229, 229, 229;
+  --dark: #111119;
+  --dark-rgb: 17, 17, 25;
+  --light: #ffffff;
+  --light-rgb: 255, 255, 255;
 }
 
 [data-theme=dark] {
   --bg: #2d3133;
+  --bg-rgb: 45, 49, 51;
   --bg-secondary: #2c2c2e;
+  --bg-secondary-rgb: 44, 44, 46;
   --bg-hover: #3a3a3c;
+  --bg-hover-rgb: 58, 58, 60;
   --text: #ffffff;
+  --text-rgb: 255, 255, 255;
   --card-bg: #2c2c2e;
+  --card-bg-rgb: 44, 44, 46;
   --border-color: #3a3a3c;
+  --border-color-rgb: 58, 58, 60;
   --accent: #ffdd33;
+  --accent-rgb: 255, 221, 51;
 }
 
 body {
@@ -219,7 +237,7 @@ main {
   height: 32px;
   background: linear-gradient(90deg, #000 0%, #111119 100%);
   border-bottom: 1px solid var(--accent);
-  box-shadow: 0 0 10px rgba(var(--accent), 0.2);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.2);
   color: #fff;
   position: fixed;
   top: 0;
@@ -343,6 +361,7 @@ footer a {
 .btn-vvg {
   background: var(--accent);
   border: 1px solid var(--text);
+  color: var --dark;
   border-radius: 0;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
@@ -355,7 +374,7 @@ footer a {
    * On hover, we invert the colors to provide clear feedback to the user.
    * The background becomes dark, and the text takes on the accent color.
    */
-  background-color: var(--text);
+  background-color: var(--dark);
   color: var(--accent);
 }
 
@@ -610,7 +629,7 @@ footer a {
 
 .hero-terminal {
   border: 1px solid var(--accent);
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(10, 10, 10, 0.9);
   color: var(--accent);
   font-family: "IBM Plex Mono", monospace;
   box-shadow: 0 0 15px rgba(255, 221, 51, 0.1);
@@ -840,6 +859,168 @@ footer a {
   color: var(--text);
 }
 
+.vvg-pricing .vvg-card {
+  border: 1px solid #2a2a2a;
+  /*border-radius: 4px;*/
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.vvg-pricing .vvg-card.featured {
+  border-color: #ffdd33;
+  box-shadow: 0 0 0 1px rgba(255, 221, 51, 0.15), 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+.vvg-pricing .vvg-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  border-color: #444;
+}
+.vvg-pricing .vvg-card .h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0.75rem 0 0.5rem;
+}
+.vvg-pricing .vvg-card .h1 .fs-6 {
+  font-size: 0.875rem !important;
+  font-weight: 400;
+  opacity: 0.6;
+}
+.vvg-pricing .vvg-card .fw-bold {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.vvg-pricing .vvg-card .list-unstyled {
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+.vvg-pricing .vvg-card .list-unstyled.small {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.vvg-pricing .vvg-card hr {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.vvg-pricing .btn-vvg {
+  background-color: #ffdd33;
+  color: #0a0a0a;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+.vvg-pricing .btn-vvg:hover {
+  background-color: #e6c72d;
+  color: #0a0a0a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 221, 51, 0.3);
+}
+
+@media (max-width: 767.98px) {
+  .vvg-pricing .vvg-card {
+    padding: 1.25rem !important;
+  }
+  .vvg-pricing .vvg-card .h1 {
+    font-size: 2rem;
+  }
+  .vvg-pricing .vvg-card .badge {
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+  .vvg-pricing .vvg-card .btn-vvg {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .vvg-pricing .btn-vvg {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+@media (max-width: 575.98px) {
+  .vvg-pricing .vvg-card {
+    padding: 1rem !important;
+  }
+  .vvg-pricing .vvg-card .h1 {
+    font-size: 1.8rem;
+  }
+  .vvg-pricing .vvg-card .list-unstyled {
+    font-size: 0.8rem;
+  }
+  .vvg-pricing .vvg-card .badge {
+    font-size: 0.6rem;
+  }
+}
+#preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+#preloader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#preloader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 85%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.terminal-box {
+  position: relative;
+  z-index: 2;
+  border: 1px solid #111119;
+  padding: 2rem;
+  min-width: 320px;
+  box-shadow: 0 0 15px rgba(255, 221, 51, 0.15), inset 0 0 30px rgba(255, 221, 51, 0.03);
+}
+
+#ascii-bar {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  min-height: 2rem;
+}
+
+#cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1rem;
+  background: #ffdd33;
+  margin-left: 4px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 .tw-cursor {
   animation: blinker 1s step-start infinite;
 }

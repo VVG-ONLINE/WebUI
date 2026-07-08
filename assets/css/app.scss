@@ -34,9 +34,10 @@
 
 // 4. Page-specific styles
 @import 'blog';
+@import 'pricing';
 
 // 5. Standalone full-page components
-// @import 'preloader';
+@import 'preloader';
 
 // 6. Utility classes
 @import 'utilities';
