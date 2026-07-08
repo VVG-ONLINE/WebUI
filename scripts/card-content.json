@@ -1,0 +1,72 @@
+{
+  "pricing": {
+    "punchline": "// TRANSPARENT PRICING",
+    "title": ["Flexible Plans,", "Real Value."],
+    "description": ["Monthly & yearly pricing for", "every stage of your business growth."]
+  },
+  "home": {
+    "punchline": "// ACCESS THE FUTURE",
+    "title": ["Transform Your Vision", "into Reality."],
+    "description": ["Driving you beyond growth, through unique,", "innovative, and result-oriented digital consulting."]
+  },
+  "services": {
+    "punchline": "// DIGITAL SOLUTIONS",
+    "title": ["End-to-End", "Digital Services."],
+    "description": ["Comprehensive solutions to architect,", "build, and scale your digital ambitions."]
+  },
+  "about": {
+    "punchline": "// ABOUT VVG",
+    "title": ["Driving Digital", "Excellence."],
+    "description": ["Your trusted partner in digital", "business consulting and innovation."]
+  },
+  "contact": {
+    "punchline": "// LET\u2019S TALK",
+    "title": ["Start Your", "Digital Journey."],
+    "description": ["Reach out to our team and", "let\u2019s build something extraordinary."]
+  },
+  "blog": {
+    "punchline": "// INSIGHTS",
+    "title": ["Thought Leadership", "& Insights."],
+    "description": ["Expert perspectives on digital", "strategy, innovation, and growth."]
+  },
+  "blog-archives": {
+    "punchline": "// ARCHIVES",
+    "title": ["All Articles", "& Resources."],
+    "description": ["Browse our complete library of", "digital business insights and guides."]
+  },
+  "communication-mastery-for-digital-business-success": {
+    "punchline": "// COMMUNICATION",
+    "title": ["Communication Mastery", "for Digital Success."],
+    "description": ["Essential skills for thriving", "in the hyperconnected business world."]
+  },
+  "digital-assets-the-real-estate-of-the-virtual-world": {
+    "punchline": "// DIGITAL ASSETS",
+    "title": ["Digital Assets:", "The New Real Estate."],
+    "description": ["Owning your corner of the", "virtual world for long-term value."]
+  },
+  "dont-normalize-common-things-a-philosophy-for-business-excellence": {
+    "punchline": "// EXCELLENCE",
+    "title": ["Don\u2019t Normalize", "Common Things."],
+    "description": ["Challenging the status quo", "for business innovation and growth."]
+  },
+  "gst-rate-deductions-for-e-commerce-a-complete-guide-by-vvg-online": {
+    "punchline": "// TAX INSIGHTS",
+    "title": ["GST Rate Deductions", "for E-commerce."],
+    "description": ["A complete guide to navigating", "GST changes and boosting profitability."]
+  },
+  "key-performance-indicators-kpis": {
+    "punchline": "// DATA DRIVEN",
+    "title": ["Key Performance", "Indicators (KPIs)."],
+    "description": ["Unlock the power of data-driven", "insights for marketing success."]
+  },
+  "operating-model-design": {
+    "punchline": "// STRATEGY",
+    "title": ["Operating Model", "Design."],
+    "description": ["Holistic approach to structure,", "processes, and value delivery."]
+  },
+  "the-digital-marketing-investment-imperative": {
+    "punchline": "// MARKETING",
+    "title": ["The Digital Marketing", "Investment Imperative."],
+    "description": ["Why investing in digital today", "is cheaper than it ever will be."]
+  }
+}
