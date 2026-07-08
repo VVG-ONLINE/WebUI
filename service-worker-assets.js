@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "mKT0VRR1",
+  "version": "ubNNLnW9",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,12 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.nnqvudo0vd.wasm"
     },
     {
-      "hash": "sha256-tSw+qC3KOyh5hbB5RgeZUmBLm9jP5JAZVY+p7kQLmBg=",
-      "url": "_framework/VVG.Web.1xtl2gygh3.wasm"
+      "hash": "sha256-57FSYlb9Mmvl+b1lLLFRyogT3TQ8UYgVYD271Ul5AEM=",
+      "url": "_framework/VVG.Web.hi0q9k1t3s.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
+    },
+    {
+      "hash": "sha256-xshgStDi8LFQ9cTIqcJiRhbDJiLM+jia1aHjgegAOlg=",
+      "url": "_framework/dotnet.eusvxp25t4.js"
     },
     {
       "hash": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
@@ -472,10 +476,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
       "url": "_framework/dotnet.runtime.a6jcqbs390.js"
-    },
-    {
-      "hash": "sha256-qb30MJAX5BVixiDTp6Q6gKqh5uwHo40qLXDF4KJvvGA=",
-      "url": "_framework/dotnet.xaqiwepnmm.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -690,7 +690,7 @@ self.assetsManifest = {
       "url": "assets/data/json/twitter-card.json"
     },
     {
-      "hash": "sha256-viKIE6yQbcxz2Q+VuENMhTKJrxocqds7sH5Ck0urrpo=",
+      "hash": "sha256-suEWwHFT8QE/Ms6siLYfmLcIRNZ0cnOw3jNZIIJjPLk=",
       "url": "assets/data/pricing.json"
     },
     {
@@ -718,59 +718,119 @@ self.assetsManifest = {
       "url": "assets/images/profiles/logo-edge-2025-240x240.svg"
     },
     {
-      "hash": "sha256-EnZhgRtOpfKj6Vdph58+WxTzNzBLnMpKurfEHHj5XSs=",
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-about.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-blog-archives.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-blog.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-communication-mastery-for-digital-business-success.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-contact.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-digital-assets-the-real-estate-of-the-virtual-world.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-dont-normalize-common-things-a-philosophy-for-business-excellence.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-gst-rate-deductions-for-e-commerce-a-complete-guide-by-vvg-online.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-home.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-key-performance-indicators-kpis.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-operating-model-design.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-pricing.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-services.svg"
+    },
+    {
+      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "url": "assets/images/twitter-cards/.tmp-the-digital-marketing-investment-imperative.svg"
+    },
+    {
+      "hash": "sha256-MOf0LzN6nqLNR6G9tUcJtyLOAeKqmdiF5oWsJeg7GRA=",
       "url": "assets/images/twitter-cards/about-twitter-card.png"
     },
     {
-      "hash": "sha256-A40CbrPKhC7FHZlsdjkTsEUQHtP7D2GTEm1q3E4Lbxs=",
+      "hash": "sha256-6Vuk7V+kUo/CrBfUX7ggc/BPbrfgMp11kGT7zgxC4FU=",
       "url": "assets/images/twitter-cards/blog-archives-twitter-card.png"
     },
     {
-      "hash": "sha256-CQhDuHapm5BhSQxoCh8/y46BCYFteZhr8R0RScHEvDk=",
+      "hash": "sha256-8HfuOsAnmvE8wYQZKcSbo1Nfz52icJ+oyGO9pzDfRNU=",
       "url": "assets/images/twitter-cards/blog-twitter-card.png"
     },
     {
-      "hash": "sha256-Ylju5CdOPcWSReRp3CGXA4BLC/+RI9SWd/Zy26zz6EY=",
+      "hash": "sha256-dLNbgMLZMnsfCgerM7HE1A/fHetjGr94U+gBdbcB6SM=",
       "url": "assets/images/twitter-cards/card-mapping.json"
     },
     {
-      "hash": "sha256-3GOmSw18POUxJCQ3l65ffpAyvo3SxKQ8qsWkUPdotiQ=",
+      "hash": "sha256-UxQPnDo7Enu34Vhz3CBOL56yKwk5ddQc0+Ij48LtAmQ=",
       "url": "assets/images/twitter-cards/communication-mastery-for-digital-business-success-twitter-card.png"
     },
     {
-      "hash": "sha256-8GNeJIgQUSZhYXybVodT/N4s23hFDlVKyrukPmyw6Rg=",
+      "hash": "sha256-o+n/wo/IapKXmwTo22Q5qVKV9JkCVnnUtnfPrkIB8PM=",
       "url": "assets/images/twitter-cards/contact-twitter-card.png"
     },
     {
-      "hash": "sha256-C7keuomZpCHi+yNcc/FEl+8bX91hMirShxCSj1qfSRc=",
+      "hash": "sha256-s/LtD1iPUtXTwV7FbZW3ZJyhfXsOYEVsKD2DmE/po68=",
       "url": "assets/images/twitter-cards/digital-assets-the-real-estate-of-the-virtual-world-twitter-card.png"
     },
     {
-      "hash": "sha256-k8fPr0xxaYAOqr7ssK7f7HI4OalC/QlnSDDPEHd1zH8=",
+      "hash": "sha256-OlKGJ+wz0ZS3WJe19uSV8zWXJRl5/cRsp65WkDStTQo=",
       "url": "assets/images/twitter-cards/dont-normalize-common-things-a-philosophy-for-business-excellence-twitter-card.png"
     },
     {
-      "hash": "sha256-M1w4EPjhfeEzXXDWNIIVP9u40pmn09UBZwt8PQq8vwY=",
+      "hash": "sha256-FrSnrpYRVnWChYkdJMMaWcWWgxzLsVWLUaM9ypsdr7U=",
       "url": "assets/images/twitter-cards/gst-rate-deductions-for-e-commerce-a-complete-guide-by-vvg-online-twitter-card.png"
     },
     {
-      "hash": "sha256-fY5ACu5yV10y/BcGgwB+OGrrNJl5YQibVjJue1UkhCE=",
+      "hash": "sha256-XXVLjalv7Cadg1HSwwQAvZwVxki6rt7HJENK9FiOWTM=",
       "url": "assets/images/twitter-cards/home-twitter-card.png"
     },
     {
-      "hash": "sha256-K+e1BlUrbupvAs6vTvUsvNgkSJ0XIf3anH5H7Z4Zp50=",
+      "hash": "sha256-PwH1cC1DZhqCZEbwdXnx2G7adfFsoNeuR8s96Senrco=",
       "url": "assets/images/twitter-cards/key-performance-indicators-kpis-twitter-card.png"
     },
     {
-      "hash": "sha256-3w/J38rVbodZTljvrBu+E7YR8p7yUvLcS/GomvFafTw=",
+      "hash": "sha256-pEa4Ch5oO+dovYUnosbzltxVLaSoo2Jaut6dj+M75oo=",
       "url": "assets/images/twitter-cards/operating-model-design-twitter-card.png"
     },
     {
-      "hash": "sha256-ubp22MDXqW+uyhCjnwre4MLV3KxCn/E9wXa1ZuunVSk=",
+      "hash": "sha256-snG19CkQPGMU6Aql4Fd9T8dprwc+cdECHptTCLssXUU=",
+      "url": "assets/images/twitter-cards/pricing-twitter-card.png"
+    },
+    {
+      "hash": "sha256-pdw5iiw6opetdUfflAZX2CkmZdTRFdyUMRh+aPXVhCg=",
       "url": "assets/images/twitter-cards/services-twitter-card.png"
     },
     {
-      "hash": "sha256-oDMOvD6SequBlqoE1bm33rNB7ZBN49YmztmBfLUWl3E=",
+      "hash": "sha256-1SJfs8NGwEh0E+3tJExFk8JlBt5WFKVrQA6Xdcr3MRo=",
       "url": "assets/images/twitter-cards/the-digital-marketing-investment-imperative-twitter-card.png"
     },
     {
@@ -882,7 +942,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-JXUlB4uU5Xk9Ra1N5Qh0eZer/SUAru4TmPcYNr/rtqY=",
+      "hash": "sha256-wUhjzgM86oayz36YO905+9sup22uIGP6qXzUE3Z0F1A=",
       "url": "index.html"
     },
     {
