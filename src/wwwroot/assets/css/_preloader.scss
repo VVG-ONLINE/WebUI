@@ -47,13 +47,11 @@
   inset: 0;
   width: 100vw;
   height: 100dvh;
-  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   font-family: 'IBM Plex Mono', monospace;
-  color: #ffdd33;
 }
 
 // Scan-line CRT overlay
@@ -65,8 +63,8 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.35) 2px,
-    rgba(0, 0, 0, 0.35) 4px
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -77,7 +75,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.6) 100%);
+  background: radial-gradient(ellipse at center, transparent 85%, rgba(0, 0, 0, 0.1) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -85,7 +83,7 @@
 .terminal-box {
   position: relative;
   z-index: 2;
-  border: 1px solid #ffdd33;
+  border: 1px solid #111119;
   padding: 2rem;
   min-width: 320px;
   box-shadow:

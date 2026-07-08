@@ -173,6 +173,29 @@
   ],
   "tieredPackages": [
     {
+      "id": "nano",
+      "name": "Nano",
+      "tagline": "Perfect for aspiring founders",
+      "price": 5000,
+      "yearlyPrice": 50000,
+      "unit": "month",
+      "popular": false,
+      "tag": "Most Economical",
+      "oneTimeFeatures": [
+        "Logo design + brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+        "Static website (5 pages, responsive design)",
+        "Domain & hosting setup"
+      ],
+      "features": [
+        "Quarterly SEO check-in",
+        "Strategy consultation (1 hour/year)",
+        "Website hosting & domain renewal",
+        "Email support"
+      ],
+      "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
+      "recommendedFor": "Startups, solopreneurs, aspiring founders"
+    },
+    {
       "id": "starter",
       "name": "Starter",
       "tagline": "Perfect for startups and small businesses",
@@ -180,13 +203,23 @@
       "yearlyPrice": 250000,
       "unit": "month",
       "popular": false,
+      "tag": "Most Practical",
+      "oneTimeFeatures": [
+        "Logo design + brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+        "Business website (5 pages, responsive design)",
+        "Domain & hosting setup"
+      ],
       "features": [
         "Basic SEO audit & optimization",
         "Social media management (2 platforms)",
         "4 blog posts per month",
         "Monthly performance report",
+        "Custom AI/Chatbot",
+        "Email marketing",
+        "SMS marketing",
         "Email support"
       ],
+      "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
       "recommendedFor": "Startups, solopreneurs, local businesses"
     },
     {
@@ -197,6 +230,13 @@
       "yearlyPrice": 750000,
       "unit": "month",
       "popular": true,
+      "tag": "Most Scalable",
+      "oneTimeFeatures": [
+        "Premium logo + brand guidelines",
+        "Complete brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+        "Website (up to 10 pages, responsive design)",
+        "Domain & hosting setup"
+      ],
       "features": [
         "Advanced SEO (on-page + off-page)",
         "Multi-platform social media (4 platforms)",
@@ -204,9 +244,12 @@
         "Google Ads & Facebook Ads management",
         "Lead generation campaigns",
         "Email marketing automation",
+        "Custom AI/Chatbot",
+        "SMS marketing campaigns",
         "Monthly strategy review call",
         "Dedicated account manager"
       ],
+      "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
       "recommendedFor": "Mid-market businesses, e-commerce stores, B2B companies"
     },
     {
@@ -217,6 +260,13 @@
       "yearlyPrice": 2000000,
       "unit": "month",
       "popular": false,
+      "tag": "Maximum Impact",
+      "oneTimeFeatures": [
+        "Premium brand identity + comprehensive brand guidelines",
+        "Full stationery suite (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+        "Custom website (unlimited pages)",
+        "Domain & hosting setup"
+      ],
       "features": [
         "Comprehensive SEO + technical SEO",
         "Full-scale social media marketing (all platforms)",
@@ -225,10 +275,13 @@
         "Influencer marketing & partnerships",
         "Reputation management",
         "Custom AI/automation solutions",
+        "Email marketing at scale",
+        "SMS marketing campaigns",
         "Weekly performance reviews",
         "Dedicated strategist + account team",
         "Priority 24/7 support"
       ],
+      "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
       "recommendedFor": "Enterprises, established brands, high-growth companies"
     }
   ],

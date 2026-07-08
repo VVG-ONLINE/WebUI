@@ -28,11 +28,11 @@
   // --bg is the main background color for the entire page.
   --bg: #d9d9d9;
   --bg-rgb: 217, 217, 217;
-  
+
   // --bg-secondary is a secondary background color.
   --bg-secondary: #f5f5f7;
   --bg-secondary-rgb: 245, 245, 247;
-  
+
   // --bg-hover is the background color for hover states.
   --bg-hover: #e9e9e9;
   --bg-hover-rgb: 233, 233, 233;
@@ -53,6 +53,10 @@
   // dark color.
   --dark: #111119;
   --dark-rgb: 17, 17, 25;
+
+  //light color.
+  --light: #ffffff;
+  --light-rgb: 255, 255, 255;
 }
 
 [data-theme="dark"] {
@@ -70,7 +74,7 @@
   --card-bg-rgb: 44, 44, 46;
   --border-color: #3a3a3c;
   --border-color-rgb: 58, 58, 60;
-  
+
   // The accent color can also be changed for a theme, but we've kept it
   // consistent here for brand identity.
   --accent: #ffdd33;

@@ -25,7 +25,7 @@
             <p class="text-muted">Monthly retainer packages for ongoing partnership</p>
             <div class="mt-4">
                 <button class="btn-vvg px-4" @onclick="ToggleYearly">
-                    @(isYearly ? "Switch to Monthly" : "Switch to Yearly")
+                    @(isYearly ? "Switch to Monthly" : "Switch to Yearly — Save 2 Months Cost")
                 </button>
             </div>
         </div>
@@ -41,28 +41,47 @@
         else
         {
             <div class="row g-4 justify-content-center">
-                @foreach (var pkg in packages)
+                @foreach (var pkg in packages!)
                 {
-                    <div class="col-md-4 d-flex">
-                        <div class="vvg-card p-3 d-flex flex-column w-100 @(pkg.popular ? "featured" : "")">
+                    <div class="col-md-6 d-flex">
+                        <div class="vvg-card p-4 d-flex flex-column w-100 @(pkg.popular ? "featured" : "")">
                             <h3 class="d-flex align-items-center gap-4 h5">
                                 @pkg.name
-                                @if (pkg.popular)
+                                @if (!string.IsNullOrEmpty(pkg.tag))
+                                {
+                                    <span class="badge badge-warning bg-accent text-dark">@pkg.tag</span>
+                                }
+                                @* @if (pkg.popular)
                                 {
                                     <span class="badge badge-warning bg-accent text-dark">Most Popular</span>
-                                }
+                                } *@
                             </h3>
                             <p class="mono">@pkg.tagline</p>
                             <div class="h1">
                                 @($"{GetSymbol()}{((isYearly ? pkg.yearlyPrice : pkg.price) ?? 0):N0}")
                                 <span class="fs-6">/@(isYearly ? "year" : pkg.unit)</span>
                             </div>
-                            <ul class="list-unstyled mt-3">
-                                @foreach (var feature in pkg.features)
-                                {
-                                    <li>✓ @feature</li>
-                                }
-                            </ul>
+                            @if (isYearly && pkg.oneTimeFeatures != null && pkg.oneTimeFeatures.Length > 0)
+                            {
+                                <p class="mono fs-6 mt-3 mb-1">▸ ONE-TIME SETUP</p>
+                                <ul class="list-unstyled small">
+                                    @foreach (var feature in pkg.oneTimeFeatures)
+                                    {
+                                        <li class="mb-1">✓ @feature</li>
+                                    }
+                                </ul>
+                                <hr class="opacity-25 my-2" />
+                            }
+                            @if (pkg.features != null && pkg.features.Length > 0)
+                            {
+                                <p class="mono fs-6 mt-2 mb-1">▸ MONTHLY SERVICES</p>
+                                <ul class="list-unstyled">
+                                    @foreach (var feature in pkg.features)
+                                    {
+                                        <li>✓ @feature</li>
+                                    }
+                                </ul>
+                            }
                             <button class="btn-vvg w-100 mt-auto">GET STARTED</button>
                         </div>
                     </div>
@@ -100,11 +119,11 @@
                             {
                                 <div class="d-flex justify-content-between small border-bottom border-opacity-10 py-1">
                                     <span class="opacity-75">@model.label</span>
-                                     <span class="mono">Starting from @($"{GetSymbol()}{(model.startingPrice ?? 0):N0}")</span>
+                                     <span class="bg-dark mono text-accent ms-2">Starting from @($"{GetSymbol()}{(model.startingPrice ?? 0):N0}")</span>
 
                                     @if (model.features != null)
                                     {
-                                        <div class="small text-muted mt-1">
+                                        <div class="small mt-1">
                                             @string.Join(", ", model.features)
                                         </div>
                                     }
@@ -122,7 +141,7 @@
                                  {
                                      <li class="mb-1 small d-flex justify-content-between">
                                          <span>@sub.name</span>
-                                         <span class="mono ms-2">Starting from @($"{GetSymbol()}{(sub.startingPrice ?? 0):N0}")/@sub.unit</span>
+                                         <span class="bg-dark mono text-accent ms-2">Starting from @($"{GetSymbol()}{(sub.startingPrice ?? 0):N0}")/@sub.unit</span>
                                      </li>
                                  }
 
@@ -139,11 +158,11 @@
 
 @* -- FOOTER NOTE -- *@
 <section class="container py-4 border-top">
-    <div class="text-center small opacity-50">
+    <div class="text-center small opacity-75">
         <i class="bi bi-info-circle me-1"></i>
         @(meta?.note != null ? meta.note : "All prices are indicative. Contact us for a custom quote tailored to your specific needs.")
         <br>
-        <a href="/contact" class="text-accent">Get a free consultation</a>
+        <a href="/contact" class="btn bg-dark text-accent">Get a free consultation</a>
     </div>
 </section>
 
@@ -205,6 +224,9 @@
         public int? yearlyPrice { get; set; }
         public string? unit { get; set; }
         public bool popular { get; set; }
+        public string? tag { get; set; }
+        public string? note { get; set; }
+        public string[]? oneTimeFeatures { get; set; }
         public string[]? features { get; set; }
     }
 
