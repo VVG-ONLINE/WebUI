@@ -153,10 +153,8 @@ jobs:
             : {};
 
           function getImageUrl(slug) {
-            if (cardMapping[slug]) {
-              return BASE_URL + '/assets/images/twitter-cards/' + cardMapping[slug];
-            }
-            return DEFAULT_IMAGE;
+            var file = cardMapping[slug] || (slug + '-twitter-card.png');
+            return BASE_URL + '/assets/images/twitter-cards/' + file;
           }
 
           const pages = {

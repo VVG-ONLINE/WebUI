@@ -107,6 +107,7 @@ List<PageSpec> GetPageSpecs(string root, string indexPath)
     var list = new List<PageSpec>
     {
         new("home", "VVG ONLINE - Digital Business Consulting", "Transform your enterprise with cutting-edge digital business consulting. Decode complexity, design strategies, deliver results."),
+        new("pricing", "Pricing - VVG ONLINE", "Transparent pricing for VVG ONLINE's digital consulting services. Explore tiered packages and custom bundles for strategy, marketing, IT, and design workshops."),
         new("contact", "Contact Us - VVG ONLINE", "Ready to transform your business? Get in touch with VVG ONLINE today for expert digital consulting services."),
         new("services", "Services - VVG ONLINE", "Explore our comprehensive digital business consulting services designed to transform your enterprise through innovation."),
         new("about", "About VVG ONLINE", "We are a strategic partner in navigating the complexities of the digital age. Learn more about our mission and philosophy."),
