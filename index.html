@@ -29,6 +29,87 @@
     <meta name="twitter:description" content="Transform your business with cutting-edge digital consulting and strategic innovation." />
     <meta name="twitter:image" content="https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
     <meta name="twitter:site" content="@vvgonline" />
+    <!-- Per-page SEO: inline script injects OG/Twitter tags before Blazor loads -->
+    <script>
+    (function() {
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        var baseImg = 'https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/';
+        var pages = {
+            '/': {
+                title: 'VVG ONLINE - Digital Business Consulting & Innovation',
+                desc: 'Transform your business with VVG ONLINE\'s cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.',
+                img: baseImg + 'home-twitter-card.png',
+                url: 'https://vvgonline.net/'
+            },
+            '/services': {
+                title: 'Our Services - VVG ONLINE',
+                desc: 'Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies to transform your enterprise.',
+                img: baseImg + 'services-twitter-card.png',
+                url: 'https://vvgonline.net/services'
+            },
+            '/pricing': {
+                title: 'Pricing - VVG ONLINE',
+                desc: 'Transparent pricing for VVG ONLINE\'s digital consulting services. Explore our tiered packages, service-level pricing, and custom bundles for strategy, marketing, IT, and design thinking.',
+                img: baseImg + 'pricing-twitter-card.png',
+                url: 'https://vvgonline.net/pricing'
+            },
+            '/about': {
+                title: 'About VVG ONLINE',
+                desc: 'Learn about VVG ONLINE\'s mission, philosophy, and our commitment to driving digital transformation and innovation.',
+                img: baseImg + 'about-twitter-card.png',
+                url: 'https://vvgonline.net/about'
+            },
+            '/contact': {
+                title: 'Contact Us - VVG ONLINE',
+                desc: 'Get in touch with VVG ONLINE for digital business consulting. Let\'s start a conversation about your vision and digital transformation goals.',
+                img: baseImg + 'contact-twitter-card.png',
+                url: 'https://vvgonline.net/contact'
+            },
+            '/blog': {
+                title: 'Blog - VVG Online | Digital Insights & Expertise',
+                desc: 'Digital insights, expert analysis, and strategic perspectives on technology, innovation, and business transformation.',
+                img: baseImg + 'blog-twitter-card.png',
+                url: 'https://vvgonline.net/blog'
+            },
+            '/blog-archives': {
+                title: 'Blog Archives - VVG ONLINE',
+                desc: 'Browse our complete collection of digital business insights, case studies, and thought leadership articles.',
+                img: baseImg + 'blog-archives-twitter-card.png',
+                url: 'https://vvgonline.net/blog-archives'
+            }
+        };
+        var info = pages[path];
+        if (!info && path.indexOf('/blog/') === 0) {
+            info = pages['/blog'];
+            if (info) info = { title: info.title, desc: info.desc, img: info.img, url: 'https://vvgonline.net' + path };
+        }
+        if (!info) info = pages['/'];
+        if (info) {
+            document.title = info.title;
+            function setMeta(attr, name, val) {
+                if (!val) return;
+                var q = attr === 'p' ? 'property' : 'name';
+                var el = document.querySelector('meta[' + q + '="' + name + '"]');
+                if (!el) {
+                    el = document.createElement('meta');
+                    el.setAttribute(q, name);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('content', val);
+            }
+            var s = setMeta.bind(null, 'n');
+            var p = setMeta.bind(null, 'p');
+            s('description', info.desc);
+            p('og:title', info.title);
+            p('og:description', info.desc);
+            p('og:image', info.img);
+            p('og:url', info.url);
+            s('twitter:title', info.title);
+            s('twitter:description', info.desc);
+            s('twitter:image', info.img);
+        }
+    })();
+    </script>
     <base href="/">
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
@@ -48,18 +129,18 @@
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.66stpp682q.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.ikrs475e5v.js",
     "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.a6jcqbs390.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.xtwa35c9ie.js"
+    "./_framework/dotnet.js": "./_framework/dotnet.zeus0u1xj3.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.66stpp682q.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
     "./_framework/blazor.webassembly.js": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
-    "./_framework/dotnet.js": "sha256-SyQXkWSB+2W//zSdEC+RLBQYqgTki/VenhyPWTfNRes=",
+    "./_framework/dotnet.js": "sha256-+xAILlgf6y4T7FriUlRQRXhl3A9FP4ZWk687Tak9wfo=",
     "./_framework/dotnet.native.ikrs475e5v.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
     "./_framework/dotnet.native.js": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
     "./_framework/dotnet.runtime.a6jcqbs390.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
     "./_framework/dotnet.runtime.js": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
-    "./_framework/dotnet.xtwa35c9ie.js": "sha256-SyQXkWSB+2W//zSdEC+RLBQYqgTki/VenhyPWTfNRes="
+    "./_framework/dotnet.zeus0u1xj3.js": "sha256-+xAILlgf6y4T7FriUlRQRXhl3A9FP4ZWk687Tak9wfo="
   }
 }</script>
 </head>
