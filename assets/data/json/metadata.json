@@ -3,5 +3,48 @@
   "defaultDescription": "Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation.",
   "keywords": "digital business consulting,ai,transformation,business,services,technology",
   "author": "VVG ONLINE",
-  "publishedDate": "2026-01-01","modifiedDate": "2026-01-01"
+  "publishedDate": "2026-01-01",
+  "modifiedDate": "2026-01-01",
+  "pages": {
+    "home": {
+      "title": "VVG ONLINE - Digital Business Consulting & Innovation",
+      "description": "Transform your business with VVG ONLINE's cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.",
+      "keywords": "digital business consulting, technology consulting, digital transformation, innovation, business strategy, VVG ONLINE"
+    },
+    "pricing": {
+      "title": "Pricing - VVG ONLINE",
+      "description": "Transparent pricing for VVG ONLINE's digital consulting services. Explore our tiered packages, service-level pricing, and custom bundles for strategy, marketing, IT, and design thinking.",
+      "keywords": "pricing, digital consulting, packages, services, VVG ONLINE, digital marketing pricing, strategy consulting, IT management, design thinking workshops"
+    },
+    "services": {
+      "title": "Our Services - VVG ONLINE",
+      "description": "Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies to transform your enterprise.",
+      "keywords": "digital services, technology solutions, digital marketing, data analytics, UX design, consulting services, digital transformation, VVG ONLINE"
+    },
+    "about": {
+      "title": "About VVG ONLINE",
+      "description": "Learn about VVG ONLINE's mission, philosophy, and our commitment to driving digital transformation and innovation.",
+      "keywords": "about us, digital consulting, innovation, strategy, technology consulting"
+    },
+    "contact": {
+      "title": "Contact Us - VVG ONLINE",
+      "description": "Get in touch with VVG ONLINE for digital business consulting. Let's start a conversation about your vision and digital transformation goals.",
+      "keywords": "contact, get in touch, consultation, digital consulting, VVG ONLINE, business inquiry"
+    },
+    "blog": {
+      "title": "Blog - VVG Online | Digital Insights & Expertise",
+      "description": "Digital insights, expert analysis, and strategic perspectives on technology, innovation, and business transformation.",
+      "keywords": "digital business blog, technology insights, innovation, strategy, digital transformation"
+    },
+    "blog-archives": {
+      "title": "Blog Archives - VVG ONLINE",
+      "description": "Browse our complete collection of digital business insights, case studies, and thought leadership articles.",
+      "keywords": "blog archives, digital business articles, technology insights, innovation articles"
+    },
+    "not-found": {
+      "title": "404 Not Found - VVG ONLINE",
+      "description": "The page you were looking for was not found.",
+      "keywords": "404, not found, error"
+    }
+  }
 }

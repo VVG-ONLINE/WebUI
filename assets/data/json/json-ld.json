@@ -28,5 +28,75 @@
     "Digital Marketing",
     "Data Analysis",
     "UX Design"
-  ]
+  ],
+  "pages": {
+    "pricing": {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "VVG ONLINE Pricing Plans",
+      "description": "Flexible pricing plans for digital business consulting services.",
+      "brand": {
+        "@type": "Brand",
+        "name": "VVG ONLINE"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "offerCount": 4,
+        "lowPrice": 5000,
+        "highPrice": 200000,
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Consulting Plans",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Nano Plan",
+              "description": "Branding + website + quarterly SEO + strategy consultation"
+            },
+            "price": 5000,
+            "priceCurrency": "INR",
+            "priceType": "https://schema.org/MonthlyRate"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Starter Plan",
+              "description": "Branding + website + SEO + social media + blog + AI/chatbot + email + SMS marketing"
+            },
+            "price": 25000,
+            "priceCurrency": "INR",
+            "priceType": "https://schema.org/MonthlyRate"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Growth Plan",
+              "description": "Premium branding + website + advanced SEO + multi-platform social + ads + AI + strategy"
+            },
+            "price": 75000,
+            "priceCurrency": "INR",
+            "priceType": "https://schema.org/MonthlyRate"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise Plan",
+              "description": "Full brand identity + custom website + full-scale SEO + multi-platform + influencer + AI + 24/7 support"
+            },
+            "price": 200000,
+            "priceCurrency": "INR",
+            "priceType": "https://schema.org/MonthlyRate"
+          }
+        ]
+      }
+    }
+  }
 }

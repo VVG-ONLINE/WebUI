@@ -4,5 +4,42 @@
   "creator": "@vvgonline",
   "title": "VVG ONLINE - Digital Business Consulting",
   "description": "Transform your business with cutting-edge digital consulting and strategic innovation.",
-  "image": "https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+  "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
+  "pages": {
+    "home": {
+      "title": "VVG ONLINE - Digital Business Consulting",
+      "description": "Transform your enterprise with cutting-edge digital business consulting. Decode. Design. Deliver.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/home-twitter-card.png"
+    },
+    "pricing": {
+      "title": "Pricing - VVG ONLINE",
+      "description": "Flexible plans and transparent pricing for digital transformation services.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/pricing-twitter-card.png"
+    },
+    "services": {
+      "title": "Services - VVG ONLINE",
+      "description": "Comprehensive digital business consulting services to transform your enterprise.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/services-twitter-card.png"
+    },
+    "about": {
+      "title": "About VVG ONLINE",
+      "description": "Learn about our mission to decode the complex digital landscape, design bespoke strategies, and deliver transformative results.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/about-twitter-card.png"
+    },
+    "contact": {
+      "title": "Contact Us - VVG ONLINE",
+      "description": "Ready to transform your business? Let's talk about your digital transformation journey.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/contact-twitter-card.png"
+    },
+    "blog": {
+      "title": "Blog - VVG Online",
+      "description": "Expert insights on digital business, technology strategy, and innovation.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-twitter-card.png"
+    },
+    "blog-archives": {
+      "title": "Blog Archives - VVG ONLINE",
+      "description": "Browse our complete collection of digital business insights.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-archives-twitter-card.png"
+    }
+  }
 }
