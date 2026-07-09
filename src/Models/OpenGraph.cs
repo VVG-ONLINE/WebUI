@@ -27,5 +27,8 @@ namespace VVG.Web.Models
 
         /// <summary>Site name (e.g., "VVG ONLINE").</summary>
         public string? SiteName { get; set; }
+
+        /// <summary>Per-page Open Graph overrides.</summary>
+        public Dictionary<string, PageMetaEntry>? Pages { get; set; }
     }
 }

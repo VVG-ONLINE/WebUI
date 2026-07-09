@@ -33,5 +33,8 @@ namespace VVG.Web.Models
 
         /// <summary>Fallback image URL for social sharing previews.</summary>
         public string? DefaultImage { get; set; }
+
+        /// <summary>Per-page metadata overrides.</summary>
+        public Dictionary<string, PageMetaEntry>? Pages { get; set; }
     }
 }

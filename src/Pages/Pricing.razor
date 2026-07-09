@@ -9,7 +9,6 @@
 @using System.Net.Http.Json
 @inject HttpClient Http
 @inject MetadataService MetadataService
-@inject VVG.Web.Services.CardImageService CardImage
 
 <PageTitle>Pricing</PageTitle>
 
@@ -246,27 +245,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var cardUrl = await CardImage.GetImageUrlAsync("pricing");
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "Pricing - VVG ONLINE",
-            Description = "Transparent pricing for VVG ONLINE's digital consulting services. Explore our tiered packages, service-level pricing, and custom bundles for strategy, marketing, IT, and design thinking.",
-            Keywords = "pricing, digital consulting, packages, services, VVG ONLINE, digital marketing pricing, strategy consulting, IT management, design thinking workshops",
-            Image = cardUrl,
-
-            OgType = "website",
-            OgTitle = "Pricing - VVG ONLINE",
-            OgDescription = "Flexible plans and transparent pricing for digital business consulting services.",
-            OgImage = cardUrl,
-            OgUrl = "https://vvgonline.net/pricing",
-
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "Pricing - VVG ONLINE",
-            TwitterDescription = "Flexible plans and transparent pricing for digital transformation services.",
-            TwitterImage = cardUrl
-        });
+        var pageMeta = await MetadataService.GetPageMetadataAsync("pricing");
+        var pricingJsonLd = await MetadataService.GetPageJsonLdAsync("pricing");
+        pageMeta.JsonLd = pricingJsonLd;
+        await MetadataService.SetPageMetadata(pageMeta);
 
         try
         {

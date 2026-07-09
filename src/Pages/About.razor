@@ -9,7 +9,6 @@
 @page "/about"
 @inject VVG.Web.Services.MetadataService MetadataService
 @inject HttpClient Http
-@inject VVG.Web.Services.CardImageService CardImage
 @using System.Text.Json
 
 <PageTitle>About Us</PageTitle>
@@ -173,26 +172,8 @@
     protected override async Task OnInitializedAsync()
     {
         // Set page metadata for SEO
-        var cardUrl = await CardImage.GetImageUrlAsync("about");
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "About VVG ONLINE",
-            Description = "Learn about VVG ONLINE's mission, philosophy, and our commitment to driving digital transformation and innovation.",
-            Keywords = "about us, digital consulting, innovation, strategy, technology consulting",
-            Image = cardUrl,
-            OgType = "website",
-            OgTitle = "About VVG ONLINE",
-            OgDescription = "We are a strategic partner in navigating the complexities of the digital age. Learn more about our mission and philosophy.",
-            OgImage = cardUrl,
-            OgUrl = "https://vvgonline.net/about",
-
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "About VVG ONLINE",
-            TwitterDescription = "Learn about our mission to decode the complex digital landscape, design bespoke strategies, and deliver transformative results.",
-            TwitterImage = cardUrl
-        });
+        var pageMeta = await MetadataService.GetPageMetadataAsync("about");
+        await MetadataService.SetPageMetadata(pageMeta);
 
         // Fetch FAQ data from the static JSON file
         await LoadFaqData();

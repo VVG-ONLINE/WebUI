@@ -66,11 +66,7 @@
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "404 Not Found - VVG ONLINE",
-            Description = "The page you were looking for was not found.",
-            Keywords = "404, not found, error"
-        });
+        var pageMeta = await MetadataService.GetPageMetadataAsync("not-found");
+        await MetadataService.SetPageMetadata(pageMeta);
     }
 }

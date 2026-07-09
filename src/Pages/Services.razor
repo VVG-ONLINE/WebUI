@@ -9,7 +9,6 @@
 @using System.Net.Http.Json
 @inject HttpClient Http
 @inject MetadataService MetadataService
-@inject VVG.Web.Services.CardImageService CardImage
 
 <PageTitle>Services</PageTitle>
 
@@ -94,27 +93,8 @@
     // Called once when the page first loads
     protected override async Task OnInitializedAsync()
     {
-        var cardUrl = await CardImage.GetImageUrlAsync("services");
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "Our Services - VVG ONLINE",
-            Description = "Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies to transform your enterprise.",
-            Keywords = "digital services, technology solutions, digital marketing, data analytics, UX design, consulting services, digital transformation, VVG ONLINE",
-            Image = cardUrl,
-            
-            OgType = "website",
-            OgTitle = "Services - VVG ONLINE",
-            OgDescription = "Explore our comprehensive digital business consulting services designed to transform your enterprise through innovation and strategic guidance.",
-            OgImage = cardUrl,
-            OgUrl = "https://vvgonline.net/services",
-
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "Services - VVG ONLINE",
-            TwitterDescription = "Comprehensive digital business consulting services to transform your enterprise.",
-            TwitterImage = cardUrl
-        });
+        var pageMeta = await MetadataService.GetPageMetadataAsync("services");
+        await MetadataService.SetPageMetadata(pageMeta);
 
         // Fetch services.json and extract the inner "services" array
         var doc = await Http.GetFromJsonAsync<ServiceDoc>("assets/data/services.json");

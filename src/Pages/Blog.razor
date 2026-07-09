@@ -3,7 +3,6 @@
 @using VVG.Web.Services
 @inject HttpClient Http
 @inject MetadataService MetadataService
-@inject CardImageService CardImage
 @implements IDisposable
 
 <PageTitle>Blog - VVG Online | Digital Insights & Expertise</PageTitle>
@@ -353,24 +352,8 @@
         try
         {
             // Set SEO metadata for blog listing page
-            var cardUrl = await CardImage.GetImageUrlAsync("blog");
-            await MetadataService.SetPageMetadata(new PageMetadata
-            {
-                Title = "Blog - VVG Online | Digital Insights & Expertise",
-                Description = "Digital insights, expert analysis, and strategic perspectives on technology, innovation, and business transformation.",
-                Keywords = "digital business blog, technology insights, innovation, strategy, digital transformation",
-                Image = cardUrl,
-                OgType = "website",
-                OgTitle = "Blog - VVG Online",
-                OgDescription = "Expert insights on digital business, technology strategy, and innovation from VVG ONLINE.",
-                OgImage = cardUrl,
-                OgUrl = "https://vvgonline.net/blog",
-                TwitterCard = "summary_large_image",
-                TwitterSite = "@vvgonline",
-                TwitterTitle = "Blog - VVG Online",
-                TwitterDescription = "Expert insights on digital business, technology strategy, and innovation.",
-                TwitterImage = cardUrl
-            });
+            var pageMeta = await MetadataService.GetPageMetadataAsync("blog");
+            await MetadataService.SetPageMetadata(pageMeta);
 
             // Load all posts from static JSON file
             // API returns BlogPost[] - we store as List for easier manipulation

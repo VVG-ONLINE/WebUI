@@ -16,7 +16,6 @@
 @* Built-in HTTP client (pre-configured by Blazor) *@
 @inject HttpClient Http
 @inject VVG.Web.Services.MetadataService MetadataService
-@inject VVG.Web.Services.CardImageService CardImage
 @inject IJSRuntime JS
 
 <PageTitle>Home</PageTitle>
@@ -139,27 +138,8 @@
     protected override async Task OnInitializedAsync()
     {
         // Set all SEO metadata for the home page (title, OG tags, Twitter card)
-        var cardUrl = await CardImage.GetImageUrlAsync("home");
-        await MetadataService.SetPageMetadata(new PageMetadata
-        {
-            Title = "VVG ONLINE - Digital Business Consulting & Innovation",
-            Description = "Transform your business with VVG ONLINE's cutting-edge digital consulting services. We specialize in technology solutions, digital strategy, and innovation.",
-            Keywords = "digital business consulting, technology consulting, digital transformation, innovation, business strategy, VVG ONLINE",
-            Image = cardUrl,
-
-            OgType = "website",
-            OgTitle = "VVG ONLINE - Digital Business Consulting",
-            OgDescription = "Transform your enterprise with cutting-edge digital business consulting. We decode complexity, design strategies, and deliver results.",
-            OgImage = cardUrl,
-            OgUrl = "https://vvgonline.net/",
-
-            TwitterCard = "summary_large_image",
-            TwitterSite = "@vvgonline",
-            TwitterCreator = "@vvgonline",
-            TwitterTitle = "VVG ONLINE - Digital Business Consulting",
-            TwitterDescription = "Transform your enterprise with cutting-edge digital business consulting. Decode. Design. Deliver.",
-            TwitterImage = cardUrl
-        });
+        var pageMeta = await MetadataService.GetPageMetadataAsync("home");
+        await MetadataService.SetPageMetadata(pageMeta);
 
         try
         {

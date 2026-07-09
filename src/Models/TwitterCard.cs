@@ -30,5 +30,8 @@ namespace VVG.Web.Models
         /// summary_large_image; 120×120 for summary).
         /// </summary>
         public string? Image { get; set; }
+
+        /// <summary>Per-page Twitter Card overrides.</summary>
+        public Dictionary<string, PageMetaEntry>? Pages { get; set; }
     }
 }
