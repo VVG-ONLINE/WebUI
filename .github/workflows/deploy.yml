@@ -194,6 +194,13 @@ jobs:
               description: 'Browse all articles from VVG ONLINE covering digital business consulting, technology, and innovation.',
               type: 'website',
               image: getImageUrl('blog-archives')
+            },
+            'pricing': {
+              dir: 'pricing',
+              title: 'Pricing - VVG ONLINE',
+              description: "Transparent pricing for VVG ONLINE's digital consulting services. Explore our tiered packages, service-level pricing, and custom bundles for strategy, marketing, IT, and design thinking.",
+              type: 'website',
+              image: getImageUrl('pricing')
             }
           };
 
@@ -244,7 +251,6 @@ jobs:
             '    <link rel="icon" type="image/png" href="' + prefix + 'assets/images/profiles/logo-2025.svg" />\n' +
             '    <link href="' + prefix + 'VVG.Web.styles.css" rel="stylesheet" />\n' +
             '    <link href="' + prefix + 'manifest.webmanifest" rel="manifest" />\n' +
-            '    <meta http-equiv="refresh" content="0;url=/" />\n' +
             '</head>\n' +
             '<body>\n' +
             '    <div id="app"><div class="preloader"><div class="loading-box"><div class="loader"></div><div class="terminal-output msg-1">_</div><div class="terminal-output msg-2">SYSTEM BOOTING...</div></div></div></div>\n' +
