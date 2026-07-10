@@ -30,18 +30,17 @@
      * We style the page links to match the overall theme.
      */
     .page-item .page-link {
-        background-color: var(--card-bg);
+        background-color: var(--light);
         border: 1px solid var(--text);
         color: var(--text);
         margin: 0 2px;
-        border-radius: 0;
 
         &:hover {
             /**
              * On hover, we change the background and text color to provide feedback.
              */
             background-color: var(--accent);
-            color: var(--text);
+            color: var(--text) !important;
         }
     }
 

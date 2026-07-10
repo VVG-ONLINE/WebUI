@@ -5,7 +5,7 @@ publishedAt: "2026-01-29"
 tags: ["Capability Building", "Training", "Organizational Development"]
 excerpt: "Leadership doesn't get hired—they get reconfigured. Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility."
 draft: true
-category: "Capability Building"
+category: "Business"
 featured: false
 ---
 
