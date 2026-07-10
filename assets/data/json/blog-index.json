@@ -113,37 +113,97 @@
   },
   {
     "title": "Capability Building",
-    "author": "Team VVG ONLINE",
+    "slug": "capability-building",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "Capability Building",
+      "Training",
+      "Organizational Development"
+    ],
+    "excerpt": "Leadership doesn't get hired—they get reconfigured. Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility.",
+    "draft": true,
+    "category": "Capability Building",
+    "featured": false,
     "filename": "capability-building",
     "timeToRead": 2
   },
   {
     "title": "Design Thinking Workshops",
-    "author": "Team VVG ONLINE",
+    "slug": "design-thinking-workshops",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "Design Thinking",
+      "Innovation",
+      "Workshops"
+    ],
+    "excerpt": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years; the ones that die after Month 3 cost companies $2-3M in wasted innovation.",
+    "draft": true,
+    "category": "Innovation",
+    "featured": false,
     "filename": "design-thinking-workshops",
     "timeToRead": 2
   },
   {
     "title": "Digital Transformation",
-    "author": "Team VVG ONLINE",
+    "slug": "digital-transformation",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "Digital Transformation",
+      "Strategy",
+      "Technology"
+    ],
+    "excerpt": "The hype cycle lasts 3 years. The reality lasts 5. Only 12% of digital transformation programs deliver sustainable competitive advantage.",
+    "draft": true,
+    "category": "Strategy",
+    "featured": false,
     "filename": "digital-transformation",
     "timeToRead": 2
   },
   {
     "title": "IT Management Solutions",
-    "author": "Team VVG ONLINE",
+    "slug": "it-management-solutions",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "IT Management",
+      "Technology",
+      "Infrastructure"
+    ],
+    "excerpt": "Effective IT management is no longer a support function—it's a strategic imperative.",
+    "draft": true,
+    "category": "Technology",
+    "featured": false,
     "filename": "it-management-solutions",
     "timeToRead": 2
   },
   {
     "title": "Strategic Digital Marketing",
-    "author": "Team VVG ONLINE",
+    "slug": "strategic-digital-marketing",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "Digital Marketing",
+      "Strategy",
+      "Marketing"
+    ],
+    "excerpt": "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage.",
+    "draft": true,
+    "category": "Marketing",
+    "featured": false,
     "filename": "strategic-digital-marketing",
     "timeToRead": 2
   },
   {
     "title": "Strategy & Innovation",
-    "author": "Team VVG ONLINE",
+    "slug": "strategy-and-innovation",
+    "publishedAt": "2026-01-29",
+    "tags": [
+      "Strategy",
+      "Innovation",
+      "Business"
+    ],
+    "excerpt": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
+    "draft": true,
+    "category": "Strategy",
+    "featured": false,
     "filename": "strategy-and-innovation",
     "timeToRead": 2
   }

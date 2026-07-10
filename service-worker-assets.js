@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "MVuLPchM",
+  "version": "yHeJHqMv",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.nnqvudo0vd.wasm"
     },
     {
-      "hash": "sha256-LG+RulqA1GYLsNdoaSCht349wnQ/tevQZyBUfuJMLL8=",
-      "url": "_framework/VVG.Web.o1zfs1hn2x.wasm"
+      "hash": "sha256-z6Guj32MXhSsfzez8w8tZX5EsOzcAlQswZ0JYHPupp4=",
+      "url": "_framework/VVG.Web.p291a4e77a.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-TOM3i7//IiwNI7DX+ypgcURq3wyzIyFAq3lrDdLXvDc=",
-      "url": "_framework/dotnet.kalap02ypx.js"
+      "hash": "sha256-4PRTotB/QrNLqNWZZEA1Qc+LELk+fmpGQKSjwvo4LwA=",
+      "url": "_framework/dotnet.c9pk8oh7d6.js"
     },
     {
       "hash": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
@@ -602,27 +602,27 @@ self.assetsManifest = {
       "url": "assets/data/blogs/The-Digital-Marketing-Investment-Imperative.md"
     },
     {
-      "hash": "sha256-kpFq5N91OnbhhnwpxreVReNwuLVwBIQCDAfxlgB2kZc=",
+      "hash": "sha256-X8C1rB9+I6joRBEr3ZprEsTrceOYKQhoJfiq2KWL4do=",
       "url": "assets/data/blogs/capability-building.md"
     },
     {
-      "hash": "sha256-ezqippppaPTZPKYpUtHiiKL7WpkqIjauRJI9rJk9Lq0=",
+      "hash": "sha256-Va+cXaUklWkeIb3DKjc+7DXxmbiI67TvFXlEgmEyqX4=",
       "url": "assets/data/blogs/design-thinking-workshops.md"
     },
     {
-      "hash": "sha256-EIgxcC26iJgkR8qgxNLw121GNfGzQruUXp5VdHTMd7s=",
+      "hash": "sha256-dekOcuM72sXFLx2040d7UMbIRaKK8JQUqZMpaPxiJHY=",
       "url": "assets/data/blogs/digital-transformation.md"
     },
     {
-      "hash": "sha256-SmOFxPQ6PXX6ThNagnU7+V7x7yDsAf5/eKvSMkzgMIA=",
+      "hash": "sha256-pWmRJ7xpmxjFFwDuASRwXLvSPyvr/tGHPMQCY0GLdg8=",
       "url": "assets/data/blogs/it-management-solutions.md"
     },
     {
-      "hash": "sha256-iUpgSg/ljKkktJS++HJuz9jhSQRphSiDgFsR/2UDNxM=",
+      "hash": "sha256-09jt5ksqxHbUao50IvTvHNcZ0kSxTZF5vqyubhPUJ7I=",
       "url": "assets/data/blogs/strategic-digital-marketing.md"
     },
     {
-      "hash": "sha256-0MEPimbJkrpv37wHH8EXgueVZgs3vBFE/cdtIKxaElw=",
+      "hash": "sha256-/Sa6OPtthvcf6zlRxHuEWJPVXLeb6XaH49lmmrKoSyc=",
       "url": "assets/data/blogs/strategy-and-innovation.md"
     },
     {
@@ -666,7 +666,7 @@ self.assetsManifest = {
       "url": "assets/data/facts-figures.json"
     },
     {
-      "hash": "sha256-fPMzQo3TNUItIAYF3IMjzTivUttlYBZHgvnS7CPeARI=",
+      "hash": "sha256-pKqw68MlEF6mt9ocjHRE2fi7WKfcPRu0yalOIHKrAC8=",
       "url": "assets/data/json/blog-index.json"
     },
     {
@@ -918,7 +918,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-YIZPaqR+ksvngmEVythRQpbTc3tG8rQRkEF25m6i5tc=",
+      "hash": "sha256-uOidzkt2h98LvvvEVBRB5uMfvNEz28Cu1PoYZDqg7NQ=",
       "url": "index.html"
     },
     {

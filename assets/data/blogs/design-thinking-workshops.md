@@ -1,8 +1,12 @@
 ---
 title: "Design Thinking Workshops"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "design-thinking-workshops"
+publishedAt: "2026-01-29"
+tags: ["Design Thinking", "Innovation", "Workshops"]
+excerpt: "Design thinking is 67% hype, 33% value. The workshops that work last 2 years; the ones that die after Month 3 cost companies $2-3M in wasted innovation."
+draft: true
+category: "Innovation"
+featured: false
 ---
 
 # Design Thinking: From Workshop Fads to $14M Innovation Lift
