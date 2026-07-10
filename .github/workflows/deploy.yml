@@ -50,9 +50,9 @@ jobs:
 
       - name: Install Fonts & Generate Twitter Cards
         run: |
-          sudo apt-get update
-          sudo apt-get install -y fontconfig fonts-ebgaramond fonts-firacode fonts-ibm-plex
-          dotnet run --project tools/TwitterCardGenerator
+           sudo apt-get update
+           sudo apt-get install -y fontconfig libfontconfig1 libfreetype6 fonts-ebgaramond fonts-firacode fonts-ibm-plex
+           dotnet run --project tools/TwitterCardGenerator
 
       - name: Fix Base Href for GitHub Pages
         run: |
