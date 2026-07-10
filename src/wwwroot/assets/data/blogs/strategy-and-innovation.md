@@ -1,8 +1,12 @@
 ---
 title: "Strategy & Innovation"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "strategy-and-innovation"
+publishedAt: "2026-01-29"
+tags: ["Strategy", "Innovation", "Business"]
+excerpt: "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty."
+draft: true
+category: "Strategy"
+featured: false
 ---
 
 # Architecting the Future: Strategy as a Competitive Weapon

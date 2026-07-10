@@ -1,8 +1,12 @@
 ---
 title: "Strategic Digital Marketing"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "strategic-digital-marketing"
+publishedAt: "2026-01-29"
+tags: ["Digital Marketing", "Strategy", "Marketing"]
+excerpt: "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage."
+draft: true
+category: "Marketing"
+featured: false
 ---
 
 # Strategic Digital Marketing: From Channel Noise to Strategic Advantage

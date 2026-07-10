@@ -1,8 +1,12 @@
 ---
 title: "Digital Transformation"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "digital-transformation"
+publishedAt: "2026-01-29"
+tags: ["Digital Transformation", "Strategy", "Technology"]
+excerpt: "The hype cycle lasts 3 years. The reality lasts 5. Only 12% of digital transformation programs deliver sustainable competitive advantage."
+draft: true
+category: "Strategy"
+featured: false
 ---
 
 # Digital Transformation: From Buzzword to $25M Revenue Protector

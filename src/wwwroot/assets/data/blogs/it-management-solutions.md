@@ -1,8 +1,12 @@
 ---
 title: "IT Management Solutions"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "it-management-solutions"
+publishedAt: "2026-01-29"
+tags: ["IT Management", "Technology", "Infrastructure"]
+excerpt: "Effective IT management is no longer a support function—it's a strategic imperative."
+draft: true
+category: "Technology"
+featured: false
 ---
 
 # IT Management Solutions: The Backbone of Digital Excellence

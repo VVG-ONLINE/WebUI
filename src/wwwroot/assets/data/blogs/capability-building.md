@@ -1,8 +1,12 @@
 ---
 title: "Capability Building"
-creation date: "2026-01-29"
-modified date: "2026-07-10"
-author: "Team VVG ONLINE"
+slug: "capability-building"
+publishedAt: "2026-01-29"
+tags: ["Capability Building", "Training", "Organizational Development"]
+excerpt: "Leadership doesn't get hired—they get reconfigured. Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility."
+draft: true
+category: "Capability Building"
+featured: false
 ---
 
 # Building Organizational DNA: The $500M Agility Multiplier
