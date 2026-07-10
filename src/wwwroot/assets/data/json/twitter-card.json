@@ -40,6 +40,36 @@
       "title": "Blog Archives - VVG ONLINE",
       "description": "Browse our complete collection of digital business insights.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-archives-twitter-card.png"
+    },
+    "strategy-and-innovation": {
+      "title": "Strategy & Innovation — VVG ONLINE",
+      "description": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategy-and-innovation-twitter-card.png"
+    },
+    "digital-transformation": {
+      "title": "Digital Transformation — VVG ONLINE",
+      "description": "Only 12% of digital transformation programs deliver sustainable competitive advantage. Make your transformation count.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/digital-transformation-twitter-card.png"
+    },
+    "capability-building": {
+      "title": "Capability Building — VVG ONLINE",
+      "description": "Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/capability-building-twitter-card.png"
+    },
+    "strategic-digital-marketing": {
+      "title": "Strategic Digital Marketing — VVG ONLINE",
+      "description": "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-digital-marketing-twitter-card.png"
+    },
+    "design-thinking-workshops": {
+      "title": "Design Thinking Workshops — VVG ONLINE",
+      "description": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years and deliver measurable innovation lift.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/design-thinking-workshops-twitter-card.png"
+    },
+    "it-management-solutions": {
+      "title": "IT Management Solutions — VVG ONLINE",
+      "description": "Transform IT from a cost center to a strategic enabler with comprehensive infrastructure, cloud, and managed IT services.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
     }
   }
 }

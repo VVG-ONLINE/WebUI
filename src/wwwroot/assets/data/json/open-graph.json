@@ -82,6 +82,36 @@
       "title": "The Digital Marketing Investment Imperative",
       "url": "https://vvgonline.net/blog/the-digital-marketing-investment-imperative",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/the-digital-marketing-investment-imperative-twitter-card.png"
+    },
+    "strategy-and-innovation": {
+      "title": "Strategy & Innovation — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/strategy-and-innovation",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategy-and-innovation-twitter-card.png"
+    },
+    "digital-transformation": {
+      "title": "Digital Transformation — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/digital-transformation",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/digital-transformation-twitter-card.png"
+    },
+    "capability-building": {
+      "title": "Capability Building — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/capability-building",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/capability-building-twitter-card.png"
+    },
+    "strategic-digital-marketing": {
+      "title": "Strategic Digital Marketing — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/strategic-digital-marketing",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-digital-marketing-twitter-card.png"
+    },
+    "design-thinking-workshops": {
+      "title": "Design Thinking Workshops — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/design-thinking-workshops",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/design-thinking-workshops-twitter-card.png"
+    },
+    "it-management-solutions": {
+      "title": "IT Management Solutions — VVG ONLINE",
+      "url": "https://vvgonline.net/blog/it-management-solutions",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
     }
   }
 }

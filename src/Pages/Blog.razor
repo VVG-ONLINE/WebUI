@@ -712,11 +712,13 @@
     /// ⚡ IMPROVEMENT: Provides visual variety when images are missing
     /// 
     /// COLOR MAPPING:
-    /// - Strategy    → Blue (bg-primary)    → Trust, stability
-    /// - Technology  → Cyan (bg-info)       → Innovation, modernity
-    /// - Marketing   → Yellow (bg-warning)  → Energy, attention
-    /// - Innovation  → Green (bg-success)   → Growth, progress
-    /// - Default     → Gray (bg-secondary)  → Neutral
+    /// - Strategy    → Blue (bg-primary)   → Trust, stability
+    /// - Technology  → Cyan (bg-info)      → Innovation, modernity
+    /// - Marketing   → Yellow (bg-warning) → Energy, attention
+    /// - Business    → Dark (bg-dark)      → Authority, professionalism
+    /// - Leadership  → Red (bg-danger)     → Boldness, command
+    /// - Innovation  → Green (bg-success)  → Growth, progress
+    /// - Default     → Gray (bg-secondary) → Neutral
     /// 
     /// WHY: Better than blank boxes, maintains visual hierarchy
     /// </summary>
@@ -724,14 +726,16 @@
     {
         if (category == null)
             return "bg-secondary";
-
+    
         return category switch
         {
-            Category.Strategy => "bg-primary",
-            Category.Technology => "bg-info",
-            Category.Marketing => "bg-secondary",
-            Category.Innovation => "bg-success",
-            _ => "bg-secondary"
+            Category.Strategy    => "bg-primary",
+            Category.Technology  => "bg-info",
+            Category.Marketing   => "bg-warning",
+            Category.Business    => "bg-dark",
+            Category.Leadership  => "bg-danger",
+            Category.Innovation  => "bg-success",
+            _                    => "bg-secondary"
         };
     }
 

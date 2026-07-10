@@ -56,6 +56,18 @@
                                 } *@
                             </h3>
                             <p class="mono">@pkg.tagline</p>
+                            @if (pkg.returns != null && pkg.returns.Length > 0)
+                            {
+                                <div class="d-flex gap-2 my-3">
+                                    @foreach (var r in pkg.returns)
+                                    {
+                                        <div class="return-metric flex-fill text-center px-2 py-1">
+                                            <span class="d-block return-value">@r.value</span>
+                                            <span class="d-block return-label">@r.metric</span>
+                                        </div>
+                                    }
+                                </div>
+                            }
                             <div class="h1">
                                 @($"{GetSymbol()}{((isYearly ? pkg.yearlyPrice : pkg.price) ?? 0):N0}")
                                 <span class="fs-6">/@(isYearly ? "year" : pkg.unit)</span>
@@ -218,11 +230,18 @@
         public string? unit { get; set; }
     }
 
+    class ReturnMetric
+    {
+        public string? metric { get; set; }
+        public string? value { get; set; }
+    }
+
     class TieredPackage
     {
         public string? id { get; set; }
         public string? name { get; set; }
         public string? tagline { get; set; }
+        public ReturnMetric[]? returns { get; set; }
         public int price { get; set; }
         public int? yearlyPrice { get; set; }
         public string? unit { get; set; }

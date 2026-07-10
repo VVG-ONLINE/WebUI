@@ -68,5 +68,35 @@
     "punchline": "// MARKETING",
     "title": ["The Digital Marketing", "Investment Imperative."],
     "description": ["Why investing in digital today", "is cheaper than it ever will be."]
+  },
+  "strategy-and-innovation": {
+    "punchline": "// STRATEGY",
+    "title": ["Strategy", "& Innovation."],
+    "description": ["Turning volatility into competitive", "advantage through strategic foresight."]
+  },
+  "digital-transformation": {
+    "punchline": "// TRANSFORMATION",
+    "title": ["Digital", "Transformation."],
+    "description": ["From buzzword to sustainable", "competitive advantage in 18 months."]
+  },
+  "capability-building": {
+    "punchline": "// CAPABILITY",
+    "title": ["Building Organizational", "DNA."],
+    "description": ["The $500M agility multiplier for", "leadership and team excellence."]
+  },
+  "strategic-digital-marketing": {
+    "punchline": "// MARKETING",
+    "title": ["Strategic Digital", "Marketing."],
+    "description": ["Turning channel noise into", "measurable strategic advantage."]
+  },
+  "design-thinking-workshops": {
+    "punchline": "// DESIGN",
+    "title": ["Design Thinking", "Workshops."],
+    "description": ["From workshop hype to $14M", "innovation lift with sustainable impact."]
+  },
+  "it-management-solutions": {
+    "punchline": "// IT MANAGEMENT",
+    "title": ["IT Management", "Solutions."],
+    "description": ["The backbone of digital excellence", "in an era of constant change."]
   }
 }

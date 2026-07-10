@@ -82,5 +82,77 @@
     "category": "Marketing",
     "featured": false,
     "timeToRead": 4
+  },
+  {
+    "title": "Strategy & Innovation",
+    "slug": "strategy-and-innovation",
+    "filename": "strategy-and-innovation",
+    "publishedAt": "2026-07-10",
+    "tags": ["Strategy", "Innovation", "Business Consulting", "Top"],
+    "excerpt": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
+    "draft": false,
+    "category": "Business",
+    "featured": true,
+    "timeToRead": 6
+  },
+  {
+    "title": "Digital Transformation",
+    "slug": "digital-transformation",
+    "filename": "digital-transformation",
+    "publishedAt": "2026-07-10",
+    "tags": ["Digital Transformation", "Technology", "Business", "Must"],
+    "excerpt": "Only 12% of digital transformation programs deliver sustainable competitive advantage because 90% are superficial digitization projects.",
+    "draft": false,
+    "category": "Technology",
+    "featured": true,
+    "timeToRead": 5
+  },
+  {
+    "title": "Capability Building",
+    "slug": "capability-building",
+    "filename": "capability-building",
+    "publishedAt": "2026-07-10",
+    "tags": ["Capability Building", "Leadership", "Training", "Must"],
+    "excerpt": "Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility.",
+    "draft": false,
+    "category": "Business",
+    "featured": false,
+    "timeToRead": 6
+  },
+  {
+    "title": "Strategic Digital Marketing",
+    "slug": "strategic-digital-marketing",
+    "filename": "strategic-digital-marketing",
+    "publishedAt": "2026-07-10",
+    "tags": ["Digital Marketing", "Strategy", "Growth", "Top"],
+    "excerpt": "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage.",
+    "draft": false,
+    "category": "Marketing",
+    "featured": true,
+    "timeToRead": 5
+  },
+  {
+    "title": "Design Thinking Workshops",
+    "slug": "design-thinking-workshops",
+    "filename": "design-thinking-workshops",
+    "publishedAt": "2026-07-10",
+    "tags": ["Design Thinking", "Innovation", "Workshops", "Recommended"],
+    "excerpt": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years and deliver measurable innovation lift.",
+    "draft": false,
+    "category": "Business",
+    "featured": false,
+    "timeToRead": 5
+  },
+  {
+    "title": "IT Management Solutions",
+    "slug": "it-management-solutions",
+    "filename": "it-management-solutions",
+    "publishedAt": "2026-07-10",
+    "tags": ["IT Management", "Technology", "Cloud", "Security"],
+    "excerpt": "Effective IT management is the backbone of any successful digital enterprise. Transform IT from a cost center to a strategic enabler.",
+    "draft": false,
+    "category": "Technology",
+    "featured": false,
+    "timeToRead": 6
   }
 ]
