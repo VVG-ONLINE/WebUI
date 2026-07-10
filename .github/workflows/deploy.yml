@@ -116,9 +116,9 @@ jobs:
 
                   // Calculate timeToRead (equivalent to C# Indexer: wordCount / 200)
                   const wordCount = (markdownContent.match(/[\w-]+/g) || []).length;
-                  post.timeToRead = Math.ceil(wordCount / 200);
-
-                  posts.push(post);
+                    post.timeToRead = Math.ceil(wordCount / 200);
+                    if (post.draft === true) return;
+                    posts.push(post);
                 }
               }
             });
