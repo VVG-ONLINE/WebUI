@@ -45,7 +45,7 @@ public class Program
                 Tags = (postData.GetValueOrDefault("tags") as List<object>)?.Select(t => t.ToString() ?? "").ToArray(),
                 Excerpt = postData.GetValueOrDefault("excerpt")?.ToString(),
                 Draft = bool.Parse(postData.GetValueOrDefault("draft")?.ToString() ?? "false"),
-                Category = postData.GetValueOrDefault("category")?.ToString(),
+                Category = postData.GetValueOrDefault("category")?.ToString() is string catStr && Enum.TryParse<Category>(catStr, out var parsed) ? parsed : null,
                 Featured = bool.Parse(postData.GetValueOrDefault("featured")?.ToString() ?? "false"),
                 TimeToRead = (int)Math.Ceiling(wordCount / 200.0)
             };
@@ -86,7 +86,7 @@ public class Program
         index.TagsSummary = index.TagsSummary.OrderByDescending(kvp => kvp.Value).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         
         var options = new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-        var json = JsonSerializer.Serialize(index, options);
+        var json = JsonSerializer.Serialize(index.Posts, options);
 
         File.WriteAllText(outputFile, json);
 
