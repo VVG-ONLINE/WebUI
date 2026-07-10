@@ -251,6 +251,10 @@
             "id": "nano",
             "name": "Nano",
             "tagline": "Perfect for aspiring founders",
+            "returns": [
+                { "metric": "Reach & Engagement", "value": "3x" },
+                { "metric": "Website Traffic", "value": "2x" }
+            ],
             "price": 5000,
             "yearlyPrice": 50000,
             "unit": "month",
@@ -274,6 +278,10 @@
             "id": "starter",
             "name": "Starter",
             "tagline": "Perfect for startups and small businesses",
+            "returns": [
+                { "metric": "Reach & Engagement", "value": "10x" },
+                { "metric": "Lead Generation", "value": "5x" }
+            ],
             "price": 25000,
             "yearlyPrice": 250000,
             "unit": "month",
@@ -301,6 +309,10 @@
             "id": "growth",
             "name": "Growth",
             "tagline": "For growing businesses ready to scale",
+            "returns": [
+                { "metric": "Reach & Engagement", "value": "50x" },
+                { "metric": "Qualified Leads", "value": "15x" }
+            ],
             "price": 75000,
             "yearlyPrice": 750000,
             "unit": "month",
@@ -331,6 +343,10 @@
             "id": "enterprise",
             "name": "Enterprise",
             "tagline": "Full-stack digital partnership",
+            "returns": [
+                { "metric": "Reach & Engagement", "value": "100x" },
+                { "metric": "Conversion Rate", "value": "10x" }
+            ],
             "price": 200000,
             "yearlyPrice": 2000000,
             "unit": "month",
