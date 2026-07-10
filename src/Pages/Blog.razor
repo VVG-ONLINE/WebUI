@@ -859,7 +859,7 @@
     - PublishedAt (DateTime)    ✅ Used in sorting, year filter
     - Tags        (string[]?)   ✅ Used in tag filter, counts
     - Excerpt     (string?)     ✅ Used in search, display
-    - Draft       (bool)        ⚠️ Consider filtering out draft posts
+    - Draft       (bool)        ✅ Filtered by Indexer (markdown-only source of truth)
     - Category    (Category?)   ✅ Used in search, badges, placeholders
     - Featured    (bool)        ✅ Used in featured posts logic
     - TimeToRead  (int)         ✅ Used in display
@@ -875,8 +875,7 @@
        - Update blog-index.json with image URLs
        - Implement GetPostImage() to use actual images
 
-    2. Filter out draft posts in production
-       - Add .Where(p => !p.Draft) to OnInitializedAsync
+    2. ✅ Draft posts handled by Indexer (filtered at generation time)
 
     3. Add JavaScript interop for pagination
        - Scroll to top on page change

@@ -120,8 +120,8 @@ else if (blogPost != null)
                 return;
             }
 
-            // Filter out drafts and sort by date
-            allPosts = allPosts.Where(p => !p.Draft).OrderByDescending(p => p.PublishedAt).ToArray();
+            // Sort by date (Indexer already excludes draft posts)
+            allPosts = allPosts.OrderByDescending(p => p.PublishedAt).ToArray();
             // Find the specific post matching the URL slug
             blogPost = allPosts.FirstOrDefault(p => p.Slug == Slug);
 

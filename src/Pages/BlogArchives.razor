@@ -154,13 +154,11 @@
             var pageMeta = await MetadataService.GetPageMetadataAsync("blog-archives");
             await MetadataService.SetPageMetadata(pageMeta);
 
-            // Load blog-index.json (array of all posts including drafts)
+            // Load blog-index.json (Indexer already excludes draft posts)
             allPosts = await Http.GetFromJsonAsync<Models.BlogPost[]>("assets/data/json/blog-index.json");
 
             if (allPosts != null && allPosts.Length > 0)
             {
-                // Remove draft posts (they shouldn't appear in archives)
-                allPosts = allPosts.Where(p => !p.Draft).ToArray();
 
                 // Calculate tag and year counts for filter dropdowns
                 GenerateSummaries();

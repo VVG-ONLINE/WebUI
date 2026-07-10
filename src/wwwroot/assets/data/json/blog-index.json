@@ -1,158 +1,107 @@
 [
   {
-    "title": "Communication Mastery for Digital Business Success",
-    "slug": "communication-mastery-for-digital-business-success",
-    "filename": "Communication-Mastery-for-Digital-Business-Success",
-    "publishedAt": "2025-10-13",
-    "tags": ["Communication", "Digital Business", "Must", "Top"],
-    "excerpt": "In a rapidly evolving world and hyperconnected business environment, digital business consulting serves as both a catalyst and partner for organizations seeking transformation.",
-    "draft": false,
-    "category": "Leadership",
-    "featured": true,
-    "timeToRead": 5
-  },
-  {
-    "title": "Digital Assets: The Real Estate of the Virtual World",
-    "slug": "digital-assets-the-real-estate-of-the-virtual-world",
-    "filename": "Digital-Assets-The-Real-Estate-of-the-Virtual-World",
-    "publishedAt": "2025-04-10",
-    "tags": ["Digital Assets", "Investment", "ROI", "Recommended"],
-    "excerpt": "In a rapidly digitalizing world, the parallels between owning a piece of property and owning a digital asset become increasingly clear.",
-    "draft": false,
+    "title": "Don\u0027t Normalize Common Things: A Philosophy for Business Excellence",
+    "filename": "",
+    "slug": "dont-normalize-common-things-a-philosophy-for-business-excellence",
+    "publishedAt": "2025-11-06T00:00:00",
+    "tags": [
+      "Business",
+      "Innovation",
+      "Excellence"
+    ],
+    "excerpt": "Explore why questioning common practices is crucial for business innovation and excellence. Learn how to challenge the status quo and drive transformative growth.",
     "category": "Business",
     "featured": false,
+    "timeToRead": 4
+  },
+  {
+    "title": "Communication Mastery for Digital Business Success",
+    "filename": "",
+    "slug": "communication-mastery-for-digital-business-success",
+    "publishedAt": "2025-10-13T00:00:00",
+    "tags": [
+      "Leadership",
+      "Communication",
+      "Digital Business"
+    ],
+    "excerpt": "In a rapidly evolving world and hyperconnected business environment, digital business consulting serves as both a catalyst and partner for organizations seeking transformation.",
+    "category": "Business",
+    "featured": true,
     "timeToRead": 7
   },
   {
-    "title": "Don't Normalize Common Things: A Philosophy for Business Excellence",
-    "slug": "dont-normalize-common-things-a-philosophy-for-business-excellence",
-    "filename": "Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence",
-    "publishedAt": "2025-11-06",
-    "tags": ["Innovation", "Excellence", "Must"],
-    "excerpt": "Explore why questioning common practices is crucial for business innovation and excellence. Learn how to challenge the status quo and drive transformative growth.",
-    "draft": false,
-    "category": "Business",
-    "featured": false,
-    "timeToRead": 6
-  },
-  {
     "title": "GST Rate Deductions for E-commerce: A Complete Guide by VVG ONLINE",
+    "filename": "",
     "slug": "gst-rate-deductions-for-e-commerce-a-complete-guide-by-vvg-online",
-    "filename": "GST-Rate-Deductions-for-E-commerce-A-Complete-Guide-by-VVG-ONLINE",
-    "publishedAt": "2025-09-04",
-    "tags": ["GST", "E-commerce", "Tax", "Top", "Recommended"],
+    "publishedAt": "2025-09-04T00:00:00",
+    "tags": [
+      "GST",
+      "E-commerce",
+      "Tax"
+    ],
     "excerpt": "The recent Goods and Services Tax (GST) rate deductions in India are transforming the e-commerce landscape, offering significant opportunities for businesses to enhance profitability and achieve strategic growth.",
-    "draft": false,
     "category": "Business",
     "featured": false,
     "timeToRead": 8
   },
   {
-    "title": "Key Performance Indicators (KPIs)",
-    "slug": "key-performance-indicators-kpis",
-    "filename": "Key-Performance-Indicators-KPIs",
-    "publishedAt": "2025-05-20",
-    "tags": ["KPIs", "Digital Marketing", "Business", "Must"],
-    "excerpt": "Unlock the Power of Data-Driven Insights: Discover How VVG ONLINE Measures KPIs for Digital Marketing Success",
-    "draft": false,
-    "category": "Marketing",
-    "featured": false,
-    "timeToRead": 5
-  },
-  {
-    "title": "Operating Model Design",
-    "slug": "operating-model-design",
-    "filename": "Operating-Model-Design",
-    "publishedAt": "2025-04-17",
-    "tags": ["Management", "Strategy", "Recommended"],
-    "excerpt": "Think about the operating model holistically, as many decisions to structure, processes and people will be critical and link to value delivery",
-    "draft": false,
-    "category": "Business",
-    "featured": false,
-    "timeToRead": 6
-  },
-  {
     "title": "The Digital Marketing Investment Imperative",
+    "filename": "",
     "slug": "the-digital-marketing-investment-imperative",
-    "filename": "The-Digital-Marketing-Investment-Imperative",
-    "publishedAt": "2025-08-28",
-    "tags": ["Digital Marketing", "Investment", "Business", "Top"],
+    "publishedAt": "2025-08-28T00:00:00",
+    "tags": [
+      "Digital Marketing",
+      "Investment",
+      "Business"
+    ],
     "excerpt": "Why Investing in Digital Marketing for Your Company Today is Cheaper Than It Ever Will Be.",
-    "draft": false,
     "category": "Marketing",
     "featured": false,
+    "timeToRead": 11
+  },
+  {
+    "title": "Key Performance Indicators (KPIs)",
+    "filename": "",
+    "slug": "key-performance-indicators-kpis",
+    "publishedAt": "2025-05-20T00:00:00",
+    "tags": [
+      "KPIs",
+      "Digital Marketing",
+      "Business"
+    ],
+    "excerpt": "Unlock the Power of Data-Driven Insights: Discover How VVG ONLINE Measures KPIs for Digital Marketing Success",
+    "category": "Marketing",
+    "featured": true,
     "timeToRead": 4
   },
   {
-    "title": "Strategy & Innovation",
-    "slug": "strategy-and-innovation",
-    "filename": "strategy-and-innovation",
-    "publishedAt": "2026-07-10",
-    "tags": ["Strategy", "Innovation", "Business Consulting", "Top"],
-    "excerpt": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
-    "draft": false,
-    "category": "Business",
-    "featured": true,
-    "timeToRead": 6
-  },
-  {
-    "title": "Digital Transformation",
-    "slug": "digital-transformation",
-    "filename": "digital-transformation",
-    "publishedAt": "2026-07-10",
-    "tags": ["Digital Transformation", "Technology", "Business", "Must"],
-    "excerpt": "Only 12% of digital transformation programs deliver sustainable competitive advantage because 90% are superficial digitization projects.",
-    "draft": false,
-    "category": "Technology",
-    "featured": true,
-    "timeToRead": 5
-  },
-  {
-    "title": "Capability Building",
-    "slug": "capability-building",
-    "filename": "capability-building",
-    "publishedAt": "2026-07-10",
-    "tags": ["Capability Building", "Leadership", "Training", "Must"],
-    "excerpt": "Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility.",
-    "draft": false,
+    "title": "Operating Model Design",
+    "filename": "",
+    "slug": "operating-model-design",
+    "publishedAt": "2025-04-17T00:00:00",
+    "tags": [
+      "Business",
+      "Management",
+      "Strategy"
+    ],
+    "excerpt": "Think about the operating model holistically, as many decisions to structure, processes and people will be critical and link to value delivery",
     "category": "Business",
     "featured": false,
     "timeToRead": 6
   },
   {
-    "title": "Strategic Digital Marketing",
-    "slug": "strategic-digital-marketing",
-    "filename": "strategic-digital-marketing",
-    "publishedAt": "2026-07-10",
-    "tags": ["Digital Marketing", "Strategy", "Growth", "Top"],
-    "excerpt": "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage.",
-    "draft": false,
-    "category": "Marketing",
-    "featured": true,
-    "timeToRead": 5
-  },
-  {
-    "title": "Design Thinking Workshops",
-    "slug": "design-thinking-workshops",
-    "filename": "design-thinking-workshops",
-    "publishedAt": "2026-07-10",
-    "tags": ["Design Thinking", "Innovation", "Workshops", "Recommended"],
-    "excerpt": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years and deliver measurable innovation lift.",
-    "draft": false,
+    "title": "Digital Assets: The Real Estate of the Virtual World",
+    "filename": "",
+    "slug": "digital-assets-the-real-estate-of-the-virtual-world",
+    "publishedAt": "2025-04-10T00:00:00",
+    "tags": [
+      "Digital Assets",
+      "Investment",
+      "ROI"
+    ],
+    "excerpt": "In a rapidly digitalizing world, the parallels between owning a piece of property and owning a digital asset become increasingly clear.",
     "category": "Business",
     "featured": false,
-    "timeToRead": 5
-  },
-  {
-    "title": "IT Management Solutions",
-    "slug": "it-management-solutions",
-    "filename": "it-management-solutions",
-    "publishedAt": "2026-07-10",
-    "tags": ["IT Management", "Technology", "Cloud", "Security"],
-    "excerpt": "Effective IT management is the backbone of any successful digital enterprise. Transform IT from a cost center to a strategic enabler.",
-    "draft": false,
-    "category": "Technology",
-    "featured": false,
-    "timeToRead": 6
+    "timeToRead": 4
   }
 ]

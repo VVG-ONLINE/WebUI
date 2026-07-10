@@ -28,6 +28,7 @@ public class BlogPost
     public string? Excerpt { get; set; }
 
     /// <summary>If true, the post is hidden from public views.</summary>
+    [JsonIgnore]
     public bool Draft { get; set; }
 
     /// <summary>

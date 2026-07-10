@@ -148,7 +148,6 @@
             if (allPosts != null)
             {
                 latestPosts = allPosts
-                .Where(p => !p.Draft)
                 .OrderByDescending(p => p.PublishedAt)
                 .Take(3)
                 .ToArray();
