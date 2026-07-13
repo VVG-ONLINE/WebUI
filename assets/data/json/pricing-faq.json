@@ -1,0 +1,87 @@
+[
+  {
+    "category": "Plans & Billing",
+    "questions": [
+      {
+        "question": "What is included in the Nano plan?",
+        "answer": "The Nano plan is designed for individuals or very small startups. It includes core managed IT services, basic security monitoring, and limited monthly support hours. It's an ideal entry point for fundamental infrastructure management."
+      },
+      {
+        "question": "Do you offer custom pricing for enterprise clients?",
+        "answer": "Yes, we provide bespoke pricing models for enterprise-scale clients. This includes dedicated service level agreements (SLAs), specialized security protocols, and customized support tiers tailored to your specific infrastructure needs."
+      },
+      {
+        "question": "Are there any hidden costs or setup fees?",
+        "answer": "We maintain a transparent pricing model. While there may be a one-time onboarding and setup fee depending on the complexity of your infrastructure, all recurring monthly costs are clearly outlined in your service agreement."
+      }
+    ]
+  },
+  {
+    "category": "Contracts & Service Agreements",
+    "questions": [
+      {
+        "question": "What is the typical contract duration?",
+        "answer": "While we offer various contract lengths, most of our managed service agreements are on a 12-month basis to ensure consistent service delivery and infrastructure stability."
+      },
+      {
+        "question": "Can I cancel my contract before the term ends?",
+        "answer": "Contracts are generally binding for the agreed-upon term. However, we can discuss early termination in specific circumstances, subject to a review of the service agreement and any outstanding obligations."
+      },
+      {
+        "question": "How do you handle service scope changes?",
+        "answer": "If your business needs evolve and you require additional services, we can issue a change order. This will update your agreement with the new scope of work and any associated adjustments to the monthly fee."
+      }
+    ]
+  },
+  {
+    "category": "Managed Services & Support",
+    "questions": [
+      {
+        "question": "What are your standard support hours?",
+        "answer": "Our standard support is available Monday through Friday, 9 AM to 6 PM IST. We offer extended support hours and 24/7 emergency response for our Enterprise and Growth plans."
+      },
+      {
+        "question": "How do I open a support ticket?",
+        "answer": "Clients can open support tickets via through email, or by calling our support hotline. We prioritize tickets based on severity and impact."
+      },
+      {
+        "question": "What is your average response time for critical issues?",
+        "answer": "For critical issues (Severity 1), we aim for a response time of under 30 minutes. Other issues are addressed based on their priority level and our current support queue."
+      }
+    ]
+  },
+  {
+    "category": "Technology & Security",
+    "questions": [
+      {
+        "question": "How do you handle data privacy and security?",
+        "answer": "Data security is our top priority. We adhere to strict industry standards, including regular audits, encrypted data transmission, and robust firewall management. We also ensure compliance with relevant regulations like the DPDP Act."
+      },
+      {
+        "question": "Do you manage private AI infrastructure?",
+        "answer": "Yes, we specialize in building and managing private AI infrastructure. This allows you to leverage the power of LLMs while keeping your sensitive data on-site and under your direct control."
+      },
+      {
+        "question": "What technologies do you support?",
+        "answer": "We support a wide range of technologies including Cloud (AWS, Azure, Google Cloud), on-premise servers, virtualization (VMWare, Hyper-V), and various networking and security hardware."
+      }
+    ]
+  },
+  {
+    "category": "Onboarding & Implementation",
+    "questions": [
+      {
+        "question": "How does the onboarding process work?",
+        "answer": "Our onboarding typically takes 2-4 weeks depending on the complexity of your infrastructure. It begins with a comprehensive audit, followed by a roadmap design, and finally the systematic migration or setup of your managed services."
+      },
+      {
+        "question": "Will you migrate my existing data?",
+        "answer": "Yes, we have extensive experience migrating data and infrastructure from various platforms to managed environments while ensuring minimal downtime and data integrity."
+      },
+      {
+        "question": "Who will be my primary point of contact?",
+        "answer": "Every Enterprise client is assigned a dedicated Account Manager who acts as your main point of contact for service inquiries, reporting, and strategic planning."
+      }
+    ]
+  }
+]

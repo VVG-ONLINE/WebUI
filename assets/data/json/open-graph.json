@@ -48,6 +48,18 @@
       "url": "https://vvgonline.net/blog-archives",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-archives-twitter-card.png"
     },
+    "privacy": {
+      "title": "Privacy Policy - VVG ONLINE",
+      "description": "Learn how VVG ONLINE collects, uses, and protects your personal data in compliance with the DPDP Act.",
+      "url": "https://vvgonline.net/privacy",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+    },
+    "terms": {
+      "title": "Terms & Conditions - VVG ONLINE",
+      "description": "Review the terms governing VVG ONLINE's consulting services, including service scope, payment terms, and data protection commitments.",
+      "url": "https://vvgonline.net/terms",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+    },
     "communication-mastery-for-digital-business-success": {
       "title": "Communication Mastery for Digital Business Success",
       "url": "https://vvgonline.net/blog/communication-mastery-for-digital-business-success",
