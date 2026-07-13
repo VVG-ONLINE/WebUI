@@ -70,7 +70,7 @@
 </section>
 
 @code {
-    // Matches a single service entry in services.json
+    // Matches a single service entry in assets/data/json/services.json
     class Service
     {
         public int id { get; set; }
@@ -97,7 +97,7 @@
         await MetadataService.SetPageMetadata(pageMeta);
 
         // Fetch services.json and extract the inner "services" array
-        var doc = await Http.GetFromJsonAsync<ServiceDoc>("assets/data/services.json");
+        var doc = await Http.GetFromJsonAsync<ServiceDoc>("assets/data/json/services.json");
         services = doc?.services;
     }
 

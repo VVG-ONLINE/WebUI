@@ -41,6 +41,16 @@
       "description": "Browse our complete collection of digital business insights.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-archives-twitter-card.png"
     },
+    "privacy": {
+      "title": "Privacy Policy - VVG ONLINE",
+      "description": "Learn how VVG ONLINE collects, uses, and protects your personal data in compliance with the DPDP Act.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+    },
+    "terms": {
+      "title": "Terms & Conditions - VVG ONLINE",
+      "description": "Review the terms governing VVG ONLINE's consulting services, including service scope, payment terms, and data protection commitments.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
+    },
     "strategy-and-innovation": {
       "title": "Strategy & Innovation — VVG ONLINE",
       "description": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",

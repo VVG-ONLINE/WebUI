@@ -169,6 +169,67 @@
     }
 </section>
 
+@* -- SECTION 3: FREQUENTLY ASKED QUESTIONS -- *@
+<section class="container py-5 border-top">
+    <div class="text-center mb-5">
+        <div class="terminal-tag-group justify-content-center">
+            <div class="tag-segment tag-user">// Frequently_Asked</div>
+            <div class="tag-segment tag-path">// Questions</div>
+        </div>
+        <h2 class="display-5">Frequently Asked Questions</h2>
+        <p class="lead opacity-75 mt-3">Find answers to common questions about our pricing and services.</p>
+    </div>
+
+    @if (faqs != null && faqs.Count > 0)
+    {
+        @* Category filter buttons *@
+        <div class="mb-4 text-center" id="faq-categories">
+            <div class="d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="FAQ Categories">
+                <button type="button" class="btn @(selectedCategory == "All" ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory("All"))">All</button>
+                @foreach (var cat in faqCategories ?? new List<string>())
+                {
+                    var category = cat;
+                    <button type="button" class="btn @(selectedCategory == category ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory(category))">@category</button>
+                }
+            </div>
+        </div>
+
+        @* Bootstrap accordion *@
+        <div class="accordion" id="faqAccordion">
+            @foreach (var (faq, index) in GetFilteredFaqs().Select((value, i) => (value, i)))
+            {
+                var collapseId = $"collapsePricing{faq.Id}";
+                var headingId = $"headingPricing{faq.Id}";
+                <div class="accordion-item mb-3">
+                    <h3 class="accordion-header" id="@headingId">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="@collapseId">
+                            <strong>@faq.Question</strong>
+                        </button>
+                    </h3>
+                    <div id="@collapseId" class="accordion-collapse collapse" aria-labelledby="@headingId" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p class="mb-2">@faq.Answer</p>
+                            <small class="text-muted"><span class="badge bg-secondary">@faq.Category</span></small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading FAQs...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="text-center">Loading FAQs...</p>
+    }
+</section>
+
 @* -- FOOTER NOTE -- *@
 <section class="container py-4 border-top">
     <div class="text-center small">
@@ -262,6 +323,80 @@
 
     string GetSymbol() => meta?.currencySymbol ?? "₹";
 
+    private List<FlatFaqItem>? faqs;
+    private bool isLoading = true;
+    private string selectedCategory = "All";
+    private List<string>? faqCategories;
+
+    private List<FlatFaqItem> GetFilteredFaqs()
+    {
+        if (faqs == null) return new();
+        if (selectedCategory == "All") return faqs;
+        return faqs.Where(f => f.Category == selectedCategory).ToList();
+    }
+
+    private void FilterByCategory(string category)
+    {
+        selectedCategory = category;
+    }
+
+    private async Task LoadFaqs()
+    {
+        try
+        {
+            isLoading = true;
+            var faqData = await Http.GetFromJsonAsync<List<FaqCategory>>("assets/data/json/pricing-faq.json");
+            if (faqData != null)
+            {
+                var idCounter = 1;
+                faqs = new List<FlatFaqItem>();
+                faqCategories = new List<string>();
+                foreach (var category in faqData)
+                {
+                    faqCategories.Add(category.Category);
+                    foreach (var item in category.Questions)
+                    {
+                        faqs.Add(new FlatFaqItem
+                        {
+                            Id = idCounter++,
+                            Question = item.Question,
+                            Answer = item.Answer,
+                            Category = category.Category
+                        });
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Pricing.razor: Error fetching FAQs - {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private class FaqCategory
+    {
+        public string Category { get; set; } = string.Empty;
+        public List<FaqItem> Questions { get; set; } = new();
+    }
+
+    private class FaqItem
+    {
+        public string Question { get; set; } = string.Empty;
+        public string Answer { get; set; } = string.Empty;
+    }
+
+    private class FlatFaqItem
+    {
+        public int Id { get; set; }
+        public string Question { get; set; } = string.Empty;
+        public string Answer { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+    }
+
     protected override async Task OnInitializedAsync()
     {
         var pageMeta = await MetadataService.GetPageMetadataAsync("pricing");
@@ -271,12 +406,13 @@
 
         try
         {
-            var doc = await Http.GetFromJsonAsync<PricingDoc>("assets/data/pricing.json");
+            var doc = await Http.GetFromJsonAsync<PricingDoc>("assets/data/json/pricing.json");
             if (doc is not null)
             {
                 meta = doc.meta;
                 services = doc.servicePricing;
                 packages = doc.tieredPackages;
+                await LoadFaqs();
             }
         }
         catch (Exception ex)
@@ -285,6 +421,7 @@
             Console.WriteLine($"Pricing.razor: Error fetching pricing data - {ex.Message}");
         }
     }
+
 
     private void ToggleYearly()
     {
