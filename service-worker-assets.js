@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "5sKPvSU/",
+  "version": "Uah3uHgx",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,12 @@ self.assetsManifest = {
       "url": "_framework/System.nnqvudo0vd.wasm"
     },
     {
-      "hash": "sha256-cLihR1X5A8gbJM1cdPMRYuBAOcld6OcEk0xXT3drLDA=",
-      "url": "_framework/VVG.Web.0grq7pkcdj.wasm"
+      "hash": "sha256-bi4qCPKX2pKiKkPc/CSXVLAftnFRTTiBkZTwyDh43G4=",
+      "url": "_framework/VVG.Web.yckuvko1pc.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
-    },
-    {
-      "hash": "sha256-Mny5w7HgQjQoXVVcpmJ4S3ds0JyU7gA/v5SRJoZDduk=",
-      "url": "_framework/dotnet.6bqswyepwk.js"
     },
     {
       "hash": "sha256-kkp5wX0htwkBcZt5WmEiKmhBqjqdCJtGc+koldfyoDQ=",
@@ -476,6 +472,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-7i3usfTrnzC/9qWO4si5Bw4w7D9fUSnSBdhQ47blX2M=",
       "url": "_framework/dotnet.runtime.a6jcqbs390.js"
+    },
+    {
+      "hash": "sha256-/guf/N4s+txlXkyp8nwByUqa3RatotRBwjZJNaESsn4=",
+      "url": "_framework/dotnet.yr1g3bzuzh.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -616,10 +616,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-dekOcuM72sXFLx2040d7UMbIRaKK8JQUqZMpaPxiJHY=",
       "url": "assets/data/blogs/digital-transformation.md"
-    },
-    {
-      "hash": "sha256-6zqeOxm7lLjaHOielarh+XjIq8fKCe7j/lZ+20+ZlVg=",
-      "url": "assets/data/blogs/it-management-solutions.md"
     },
     {
       "hash": "sha256-09jt5ksqxHbUao50IvTvHNcZ0kSxTZF5vqyubhPUJ7I=",
@@ -1006,7 +1002,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-GbAs5WWi1bVZ2Sq5iTmSjTt6DZklfR7fU0tkVMj8x8U=",
+      "hash": "sha256-4MsWYFblpZed6MmSqCbWGv3nvL95n1cQBaPN0UNzPaE=",
       "url": "index.html"
     },
     {

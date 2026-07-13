@@ -128,23 +128,5 @@
     "featured": false,
     "filename": "The-Digital-Marketing-Investment-Imperative",
     "timeToRead": 11
-  },
-  {
-    "title": "IT Management Solutions for Indian SMBs: How to Grow Your Business with the Right Infrastructure",
-    "slug": "it-management-solutions-for-indian-smbs",
-    "publishedAt": "2026-01-29",
-    "tags": [
-      "IT Management",
-      "AI Infrastructure",
-      "SMB",
-      "Business Growth",
-      "Digital Transformation"
-    ],
-    "excerpt": "Your IT infrastructure either grows your business or holds it back. Here's how we make sure it's the former.",
-    "draft": false,
-    "category": "Technology",
-    "featured": true,
-    "filename": "it-management-solutions",
-    "timeToRead": 6
   }
 ]
