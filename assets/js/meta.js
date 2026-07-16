@@ -55,6 +55,7 @@ window.vvg.updateMeta = function (meta) {
 
         // Open Graph (Facebook / LinkedIn / Discord)
         // OG tags use property="og:*" instead of name="description"
+        set('og:locale', meta.ogLocale || 'en_IN', 'property');
         set('og:type', meta.ogType, 'property');
         set('og:title', meta.ogTitle || meta.title, 'property');
         set('og:description', meta.ogDescription || meta.description, 'property');
@@ -69,6 +70,17 @@ window.vvg.updateMeta = function (meta) {
         set('twitter:title', meta.twitterTitle || meta.ogTitle || meta.title);
         set('twitter:description', meta.twitterDescription || meta.ogDescription || meta.description);
         set('twitter:image', meta.twitterImage || meta.ogImage || meta.image);
+
+        // Canonical URL (prevents duplicate content issues between /page and /page/)
+        if (meta.canonicalUrl) {
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'canonical';
+                document.head.appendChild(link);
+            }
+            link.href = meta.canonicalUrl;
+        }
 
         // JSON-LD structured data (Google rich snippets)
         // Injected as a <script type="application/ld+json"> tag

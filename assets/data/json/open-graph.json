@@ -5,6 +5,7 @@
   "url": "https://vvgonline.net",
   "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png",
   "siteName": "VVG ONLINE",
+  "locale": "en_IN",
   "pages": {
     "home": {
       "title": "VVG ONLINE - Digital Business Consulting",
@@ -60,7 +61,14 @@
       "url": "https://vvgonline.net/terms",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
     },
+    "strategic-outlook-2026": {
+      "title": "VVG ONLINE // ACCESS THE FUTURE: Strategic Outlook for 2026 & Beyond",
+      "description": "Explore VVG ONLINE's comprehensive strategic outlook for 2026, covering AI paradigms, marketing domination, infrastructure security, global risks, and the human capital crisis.",
+      "url": "https://vvgonline.net/blog/strategic-outlook-2026",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-outlook-2026-twitter-card.png"
+    },
     "communication-mastery-for-digital-business-success": {
+
       "title": "Communication Mastery for Digital Business Success",
       "url": "https://vvgonline.net/blog/communication-mastery-for-digital-business-success",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/communication-mastery-for-digital-business-success-twitter-card.png"
@@ -97,32 +105,38 @@
     },
     "strategy-and-innovation": {
       "title": "Strategy & Innovation — VVG ONLINE",
+      "description": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
       "url": "https://vvgonline.net/blog/strategy-and-innovation",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategy-and-innovation-twitter-card.png"
     },
     "digital-transformation": {
       "title": "Digital Transformation — VVG ONLINE",
+      "description": "The hype cycle lasts 3 years. The reality lasts 5. Only 12% of digital transformation programs deliver sustainable competitive advantage.",
       "url": "https://vvgonline.net/blog/digital-transformation",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/digital-transformation-twitter-card.png"
     },
     "capability-building": {
       "title": "Capability Building — VVG ONLINE",
+      "description": "Leadership doesn't get hired—they get reconfigured. Top organizations spend 2-3 years on capability building, delivering 3-5x ROI in operational flexibility.",
       "url": "https://vvgonline.net/blog/capability-building",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/capability-building-twitter-card.png"
     },
     "strategic-digital-marketing": {
       "title": "Strategic Digital Marketing — VVG ONLINE",
+      "description": "83% of marketing budgets are spent on digital activities, yet only 7% deliver strategic competitive advantage.",
       "url": "https://vvgonline.net/blog/strategic-digital-marketing",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-digital-marketing-twitter-card.png"
     },
     "design-thinking-workshops": {
       "title": "Design Thinking Workshops — VVG ONLINE",
+      "description": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years; the ones that die after Month 3 cost companies $2-3M in wasted innovation.",
       "url": "https://vvgonline.net/blog/design-thinking-workshops",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/design-thinking-workshops-twitter-card.png"
     },
-    "it-management-solutions": {
+    "it-management-solutions-for-indian-smbs": {
       "title": "IT Management Solutions — VVG ONLINE",
-      "url": "https://vvgonline.net/blog/it-management-solutions",
+      "description": "Your IT infrastructure either grows your business or holds it back. Here's how we make sure it's the former.",
+      "url": "https://vvgonline.net/blog/it-management-solutions-for-indian-smbs",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
     }
   }

@@ -51,7 +51,13 @@
       "description": "Review the terms governing VVG ONLINE's consulting services, including service scope, payment terms, and data protection commitments.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
     },
+    "strategic-outlook-2026": {
+      "title": "VVG ONLINE // ACCESS THE FUTURE: Strategic Outlook for 2026 & Beyond",
+      "description": "Explore VVG ONLINE's comprehensive strategic outlook for 2026, covering AI paradigms, marketing domination, infrastructure security, global risks, and the human capital crisis.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-outlook-2026-twitter-card.png"
+    },
     "strategy-and-innovation": {
+
       "title": "Strategy & Innovation — VVG ONLINE",
       "description": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategy-and-innovation-twitter-card.png"
@@ -76,7 +82,7 @@
       "description": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years and deliver measurable innovation lift.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/design-thinking-workshops-twitter-card.png"
     },
-    "it-management-solutions": {
+    "it-management-solutions-for-indian-smbs": {
       "title": "IT Management Solutions — VVG ONLINE",
       "description": "Transform IT from a cost center to a strategic enabler with comprehensive infrastructure, cloud, and managed IT services.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
