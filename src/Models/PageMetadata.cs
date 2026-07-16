@@ -29,6 +29,9 @@ namespace VVG.Web.Models
         /// <summary>JSON-LD structured data (schema.org) for rich results.</summary>
         public string? JsonLd { get; set; }
 
+        /// <summary>Canonical URL for the page — prevents duplicate content issues.</summary>
+        public string? CanonicalUrl { get; set; }
+
         // ── Open Graph (used by Facebook, LinkedIn, Discord, etc.) ──
 
         public string? OgTitle { get; set; }

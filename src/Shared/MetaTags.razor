@@ -61,9 +61,11 @@
             ["keywords"] = pageMeta?.Keywords ?? _defaultMetadata?.Keywords,
             ["image"] = image,
             ["jsonLd"] = pageMeta?.JsonLd ?? _defaultJsonLd,
+            ["canonicalUrl"] = pageMeta?.CanonicalUrl ?? pageMeta?.OgUrl ?? _defaultOpenGraph?.Url,
 
             // Open Graph (Facebook, LinkedIn, Discord)
             ["ogType"] = pageMeta?.OgType ?? _defaultOpenGraph?.Type,
+            ["ogLocale"] = _defaultOpenGraph?.Locale ?? "en_IN",
             ["ogTitle"] = pageMeta?.OgTitle ?? pageMeta?.Title ?? _defaultOpenGraph?.Title,
             ["ogDescription"] = pageMeta?.OgDescription ?? description,
             ["ogImage"] = pageMeta?.OgImage ?? image,

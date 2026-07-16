@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-in">
+<html lang="en-in" itemscope itemtype="https://schema.org/ProfessionalService">
 
 <head>
     <meta charset="utf-8" />
@@ -13,21 +13,22 @@
     <!-- Structured data / Search Engine -->
     <meta itemprop="name" content="VVG ONLINE - Digital Business Consulting" />
     <meta itemprop="description" content="Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation." />
-    <meta itemprop="image" content="https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
+    <meta itemprop="image" content="https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
 
     <!-- Open Graph -->
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:url" content="https://vvgonline.net" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="VVG ONLINE - Digital Business Consulting" />
     <meta property="og:description" content="Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation." />
-    <meta property="og:image" content="https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
     <meta property="og:site_name" content="VVG ONLINE" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="VVG ONLINE - Digital Business Consulting" />
     <meta name="twitter:description" content="Transform your business with cutting-edge digital consulting and strategic innovation." />
-    <meta name="twitter:image" content="https://vvgonline.net/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png" />
     <meta name="twitter:site" content="@vvgonline" />
     <!-- Per-page SEO: inline script injects OG/Twitter tags before Blazor loads -->
     <script>
@@ -97,6 +98,15 @@
                 }
                 el.setAttribute('content', val);
             }
+            function setLink(rel, href) {
+                var el = document.querySelector('link[rel="' + rel + '"]');
+                if (!el) {
+                    el = document.createElement('link');
+                    el.setAttribute('rel', rel);
+                    document.head.appendChild(el);
+                }
+                el.setAttribute('href', href);
+            }
             var s = setMeta.bind(null, 'n');
             var p = setMeta.bind(null, 'p');
             s('description', info.desc);
@@ -107,10 +117,12 @@
             s('twitter:title', info.title);
             s('twitter:description', info.desc);
             s('twitter:image', info.img);
+            setLink('canonical', info.url);
         }
     })();
     </script>
     <base href="/">
+    <link rel="canonical" href="https://vvgonline.net/" />
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -248,6 +260,7 @@
             setMetaTag('author', metadata.author || 'VVG ONLINE');
 
             // Open Graph
+            setMetaTag('og:locale', metadata.ogLocale || 'en_IN');
             setMetaTag('og:title', metadata.ogTitle || metadata.title);
             setMetaTag('og:description', metadata.ogDescription || metadata.description);
             setMetaTag('og:type', metadata.ogType || 'website');
@@ -262,6 +275,11 @@
             setMetaTag('twitter:image', metadata.twitterImage || metadata.ogImage);
             setMetaTag('twitter:site', metadata.twitterSite);
             setMetaTag('twitter:creator', metadata.twitterCreator);
+
+            // Canonical URL
+            if (metadata.canonicalUrl) {
+                setCanonicalLink(metadata.canonicalUrl);
+            }
 
             // Article specific (for blog posts)
             if (metadata.articlePublishedTime) {
@@ -282,6 +300,17 @@
                 });
             }
         };
+
+        function setCanonicalLink(url) {
+            if (!url) return;
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            link.setAttribute('href', url);
+        }
 
         function setMetaTag(name, content, allowMultiple = false) {
             if (!content) return;

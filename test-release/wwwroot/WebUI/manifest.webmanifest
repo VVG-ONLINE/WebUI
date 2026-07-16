@@ -1,8 +1,10 @@
 {
-  "name": "VVG.Web",
-  "short_name": "VVG.Web",
-  "id": "./",
-  "start_url": "./",
+  "name": "VVG ONLINE - Digital Business Consulting",
+  "short_name": "VVG ONLINE",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Transform your business with VVG ONLINE's cutting-edge digital consulting, technology solutions, and strategic innovation.",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
@@ -11,12 +13,14 @@
     {
       "src": "icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     }
   ]
 }

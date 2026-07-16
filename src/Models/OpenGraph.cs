@@ -28,6 +28,9 @@ namespace VVG.Web.Models
         /// <summary>Site name (e.g., "VVG ONLINE").</summary>
         public string? SiteName { get; set; }
 
+        /// <summary>Content language and region (e.g., "en_IN" for Indian English).</summary>
+        public string? Locale { get; set; }
+
         /// <summary>Per-page Open Graph overrides.</summary>
         public Dictionary<string, PageMetaEntry>? Pages { get; set; }
     }
