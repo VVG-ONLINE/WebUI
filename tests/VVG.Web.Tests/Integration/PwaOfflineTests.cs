@@ -315,9 +315,13 @@ namespace VVG.Web.Tests.Integration
 
             if (!File.Exists(filePath))
             {
-                ctx.Response.StatusCode = 404;
-                ctx.Response.Close();
-                return;
+                if (Path.HasExtension(url))
+                {
+                    ctx.Response.StatusCode = 404;
+                    ctx.Response.Close();
+                    return;
+                }
+                filePath = Path.Combine(_rootPath, "index.html");
             }
 
             var ext = Path.GetExtension(filePath);
