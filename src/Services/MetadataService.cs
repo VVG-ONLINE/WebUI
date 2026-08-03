@@ -139,16 +139,24 @@ namespace VVG.Web.Services
             var defaultImage = pageOG?.Image ?? pageTC?.Image
                 ?? defaultOG?.Image ?? defaultTC?.Image;
 
+            // Merge page-level entries with site-wide defaults.
+            // Null-safe: if a per-page entry is missing a field, the fallback
+            // chain walks page-level → site-level → hard-coded default.
+            var ogTitle = FirstNonEmpty(pageOG?.OgTitle, pageOG?.Title, pageMeta?.Title, defaultOG?.Title);
+            var ogDescription = FirstNonEmpty(pageOG?.OgDescription, pageOG?.Description, pageMeta?.Description, defaultOG?.Description);
+            var twitterTitle = FirstNonEmpty(pageTC?.TwitterTitle, pageTC?.Title, pageOG?.Title, pageMeta?.Title, defaultTC?.Title);
+            var twitterDescription = FirstNonEmpty(pageTC?.TwitterDescription, pageTC?.Description, pageOG?.Description, pageMeta?.Description, defaultTC?.Description);
+
             return new PageMetadata
             {
-                Title = pageMeta?.Title ?? defaultMeta?.DefaultTitle,
-                Description = pageMeta?.Description ?? defaultMeta?.DefaultDescription,
+                Title = FirstNonEmpty(pageMeta?.Title, defaultMeta?.DefaultTitle, defaultMeta?.Title),
+                Description = FirstNonEmpty(pageMeta?.Description, defaultMeta?.DefaultDescription, defaultMeta?.Description),
                 Keywords = pageMeta?.Keywords ?? defaultMeta?.Keywords,
                 Image = defaultImage,
 
                 OgType = pageOG?.OgType ?? defaultOG?.Type ?? "website",
-                OgTitle = pageOG?.OgTitle ?? pageOG?.Title ?? pageMeta?.Title ?? defaultOG?.Title,
-                OgDescription = pageOG?.OgDescription ?? pageOG?.Description ?? pageMeta?.Description ?? defaultOG?.Description,
+                OgTitle = ogTitle,
+                OgDescription = ogDescription,
                 OgImage = pageOG?.Image ?? pageTC?.Image ?? defaultOG?.Image ?? defaultTC?.Image,
                 OgUrl = pageOG?.Url ?? defaultOG?.Url,
                 OgSiteName = pageOG?.OgSiteName ?? defaultOG?.SiteName ?? "VVG ONLINE",
@@ -156,10 +164,24 @@ namespace VVG.Web.Services
                 TwitterCard = pageTC?.TwitterCard ?? defaultTC?.Card ?? "summary_large_image",
                 TwitterSite = pageTC?.TwitterSite ?? defaultTC?.Site ?? "@vvgonline",
                 TwitterCreator = pageTC?.TwitterCreator ?? defaultTC?.Creator ?? "@vvgonline",
-                TwitterTitle = pageTC?.TwitterTitle ?? pageTC?.Title ?? pageOG?.Title ?? pageMeta?.Title ?? defaultTC?.Title,
-                TwitterDescription = pageTC?.TwitterDescription ?? pageTC?.Description ?? pageOG?.Description ?? pageMeta?.Description ?? defaultTC?.Description,
+                TwitterTitle = twitterTitle,
+                TwitterDescription = twitterDescription,
                 TwitterImage = pageTC?.Image ?? pageOG?.Image ?? defaultTC?.Image
             };
+        }
+
+        // Returns the first non-null, non-whitespace value from the candidates.
+        // Guards against entries that omit a field, so the merge always yields a usable value.
+        private static string? FirstNonEmpty(params string?[] candidates)
+        {
+            foreach (var c in candidates)
+            {
+                if (!string.IsNullOrWhiteSpace(c))
+                {
+                    return c;
+                }
+            }
+            return null;
         }
 
         // Extracts page-specific JSON-LD structured data from the "pages" section

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-01-22",
+  "lastUpdated": "2026-08-03",
   "files": {
     "markdown": [
       "assets/data/blogs/Communication-Mastery-for-Digital-Business-Success.md",
@@ -13,18 +13,16 @@
     ],
     "json": [
       "assets/data/dataset/services/web-development.json",
-      "assets/data/dataset/services/digital-marketing.json",
-      "assets/data/dataset/services/consulting.json"
+      "assets/data/dataset/services/digital-business-consulting.json"
     ],
     "csv": [
-      "assets/data/dataset/knowledge/pricing.csv",
       "assets/data/dataset/knowledge/faq.csv",
-      "assets/data/dataset/knowledge/testimonials.csv"
+      "assets/data/dataset/knowledge/digital-business-consulting.csv"
     ],
     "txt": [
       "assets/data/dataset/docs/about.txt",
-      "assets/data/dataset/docs/services-overview.txt",
-      "assets/data/dataset/docs/contact-info.txt"
+      "assets/data/dataset/docs/contact-info.txt",
+      "assets/data/dataset/docs/digital-business-consulting-qna.txt"
     ]
   }
 }

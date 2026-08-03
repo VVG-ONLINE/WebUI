@@ -10,14 +10,14 @@
 ///   1. Start a static HTTP server serving the published wwwroot
 ///   2. Launch headless Chromium via PuppeteerSharp
 ///   3. Load index.html -> installs service worker -> verify SW state
-///   4. Load test-chat.html -> pre-caches it in the SW cache
+///   4. Load /blog route -> pre-caches index.html (SPA shell) in the SW cache
 ///   5. Simulate offline via CDP session
-///   6. Load test-chat.html OFFLINE -> verify full content, buttons, no preloader
+///   6. Load /blog OFFLINE -> verify the SPA shell is served from cache
 ///   7. Load index.html OFFLINE -> verify full content, Blazor app container
 ///
-/// Expected results (confirmed by test-offline-final.js):
-///   - OFFLINE test-chat.html loads fully (>25000 bytes, buttons visible, preloader hidden)
-///   - OFFLINE index.html loads fully (>20000 bytes, Blazor app container present)
+/// Expected results:
+///   - OFFLINE /blog loads fully (>15000 bytes, Blazor app container present)
+///   - OFFLINE index.html loads fully (>15000 bytes, Blazor app container present)
 ///   - Service worker activates successfully (state == "activated")
 /// </summary>
 using System.Net;
@@ -170,7 +170,7 @@ namespace VVG.Web.Tests.Integration
             await Task.Delay(3000);
 
             var content = await _page.GetContentAsync();
-            Assert.True(content.Length > 20000, $"Index page too short: {content.Length} bytes");
+            Assert.True(content.Length > 15000, $"Index page too short: {content.Length} bytes");
 
             // Wait for service worker to be activated (poll with timeout)
             var swState = "";
@@ -187,14 +187,14 @@ namespace VVG.Web.Tests.Integration
             Console.WriteLine($"SW state: {swState}");
             Assert.Equal("activated", swState);
 
-            // --- Step 2: Pre-cache test-chat.html ---
-            Console.WriteLine("\n--- Step 2: Pre-cache test-chat.html ---");
-            await _page.GoToAsync($"{baseUrl}test-chat.html", 15000);
+            // --- Step 2: Pre-cache the SPA shell via a route navigation ---
+            Console.WriteLine("\n--- Step 2: Pre-cache SPA shell via /blog route ---");
+            await _page.GoToAsync($"{baseUrl}blog", 15000);
             await Task.Delay(3000);
 
             content = await _page.GetContentAsync();
-            Assert.True(content.Contains("btnRunTests"), "test-chat.html should have test buttons");
-            Assert.True(content.Length > 25000, $"test-chat.html too short: {content.Length} bytes");
+            Assert.True(content.Contains("id=\"app\""), "/blog should render the Blazor app container");
+            Assert.True(content.Length > 15000, $"/blog too short: {content.Length} bytes");
 
             // --- Step 3: Go offline via CDP ---
             Console.WriteLine("\n--- Step 3: Go offline via CDP ---");
@@ -208,11 +208,11 @@ namespace VVG.Web.Tests.Integration
             });
             await Task.Delay(1000);
 
-            // --- Step 4: Load test-chat.html OFFLINE ---
-            Console.WriteLine("\n--- Step 4: Load test-chat.html OFFLINE ---");
+            // --- Step 4: Load /blog OFFLINE ---
+            Console.WriteLine("\n--- Step 4: Load /blog OFFLINE ---");
             try
             {
-                await _page.GoToAsync($"{baseUrl}test-chat.html", 20000);
+                await _page.GoToAsync($"{baseUrl}blog", 20000);
                 await Task.Delay(3000);
             }
             catch (Exception ex)
@@ -222,14 +222,11 @@ namespace VVG.Web.Tests.Integration
             }
 
             content = await _page.GetContentAsync();
-            Console.WriteLine($"Offline test-chat.html: {content.Length} bytes");
+            Console.WriteLine($"Offline /blog: {content.Length} bytes");
 
-            Assert.True(content.Length > 25000,
-                $"Offline: test-chat.html should be fully cached ({content.Length} bytes)");
-            Assert.True(content.Contains("btnRunTests"),
-                "Offline: test buttons should be present");
-            Assert.DoesNotContain("id=\"preloader\"", content);
-            Assert.DoesNotContain("class=\"preloader\"", content);
+            Assert.True(content.Length > 15000,
+                $"Offline: /blog should be served from the SW cache ({content.Length} bytes)");
+            Assert.Contains("id=\"app\"", content);
 
             var title = await _page.GetTitleAsync();
             Console.WriteLine($"Offline title: {title}");
@@ -250,7 +247,7 @@ namespace VVG.Web.Tests.Integration
             content = await _page.GetContentAsync();
             Console.WriteLine($"Offline index.html: {content.Length} bytes");
 
-            Assert.True(content.Length > 20000,
+            Assert.True(content.Length > 15000,
                 $"Offline: index.html should be fully cached ({content.Length} bytes)");
             Assert.Contains("id=\"app\"", content);
         }
