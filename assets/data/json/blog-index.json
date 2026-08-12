@@ -79,7 +79,7 @@
     "category": "Technology",
     "featured": true,
     "filename": "It-management-solutions-for-indian-smbs",
-    "timeToRead": 6
+    "timeToRead": 8
   },
   {
     "title": "Key Performance Indicators (KPIs)",
@@ -128,5 +128,25 @@
     "featured": false,
     "filename": "The-Digital-Marketing-Investment-Imperative",
     "timeToRead": 11
+  },
+  {
+    "title": "Bharat's AI Five-Layer Cake: Why Private AI Infrastructure is the Real Opportunity",
+    "slug": "bharat-ai-five-layer-cake",
+    "publishedAt": "2026-02-01",
+    "tags": [
+      "AI Infrastructure",
+      "Private AI",
+      "Bharat",
+      "Digital Transformation",
+      "Jensen Huang",
+      "NVIDIA",
+      "Data Centers"
+    ],
+    "excerpt": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
+    "draft": false,
+    "category": "Technology",
+    "featured": false,
+    "filename": "bharat-ai-five-layer-cake",
+    "timeToRead": 16
   }
 ]

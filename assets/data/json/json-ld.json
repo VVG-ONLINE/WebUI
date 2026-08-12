@@ -226,6 +226,22 @@
         "name": "VVG ONLINE"
       }
     },
+    "bharat-ai-five-layer-cake": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Bharat's AI Five-Layer Cake: Why Private AI Infrastructure is the Real Opportunity",
+      "description": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
+      "url": "https://vvgonline.net/blog/bharat-ai-five-layer-cake",
+      "datePublished": "2026-02-01",
+      "author": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      }
+    },
     "key-performance-indicators-kpis": {
       "@context": "https://schema.org",
       "@type": "Article",
