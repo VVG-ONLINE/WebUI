@@ -145,6 +145,12 @@
       "description": "Your IT infrastructure either grows your business or holds it back. Here's how we make sure it's the former.",
       "url": "https://vvgonline.net/blog/it-management-solutions-for-indian-smbs",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
+    },
+    "bharat-ai-five-layer-cake": {
+      "title": "Bharat's AI Five-Layer Cake — VVG ONLINE",
+      "description": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
+      "url": "https://vvgonline.net/blog/bharat-ai-five-layer-cake",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/bharat-ai-five-layer-cake-twitter-card.png"
     }
   }
 }
