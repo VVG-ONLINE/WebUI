@@ -11,7 +11,7 @@ featured: false
 
 # Bharat's AI Five-Layer Cake: Why Private AI Infrastructure is the Real Opportunity
 
-August 7, 2026 | *Technology*
+Updated on: August 12, 2026 | *Technology*
 
 *Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.*
 

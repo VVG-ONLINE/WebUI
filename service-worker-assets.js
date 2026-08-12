@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "svkmFJ/9",
+  "version": "gfa3o1CB",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.cvgusyd4es.wasm"
     },
     {
-      "hash": "sha256-8LieDq52SLC45K9/wm8tVtSSpljciZ9sM+eqnm4Ydhg=",
-      "url": "_framework/VVG.Web.gc15hs1wtr.wasm"
+      "hash": "sha256-nu+hv36xCUKoBsmj0L8lUFRtUd9mjC1CvK/LHhJNtJk=",
+      "url": "_framework/VVG.Web.2gau0c5m4s.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-2kc50cdHe2QVSjhhlPtryHdfZjf2eStRHLVhfen5Vzo=",
-      "url": "_framework/dotnet.mh2pvg3e2j.js"
+      "hash": "sha256-QJDW9j3wVFvUyMpptno4MzQqGBrPcO5xiWE3Vsakay8=",
+      "url": "_framework/dotnet.g4mj5l2nm4.js"
     },
     {
       "hash": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
@@ -610,7 +610,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/The-Digital-Marketing-Investment-Imperative.md"
     },
     {
-      "hash": "sha256-IE4pldlWkZ2UNLOyd1FqAmQxj+vWhBnUss+iCWc2F0M=",
+      "hash": "sha256-XOGBiQpZwWdCjzS8iAhfyO+Chtq3Rb5VHsTKSrZ/GP8=",
       "url": "assets/data/blogs/bharat-ai-five-layer-cake.md"
     },
     {
@@ -1022,7 +1022,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-Bljt92BgD3yeBATrYJdciHkF9yP4XmLrUhMbghXzSAs=",
+      "hash": "sha256-yo2A8qJ38/jDtYyi8tVke2qnLJ0GxPtx7Ms+QJWLUPc=",
       "url": "index.html"
     },
     {
