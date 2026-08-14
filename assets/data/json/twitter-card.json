@@ -21,6 +21,11 @@
       "description": "Comprehensive digital business consulting services to transform your enterprise.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/services-twitter-card.png"
     },
+    "private-ai": {
+      "title": "Private AI for Bharat's SMBs - VVG ONLINE",
+      "description": "Practical private AI consulting for Bharat's SMBs, with cautious setup estimates and no universal performance or cost guarantees.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/private-ai-twitter-card.png"
+    },
     "about": {
       "title": "About VVG ONLINE",
       "description": "Learn about our mission to decode the complex digital landscape, design bespoke strategies, and deliver transformative results.",

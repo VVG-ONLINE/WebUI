@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "gfa3o1CB",
+  "version": "3FLfWc8M",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,12 @@ self.assetsManifest = {
       "url": "_framework/System.cvgusyd4es.wasm"
     },
     {
-      "hash": "sha256-nu+hv36xCUKoBsmj0L8lUFRtUd9mjC1CvK/LHhJNtJk=",
-      "url": "_framework/VVG.Web.2gau0c5m4s.wasm"
+      "hash": "sha256-W3fFwOelJAApkh055CRm+GVZOzUJODGFOCAc3umRClc=",
+      "url": "_framework/VVG.Web.vfqm8o2rqs.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
-    },
-    {
-      "hash": "sha256-QJDW9j3wVFvUyMpptno4MzQqGBrPcO5xiWE3Vsakay8=",
-      "url": "_framework/dotnet.g4mj5l2nm4.js"
     },
     {
       "hash": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
@@ -476,6 +472,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU=",
       "url": "_framework/dotnet.runtime.web2r9gqbh.js"
+    },
+    {
+      "hash": "sha256-jOFY3mszPtWm1Tx/1ErDYUydme+jkuHHnTehdTfbZ64=",
+      "url": "_framework/dotnet.wxvrglotzc.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -634,7 +634,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/strategy-and-innovation.md"
     },
     {
-      "hash": "sha256-H/Vh2RWWlWH2EDis906uKujVQGkbbHgPR2eEVc4SFjQ=",
+      "hash": "sha256-j5ak1d+gkBn6Q53ILcf00iaWEjmEZ9uxoIlU348Jrnc=",
       "url": "assets/data/dataset-manifest.json"
     },
     {
@@ -686,15 +686,15 @@ self.assetsManifest = {
       "url": "assets/data/json/faq.json"
     },
     {
-      "hash": "sha256-RS3iFa90j8ctwWdiRw1k4C815yJNV+Db+808kKox5y0=",
+      "hash": "sha256-WLag301m5HbBBKyAIOKY6hhEx+Y8o1ggLLlkJl3Q26Y=",
       "url": "assets/data/json/json-ld.json"
     },
     {
-      "hash": "sha256-1LEyBNuffCCjOu2fQ2MRwQqKmyNKG5zLc++I23O7eHc=",
+      "hash": "sha256-BwFZIND4b0c0Uob6Bq3RZ0oynDOq1pfeLny5nyLDBDo=",
       "url": "assets/data/json/metadata.json"
     },
     {
-      "hash": "sha256-9DqC8+u+G8FeI7sWRI6saZ0CNZP7LLljCZ01n2dmWQg=",
+      "hash": "sha256-O9kbO+vpr1derilHTxpsN0GAj7slVamsqfNK4zku+0E=",
       "url": "assets/data/json/open-graph.json"
     },
     {
@@ -710,7 +710,7 @@ self.assetsManifest = {
       "url": "assets/data/json/services.json"
     },
     {
-      "hash": "sha256-JgUm0SMTSnm8AeHP2v26+Twfa58p1RWpZsDF6RG0tX0=",
+      "hash": "sha256-MFwUMCB4TDXgkE4L0U4UI0jYKHZkkNrTJmgwLmxv3nw=",
       "url": "assets/data/json/twitter-card.json"
     },
     {
@@ -746,90 +746,6 @@ self.assetsManifest = {
       "url": "assets/images/profiles/logo-edge-2025-240x240.svg"
     },
     {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-about.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-bharat-ai-five-layer-cake.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-blog-archives.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-blog.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-capability-building.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-communication-mastery-for-digital-business-success.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-contact.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-design-thinking-workshops.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-digital-assets-the-real-estate-of-the-virtual-world.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-digital-transformation.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-dont-normalize-common-things-a-philosophy-for-business-excellence.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-gst-rate-deductions-for-e-commerce-a-complete-guide-by-vvg-online.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-home.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-it-management-solutions.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-key-performance-indicators-kpis.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-operating-model-design.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-pricing.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-services.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-strategic-digital-marketing.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-strategy-and-innovation.svg"
-    },
-    {
-      "hash": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
-      "url": "assets/images/twitter-cards/.tmp-the-digital-marketing-investment-imperative.svg"
-    },
-    {
       "hash": "sha256-B4zgiX1lzFihxdw9Ym1ClRReXxuFiBgXxxYqOyf6TcI=",
       "url": "assets/images/twitter-cards/about-twitter-card.png"
     },
@@ -850,7 +766,7 @@ self.assetsManifest = {
       "url": "assets/images/twitter-cards/capability-building-twitter-card.png"
     },
     {
-      "hash": "sha256-JOAxd5Sh+Nqr5yhrdDLoaWd1g6zV4BfXS8n6PwSxBWA=",
+      "hash": "sha256-nOIXGWbw8jO5R0fj2/kCN7cimkJjeaHYE6DHNcM2WrM=",
       "url": "assets/images/twitter-cards/card-mapping.json"
     },
     {
@@ -900,6 +816,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-e+Sl9324J/aVoxfAnewLjKkIE5Twv4Hatepa5yYNWE4=",
       "url": "assets/images/twitter-cards/pricing-twitter-card.png"
+    },
+    {
+      "hash": "sha256-XaPQlHPSzd21/LrsPEyRb2zJCZlpECFdGD1VK3GXb8I=",
+      "url": "assets/images/twitter-cards/private-ai-twitter-card.png"
     },
     {
       "hash": "sha256-d8W0lkQWYCoEi9BoZuVmuXBEYN+9VG9Xs/i+/f0O8cA=",
@@ -1022,7 +942,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-yo2A8qJ38/jDtYyi8tVke2qnLJ0GxPtx7Ms+QJWLUPc=",
+      "hash": "sha256-pGJg42MoyAcXsn/VA6DUeZzSQxa8c8Ns7xTC0TVLKH0=",
       "url": "index.html"
     },
     {
@@ -1050,7 +970,7 @@ self.assetsManifest = {
       "url": "scripts/vikas-dataset-augmented.jsonl.bak"
     },
     {
-      "hash": "sha256-cKUcnjkxsjM61R1lUYv7RizRKp1bLcYCbLnJo1uk1L4=",
+      "hash": "sha256-bna7gHqyyXOc5RQ52p10zJxU7IDAKGYiRgf7/B4n3XM=",
       "url": "sitemap.xml"
     }
   ]
