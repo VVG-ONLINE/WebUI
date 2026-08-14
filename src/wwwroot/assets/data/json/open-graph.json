@@ -25,6 +25,12 @@
       "url": "https://vvgonline.net/services",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/services-twitter-card.png"
     },
+    "private-ai": {
+      "title": "Private AI for Bharat's SMBs - VVG ONLINE",
+      "description": "Private AI consulting for Bharat's SMBs: practical, privacy-conscious local AI setups with cautious estimates based on your hardware, data, and workflows. No universal performance or cost guarantees.",
+      "url": "https://vvgonline.net/private-ai",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/private-ai-twitter-card.png"
+    },
     "about": {
       "title": "About VVG ONLINE",
       "description": "We are a strategic partner in navigating the complexities of the digital age. Learn more about our mission and philosophy.",

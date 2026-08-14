@@ -1,0 +1,255 @@
+@* ============================================================
+    PRIVATE AI PAGE — CTA landing for private AI services
+    - Uses standard HeroBanner component (matches Home, About, Services)
+    - Content sections use Bootstrap grid (container + row + col-md-*)
+    - Five-layer stack, cost comparison, readiness dimensions, delivery sequence, security, CTAs
+    ============================================================ *@
+
+@page "/private-ai"
+@inject MetadataService MetadataService
+
+<PageTitle>Private AI | VVG ONLINE</PageTitle>
+
+@* -- HERO: Uses shared HeroBanner component (same as Home, About, Services) -- *@
+<HeroBanner Title="Run useful AI where your business can control it."
+           Subtitle="Private AI brings local models, practical infrastructure, and your team's knowledge together without making your operating data a default cloud dependency."
+           TagUser="// PRIVATE_AI" TagPath="// SMB_INFRASTRUCTURE" />
+
+@* -- FIVE-LAYER STACK: 5-column grid with terminal-style borders (matches Home services grid) -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// THE_AI_STACK</div>
+        <div class="tag-segment tag-path">// EVENT_DRIVEN_ARCHITECTURE</div>
+    </div>
+    <h2 class="display-5 mb-4">Five layers. One accountable system.</h2>
+    <div class="row g-0 border-top border-start">
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">01.</span>
+            <h3 class="mt-3">Energy</h3>
+            <p class="opacity-75 small">Power, cooling, and dependable uptime.</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">02.</span>
+            <h3 class="mt-3">Chips</h3>
+            <p class="opacity-75 small">Compute selected for the workload, not hype.</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">03.</span>
+            <h3 class="mt-3">Infrastructure</h3>
+            <p class="opacity-75 small">Network, storage, identity, and observability.</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">04.</span>
+            <h3 class="mt-3">Models</h3>
+            <p class="opacity-75 small">Open models configured for useful local inference.</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">05.</span>
+            <h3 class="mt-3">Applications</h3>
+            <p class="opacity-75 small">Tools and workflows your people can actually use.</p>
+        </div>
+    </div>
+    <p class="mt-4 opacity-75">The opportunity is not only the model. It is the accountable layer beneath it.</p>
+</section>
+
+@* -- SIGNAL/WHY: Two-column layout with text + visual separator -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// WHY_PRIVATE_AI</div>
+        <div class="tag-segment tag-path">// RESULT_Oriented_ACTIONS</div>
+    </div>
+    <h2 class="display-5 mb-4">A smaller, clearer AI surface for the work that matters.</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 p-4 border">
+                <span class="mono">01 //</span>
+                <h3 class="mt-3">Keep sensitive context close</h3>
+                <p class="opacity-75 small">Customer, operations, and internal knowledge can stay within an environment you govern instead of being sent to a third-party API by default.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 border">
+                <span class="mono">02 //</span>
+                <h3 class="mt-3">Start with a real bottleneck</h3>
+                <p class="opacity-75 small">Begin with one measurable workflow such as document search, support triage, or internal knowledge retrieval. Demonstrate value before scaling.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 border">
+                <span class="mono">03 //</span>
+                <h3 class="mt-3">Build capability, not dependency</h3>
+                <p class="opacity-75 small">Document the system, train the team, and leave behind operating practices that make the next use case easier to own.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* -- COST COMPARISON: Two-column grid with card styling (matches standard pattern) -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// SMB_OPPORTUNITY</div>
+        <div class="tag-segment tag-path">// COST_BENEFIT_ANALYSIS</div>
+    </div>
+    <h2 class="display-5 mb-4">Compare the operating model, not just the invoice.</h2>
+    <p class="lead opacity-75 mb-4">Cloud APIs can be the right fit for bursty or frontier workloads. Private AI can be the right fit when predictable, local inference and data control matter. Treat the numbers below as a planning signal, not a universal promise.</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border border-danger">
+                <p class="mono text-danger">CLOUD API</p>
+                <h3 class="mt-3">₹50,000 <span class="fs-6 opacity-75">/ MONTH</span></h3>
+                <p class="small opacity-75 mt-3">RECURRING USAGE BILL</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border border-success">
+                <p class="mono text-success">PRIVATE AI</p>
+                <h3 class="mt-3">₹1.5 lakh initial setup</h3>
+                <p class="small opacity-75 mt-3">POWER + MAINTENANCE EXTRA</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 p-3 border card">
+        <p class="mono mb-2">LOCAL INFERENCE / NO PER-REQUEST API BILL</p>
+        <p class="opacity-75 mb-0">Hardware, electricity, maintenance, model choice, security controls, support, and workload volume change the total cost. A local deployment is not automatically cheaper, free, or secure by default.</p>
+    </div>
+</section>
+
+@* -- READINESS GATE: 5-column grid with readiness dimensions (matches Home services pattern) -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// READINESS_GATE</div>
+        <div class="tag-segment tag-path">// ASSESSMENT_LENS</div>
+    </div>
+    <h2 class="display-5 mb-4">Readiness before hardware.</h2>
+    <p class="lead opacity-75 mb-4">The right starting point is a short, honest view of the business around the model. We look across five dimensions before recommending a deployment path.</p>
+    <div class="row g-0 border-top border-start">
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">01</span>
+            <h3 class="mt-3">Strategic alignment</h3>
+            <p class="opacity-75 small">Is there a business outcome, sponsor, and metric behind the AI initiative?</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">02</span>
+            <h3 class="mt-3">Data and infrastructure</h3>
+            <p class="opacity-75 small">Is useful data findable, structured, backed up, and supported by reliable systems?</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">03</span>
+            <h3 class="mt-3">Team and culture</h3>
+            <p class="opacity-75 small">Can the people closest to the work test, learn, and adopt a new operating habit?</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">04</span>
+            <h3 class="mt-3">Use cases and ROI</h3>
+            <p class="opacity-75 small">Which repetitive process has a visible bottleneck and a credible path to improvement?</p>
+        </div>
+        <div class="col-md-4 p-4 border-bottom border-end">
+            <span class="mono">05</span>
+            <h3 class="mt-3">Governance and DPDP</h3>
+            <p class="opacity-75 small">Are privacy, responsible use, access, retention, and accountability being designed together?</p>
+        </div>
+    </div>
+    <div class="mt-4 p-3 border">
+        <p class="mono mb-2">ASSESSMENT LENS / 5 DIMENSIONS / 45 POINTS</p>
+        <div class="row g-2 mt-2">
+            <div class="col-md-3">
+                <strong>0-15</strong> BEGINNER
+            </div>
+            <div class="col-md-3">
+                <strong>16-25</strong> PROGRESSOR
+            </div>
+            <div class="col-md-3">
+                <strong>26-35</strong> TRANSFORMER
+            </div>
+            <div class="col-md-3">
+                <strong>36-45</strong> LEADER
+            </div>
+        </div>
+        <p class="opacity-75 small mt-3 mb-0">The assessment is a conversation starter, not a deployment verdict. It helps identify the next practical step before hardware or model selection.</p>
+    </div>
+</section>
+
+@* -- DELIVERY SEQUENCE: Two-column grid with step-by-step layout -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// DELIVERY_SEQUENCE</div>
+        <div class="tag-segment tag-path">// EVENT_DRIVEN_WORKFLOW</div>
+    </div>
+    <h2 class="display-5 mb-4">From readiness to a working system.</h2>
+    <p class="lead opacity-75 mb-4">No black box handoff. Each step leaves a clearer decision, a safer system, or a more capable team.</p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border">
+                <span class="mono">01</span>
+                <h3 class="mt-3">Discover</h3>
+                <p class="opacity-75 small">Map the process, data, users, constraints, and one outcome worth measuring.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border">
+                <span class="mono">02</span>
+                <h3 class="mt-3">Design</h3>
+                <p class="opacity-75 small">Choose the model, compute, data boundary, access pattern, and success criteria.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border">
+                <span class="mono">03</span>
+                <h3 class="mt-3">Pilot</h3>
+                <p class="opacity-75 small">Test one workflow for quality, latency, failure modes, human review, and actual adoption.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border">
+                <span class="mono">04</span>
+                <h3 class="mt-3">Harden</h3>
+                <p class="opacity-75 small">Apply identity and access controls, segmentation, encryption, backups, patching, logs, and incident response.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 p-4 border">
+                <span class="mono">05</span>
+                <h3 class="mt-3">Enable</h3>
+                <p class="opacity-75 small">Train the team, document runbooks, monitor outcomes, and set a review cadence.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@* -- SECURITY REALITY CHECK: Two-column layout with warning styling -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group mb-4">
+        <div class="tag-segment tag-user">// SECURITY_REALITY_CHECK</div>
+        <div class="tag-segment tag-path">// HUMAN_REVIEW_STAYS_IN_THE_LOOP</div>
+    </div>
+    <h2 class="display-5 mb-4">Private does not mean secure by default.</h2>
+    <div class="row">
+        <div class="col-lg-8">
+            <p class="opacity-75">Keeping inference inside your environment can reduce third-party exposure, but it does not remove risk. Unpatched servers, broad permissions, weak credentials, prompt injection, unsafe retrieval sources, poor backups, and missing logs can still create a serious incident.</p>
+            <p class="opacity-75">DPDP Act responsibilities depend on your role, data, processing, and current legal requirements. Infrastructure alone is not compliance. We help surface consent, purpose limitation, minimisation, retention, access, vendor, and incident-response questions; qualified privacy or legal counsel should validate the final position.</p>
+            <p class="mono text-danger mt-3">NO AUTOMATIC COMPLIANCE CLAIMS / HUMAN REVIEW STAYS IN THE LOOP</p>
+        </div>
+    </div>
+</section>
+
+@* -- FINAL CTA: Centered layout (matches About page pattern) -- *@
+<section class="container py-5">
+    <div class="terminal-tag-group justify-content-center mb-4">
+        <div class="tag-segment tag-user">// NEXT_COMMAND</div>
+        <div class="tag-segment tag-path">// EVENT_DRIVEN_ARCHITECTURE</div>
+    </div>
+    <h2 class="display-4 text-center mb-3">Find the first workflow worth owning.</h2>
+    <p class="lead opacity-75 text-center mb-4">Bring one process, one constraint, or one unanswered question. We will help you decide whether private AI is the right next move.</p>
+    <div class="text-center">
+        <a href="contact" class="btn btn-vvg btn-lg">Talk to VVG ONLINE</a>
+        <a href="blog" class="mono ms-3">Browse the existing blog <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var pageMeta = await MetadataService.GetPageMetadataAsync("private-ai");
+        await MetadataService.SetPageMetadata(pageMeta);
+    }
+}

@@ -14,6 +14,11 @@
     "title": ["End-to-End", "Digital Services."],
     "description": ["Comprehensive solutions to architect,", "build, and scale your digital ambitions."]
   },
+  "private-ai": {
+    "punchline": "// PRIVATE AI",
+    "title": ["Private AI for", "Bharat's SMBs."],
+    "description": ["Practical local AI with cautious", "estimates, not universal guarantees."]
+  },
   "about": {
     "punchline": "// ABOUT VVG",
     "title": ["Driving Digital", "Excellence."],

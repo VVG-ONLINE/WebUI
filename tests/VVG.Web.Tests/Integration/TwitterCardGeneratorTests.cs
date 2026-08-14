@@ -81,7 +81,7 @@ namespace VVG.Web.Tests.Integration
             var mapping = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
 
             Assert.NotNull(mapping);
-            var requiredPages = new[] { "home", "contact", "services", "about", "blog", "blog-archives" };
+            var requiredPages = new[] { "home", "contact", "services", "private-ai", "about", "blog", "blog-archives" };
 
             foreach (var page in requiredPages)
             {
@@ -155,6 +155,14 @@ namespace VVG.Web.Tests.Integration
                     Assert.Equal(pngHeader[i], bytes[i]);
                 }
             }
+        }
+
+        [Fact]
+        public void CardGenerator_DoesNotLeaveTemporarySvgs()
+        {
+            var temporaryFiles = Directory.EnumerateFiles(CardDir, ".tmp-*", SearchOption.TopDirectoryOnly);
+
+            Assert.Empty(temporaryFiles);
         }
 
         // ========================================================================

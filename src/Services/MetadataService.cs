@@ -153,6 +153,7 @@ namespace VVG.Web.Services
                 Description = FirstNonEmpty(pageMeta?.Description, defaultMeta?.DefaultDescription, defaultMeta?.Description),
                 Keywords = pageMeta?.Keywords ?? defaultMeta?.Keywords,
                 Image = defaultImage,
+                CanonicalUrl = pageMeta?.CanonicalUrl ?? pageOG?.Url ?? defaultOG?.Url,
 
                 OgType = pageOG?.OgType ?? defaultOG?.Type ?? "website",
                 OgTitle = ogTitle,

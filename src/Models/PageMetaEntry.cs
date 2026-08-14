@@ -7,6 +7,7 @@ namespace VVG.Web.Models
         public string? Keywords { get; set; }
         public string? Image { get; set; }
         public string? Url { get; set; }
+        public string? CanonicalUrl { get; set; }
 
         public string? OgType { get; set; }
         public string? OgTitle { get; set; }

@@ -9,7 +9,7 @@
  * Run from WebUI/src/ (where package.json lives).
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, unlinkSync } from "fs";
 import { resolve, dirname } from "path";
 import sharp from "sharp";
 
@@ -92,9 +92,8 @@ for (const [slug, data] of Object.entries(content)) {
         .png()
         .toFile(pngPath);
 
-    // Cleanup temp file
-    try { writeFileSync(tempSvgPath, ""); } catch {}
-    if (existsSync(tempSvgPath)) try { writeFileSync(tempSvgPath, ""); } catch {}
+    // Cleanup temp file so build output never publishes the source SVG.
+    try { unlinkSync(tempSvgPath); } catch {}
 
     mapping[slug] = `${slug}-twitter-card.png`;
     console.log(`  ✓ ${slug}-twitter-card.png`);

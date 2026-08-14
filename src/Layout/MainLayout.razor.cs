@@ -227,7 +227,7 @@ namespace VVG.Web.Layout
             {
                 "Communication-Mastery-for-Digital-Business-Success.md",
                 "Digital-Assets-The-Real-Estate-of-the-Virtual-World.md",
-                "Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence.md",
+                "Dont-normalize-common-things-a-philosophy-for-business-excellence.md",
                 "GST-Rate-Deductions-for-E-commerce-A-Complete-Guide-by-VVG-ONLINE.md",
                 "Key-Performance-Indicators-KPIs.md",
                 "Operating-Model-Design.md",

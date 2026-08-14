@@ -242,6 +242,28 @@
         "name": "VVG ONLINE"
       }
     },
+    "private-ai": {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Private AI Consulting for Bharat's SMBs",
+      "description": "Private AI consulting for Bharat's SMBs: practical, privacy-conscious local AI setups with cautious estimates based on your hardware, data, and workflows. No universal performance or cost guarantees.",
+      "url": "https://vvgonline.net/private-ai",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/private-ai-twitter-card.png",
+      "serviceType": "Private AI consulting",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "VVG ONLINE",
+        "url": "https://vvgonline.net/"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Small and medium businesses"
+      }
+    },
     "key-performance-indicators-kpis": {
       "@context": "https://schema.org",
       "@type": "Article",

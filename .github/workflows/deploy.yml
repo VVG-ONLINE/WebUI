@@ -48,6 +48,16 @@ jobs:
       - name: Publish Project
         run: dotnet publish src/VVG.Web.csproj -c Release -o release /p:StaticWebAssetBasePath=/ --nologo
 
+      - name: Verify Internal Documents Are Excluded
+        run: |
+          pdf_count=$(find release/wwwroot -type f -iname '*.pdf' | wc -l)
+          if [ "$pdf_count" -ne 0 ]; then
+            echo "❌ Internal PDF detected in release/wwwroot"
+            find release/wwwroot -type f -iname '*.pdf'
+            exit 1
+          fi
+          echo "✅ No PDF files copied into release/wwwroot"
+
       - name: Install Fonts & Generate Twitter Cards
         run: |
            sudo apt-get update
@@ -172,6 +182,13 @@ jobs:
               type: 'website',
               image: getImageUrl('services')
             },
+            'private-ai': {
+              dir: 'private-ai',
+              title: "Private AI for Bharat's SMBs - VVG ONLINE",
+              description: 'Private AI consulting for Bharat\'s SMBs: practical, privacy-conscious local AI setups with cautious estimates based on your hardware, data, and workflows. No universal performance or cost guarantees.',
+              type: 'website',
+              image: getImageUrl('private-ai')
+            },
             'about': {
               dir: 'about',
               title: 'About VVG ONLINE',
@@ -246,10 +263,11 @@ jobs:
             '    <meta property="og:url" content="' + url + '" />\n' +
             '    <meta property="og:type" content="' + type + '" />\n' +
             '    <meta property="og:title" content="' + title + '" />\n' +
-            '    <meta property="og:description" content="' + description + '" />\n' +
-            '    <meta property="og:image" content="' + image + '" />\n' +
-            '    <meta property="og:site_name" content="' + SITE_NAME + '" />\n' +
-            articleMetaHTML +
+             '    <meta property="og:description" content="' + description + '" />\n' +
+             '    <meta property="og:image" content="' + image + '" />\n' +
+             '    <meta property="og:site_name" content="' + SITE_NAME + '" />\n' +
+             '    <link rel="canonical" href="' + url + '" />\n' +
+             articleMetaHTML +
             '    <meta name="twitter:card" content="summary_large_image" />\n' +
             '    <meta name="twitter:title" content="' + title + '" />\n' +
             '    <meta name="twitter:description" content="' + description + '" />\n' +

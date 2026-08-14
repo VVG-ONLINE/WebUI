@@ -110,6 +110,7 @@ List<PageSpec> GetPageSpecs(string root, string indexPath)
         new("pricing", "Pricing - VVG ONLINE", "Transparent pricing for VVG ONLINE's digital consulting services. Explore tiered packages and custom bundles for strategy, marketing, IT, and design workshops."),
         new("contact", "Contact Us - VVG ONLINE", "Ready to transform your business? Get in touch with VVG ONLINE today for expert digital consulting services."),
         new("services", "Services - VVG ONLINE", "Explore our comprehensive digital business consulting services designed to transform your enterprise through innovation."),
+        new("private-ai", "Private AI for Bharat's SMBs - VVG ONLINE", "Practical private AI consulting for Bharat's SMBs, with cautious setup estimates and no universal performance or cost guarantees."),
         new("about", "About VVG ONLINE", "We are a strategic partner in navigating the complexities of the digital age. Learn more about our mission and philosophy."),
         new("blog", "Blog - VVG Online", "Digital insights, expert analysis, and strategic perspectives on technology, innovation, and business transformation."),
         new("blog-archives", "Blog Archives - VVG Online", "Browse our complete collection of digital business insights, case studies, and thought leadership articles.")
