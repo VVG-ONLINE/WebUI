@@ -1,6 +1,6 @@
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-bg-hover: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(217, 217, 217, 0.55);
+  --glass-bg-hover: rgba(217, 217, 217, 0.75);
   --glass-blur: 12px;
   --glass-border: rgba(255, 255, 255, 0.3);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
@@ -16,7 +16,10 @@
   --glass-saturate: 200%;
 }
 
-/* Glass-off Toggle */
+/* =====================================================================
+   GLASS-OFF TOGGLE
+   ===================================================================== */
+
 .glass-off,
 .glass-off * {
   backdrop-filter: none !important;
@@ -29,15 +32,24 @@
 .glass-off .vvg-pricing .vvg-card { background: var(--card-bg) !important; border-color: #2a2a2a !important; }
 .glass-off .hero-terminal { background: rgba(10, 10, 10, 0.9) !important; border-color: var(--accent) !important; }
 .glass-off .accordion-item { background: var(--card-bg) !important; border-color: var(--text) !important; }
+.glass-off .workflow-node { background: var(--card-bg) !important; border-color: var(--text) !important; }
+.glass-off .blog-card { background: transparent !important; border: none !important; }
+.glass-off .blog-hero { background: transparent !important; }
+.glass-off .blog-cta { background: var(--accent) !important; }
+.glass-off .btn-outline-secondary { background: transparent !important; backdrop-filter: none; }
 
-/* Transition and Common Glass Styles */
+/* =====================================================================
+   COMMON GLASS STYLES
+   ===================================================================== */
+
 .system-panel,
 .card,
 .terminal-card,
 .sidebar-card,
 .vvg-pricing .vvg-card,
 .hero-terminal,
-.accordion-item {
+.accordion-item,
+.workflow-node {
   background: var(--glass-bg) !important;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -51,21 +63,59 @@
 .sidebar-card:hover,
 .vvg-pricing .vvg-card:hover,
 .hero-terminal:hover,
-.accordion-item:hover {
+.accordion-item:hover,
+.workflow-node:hover {
   background: var(--glass-bg-hover) !important;
 }
 
-/* System Panel Overrides */
+/* =====================================================================
+   SYSTEM PANEL
+   ===================================================================== */
+
 .system-panel {
   border-bottom-color: var(--glass-border) !important;
 }
 
-/* Hero Terminal Overrides */
+/* Light theme: dark text and icons on translucent system panel */
+[data-theme="light"] .system-panel,
+:root:not([data-theme]) .system-panel {
+  color: var(--text);
+}
+[data-theme="light"] .system-panel a span,
+:root:not([data-theme]) .system-panel a span {
+  color: var(--text) !important;
+}
+[data-theme="light"] .system-panel .bi,
+:root:not([data-theme]) .system-panel .bi {
+  color: var(--text) !important;
+}
+[data-theme="light"] .system-panel a:hover,
+:root:not([data-theme]) .system-panel a:hover {
+  color: var(--accent) !important;
+}
+[data-theme="light"] .system-panel a:hover .bi,
+:root:not([data-theme]) .system-panel a:hover .bi {
+  color: var(--accent) !important;
+}
+
+/* =====================================================================
+   HERO TERMINAL
+   ===================================================================== */
+
 .hero-terminal {
   border-color: var(--glass-border) !important;
 }
 
-/* Accordion Glass Treatment */
+/* Light theme: dark placeholder text */
+[data-theme="light"] .hero-terminal-input::placeholder,
+:root:not([data-theme]) .hero-terminal-input::placeholder {
+  color: rgba(17, 17, 19, 0.45) !important;
+}
+
+/* =====================================================================
+   ACCORDION
+   ===================================================================== */
+
 .accordion-button {
   background: transparent !important;
   color: var(--text);
@@ -81,4 +131,78 @@
 .accordion-body {
   background: transparent;
   color: var(--text);
+}
+
+/* =====================================================================
+   WORKFLOW NODES
+   ===================================================================== */
+
+.workflow-node {
+  border-color: var(--glass-border) !important;
+}
+.workflow-node:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 15px rgba(255, 221, 51, 0.4) !important;
+}
+
+/* =====================================================================
+   BLOG CARD
+   ===================================================================== */
+
+.blog-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+.blog-card:hover {
+  background: var(--glass-bg-hover) !important;
+  box-shadow: var(--glass-shadow), 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent) !important;
+}
+
+/* =====================================================================
+   BLOG HERO
+   ===================================================================== */
+
+.blog-hero {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BLOG CTA
+   ===================================================================== */
+
+.blog-cta {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BTN-OUTLINE-SECONDARY
+   ===================================================================== */
+
+.btn-outline-secondary {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+.btn-outline-secondary:hover {
+  background: var(--glass-bg-hover) !important;
+  color: var(--accent) !important;
 }
