@@ -37,6 +37,16 @@
 .glass-off .blog-hero { background: transparent !important; }
 .glass-off .blog-cta { background: var(--accent) !important; }
 .glass-off .btn-outline-secondary { background: transparent !important; backdrop-filter: none; }
+.glass-off .tag-segment,
+.glass-off .tag-user,
+.glass-off .tag-path,
+.glass-off .terminal-tag-group,
+.glass-off .btn-vvg,
+.glass-off .ratio-16x9,
+.glass-off .form-control {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 
 /* =====================================================================
    COMMON GLASS STYLES
@@ -49,7 +59,14 @@
 .vvg-pricing .vvg-card,
 .hero-terminal,
 .accordion-item,
-.workflow-node {
+.workflow-node,
+.tag-segment,
+.tag-user,
+.tag-path,
+.terminal-tag-group,
+.btn-vvg,
+.ratio-16x9,
+.form-control {
   background: var(--glass-bg) !important;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));

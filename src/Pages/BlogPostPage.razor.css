@@ -109,6 +109,11 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Subtle shadow for images */
 }
 
+/* Form control placeholder font */
+.form-control::placeholder {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
 /* Styling for tables */
 .markdown-content table {
   width: 100%; /* Ensure tables span the full width of their container */

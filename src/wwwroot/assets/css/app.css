@@ -1051,7 +1051,7 @@ footer a {
   margin-left: 6px;
 }
 
-a:not(.no-cursor):not(.social-link):hover::after {
+a:not(.no-cursor):not(.social-link):not(.btn):not(.btn-vvg):hover::after {
   content: "_";
   margin-left: 6px;
   animation: blinker 1s step-start infinite;
