@@ -205,10 +205,6 @@ button,
   pointer-events: none;
 }
 
-.tag-path, .terminal-title {
-  color: #111113 !important;
-}
-
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -356,26 +352,6 @@ footer a {
   z-index: -1;
   pointer-events: none;
   opacity: 0.4; /* Adjusted for optimal readability */
-}
-
-.btn-vvg {
-  background: var(--accent);
-  border: 1px solid var(--text);
-  color: var --dark;
-  border-radius: 0;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
-  padding: 10px 25px;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
-.btn-vvg:hover {
-  /**
-   * On hover, we invert the colors to provide clear feedback to the user.
-   * The background becomes dark, and the text takes on the accent color.
-   */
-  background-color: var(--dark);
-  color: var(--accent);
 }
 
 .card {
@@ -630,7 +606,6 @@ footer a {
 .hero-terminal {
   border: 1px solid var(--accent);
   background: rgba(10, 10, 10, 0.9);
-  color: var(--accent);
   font-family: "IBM Plex Mono", monospace;
   box-shadow: 0 0 15px rgba(255, 221, 51, 0.1);
   margin-top: 1rem;
@@ -728,7 +703,6 @@ footer a {
 
 .tag-user {
   background: var(--text);
-  color: var(--bg);
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
   padding-right: 25px;
   z-index: 2;
@@ -921,22 +895,6 @@ footer a {
   line-height: 1.2;
   color: #ffbb33;
 }
-.vvg-pricing .btn-vvg {
-  background-color: var(--accent);
-  color: #111119;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 600;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
-}
-.vvg-pricing .btn-vvg:hover {
-  background-color: #ffbb33;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 221, 51, 0.3);
-}
 
 @media (max-width: 767.98px) {
   .vvg-pricing .vvg-card {
@@ -949,13 +907,13 @@ footer a {
     font-size: 0.65rem;
     white-space: nowrap;
   }
-  .vvg-pricing .vvg-card .btn-vvg {
+  .vvg-pricing .vvg-card .btn btn-outline-secondary {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
     white-space: normal;
     word-break: break-word;
   }
-  .vvg-pricing .btn-vvg {
+  .vvg-pricing .btn btn-outline-secondary {
     padding: 0.6rem 1.2rem;
     font-size: 0.8rem;
     white-space: normal;
@@ -1051,7 +1009,7 @@ footer a {
   margin-left: 6px;
 }
 
-a:not(.no-cursor):not(.social-link):not(.btn):not(.btn-vvg):hover::after {
+a:not(.no-cursor):not(.social-link):not(.btn):not(.btn btn-outline-secondary):hover::after {
   content: "_";
   margin-left: 6px;
   animation: blinker 1s step-start infinite;

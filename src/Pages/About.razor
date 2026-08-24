@@ -79,14 +79,13 @@
 
         @if (faqData != null && faqData.Faqs != null)
         {
-            @* Category filter buttons: highlight the currently selected one with btn-vvg style *@
             <div class="mb-4 text-center" id="faq-categories">
                 <div class="d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="FAQ Categories">
-                    <button type="button" class="btn @(selectedCategory == "All" ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory("All"))">All</button>
+                    <button type="button" class="btn btn-outline-secondary" @onclick="@(() => FilterByCategory("All"))">All</button>
                     @foreach (var category in faqData.Categories ?? new List<string>())
                     {
                         var cat = category;
-                        <button type="button" class="btn @(selectedCategory == cat ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory(cat))">@cat</button>
+                        <button type="button" class="btn-outline-secondary" @onclick="@(() => FilterByCategory(cat))">@cat</button>
                     }
                 </div>
             </div>
@@ -136,7 +135,7 @@
     <div class="text-center">
         <h2 class="display-4">Ready to Build What's Next?</h2>
         <p class="lead opacity-75 mt-3">Let's start a conversation about your vision and how we can help you bring it to life.</p>
-        <NavLink href="Contact" class="btn btn-vvg btn-lg text-center mt-4">Engage With Us</NavLink>
+        <NavLink href="Contact" class="btn btn-outline-secondary btn-lg text-center mt-4">Engage With Us</NavLink>
     </div>
 </section>
 

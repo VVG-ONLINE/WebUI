@@ -315,7 +315,7 @@ footer a {
   opacity: 0.4; /* Adjusted for optimal readability */
 }
 
-.btn-vvg {
+.btn btn-outline-secondary {
   background: var(--accent);
   border: 1px solid var(--text);
   border-radius: 0;
@@ -325,7 +325,7 @@ footer a {
   text-transform: uppercase;
   transition: all 0.2s;
 }
-.btn-vvg:hover {
+.btn btn-outline-secondary:hover {
   /**
    * On hover, we invert the colors to provide clear feedback to the user.
    * The background becomes dark, and the text takes on the accent color.

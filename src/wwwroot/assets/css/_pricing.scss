@@ -75,25 +75,7 @@
             line-height: 1.2;
             color: #ffbb33;
         }
-    }
-
-    .btn-vvg {
-        background-color:var(--accent);
-        color: #111119;
-        font-family: "IBM Plex Mono", monospace;
-        font-weight: 600;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-        transition: all 0.2s ease;
-
-        &:hover {
-            background-color: #ffbb33;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(255, 221, 51, 0.3);
-        }
-    }
+    }    
 }
 
 // =================================================================================
@@ -113,7 +95,7 @@
                 white-space: nowrap;
             }
 
-            .btn-vvg {
+            .btn btn-outline-secondary {
                 padding: 0.6rem 1rem;
                 font-size: 0.8rem;
                 white-space: normal;
@@ -121,7 +103,7 @@
             }
         }
 
-        .btn-vvg {
+        .btn btn-outline-secondary {
             padding: 0.6rem 1.2rem;
             font-size: 0.8rem;
             white-space: normal;

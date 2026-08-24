@@ -157,7 +157,7 @@
                     <p class="opacity-75">Try adjusting your filters or search query.</p>
                     @if (selectedTag != "All" || selectedYear != "All" || !string.IsNullOrWhiteSpace(searchTerm))
                     {
-                        <button class="btn btn-outline-primary" @onclick="ClearFilters">
+                        <button class="btn btn-outline-secondary-primary" @onclick="ClearFilters">
                             Clear All Filters
                         </button>
                     }
@@ -170,7 +170,7 @@
                     @foreach (var post in paginatedPosts)
                     {
                         <div class="col-md-6 col-lg-4">
-                            <a href="blog/@post.Slug" class="blog-card d-block h-100 text-decoration-none">
+                            <a href="blog/@post.Slug" class="blog-card no-cusor d-block h-100 text-decoration-none">
                                 <!-- 
                                     ⚡ IMPROVEMENT: Null-Safe Featured Image Handling
 

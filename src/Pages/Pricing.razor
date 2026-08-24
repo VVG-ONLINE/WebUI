@@ -23,7 +23,7 @@
             <h2>Choose Your Plan</h2>
             <p class="text-muted">Monthly retainer packages for ongoing partnership</p>
             <div class="mt-4">
-                <button class="btn-vvg px-4" @onclick="ToggleYearly">
+                <button class="btn btn-outline-secondary px-4" @onclick="ToggleYearly">
                     @(isYearly ? "Switch to Monthly" : "Switch to Yearly — Save 2 Months Cost")
                 </button>
             </div>
@@ -93,7 +93,7 @@
                                     }
                                 </ul>
                             }
-                            <button class="btn-vvg w-100 mt-auto">GET STARTED</button>
+                            <button class="btn btn-outline-secondary w-100 mt-auto">GET STARTED</button>
                         </div>
                     </div>
                 }
@@ -185,11 +185,11 @@
         @* Category filter buttons *@
         <div class="mb-4 text-center" id="faq-categories">
             <div class="d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="FAQ Categories">
-                <button type="button" class="btn @(selectedCategory == "All" ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory("All"))">All</button>
+                <button type="button" class="btn btn btn-outline-secondary" @onclick="@(() => FilterByCategory("All"))">All</button>
                 @foreach (var cat in faqCategories ?? new List<string>())
                 {
                     var category = cat;
-                    <button type="button" class="btn @(selectedCategory == category ? "btn-vvg" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory(category))">@category</button>
+                    <button type="button" class="btn @(selectedCategory == category ? "btn btn-outline-secondary" : "btn-outline-secondary")" @onclick="@(() => FilterByCategory(category))">@category</button>
                 }
             </div>
         </div>

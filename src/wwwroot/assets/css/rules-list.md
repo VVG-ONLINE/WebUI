@@ -11,7 +11,7 @@
 7. `.system-panel`
 8. `.system-panel a`
 9. `.system-panel .status-right`
-10. `.btn-vvg`
+10. `.btn btn-outline-secondary`
 11. `.hero-title`
 12. `.hero`
 13. `.workflow-container`

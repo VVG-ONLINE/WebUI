@@ -41,7 +41,7 @@
 .glass-off .tag-user,
 .glass-off .tag-path,
 .glass-off .terminal-tag-group,
-.glass-off .btn-vvg,
+.glass-off .btn.btn-outline-secondary,
 .glass-off .ratio-16x9,
 .glass-off .form-control {
   backdrop-filter: none !important;
@@ -60,12 +60,17 @@
 .hero-terminal,
 .accordion-item,
 .workflow-node,
-.tag-segment,
-.tag-user,
-.tag-path,
-.terminal-tag-group,
-.btn-vvg,
-.ratio-16x9,
+.btn.btn-outline-secondary,
+.ratio-16x9 {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* Form control: glass background + theme-aware text/placeholder colors */
 .form-control {
   background: var(--glass-bg) !important;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -73,6 +78,20 @@
   border-color: var(--glass-border) !important;
   box-shadow: var(--glass-shadow);
   transition: all 0.3s ease;
+}
+[data-theme="dark"] .form-control {
+  color: var(--text);
+}
+[data-theme="dark"] .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="light"] .form-control,
+:root:not([data-theme]) .form-control {
+  color: var(--text);
+}
+[data-theme="light"] .form-control::placeholder,
+:root:not([data-theme]) .form-control::placeholder {
+  color: rgba(17, 17, 19, 0.5);
 }
 
 .card:hover,
@@ -222,4 +241,25 @@
 .btn-outline-secondary:hover {
   background: var(--glass-bg-hover) !important;
   color: var(--accent) !important;
+}
+
+/* Tags: outline-only treatment with colored drop-shadow */
+.tag-segment {
+  background: transparent !important;
+}
+.tag-user {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--text));
+}
+.tag-path {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--accent));
+}
+.tag-user:hover {
+  filter: drop-shadow(0 0 6px var(--text));
+}
+.tag-path:hover {
+  filter: drop-shadow(0 0 6px var(--accent));
 }
