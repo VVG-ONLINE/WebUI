@@ -205,10 +205,6 @@ button,
   pointer-events: none;
 }
 
-.tag-path, .terminal-title {
-  color: #111113 !important;
-}
-
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -358,26 +354,6 @@ footer a {
   opacity: 0.4; /* Adjusted for optimal readability */
 }
 
-.btn-vvg {
-  background: var(--accent);
-  border: 1px solid var(--text);
-  color: var --dark;
-  border-radius: 0;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
-  padding: 10px 25px;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
-.btn-vvg:hover {
-  /**
-   * On hover, we invert the colors to provide clear feedback to the user.
-   * The background becomes dark, and the text takes on the accent color.
-   */
-  background-color: var(--dark);
-  color: var(--accent);
-}
-
 .card {
   border: 1px solid var(--text);
   border-radius: 0;
@@ -441,7 +417,7 @@ footer a {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 40px 0;
+  padding: 40px 10px;
   overflow: hidden;
 }
 
@@ -630,7 +606,6 @@ footer a {
 .hero-terminal {
   border: 1px solid var(--accent);
   background: rgba(10, 10, 10, 0.9);
-  color: var(--accent);
   font-family: "IBM Plex Mono", monospace;
   box-shadow: 0 0 15px rgba(255, 221, 51, 0.1);
   margin-top: 1rem;
@@ -721,14 +696,12 @@ footer a {
   padding: 4px 15px;
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
-  height: 28px;
   display: flex;
   align-items: center;
 }
 
 .tag-user {
   background: var(--text);
-  color: var(--bg);
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
   padding-right: 25px;
   z-index: 2;
@@ -799,6 +772,338 @@ footer a {
     margin: 0 !important;
   }
 }
+:root {
+  --glass-bg: rgba(217, 217, 217, 0.55);
+  --glass-bg-hover: rgba(217, 217, 217, 0.75);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  --glass-saturate: 180%;
+}
+
+[data-theme=dark] {
+  --glass-bg: rgba(30, 30, 30, 0.55);
+  --glass-bg-hover: rgba(40, 40, 40, 0.65);
+  --glass-blur: 16px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  --glass-saturate: 200%;
+}
+
+/* =====================================================================
+   GLASS-OFF TOGGLE
+   ===================================================================== */
+.glass-off,
+.glass-off * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.glass-off .system-panel {
+  background: linear-gradient(90deg, #000 0%, #111119 100%) !important;
+}
+
+.glass-off .card {
+  background: var(--card-bg) !important;
+  border-color: var(--text) !important;
+}
+
+.glass-off .terminal-card {
+  background: var(--card-bg) !important;
+  border-color: var(--accent) !important;
+}
+
+.glass-off .sidebar-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%) !important;
+  border-color: #fb3 !important;
+}
+
+.glass-off .vvg-pricing .vvg-card {
+  background: var(--card-bg) !important;
+  border-color: #2a2a2a !important;
+}
+
+.glass-off .hero-terminal {
+  background: rgba(10, 10, 10, 0.9) !important;
+  border-color: var(--accent) !important;
+}
+
+.glass-off .accordion-item {
+  background: var(--card-bg) !important;
+  border-color: var(--text) !important;
+}
+
+.glass-off .workflow-node {
+  background: var(--card-bg) !important;
+  border-color: var(--text) !important;
+}
+
+.glass-off .blog-card {
+  background: transparent !important;
+  border: none !important;
+}
+
+.glass-off .blog-hero {
+  background: transparent !important;
+}
+
+.glass-off .blog-cta {
+  background: var(--accent) !important;
+}
+
+.glass-off .btn-outline-secondary {
+  background: transparent !important;
+  backdrop-filter: none;
+}
+
+.glass-off .tag-segment,
+.glass-off .tag-user,
+.glass-off .tag-path,
+.glass-off .terminal-tag-group,
+.glass-off .btn.btn-outline-secondary,
+.glass-off .ratio-16x9,
+.glass-off .form-control {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* =====================================================================
+   COMMON GLASS STYLES
+   ===================================================================== */
+.system-panel,
+.card,
+.terminal-card,
+.sidebar-card,
+.vvg-pricing .vvg-card,
+.hero-terminal,
+.accordion-item,
+.workflow-node,
+.btn.btn-outline-secondary,
+.ratio-16x9 {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* Form control: glass background + theme-aware text/placeholder colors */
+.form-control {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+[data-theme=dark] .form-control {
+  color: var(--text);
+}
+
+[data-theme=dark] .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme=light] .form-control,
+:root:not([data-theme]) .form-control {
+  color: var(--text);
+}
+
+[data-theme=light] .form-control::placeholder,
+:root:not([data-theme]) .form-control::placeholder {
+  color: rgba(17, 17, 19, 0.5);
+}
+
+.card:hover,
+.terminal-card:hover,
+.sidebar-card:hover,
+.vvg-pricing .vvg-card:hover,
+.hero-terminal:hover,
+.accordion-item:hover,
+.workflow-node:hover {
+  background: var(--glass-bg-hover) !important;
+}
+
+/* =====================================================================
+   SYSTEM PANEL
+   ===================================================================== */
+.system-panel {
+  border-bottom-color: var(--glass-border) !important;
+}
+
+/* Light theme: dark text and icons on translucent system panel */
+[data-theme=light] .system-panel,
+:root:not([data-theme]) .system-panel {
+  color: var(--text);
+}
+
+[data-theme=light] .system-panel a span,
+:root:not([data-theme]) .system-panel a span {
+  color: var(--text) !important;
+}
+
+[data-theme=light] .system-panel .bi,
+:root:not([data-theme]) .system-panel .bi {
+  color: var(--text) !important;
+}
+
+[data-theme=light] .system-panel a:hover,
+:root:not([data-theme]) .system-panel a:hover {
+  color: var(--accent) !important;
+}
+
+[data-theme=light] .system-panel a:hover .bi,
+:root:not([data-theme]) .system-panel a:hover .bi {
+  color: var(--accent) !important;
+}
+
+/* =====================================================================
+   HERO TERMINAL
+   ===================================================================== */
+.hero-terminal {
+  border-color: var(--glass-border) !important;
+}
+
+/* Light theme: dark placeholder text */
+[data-theme=light] .hero-terminal-input::placeholder,
+:root:not([data-theme]) .hero-terminal-input::placeholder {
+  color: rgba(17, 17, 19, 0.45) !important;
+}
+
+/* =====================================================================
+   ACCORDION
+   ===================================================================== */
+.accordion-button {
+  background: transparent !important;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.accordion-button:hover {
+  background: var(--glass-bg-hover) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background: var(--glass-bg-hover) !important;
+  box-shadow: none;
+}
+
+.accordion-body {
+  background: transparent;
+  color: var(--text);
+}
+
+.accordion-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-underline-color 0.2s ease;
+}
+.accordion-body a:hover {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+}
+
+/* =====================================================================
+   WORKFLOW NODES
+   ===================================================================== */
+.workflow-node {
+  border-color: var(--glass-border) !important;
+}
+
+.workflow-node:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 15px rgba(255, 221, 51, 0.4) !important;
+}
+
+/* =====================================================================
+   BLOG CARD
+   ===================================================================== */
+.blog-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+  background: var(--glass-bg-hover) !important;
+  box-shadow: var(--glass-shadow), 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent) !important;
+}
+
+/* =====================================================================
+   BLOG HERO
+   ===================================================================== */
+.blog-hero {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BLOG CTA
+   ===================================================================== */
+.blog-cta {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BTN-OUTLINE-SECONDARY
+   ===================================================================== */
+.btn-outline-secondary {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: var(--glass-bg-hover) !important;
+  color: var(--accent) !important;
+}
+
+/* Tags: outline-only treatment with colored drop-shadow */
+.tag-segment {
+  background: transparent !important;
+}
+
+.tag-user {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--text));
+}
+
+.tag-path {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--accent));
+}
+
+.tag-user:hover {
+  filter: drop-shadow(0 0 6px var(--text));
+}
+
+.tag-path:hover {
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
 .blog-filters {
   /**
    * The container for the blog filters.
@@ -921,22 +1226,6 @@ footer a {
   line-height: 1.2;
   color: #ffbb33;
 }
-.vvg-pricing .btn-vvg {
-  background-color: var(--accent);
-  color: #111119;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 600;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
-}
-.vvg-pricing .btn-vvg:hover {
-  background-color: #ffbb33;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 221, 51, 0.3);
-}
 
 @media (max-width: 767.98px) {
   .vvg-pricing .vvg-card {
@@ -949,13 +1238,13 @@ footer a {
     font-size: 0.65rem;
     white-space: nowrap;
   }
-  .vvg-pricing .vvg-card .btn-vvg {
+  .vvg-pricing .vvg-card .btn btn-outline-secondary {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
     white-space: normal;
     word-break: break-word;
   }
-  .vvg-pricing .btn-vvg {
+  .vvg-pricing .btn btn-outline-secondary {
     padding: 0.6rem 1.2rem;
     font-size: 0.8rem;
     white-space: normal;
@@ -1051,7 +1340,7 @@ footer a {
   margin-left: 6px;
 }
 
-a:not(.no-cursor):not(.social-link):hover::after {
+a:not(.no-cursor):not(.social-link):not(.btn):not(.btn btn-outline-secondary):hover::after {
   content: "_";
   margin-left: 6px;
   animation: blinker 1s step-start infinite;

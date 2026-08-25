@@ -1,0 +1,278 @@
+:root {
+  --glass-bg: rgba(217, 217, 217, 0.55);
+  --glass-bg-hover: rgba(217, 217, 217, 0.75);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  --glass-saturate: 180%;
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(30, 30, 30, 0.55);
+  --glass-bg-hover: rgba(40, 40, 40, 0.65);
+  --glass-blur: 16px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  --glass-saturate: 200%;
+}
+
+/* =====================================================================
+   GLASS-OFF TOGGLE
+   ===================================================================== */
+
+.glass-off,
+.glass-off * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.glass-off .system-panel { background: linear-gradient(90deg, #000 0%, #111119 100%) !important; }
+.glass-off .card { background: var(--card-bg) !important; border-color: var(--text) !important; }
+.glass-off .terminal-card { background: var(--card-bg) !important; border-color: var(--accent) !important; }
+.glass-off .sidebar-card { background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%) !important; border-color: #fb3 !important; }
+.glass-off .vvg-pricing .vvg-card { background: var(--card-bg) !important; border-color: #2a2a2a !important; }
+.glass-off .hero-terminal { background: rgba(10, 10, 10, 0.9) !important; border-color: var(--accent) !important; }
+.glass-off .accordion-item { background: var(--card-bg) !important; border-color: var(--text) !important; }
+.glass-off .workflow-node { background: var(--card-bg) !important; border-color: var(--text) !important; }
+.glass-off .blog-card { background: transparent !important; border: none !important; }
+.glass-off .blog-hero { background: transparent !important; }
+.glass-off .blog-cta { background: var(--accent) !important; }
+.glass-off .btn-outline-secondary { background: transparent !important; backdrop-filter: none; }
+.glass-off .tag-segment,
+.glass-off .tag-user,
+.glass-off .tag-path,
+.glass-off .terminal-tag-group,
+.glass-off .btn.btn-outline-secondary,
+.glass-off .ratio-16x9,
+.glass-off .form-control {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* =====================================================================
+   COMMON GLASS STYLES
+   ===================================================================== */
+
+.system-panel,
+.card,
+.terminal-card,
+.sidebar-card,
+.vvg-pricing .vvg-card,
+.hero-terminal,
+.accordion-item,
+.workflow-node,
+.btn.btn-outline-secondary,
+.ratio-16x9 {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* Form control: glass background + theme-aware text/placeholder colors */
+.form-control {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+[data-theme="dark"] .form-control {
+  color: var(--text);
+}
+[data-theme="dark"] .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+[data-theme="light"] .form-control,
+:root:not([data-theme]) .form-control {
+  color: var(--text);
+}
+[data-theme="light"] .form-control::placeholder,
+:root:not([data-theme]) .form-control::placeholder {
+  color: rgba(17, 17, 19, 0.5);
+}
+
+.card:hover,
+.terminal-card:hover,
+.sidebar-card:hover,
+.vvg-pricing .vvg-card:hover,
+.hero-terminal:hover,
+.accordion-item:hover,
+.workflow-node:hover {
+  background: var(--glass-bg-hover) !important;
+}
+
+/* =====================================================================
+   SYSTEM PANEL
+   ===================================================================== */
+
+.system-panel {
+  border-bottom-color: var(--glass-border) !important;
+}
+
+/* Light theme: dark text and icons on translucent system panel */
+[data-theme="light"] .system-panel,
+:root:not([data-theme]) .system-panel {
+  color: var(--text);
+}
+[data-theme="light"] .system-panel a span,
+:root:not([data-theme]) .system-panel a span {
+  color: var(--text) !important;
+}
+[data-theme="light"] .system-panel .bi,
+:root:not([data-theme]) .system-panel .bi {
+  color: var(--text) !important;
+}
+[data-theme="light"] .system-panel a:hover,
+:root:not([data-theme]) .system-panel a:hover {
+  color: var(--accent) !important;
+}
+[data-theme="light"] .system-panel a:hover .bi,
+:root:not([data-theme]) .system-panel a:hover .bi {
+  color: var(--accent) !important;
+}
+
+/* =====================================================================
+   HERO TERMINAL
+   ===================================================================== */
+
+.hero-terminal {
+  border-color: var(--glass-border) !important;
+}
+
+/* Light theme: dark placeholder text */
+[data-theme="light"] .hero-terminal-input::placeholder,
+:root:not([data-theme]) .hero-terminal-input::placeholder {
+  color: rgba(17, 17, 19, 0.45) !important;
+}
+
+/* =====================================================================
+   ACCORDION
+   ===================================================================== */
+
+.accordion-button {
+  background: transparent !important;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+.accordion-button:hover {
+  background: var(--glass-bg-hover) !important;
+}
+.accordion-button:not(.collapsed) {
+  background: var(--glass-bg-hover) !important;
+  box-shadow: none;
+}
+.accordion-body {
+  background: transparent;
+  color: var(--text);
+}
+
+.accordion-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-underline-color 0.2s ease;
+
+  &:hover {
+    color: var(--text);
+    text-decoration-color: var(--accent);
+  }
+}
+
+/* =====================================================================
+   WORKFLOW NODES
+   ===================================================================== */
+
+.workflow-node {
+  border-color: var(--glass-border) !important;
+}
+.workflow-node:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 15px rgba(255, 221, 51, 0.4) !important;
+}
+
+/* =====================================================================
+   BLOG CARD
+   ===================================================================== */
+
+.blog-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+.blog-card:hover {
+  background: var(--glass-bg-hover) !important;
+  box-shadow: var(--glass-shadow), 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent) !important;
+}
+
+/* =====================================================================
+   BLOG HERO
+   ===================================================================== */
+
+.blog-hero {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BLOG CTA
+   ===================================================================== */
+
+.blog-cta {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* =====================================================================
+   BTN-OUTLINE-SECONDARY
+   ===================================================================== */
+
+.btn-outline-secondary {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-color: var(--glass-border) !important;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+.btn-outline-secondary:hover {
+  background: var(--glass-bg-hover) !important;
+  color: var(--accent) !important;
+}
+
+/* Tags: outline-only treatment with colored drop-shadow */
+.tag-segment {
+  background: transparent !important;
+}
+.tag-user {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--text));
+}
+.tag-path {
+  background: transparent !important;
+  color: var(--text);
+  filter: drop-shadow(0 0 3px var(--accent));
+}
+.tag-user:hover {
+  filter: drop-shadow(0 0 6px var(--text));
+}
+.tag-path:hover {
+  filter: drop-shadow(0 0 6px var(--accent));
+}

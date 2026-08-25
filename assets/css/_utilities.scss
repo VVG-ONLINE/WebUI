@@ -27,7 +27,7 @@
 // --- Blinking Cursor on Hover ---
 // This adds a blinking cursor at the end of a link when you hover over it.
 // It's a nice, subtle interactive touch.
-a:not(.no-cursor):not(.social-link):hover::after {
+a:not(.no-cursor):not(.social-link):not(.btn):not(.btn btn-outline-secondary):hover::after {
   content: "_";
   margin-left: 6px;
   animation: blinker 1s step-start infinite;

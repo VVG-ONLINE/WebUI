@@ -121,7 +121,7 @@ overall Return on Investment (ROI).*
 > 🔍 Forbes ROI Guide and Quest Journals ROI Analysis offer frameworks to calculate and optimize
 > returns
 
-> 🔍 VVG ONLINE's blog delves into the [key performance indicators (KPIs)](./blog/key-performance-indicators-kpis) of digital marketing,
+> 🔍 VVG ONLINE's blog delves into the [key performance indicators (KPIs)](/blog/key-performance-indicators-kpis) of digital marketing,
 > providing clients with the tools to evaluate the return on investment (ROI) of their campaigns
 > effectively.
 
@@ -240,7 +240,7 @@ Today's digital marketing landscape offers a unique convergence of factors:
 | Long-Term Value | Depends on timing | Compounds with strategy |
 
 > 🧠 Think of digital marketing like buying
-> [real estate](./Digital-Assets-The-Real-Estate-of-the-Virtual-World.html) in a
+> [real estate](/blog/Digital-Assets-The-Real-Estate-of-the-Virtual-World) in a
 > booming
 > city—every month you wait, the price goes up.
 

@@ -4,7 +4,7 @@
     "questions": [
       {
         "question": "What is included in the Nano plan?",
-        "answer": "The Nano plan is designed for individuals or very small startups. It includes core managed IT services, basic security monitoring, and limited monthly support hours. It's an ideal entry point for fundamental infrastructure management."
+        "answer": "The Nano plan is designed for individuals or very small startups. It includes core managed IT services, basic security monitoring, and limited monthly support hours. It's an ideal entry point for fundamental infrastructure management. <a href=\"/blog/it-management-solutions-for-indian-smbs\">IT Management Solutions for Indian SMBs</a>"
       },
       {
         "question": "Do you offer custom pricing for enterprise clients?",
@@ -55,15 +55,15 @@
     "questions": [
       {
         "question": "How do you handle data privacy and security?",
-        "answer": "Data security is our top priority. We adhere to strict industry standards, including regular audits, encrypted data transmission, and robust firewall management. We also ensure compliance with relevant regulations like the DPDP Act."
+        "answer": "Data security is our top priority. We adhere to strict industry standards, including regular audits, encrypted data transmission, and robust firewall management. We also ensure compliance with relevant regulations like the DPDP Act. <a href=\"/blog/bharat-ai-five-layer-cake\">Bharat AI: Five Layer Cake</a>"
       },
       {
         "question": "Do you manage private AI infrastructure?",
-        "answer": "Yes, we specialize in building and managing private AI infrastructure. This allows you to leverage the power of LLMs while keeping your sensitive data on-site and under your direct control."
+        "answer": "Yes, we specialize in building and managing private AI infrastructure. This allows you to leverage the power of LLMs while keeping your sensitive data on-site and under your direct control. <a href=\"/blog/bharat-ai-five-layer-cake\">Bharat AI: Five Layer Cake</a>"
       },
       {
         "question": "What technologies do you support?",
-        "answer": "We support a wide range of technologies including Cloud (AWS, Azure, Google Cloud), on-premise servers, virtualization (VMWare, Hyper-V), and various networking and security hardware."
+        "answer": "We support a wide range of technologies including Cloud (AWS, Azure, Google Cloud), on-premise servers, virtualization (VMWare, Hyper-V), and various networking and security hardware. <a href=\"/blog/it-management-solutions-for-indian-smbs\">IT Management Solutions for Indian SMBs</a>"
       }
     ]
   },

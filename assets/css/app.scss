@@ -32,6 +32,9 @@
 // 3. Reusable components
 @import 'components';
 
+// 4. Glassmorphism (must load after components, before blog/pricing)
+@import 'glassmorphism';
+
 // 4. Page-specific styles
 @import 'blog';
 @import 'pricing';

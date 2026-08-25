@@ -18,7 +18,7 @@ November 06, 2025 | *Business*
 Explore why questioning common practices is crucial for business innovation and excellence. Learn
 how to challenge the status quo and drive transformative growth.
 
-![In Business, Don't Normalize Common Things](../assets/images/Twitter-cards/do-not-normalize-common-things.png "In Business, Don't Normalize Common Things")
+![In Business, Don't Normalize Common Things](../assets/images/twitter-cards/dont-normalize-common-things-a-philosophy-for-business-excellence-twitter-card.png "In Business, Don't Normalize Common Things")
 
 This simple yet profound statement challenges us to question the very foundation of how we operate,
 think,
@@ -188,7 +188,7 @@ This week, identify one "common" practice in your business:
 
 If you're ready to challenge the status quo and explore new possibilities, we're here to help.
 
-[Contact Us](../contact.html)
+[Contact Us](../contact)
 
 Because extraordinary results have never come from accepting ordinary standards.
 
