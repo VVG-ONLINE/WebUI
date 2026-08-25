@@ -7,7 +7,7 @@
 
 <PageTitle>Blog - VVG Online | Digital Insights & Expertise</PageTitle>
 
-<!-- 
+<!--
     BLOG LISTING COMPONENT
     =====================
     Displays paginated blog posts with search, tag, and year filtering.
@@ -44,7 +44,7 @@
             <div class="row g-3">
                 <!-- SEARCH BOX WITH DEBOUNCING -->
                 <div class="col-md-6">
-                    <!-- 
+                    <!--
                         ⚡ IMPROVEMENT: Removed duplicate @oninput binding
 
                         PROBLEM FIXED:
@@ -57,13 +57,13 @@
 
                         BENEFIT: No compilation errors + enables custom debounce logic
                     -->
-                    <input 
-                        type="search" 
-                        class="form-control" 
-                        placeholder="Search articles..." 
+                    <input
+                        type="search"
+                        class="form-control"
+                        placeholder="Search articles..."
                         value="@searchTerm"
                         @oninput="HandleSearchInput" />
-                    <!-- 
+                    <!--
                         ⚡ IMPROVEMENT: Timer-Based Debouncing
 
                         WHY DEBOUNCING MATTERS:
@@ -91,7 +91,7 @@
                         {
                             @foreach (var tag in availableTags)
                             {
-                                <!-- 
+                                <!--
                                     ⚡ IMPROVEMENT: Tag Count Caching
 
                                     OPTIMIZATION STRATEGY:
@@ -170,8 +170,8 @@
                     @foreach (var post in paginatedPosts)
                     {
                         <div class="col-md-6 col-lg-4">
-                            <a href="blog/@post.Slug" class="blog-card no-cusor d-block h-100 text-decoration-none">
-                                <!-- 
+                            <a href="blog/@post.Slug" class="blog-card no-cursor d-flex flex-column h-100 text-decoration-none">
+                                <!--
                                     ⚡ IMPROVEMENT: Null-Safe Featured Image Handling
 
                                     CURRENT SITUATION:
@@ -203,9 +203,9 @@
                                     }
                                     @if (!string.IsNullOrEmpty(imagePath))
                                     {
-                                        <img 
-                                            src="@imagePath" 
-                                            class="ratio-image" 
+                                        <img
+                                            src="@imagePath"
+                                            class="ratio-image"
                                             alt="@post.Title"
                                             loading="lazy" />
                                     }
@@ -222,7 +222,7 @@
                                 </div>
 
                                 <!-- POST METADATA -->
-                                <div class="p-3">
+                                <div class="p-3 flex-grow-1 d-flex flex-column">
                                     <!-- CATEGORY BADGE -->
                                     <div class="mb-2">
                                         @if (post.Category.HasValue)
@@ -238,17 +238,11 @@
                                     </div>
 
                                     <!-- TITLE & EXCERPT -->
-                                    <h4 class="serif mb-2">@post.Title</h4>
-                                    <p class="opacity-75 mb-3">@post.Excerpt</p>
-
-                                    <!-- READ MORE & TIME -->
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <span class="opacity-75 small">
-                                            @post.TimeToRead min read
-                                        </span>
-                                        <span class="small opacity-75">
-                                            READ MORE →
-                                        </span>
+                                    <h4 class="serif mb-3"><a href="blog/@post.Slug" class="">@post.Title</a></h4>
+                                    <p class="small opacity-75 mb-4">@post.Excerpt</p>
+                                    <div class="mt-auto mono border-top pt-3 d-flex justify-content-between">
+                                        <span class="opacity-75">@post.TimeToRead min read</span>
+                                        <a href="blog/@post.Slug" class="">READ </a>
                                     </div>
                                 </div>
                             </a>
@@ -340,7 +334,7 @@
 
     /// <summary>
     /// Initializes component on first load
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Featured posts prioritization
     /// WHY: Business-critical content should be easily accessible
     /// IMPACT: Better conversion rates, improved UX
@@ -393,7 +387,7 @@
 
     /// <summary>
     /// Cleanup on component disposal
-    /// 
+    ///
     /// ⚠️ CRITICAL: Implements IDisposable to prevent memory leaks
     /// WHY: Timer creates background thread that won't be garbage collected
     /// IMPACT: Without this, timers accumulate in memory (1 per navigation)
@@ -414,7 +408,7 @@
 
     /// <summary>
     /// Extracts featured posts from all posts
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Separates featured content for business goals
     /// BUSINESS VALUE: Featured posts drive conversions, announcements, launches
     /// IMPLEMENTATION: Takes top 3 most recent featured posts
@@ -432,19 +426,19 @@
 
     /// <summary>
     /// Pre-calculates tag counts for performance optimization
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Caches counts instead of recalculating on every render
-    /// 
+    ///
     /// PERFORMANCE ANALYSIS:
     /// - OLD WAY: allPosts.Count(p => p.Tags.Contains(tag))
     ///   - Complexity: O(n) per tag
     ///   - If 10 tags, 100 posts: 10 * 100 = 1,000 operations per render
-    /// 
+    ///
     /// - NEW WAY: tagCounts[tag]
     ///   - Complexity: O(1) per tag
     ///   - If 10 tags: 10 operations per render
     ///   - Build cost: O(n*m) once on load
-    /// 
+    ///
     /// MEMORY COST: ~12 bytes per tag (key + value)
     /// SPEED GAIN: 100x+ for large datasets
     /// </summary>
@@ -480,7 +474,7 @@
     /// <summary>
     /// Extracts unique tags and years from all posts
     /// Used to populate filter dropdowns
-    /// 
+    ///
     /// NOTE: Called once on initialization, not on every filter change
     /// </summary>
     private void ExtractMetadata()
@@ -512,21 +506,21 @@
 
     /// <summary>
     /// Handles search input with timer-based debouncing
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Timer-based debounce prevents excessive filtering
-    /// 
+    ///
     /// PROBLEM WITHOUT DEBOUNCING:
     /// - User types "blazor" (6 characters)
     /// - Filter runs 6 times: "b", "bl", "bla", "blaz", "blazo", "blazor"
     /// - Each filter iteration: O(n) - processes all posts
     /// - Total: 6 * O(n) = wasteful
-    /// 
+    ///
     /// SOLUTION WITH DEBOUNCING:
     /// - User types "blazor"
     /// - Timer resets on each keystroke
     /// - Filter runs once after 300ms silence
     /// - Total: 1 * O(n) = 83% reduction
-    /// 
+    ///
     /// WHY 300ms?
     /// - < 200ms: Feels laggy (filters mid-typing)
     /// - 300-400ms: Industry standard (Google, Amazon)
@@ -562,15 +556,15 @@
 
     /// <summary>
     /// Applies all active filters to posts
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Uses AsEnumerable() for in-memory filtering
-    /// 
+    ///
     /// WHY AsEnumerable() NOT AsQueryable()?
     /// - allPosts is already in memory (from JSON API)
     /// - AsQueryable() creates expression trees for database queries
     /// - Expression tree overhead is wasteful for in-memory data
     /// - AsEnumerable() uses LINQ-to-Objects (faster for arrays/lists)
-    /// 
+    ///
     /// FILTER CHAIN:
     /// 1. Search term (title, excerpt, category)
     /// 2. Tag filter
@@ -598,15 +592,15 @@
 
             query = query.Where(p =>
                 // Check title (null-safe: only search if title exists)
-                (!string.IsNullOrEmpty(p.Title) && 
+                (!string.IsNullOrEmpty(p.Title) &&
                  p.Title.Contains(searchLower, StringComparison.OrdinalIgnoreCase)) ||
 
                 // Check excerpt (null-safe: only search if excerpt exists)
-                (!string.IsNullOrEmpty(p.Excerpt) && 
+                (!string.IsNullOrEmpty(p.Excerpt) &&
                  p.Excerpt.Contains(searchLower, StringComparison.OrdinalIgnoreCase)) ||
 
                 // Check category (null-safe: only search if category exists)
-                (p.Category.HasValue && 
+                (p.Category.HasValue &&
                  p.Category.Value.ToString().Contains(searchLower, StringComparison.OrdinalIgnoreCase))
             );
         }
@@ -650,9 +644,9 @@
 
     /// <summary>
     /// Gets count of posts with specific tag
-    /// 
+    ///
     /// ⚠️ FALLBACK METHOD: Used only if tagCounts dictionary is not available
-    /// 
+    ///
     /// PERFORMANCE NOTE:
     /// - This is O(n) - iterates through all posts
     /// - Prefer pre-calculated tagCounts dictionary (O(1))
@@ -681,24 +675,24 @@
 
     /// <summary>
     /// Gets image path for a blog post
-    /// 
+    ///
     /// ⚠️ TODO: Implement your image strategy
-    /// 
+    ///
     /// OPTIONS:
     /// 1. Add FeaturedImage property to BlogPost.cs (RECOMMENDED)
     ///    public string? FeaturedImage { get; set; }
     ///    Then: return post.FeaturedImage;
-    /// 
+    ///
     /// 2. Convention-based (derive from slug)
     ///    return $"/images/blog/{post.Slug}.jpg";
     ///    Pros: No model changes
     ///    Cons: Must maintain naming convention
-    /// 
+    ///
     /// 3. Category-based defaults
     ///    return $"/images/blog/categories/{post.Category}.jpg";
     ///    Pros: Fallback images always available
     ///    Cons: Not post-specific
-    /// 
+    ///
     /// CURRENT: Returns null (shows placeholder)
     /// </summary>
     private string? GetPostImage(BlogPost post)
@@ -708,9 +702,9 @@
 
     /// <summary>
     /// Gets CSS class for placeholder based on category
-    /// 
+    ///
     /// ⚡ IMPROVEMENT: Provides visual variety when images are missing
-    /// 
+    ///
     /// COLOR MAPPING:
     /// - Strategy    → Blue (bg-primary)   → Trust, stability
     /// - Technology  → Cyan (bg-info)      → Innovation, modernity
@@ -719,14 +713,14 @@
     /// - Leadership  → Red (bg-danger)     → Boldness, command
     /// - Innovation  → Green (bg-success)  → Growth, progress
     /// - Default     → Gray (bg-secondary) → Neutral
-    /// 
+    ///
     /// WHY: Better than blank boxes, maintains visual hierarchy
     /// </summary>
     private string GetPlaceholderClass(Category? category)
     {
         if (category == null)
             return "bg-secondary";
-    
+
         return category switch
         {
             Category.Strategy    => "bg-primary",
@@ -745,11 +739,11 @@
 
     /// <summary>
     /// Updates pagination based on filtered posts
-    /// 
+    ///
     /// CALCULATION:
     /// - Total pages = Ceiling(total posts / page size)
     /// - Example: 25 posts, 9 per page = Ceiling(25/9) = 3 pages
-    /// 
+    ///
     /// SAFETY CHECKS:
     /// - Ensures current page <= total pages (handles filter reducing results)
     /// - Ensures current page >= 1 (handles edge cases)
@@ -783,11 +777,11 @@
 
     /// <summary>
     /// Navigates to specific page
-    /// 
+    ///
     /// VALIDATION:
     /// - Prevents going below page 1
     /// - Prevents going beyond total pages
-    /// 
+    ///
     /// UX CONSIDERATION:
     /// - TODO: Add scroll-to-top for better mobile experience
     /// - Requires JavaScript interop: await JSRuntime.InvokeVoidAsync("window.scrollTo", 0, 0);
@@ -805,7 +799,7 @@
     }
 }
 
-@* 
+@*
     ╔════════════════════════════════════════════════════════════════════════╗
     ║                          FIXES APPLIED                                  ║
     ╚════════════════════════════════════════════════════════════════════════╝

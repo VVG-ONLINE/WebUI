@@ -82,7 +82,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 40px 0;
+  padding: 40px 10px;
   overflow: hidden;
 }
 
@@ -389,7 +389,7 @@
   padding: 4px 15px;
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
-  height: 28px;
+  // height: 28px;
   display: flex;
   align-items: center;
 }
