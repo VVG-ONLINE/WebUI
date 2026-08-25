@@ -304,7 +304,7 @@ growth.
 #### Contact Us
 
 * **Email:** [vvgonline.net@gmail.com](mailto:vvgonline.net@gmail.com)
-* **Website:** [www.vvgonline.net](http://www.vvgonline.net)
+* **Website:** [www.vvgonline.net](https://www.vvgonline.net)
 * **Business Hours:** Monday to Saturday, 9:00 AM - 7:00 PM IST
 * **Consultation Booking:** Visit our website to schedule a personalized
   consultation

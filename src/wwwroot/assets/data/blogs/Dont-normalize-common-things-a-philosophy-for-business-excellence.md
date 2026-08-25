@@ -188,7 +188,7 @@ This week, identify one "common" practice in your business:
 
 If you're ready to challenge the status quo and explore new possibilities, we're here to help.
 
-[Contact Us](../contact.html)
+[Contact Us](../contact)
 
 Because extraordinary results have never come from accepting ordinary standards.
 

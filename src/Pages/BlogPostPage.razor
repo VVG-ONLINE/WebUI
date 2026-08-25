@@ -150,6 +150,11 @@ else if (blogPost != null)
                 .UseAdvancedExtensions()
                 .Build();
                 blogPostHtml = Markdown.ToHtml(markdownContent, pipeline);
+                // Inject Bootstrap responsive class into all markdown-rendered images
+                blogPostHtml = System.Text.RegularExpressions.Regex.Replace(
+                    blogPostHtml,
+                    "<img ",
+                    "<img class=\"img-fluid\" ");
             }
             catch (HttpRequestException ex)
             {
