@@ -169,6 +169,19 @@
   color: var(--text);
 }
 
+.accordion-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-underline-color 0.2s ease;
+
+  &:hover {
+    color: var(--text);
+    text-decoration-color: var(--accent);
+  }
+}
+
 /* =====================================================================
    WORKFLOW NODES
    ===================================================================== */

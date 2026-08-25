@@ -207,10 +207,10 @@
                         </button>
                     </h3>
                     <div id="@collapseId" class="accordion-collapse collapse" aria-labelledby="@headingId" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            <p class="mb-2">@faq.Answer</p>
-                            <small class="text-muted"><span class="badge bg-secondary">@faq.Category</span></small>
-                        </div>
+                                 <div class="accordion-body">
+                                     <p class="mb-2">@((MarkupString)faq.Answer)</p>
+                                     <small class="text-muted"><span class="badge bg-secondary">@faq.Category</span></small>
+                                 </div>
                     </div>
                 </div>
             }

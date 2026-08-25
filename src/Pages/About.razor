@@ -102,10 +102,11 @@
                             </button>
                         </h3>
                         <div id="collapse@(faq.Id)" class="accordion-collapse collapse" aria-labelledby="heading@(faq.Id)" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p class="mb-2">@faq.Answer</p>
-                                <small class="text-muted"><span class="badge bg-secondary">@faq.Category</span></small>
-                            </div>
+                                 <div class="accordion-body">
+                                     <p class="mb-2">@((MarkupString)faq.Answer)</p>
+                                     <small class="text-muted"><span class="badge bg-secondary">@faq.Category</span></small>
+                                 </div>
+
                         </div>
                     </div>
                 }
