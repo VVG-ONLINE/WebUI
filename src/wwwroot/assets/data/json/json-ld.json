@@ -359,6 +359,38 @@
         "@type": "Organization",
         "name": "VVG ONLINE"
       }
+    },
+    "pc-laptop-value-assessment-guide-inr": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What's Your PC Really Worth? A Value Assessment Guide for Indian Buyers",
+      "description": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
+      "url": "https://vvgonline.net/blog/pc-laptop-value-assessment-guide-inr",
+      "datePublished": "2026-08-27",
+      "author": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      }
+    },
+    "decode-design-deliver": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Decode. Design. Deliver.",
+      "description": "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R.",
+      "url": "https://vvgonline.net/blog/decode-design-deliver",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VVG ONLINE"
+      }
     }
   }
 }

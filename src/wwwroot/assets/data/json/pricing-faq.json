@@ -81,6 +81,10 @@
       {
         "question": "Who will be my primary point of contact?",
         "answer": "Every Enterprise client is assigned a dedicated Account Manager who acts as your main point of contact for service inquiries, reporting, and strategic planning."
+      },
+      {
+        "question": "What methodology do you follow during implementation?",
+        "answer": "We follow <strong>Decode, Design, Deliver</strong> — our core methodology powered by the V.I.P.E.R. framework. Every engagement starts with a thorough decode (Vision) of your current state, followed by a structured design (Intelligence + Procedure), and concludes with expert delivery (Experts + Results) against defined KPIs. This ensures measurable outcomes at every stage. <a href=\"/blog/decode-design-deliver\">Decode. Design. Deliver.</a> <a href=\"/blog/key-performance-indicators-kpis\">Key Performance Indicators (KPIs)</a>"
       }
     ]
   }

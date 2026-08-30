@@ -1,5 +1,40 @@
 [
   {
+    "title": "Decode. Design. Deliver.",
+    "filename": "",
+    "slug": "decode-design-deliver",
+    "publishedAt": "2026-08-30",
+    "tags": [
+      "Strategy",
+      "Methodology",
+      "V.I.P.E.R.",
+      "Business",
+      "Digital Transformation"
+    ],
+    "excerpt": "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R.",
+    "category": "Strategy",
+    "featured": false,
+    "timeToRead": 6
+  },
+  {
+    "title": "What\u0027s Your PC Really Worth? A Value Assessment Guide for Indian Buyers",
+    "filename": "",
+    "slug": "pc-laptop-value-assessment-guide-inr",
+    "publishedAt": "2026-08-27",
+    "tags": [
+      "Hardware",
+      "IT Management",
+      "Private AI",
+      "SMB",
+      "India",
+      "INR"
+    ],
+    "excerpt": "Stop overpaying for underperforming hardware. Here\u0027s how to calculate the real value of a PC or laptop \u2014 and why the right infrastructure decision saves lakhs.",
+    "category": "Technology",
+    "featured": false,
+    "timeToRead": 8
+  },
+  {
     "title": "Bharat\u0027s AI Five-Layer Cake: Why Private AI Infrastructure is the Real Opportunity",
     "filename": "",
     "slug": "bharat-ai-five-layer-cake",
