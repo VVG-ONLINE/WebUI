@@ -157,6 +157,18 @@
       "description": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
       "url": "https://vvgonline.net/blog/bharat-ai-five-layer-cake",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/bharat-ai-five-layer-cake-twitter-card.png"
+    },
+    "pc-laptop-value-assessment-guide-inr": {
+      "title": "What's Your PC Really Worth? — VVG ONLINE",
+      "description": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
+      "url": "https://vvgonline.net/blog/pc-laptop-value-assessment-guide-inr",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/pc-laptop-value-assessment-guide-inr-twitter-card.png"
+    },
+    "decode-design-deliver": {
+      "title": "Decode. Design. Deliver. — VVG ONLINE",
+      "description": "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R.",
+      "url": "https://vvgonline.net/blog/decode-design-deliver",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/decode-design-deliver-twitter-card.png"
     }
   }
 }

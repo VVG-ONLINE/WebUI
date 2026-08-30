@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "ZNmiyw88",
+  "version": "zlMbb28B",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.mnxpnyvo0e.wasm"
     },
     {
-      "hash": "sha256-iToxnYI7rCaZ3LaZKQffoNwy/BGdEyaPAv+lekL8hLM=",
-      "url": "_framework/VVG.Web.z5a0ehyray.wasm"
+      "hash": "sha256-08N+Xfx++eXmG2/pXoezeK4OxWOiknu4su+8i7+bRCM=",
+      "url": "_framework/VVG.Web.lyh56vz2yn.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-aQaDV3j+31rOQgDap4XxeHCf7neeX6Z9lI82HmeCRMA=",
-      "url": "_framework/dotnet.3t88zq7wwg.js"
+      "hash": "sha256-fezL6+VHHPhSE32ajq2rGr09PZcYXDivobAjTzVuNJ0=",
+      "url": "_framework/dotnet.h7jp3rdvou.js"
     },
     {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
@@ -602,7 +602,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/It-management-solutions-for-indian-smbs.md"
     },
     {
-      "hash": "sha256-iWo/lMBl37fEf9fa75Csv3qilROirKtDx8E0tg3FWG8=",
+      "hash": "sha256-XtMYkqpC/8GwohOEZDHPp97cuRrew+ihhH3jjXBnhcI=",
       "url": "assets/data/blogs/Key-Performance-Indicators-KPIs.md"
     },
     {
@@ -616,6 +616,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-XOGBiQpZwWdCjzS8iAhfyO+Chtq3Rb5VHsTKSrZ/GP8=",
       "url": "assets/data/blogs/bharat-ai-five-layer-cake.md"
+    },
+    {
+      "hash": "sha256-7zHfRSFFCMQSUQ8Q6PB8SvCyeAYEU+NXdkTOnLxceuE=",
+      "url": "assets/data/blogs/decode-design-deliver.md"
     },
     {
       "hash": "sha256-Va+cXaUklWkeIb3DKjc+7DXxmbiI67TvFXlEgmEyqX4=",
@@ -682,15 +686,15 @@ self.assetsManifest = {
       "url": "assets/data/json/ai-readiness-assessment.json"
     },
     {
-      "hash": "sha256-tD7mMGJwi12UBKVQgPSxG6EiMRh807Lt++mEr8+nwT0=",
+      "hash": "sha256-Z6VFOYLnbqtNq2BWt+bRJeKwzfTCQRv6Nv6lcmM1ZBk=",
       "url": "assets/data/json/blog-index.json"
     },
     {
-      "hash": "sha256-8LPJtIHlAYaRyLlCRat7NjPz/6q1oW2rcEupmG+P91s=",
+      "hash": "sha256-79XY9KnxYhYCZPlmhKC2SHU3w1lL1xJ0RgMLr9F+j0c=",
       "url": "assets/data/json/faq.json"
     },
     {
-      "hash": "sha256-WLag301m5HbBBKyAIOKY6hhEx+Y8o1ggLLlkJl3Q26Y=",
+      "hash": "sha256-RpJnzNV4NRE+iR0RJSyuSEa0iJk1fsRpr1Y50uPwc6s=",
       "url": "assets/data/json/json-ld.json"
     },
     {
@@ -698,11 +702,11 @@ self.assetsManifest = {
       "url": "assets/data/json/metadata.json"
     },
     {
-      "hash": "sha256-O9kbO+vpr1derilHTxpsN0GAj7slVamsqfNK4zku+0E=",
+      "hash": "sha256-FT6JMqxyYffRP7g6YM0grjCWwhKUqmLAwZxf4fnB5a4=",
       "url": "assets/data/json/open-graph.json"
     },
     {
-      "hash": "sha256-+7vr3858OAHIwAuBcl6iLP5XwO2rzaoSbA8yYL1IX7Q=",
+      "hash": "sha256-avZMDGFjH5Jy0ktNR01gLijPGX5BJsozToXdplALBbw=",
       "url": "assets/data/json/pricing-faq.json"
     },
     {
@@ -946,7 +950,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-O68Ry+8lYHlTUTQ7vTiNsdq/Bqzxiwdt5aBdrD37648=",
+      "hash": "sha256-B4PuFdmCJl6h7aZqPp/aPu0GfcbAooH6Ixbc9/GhVH4=",
       "url": "index.html"
     },
     {
