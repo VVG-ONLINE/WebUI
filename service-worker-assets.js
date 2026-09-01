@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "zlMbb28B",
+  "version": "1TM2BLvf",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.mnxpnyvo0e.wasm"
     },
     {
-      "hash": "sha256-08N+Xfx++eXmG2/pXoezeK4OxWOiknu4su+8i7+bRCM=",
-      "url": "_framework/VVG.Web.lyh56vz2yn.wasm"
+      "hash": "sha256-0U4XMmAJjtPl3cgpm08mdaITBmrI+8lquTEByAbycxo=",
+      "url": "_framework/VVG.Web.vg95icnyx2.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-fezL6+VHHPhSE32ajq2rGr09PZcYXDivobAjTzVuNJ0=",
-      "url": "_framework/dotnet.h7jp3rdvou.js"
+      "hash": "sha256-NJQIcjSMvlQ6F0WX9slJ5K0UIyvTZfw+f0RtnbygPVo=",
+      "url": "_framework/dotnet.0htwrz9hfs.js"
     },
     {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
@@ -574,7 +574,7 @@ self.assetsManifest = {
       "url": "assets/css/app.scss"
     },
     {
-      "hash": "sha256-2xOlvYUfeCV+pSSmjoMAl3vHAEV9Sg2jaAk79HSeIvI=",
+      "hash": "sha256-5rBoEgXvvcoMcs/gCDG0ISZ3lTlbq2rDhz2oiMffkIM=",
       "url": "assets/css/rules-list.md"
     },
     {
@@ -582,7 +582,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/Capability-building.md"
     },
     {
-      "hash": "sha256-yTLS885RRZuKkO9IKK/FYAq1Ov+EprYb4Qb+fqKmKTY=",
+      "hash": "sha256-cAPXXJYh/UCGDk1EufKBxF9aJ9DWYXh00o2PiY7/yTE=",
       "url": "assets/data/blogs/Communication-Mastery-for-Digital-Business-Success.md"
     },
     {
@@ -590,7 +590,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/Digital-Assets-The-Real-Estate-of-the-Virtual-World.md"
     },
     {
-      "hash": "sha256-rMowMgEbNxIVqGSey4DWdIEz4rYjROkno5wfbCoZB8s=",
+      "hash": "sha256-9UJSQU/wGm/35GQ/GH1li0ESUYaeWlJYVFoIOW6JX4I=",
       "url": "assets/data/blogs/Dont-normalize-common-things-a-philosophy-for-business-excellence.md"
     },
     {
@@ -602,15 +602,15 @@ self.assetsManifest = {
       "url": "assets/data/blogs/It-management-solutions-for-indian-smbs.md"
     },
     {
-      "hash": "sha256-XtMYkqpC/8GwohOEZDHPp97cuRrew+ihhH3jjXBnhcI=",
+      "hash": "sha256-FLDfoH8Gh2/LzqesDBPBbIsP4z4bo3muFe8wFpML/ig=",
       "url": "assets/data/blogs/Key-Performance-Indicators-KPIs.md"
     },
     {
-      "hash": "sha256-BARKjofcaHCOQgDb+TG1dDHaUwfzQOCb2P98jg425ls=",
+      "hash": "sha256-atrSpJAr9h4VYYd7Z1OAvGmFLdhjLsAO1eZQSH2nuS4=",
       "url": "assets/data/blogs/Operating-Model-Design.md"
     },
     {
-      "hash": "sha256-2fYmO9exMzAlpZaVf9Fh1tmgZGg3dKEw8ojuyPWAgqU=",
+      "hash": "sha256-v0t4/mCYgeJWi7eyj+u+xpYau8viwnD0AXLtXp+7sEg=",
       "url": "assets/data/blogs/The-Digital-Marketing-Investment-Imperative.md"
     },
     {
@@ -618,7 +618,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/bharat-ai-five-layer-cake.md"
     },
     {
-      "hash": "sha256-7zHfRSFFCMQSUQ8Q6PB8SvCyeAYEU+NXdkTOnLxceuE=",
+      "hash": "sha256-FeW+STsOsz9K9oBLRnnclWHHyCD34T2jpU5BB90ymVw=",
       "url": "assets/data/blogs/decode-design-deliver.md"
     },
     {
@@ -628,6 +628,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-dekOcuM72sXFLx2040d7UMbIRaKK8JQUqZMpaPxiJHY=",
       "url": "assets/data/blogs/digital-transformation.md"
+    },
+    {
+      "hash": "sha256-ESB49M0AOxDURvseMA8XKEqUiA/vgWLuyyqrxbRySoc=",
+      "url": "assets/data/blogs/pc-laptop-value-assessment-guide-inr.md"
     },
     {
       "hash": "sha256-09jt5ksqxHbUao50IvTvHNcZ0kSxTZF5vqyubhPUJ7I=",
@@ -686,7 +690,7 @@ self.assetsManifest = {
       "url": "assets/data/json/ai-readiness-assessment.json"
     },
     {
-      "hash": "sha256-Z6VFOYLnbqtNq2BWt+bRJeKwzfTCQRv6Nv6lcmM1ZBk=",
+      "hash": "sha256-GEhF5ygDTZzpD+BCpPQM+NmEPvnHzz8Ml9sOjXR1gCA=",
       "url": "assets/data/json/blog-index.json"
     },
     {
@@ -718,7 +722,7 @@ self.assetsManifest = {
       "url": "assets/data/json/services.json"
     },
     {
-      "hash": "sha256-MFwUMCB4TDXgkE4L0U4UI0jYKHZkkNrTJmgwLmxv3nw=",
+      "hash": "sha256-9dNcex2XhJYPtKw2lAMMGvVw3xYcqWf7jYsnAQ3zOUI=",
       "url": "assets/data/json/twitter-card.json"
     },
     {
@@ -754,8 +758,20 @@ self.assetsManifest = {
       "url": "assets/images/profiles/logo-edge-2025-240x240.svg"
     },
     {
+      "hash": "sha256-9HAuT8qxceH2s6wKPsFy7rFsYpJmn7ExhwKCV533bS0=",
+      "url": "assets/images/twitter-cards/Communication-Mastery-for-Digital-Business-Success.svg"
+    },
+    {
+      "hash": "sha256-Pw4AC8MLR2iMxRpR4GWjQHk/CP8R1Ag5+IZcBrOUKZM=",
+      "url": "assets/images/twitter-cards/Structure-Process-People.svg"
+    },
+    {
       "hash": "sha256-B4zgiX1lzFihxdw9Ym1ClRReXxuFiBgXxxYqOyf6TcI=",
       "url": "assets/images/twitter-cards/about-twitter-card.png"
+    },
+    {
+      "hash": "sha256-X54JhiDiVdgUAT+N/TqQPWYrE9L4CVNjJG7cNl2qdGc=",
+      "url": "assets/images/twitter-cards/average-cpc-trends-2020-2023.png"
     },
     {
       "hash": "sha256-s7zZshoMVRLcKYAYA/Ox3Otcl/fVTdxQa+Nbpt5CBfE=",
@@ -770,12 +786,20 @@ self.assetsManifest = {
       "url": "assets/images/twitter-cards/blog-twitter-card.png"
     },
     {
+      "hash": "sha256-OyNCIxjvA6r/ULHULsEwA/ht4jcDXRHsosDQ5UFaJAg=",
+      "url": "assets/images/twitter-cards/cac-formula.svg"
+    },
+    {
       "hash": "sha256-/kiJsCwFdyUtUPDG11iBe59ueRFB/qR4o5RhzD/kPAs=",
       "url": "assets/images/twitter-cards/capability-building-twitter-card.png"
     },
     {
-      "hash": "sha256-nOIXGWbw8jO5R0fj2/kCN7cimkJjeaHYE6DHNcM2WrM=",
+      "hash": "sha256-j/EwBzNwxBMq5AoZzjjTr/SlxM/7A9SXo4MiwGTtXnM=",
       "url": "assets/images/twitter-cards/card-mapping.json"
+    },
+    {
+      "hash": "sha256-PpY2Dnq7o6Iyw81jZAK2NSuSNnC/70QWDNRIHB+DOhA=",
+      "url": "assets/images/twitter-cards/clv-formula.svg"
     },
     {
       "hash": "sha256-s7Zhj1npwg6fidwRROJ980je2Lk3fduoHTC5f9eH7zA=",
@@ -794,8 +818,20 @@ self.assetsManifest = {
       "url": "assets/images/twitter-cards/digital-assets-the-real-estate-of-the-virtual-world-twitter-card.png"
     },
     {
+      "hash": "sha256-LudcoDWm9DMf0iAbZZdPkD4ObBC6mfMYCw8nvOTRvmw=",
+      "url": "assets/images/twitter-cards/digital-marketing-cost-vs-compounding-value.png"
+    },
+    {
+      "hash": "sha256-+lePx9C3sxqplDKCdYoXM42Pt9HsqvRVe7cutI9hsHM=",
+      "url": "assets/images/twitter-cards/digital-marketing-roi-visual-elements.png"
+    },
+    {
       "hash": "sha256-hCsD2kC0ePXnhbmMBfU7fVqc5uMg1WugFf7UaNjqvMA=",
       "url": "assets/images/twitter-cards/digital-transformation-twitter-card.png"
+    },
+    {
+      "hash": "sha256-pMbRIZDlK9TiRrYk/pqRzaSFQb9ufvWhupBBkaPKtJI=",
+      "url": "assets/images/twitter-cards/do-not-normalize-common-things-2.png"
     },
     {
       "hash": "sha256-LV9aPvAftzYzsZzwJrVIDXTwhd7DHcPWT5HbBdgTaC0=",
@@ -810,6 +846,10 @@ self.assetsManifest = {
       "url": "assets/images/twitter-cards/home-twitter-card.png"
     },
     {
+      "hash": "sha256-k94Fse8R2OZE1oQZZw3ZtT+jq830VgzHN3whpcUxw9c=",
+      "url": "assets/images/twitter-cards/it-management-solutions-for-indian-smbs-twitter-card.png"
+    },
+    {
       "hash": "sha256-Py8KvoO+H5/8QJcRIrruaH2ggGJdBAusADIQV46geg4=",
       "url": "assets/images/twitter-cards/it-management-solutions-twitter-card.png"
     },
@@ -820,6 +860,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-foeEA7MSZJEV3iT8HMfT0d7lv3RtHjfCwnpEyG/h8gw=",
       "url": "assets/images/twitter-cards/operating-model-design-twitter-card.png"
+    },
+    {
+      "hash": "sha256-gDm7pdt2culyPQp/hsGLKE63L/1P93MAOewaYt5r6LI=",
+      "url": "assets/images/twitter-cards/pc-laptop-value-assessment-guide-inr-twitter-card.png"
     },
     {
       "hash": "sha256-e+Sl9324J/aVoxfAnewLjKkIE5Twv4Hatepa5yYNWE4=",
@@ -950,7 +994,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-B4PuFdmCJl6h7aZqPp/aPu0GfcbAooH6Ixbc9/GhVH4=",
+      "hash": "sha256-diAph7lDyCRG62tLo64GjOudxGNCthzsyreXO3P0iYs=",
       "url": "index.html"
     },
     {
