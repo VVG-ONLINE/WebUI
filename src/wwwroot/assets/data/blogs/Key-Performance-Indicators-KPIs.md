@@ -61,11 +61,11 @@ qualitative metrics to obtain a comprehensive understanding of the project's per
 * **Customer Acquisition Cost (CAC)** - The cost of acquiring a new
   customer.
     
-  ![Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.](../assets/images/banners/cac-formula.svg)
+  ![Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.](../assets/images/twitter-cards/cac-formula.svg "Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.")
 * **Customer Lifetime Value (CLV)** - The total revenue a business
   can reasonably expect from a single customer account throughout the business relationship.
     
-  ![Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.](../assets/images/banners/clv-formula.svg)
+  ![Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.](../assets/images/twitter-cards/clv-formula.svg "Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.")
 
 By selecting the right KPIs, VVG ONLINE ensures that clients can effectively monitor their
 performance. By following this structured approach, VVG ONLINE helped the e-commerce client

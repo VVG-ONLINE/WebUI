@@ -17,7 +17,7 @@ October 13, 2025 | *Business*
 
 Lessons & Strategies from VVG ONLINE
 
-![Communication Mastery for Digital Business Success](../assets/images/banners/Communication-Mastery-for-Digital-Business-Success.svg)
+![Communication Mastery for Digital Business Success](../assets/images/twitter-cards/Communication-Mastery-for-Digital-Business-Success.svg "Communication Mastery for Digital Business Success")
 
 The Digital Imperative
 ----------------------

@@ -17,7 +17,7 @@ April 17, 2025 | *Business*
 Think about the operating model holistically, as many decisions to
 structure, processes and people will be critical and link to value delivery
 
-![Operating Model Design: Think about the operating model holistically, as many decisions to structure and processes will be critical and link to value delivery](../assets/images/banners/Structure-Process-People.svg)
+![Operating Model Design: Think about the operating model holistically, as many decisions to structure and processes will be critical and link to value delivery](../assets/images/twitter-cards/Structure-Process-People.svg "Operating Model Design: Think about the operating model holistically, as many decisions to structure and processes will be critical and link to value delivery")
 
 This image presents a framework for thinking about **operating model design holistically**,
 emphasizing that decisions related to organizational structure and processes are critical and
