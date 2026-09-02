@@ -148,5 +148,42 @@
     "featured": false,
     "filename": "bharat-ai-five-layer-cake",
     "timeToRead": 16
+  },
+  {
+    "title": "Decode. Design. Deliver.",
+    "slug": "decode-design-deliver",
+    "publishedAt": "2026-08-30",
+    "tags": [
+      "Strategy",
+      "Methodology",
+      "V.I.P.E.R.",
+      "Business",
+      "Digital Transformation"
+    ],
+    "excerpt": "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R.",
+    "draft": false,
+    "category": "Strategy",
+    "featured": true,
+    "filename": "decode-design-deliver",
+    "timeToRead": 7
+  },
+  {
+    "title": "What's Your PC Really Worth? A Value Assessment Guide for Indian Buyers",
+    "slug": "pc-laptop-value-assessment-guide-inr",
+    "publishedAt": "2026-07-27",
+    "tags": [
+      "Hardware",
+      "IT Management",
+      "Private AI",
+      "SMBs",
+      "India",
+      "INR"
+    ],
+    "excerpt": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
+    "draft": false,
+    "category": "Technology",
+    "featured": false,
+    "filename": "pc-laptop-value-assessment-guide-inr",
+    "timeToRead": 9
   }
 ]

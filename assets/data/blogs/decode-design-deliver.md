@@ -4,7 +4,7 @@ slug: "decode-design-deliver"
 publishedAt: "2026-08-30"
 tags: ["Strategy", "Methodology", "V.I.P.E.R.", "Business", "Digital Transformation"]
 excerpt: "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R."
-draft: true
+draft: false
 category: "Strategy"
 featured: true
 ---

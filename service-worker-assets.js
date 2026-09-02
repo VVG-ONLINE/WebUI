@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "1TM2BLvf",
+  "version": "ILOj4Cfh",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.mnxpnyvo0e.wasm"
     },
     {
-      "hash": "sha256-0U4XMmAJjtPl3cgpm08mdaITBmrI+8lquTEByAbycxo=",
-      "url": "_framework/VVG.Web.vg95icnyx2.wasm"
+      "hash": "sha256-vuvPTu58fhj0vvY94R6ilEp0bVVeEvPnH4OMjOav3pw=",
+      "url": "_framework/VVG.Web.2wsgm208lx.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-NJQIcjSMvlQ6F0WX9slJ5K0UIyvTZfw+f0RtnbygPVo=",
-      "url": "_framework/dotnet.0htwrz9hfs.js"
+      "hash": "sha256-+WT55Rf1ADZsJQoFdxDJba4HiYNKwxyvZQLwTsoOzuI=",
+      "url": "_framework/dotnet.9s0gplx36f.js"
     },
     {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
@@ -526,7 +526,7 @@ self.assetsManifest = {
       "url": "assets/css/_components.scss"
     },
     {
-      "hash": "sha256-tThV9nfCeY1JYBjlGOxqBcahP7Spo46x0aoMx5SeSBk=",
+      "hash": "sha256-5H4XhLN+Wwk/hJv9+aeojyKG/0lxfaD4iX7kd3ZemeY=",
       "url": "assets/css/_glassmorphism.scss"
     },
     {
@@ -538,7 +538,7 @@ self.assetsManifest = {
       "url": "assets/css/_preloader.scss"
     },
     {
-      "hash": "sha256-18kYFr5lsAuuagIfUs21RCKJigw7WUcj50nwormYTrE=",
+      "hash": "sha256-i7L6s9qHUnNAOG3TKtkvK9l/F1VZ5ISgmwon8aT0ka4=",
       "url": "assets/css/_pricing.scss"
     },
     {
@@ -562,11 +562,11 @@ self.assetsManifest = {
       "url": "assets/css/_variables.scss"
     },
     {
-      "hash": "sha256-otUWrJXBOf0TMsmFFSaX1qf50bQGnmHXxtzK5NI9Lc0=",
+      "hash": "sha256-b4YUWWR2Wp/M6nCytj9nQ6+x5D6Zir5BHseTBoec6i8=",
       "url": "assets/css/app.css"
     },
     {
-      "hash": "sha256-KxdZaSMS4ZbA+Z8vtz/dtfjDNr6EkaJrZegX3L38eYc=",
+      "hash": "sha256-vIXLE8pTP5iDTR+QB4Aiy0qFcfqk6E9nc3jvYYWx3/Q=",
       "url": "assets/css/app.css.map"
     },
     {
@@ -618,7 +618,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/bharat-ai-five-layer-cake.md"
     },
     {
-      "hash": "sha256-FeW+STsOsz9K9oBLRnnclWHHyCD34T2jpU5BB90ymVw=",
+      "hash": "sha256-vwfn2iyAjDBQdWoiX977uZn8y4c51dnKXZKG6QH0gQg=",
       "url": "assets/data/blogs/decode-design-deliver.md"
     },
     {
@@ -630,7 +630,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/digital-transformation.md"
     },
     {
-      "hash": "sha256-ESB49M0AOxDURvseMA8XKEqUiA/vgWLuyyqrxbRySoc=",
+      "hash": "sha256-RF8H70aKW7X51oAORa+pzj/FFPoGHgAwoTNSgoLTLOE=",
       "url": "assets/data/blogs/pc-laptop-value-assessment-guide-inr.md"
     },
     {
@@ -690,7 +690,7 @@ self.assetsManifest = {
       "url": "assets/data/json/ai-readiness-assessment.json"
     },
     {
-      "hash": "sha256-GEhF5ygDTZzpD+BCpPQM+NmEPvnHzz8Ml9sOjXR1gCA=",
+      "hash": "sha256-eNYJJoiDgIBWmXH1LCkc5N6hCFfyOBPOzcAtOiBwJK4=",
       "url": "assets/data/json/blog-index.json"
     },
     {
@@ -714,7 +714,7 @@ self.assetsManifest = {
       "url": "assets/data/json/pricing-faq.json"
     },
     {
-      "hash": "sha256-J1c0X5YNmUxL9NKINO6oj/EoUJxKiLZ20TZJd2uRFU0=",
+      "hash": "sha256-gIvNUliVKOG2UAgvmguz/vXZbcAtqBxsUmrh7Q4ynuA=",
       "url": "assets/data/json/pricing.json"
     },
     {
@@ -994,7 +994,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-diAph7lDyCRG62tLo64GjOudxGNCthzsyreXO3P0iYs=",
+      "hash": "sha256-f1mJL0Z8othlNX7xV/sQ2mtnHGZZNL4ewv+2oghugWw=",
       "url": "index.html"
     },
     {

@@ -2,7 +2,7 @@
     "meta": {
         "currency": "INR",
         "currencySymbol": "\u20b9",
-        "lastUpdated": "2026-07-07",
+        "lastUpdated": "2026-09-01",
         "note": "All prices are indicative. Final pricing depends on scope, complexity, and duration of engagement. Contact us for a custom quote."
     },
     "servicePricing": [
@@ -261,7 +261,7 @@
             "popular": false,
             "tag": "Most Economical",
             "oneTimeFeatures": [
-                "Logo design + brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+                "Logo design + brand stationery — Standard Package: Letterhead (90gsm), Visiting Card F+B (350gsm), Envelope 9×4 (90gsm), Brochure 4-page (100–300gsm)",
                 "Static website (5 pages, responsive design)",
                 "Domain & hosting setup"
             ],
@@ -272,6 +272,7 @@
                 "Email support"
             ],
             "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
+            "termsAndConditions": "Print packages are available in Bharat only and do not include delivery charges.",
             "recommendedFor": "Startups, solopreneurs, aspiring founders"
         },
         {
@@ -288,7 +289,7 @@
             "popular": false,
             "tag": "Most Practical",
             "oneTimeFeatures": [
-                "Logo design + brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+                "Logo design + brand stationery — Premium Package: Letterhead (100gsm), Visiting Card F+B (350gsm), Envelope 9×4 (100gsm), Brochure 4-page (100–300gsm) with Matt Lamination",
                 "Business website (5 pages, responsive design)",
                 "Domain & hosting setup"
             ],
@@ -303,6 +304,7 @@
                 "Email support"
             ],
             "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
+            "termsAndConditions": "Print packages are available in Bharat only and do not include delivery charges.",
             "recommendedFor": "Startups, solopreneurs, local businesses"
         },
         {
@@ -320,7 +322,7 @@
             "tag": "Most Scalable",
             "oneTimeFeatures": [
                 "Premium logo + brand guidelines",
-                "Complete brand stationery (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+                "Brand stationery — Elite Package: Letterhead (100gsm Premium), Visiting Card F+B (350gsm Round + UV), Envelope 9×4 (100gsm Premium), Brochure 4-page (100–350gsm) with Matt Lamination + Embossing",
                 "Website (up to 10 pages, responsive design)",
                 "Domain & hosting setup"
             ],
@@ -337,6 +339,7 @@
                 "Dedicated account manager"
             ],
             "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
+            "termsAndConditions": "Print packages are available in Bharat only and do not include delivery charges.",
             "recommendedFor": "Mid-market businesses, e-commerce stores, B2B companies"
         },
         {
@@ -354,7 +357,7 @@
             "tag": "Maximum Impact",
             "oneTimeFeatures": [
                 "Premium brand identity + comprehensive brand guidelines",
-                "Full stationery suite (brochure, pamphlet, envelope, letterhead, visiting card, print materials)",
+                "Customized brand stationery — designed and priced as per requirements",
                 "Custom website (unlimited pages)",
                 "Domain & hosting setup"
             ],
@@ -373,6 +376,7 @@
                 "Priority 24/7 support"
             ],
             "note": "Branding is a one-time deliverable; all other items are recurring monthly services.",
+            "termsAndConditions": "Print packages are available in Bharat only and do not include delivery charges.",
             "recommendedFor": "Enterprises, established brands, high-growth companies"
         }
     ],
