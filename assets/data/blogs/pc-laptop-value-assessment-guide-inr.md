@@ -6,7 +6,7 @@ tags: ["Hardware", "IT Management", "Private AI", "SMBs", "India", "INR"]
 excerpt: "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs."
 draft: false
 category: "Technology"
-featured: false
+featured: true
 ---
 
 # What's Your PC Really Worth? A Value Assessment Guide for Indian Buyers

@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "ILOj4Cfh",
+  "version": "pJ6AjYqE",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.mnxpnyvo0e.wasm"
     },
     {
-      "hash": "sha256-vuvPTu58fhj0vvY94R6ilEp0bVVeEvPnH4OMjOav3pw=",
-      "url": "_framework/VVG.Web.2wsgm208lx.wasm"
+      "hash": "sha256-V/YLO4VTVMvfOrzPfMtzYEFL0WW4J4m6eZs05lGCpLw=",
+      "url": "_framework/VVG.Web.l52zkg4g4j.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-+WT55Rf1ADZsJQoFdxDJba4HiYNKwxyvZQLwTsoOzuI=",
-      "url": "_framework/dotnet.9s0gplx36f.js"
+      "hash": "sha256-6WX8WG3Gw4i7KvvNauxFzbyH/sOSQZDc82SvLZ1HS54=",
+      "url": "_framework/dotnet.n4b7uy0vag.js"
     },
     {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
@@ -630,7 +630,7 @@ self.assetsManifest = {
       "url": "assets/data/blogs/digital-transformation.md"
     },
     {
-      "hash": "sha256-RF8H70aKW7X51oAORa+pzj/FFPoGHgAwoTNSgoLTLOE=",
+      "hash": "sha256-/8lxTgCcCsyCttvO83f5ndHTSPvMgD7yPOBZvCTzK94=",
       "url": "assets/data/blogs/pc-laptop-value-assessment-guide-inr.md"
     },
     {
@@ -994,7 +994,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-f1mJL0Z8othlNX7xV/sQ2mtnHGZZNL4ewv+2oghugWw=",
+      "hash": "sha256-hXKzmxTGY7w8ide9xjYxaOBle5U5Q5tuVgl+nQZG4nY=",
       "url": "index.html"
     },
     {
