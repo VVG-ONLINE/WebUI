@@ -49,7 +49,7 @@ Critical for gaming, video editing, 3D rendering — and increasingly, for runni
 - **32GB:** Recommended for any team running multiple applications simultaneously, or for AI workloads.
 - **64GB+:** Only if you're doing heavy video editing, 3D rendering, or running large AI models locally.
 
-**INR Tip:** DDR5 RAM prices have dropped significantly. 32GB DDR5 5600MHz DIMM costs ₹10,000-15,000 in India. Don't cheap out here — it's the cheapest upgrade with the biggest impact. If your budget allows go for ECC RAM.
+**INR Tip:** DDR5 RAM prices have dropped significantly. 32GB DDR5 5600MHz DIMM costs ₹60,000 in India. Don't cheap out here — it's the cheapest upgrade with the biggest impact. If your budget allows go for ECC RAM.
 
 ### Storage (SSD vs HDD)
 
