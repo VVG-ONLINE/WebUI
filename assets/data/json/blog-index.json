@@ -168,6 +168,25 @@
     "timeToRead": 7
   },
   {
+    "title": "NVIDIA's $12.93B Hugging Face Acquisition: What It Means for Open-Source AI",
+    "slug": "nvidia-hugging-face-acquisition-analysis",
+    "publishedAt": "2026-09-06",
+    "tags": [
+      "NVIDIA",
+      "Hugging Face",
+      "AI Infrastructure",
+      "Open Source",
+      "M&A",
+      "Regulatory"
+    ],
+    "excerpt": "NVIDIA's $12.93B acquisition of Hugging Face marks a pivotal moment for open-weight AI. We analyze the strategic implications, regulatory risks, and what this means for developers and the open-source ecosystem.",
+    "draft": false,
+    "category": "Technology",
+    "featured": false,
+    "filename": "nvidia-hugging-face-acquisition-analysis",
+    "timeToRead": 9
+  },
+  {
     "title": "What's Your PC Really Worth? A Value Assessment Guide for Indian Buyers",
     "slug": "pc-laptop-value-assessment-guide-inr",
     "publishedAt": "2026-07-27",

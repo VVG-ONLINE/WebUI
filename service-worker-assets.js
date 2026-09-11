@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "W2LWDuPC",
+  "version": "eE1pXKgd",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -454,16 +454,12 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.mnxpnyvo0e.wasm"
     },
     {
-      "hash": "sha256-6xUCto4271/Z7InjGdkNQxvn45rX82Uu0MY+cSBKUAQ=",
-      "url": "_framework/VVG.Web.ta593tznvg.wasm"
+      "hash": "sha256-41AnJs2xjXY4ye16boJe+wZFUFT18JYOPcI3lEViIMQ=",
+      "url": "_framework/VVG.Web.7jnzv0jt8c.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
-    },
-    {
-      "hash": "sha256-/SipizMxS3cdaJXEmsAVJX+EzOKcpH2YySg3I0ZSOZ8=",
-      "url": "_framework/dotnet.lujq63h2oe.js"
     },
     {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
@@ -476,6 +472,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-MZMguyke9CroSQl+L/SHIGFkPTD+LtYGXkXjAvwWx40=",
       "url": "_framework/dotnet.runtime.zbexyp8zrs.js"
+    },
+    {
+      "hash": "sha256-ru0bLlDnO9kKao3n/A/1Vb8lJ7hYIAUfr7EEdKLYQU4=",
+      "url": "_framework/dotnet.yvv1ars1j9.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -630,6 +630,10 @@ self.assetsManifest = {
       "url": "assets/data/blogs/digital-transformation.md"
     },
     {
+      "hash": "sha256-2EvijIkkfikyDSXs9WaY1q6KMmMBk1vqmPnhjUSfHtY=",
+      "url": "assets/data/blogs/nvidia-hugging-face-acquisition-analysis.md"
+    },
+    {
       "hash": "sha256-276bUw+5sySnc9aYZqz5iCb0ijm/bh1DvhzPaby8QPk=",
       "url": "assets/data/blogs/pc-laptop-value-assessment-guide-inr.md"
     },
@@ -690,7 +694,7 @@ self.assetsManifest = {
       "url": "assets/data/json/ai-readiness-assessment.json"
     },
     {
-      "hash": "sha256-eNYJJoiDgIBWmXH1LCkc5N6hCFfyOBPOzcAtOiBwJK4=",
+      "hash": "sha256-MgQDc4uPigf9HaUNSddDDUfhjm4yChFAPOjR/q7+roY=",
       "url": "assets/data/json/blog-index.json"
     },
     {
@@ -698,15 +702,15 @@ self.assetsManifest = {
       "url": "assets/data/json/faq.json"
     },
     {
-      "hash": "sha256-RpJnzNV4NRE+iR0RJSyuSEa0iJk1fsRpr1Y50uPwc6s=",
+      "hash": "sha256-2IrHtO5VZPPzfD/5McpyAiQSZqwB9y4NDwDbuC6a8rY=",
       "url": "assets/data/json/json-ld.json"
     },
     {
-      "hash": "sha256-BwFZIND4b0c0Uob6Bq3RZ0oynDOq1pfeLny5nyLDBDo=",
+      "hash": "sha256-J+Y+CtYI3mDBcmx7U/4WRptIQovErQ80ZRPKir635JQ=",
       "url": "assets/data/json/metadata.json"
     },
     {
-      "hash": "sha256-FT6JMqxyYffRP7g6YM0grjCWwhKUqmLAwZxf4fnB5a4=",
+      "hash": "sha256-4DHKxoLZPFRNJAZcQIKlOMbWiz7fk26WHm2MT/783Eg=",
       "url": "assets/data/json/open-graph.json"
     },
     {
@@ -722,7 +726,7 @@ self.assetsManifest = {
       "url": "assets/data/json/services.json"
     },
     {
-      "hash": "sha256-9dNcex2XhJYPtKw2lAMMGvVw3xYcqWf7jYsnAQ3zOUI=",
+      "hash": "sha256-G+5yQch4fJ6Kd3GWqD1T86hNyDjoVmor0z68BkPbfFM=",
       "url": "assets/data/json/twitter-card.json"
     },
     {
@@ -794,7 +798,7 @@ self.assetsManifest = {
       "url": "assets/images/twitter-cards/capability-building-twitter-card.png"
     },
     {
-      "hash": "sha256-j/EwBzNwxBMq5AoZzjjTr/SlxM/7A9SXo4MiwGTtXnM=",
+      "hash": "sha256-e7wV90q9tHzH53GaViZWE9Xi6BQLPnfPuuI4GdZ9qDQ=",
       "url": "assets/images/twitter-cards/card-mapping.json"
     },
     {
@@ -808,6 +812,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-q3tFW90oDOAZHc13pO+xRoCaPuCbQrPPgdnf3fzYxSs=",
       "url": "assets/images/twitter-cards/contact-twitter-card.png"
+    },
+    {
+      "hash": "sha256-uF6DtpvLN3fsdanWmsE0XNI98pBf4fO4Bhd9+pPu+/8=",
+      "url": "assets/images/twitter-cards/decode-design-deliver-twitter-card.png"
     },
     {
       "hash": "sha256-UmHM1FYIk7rgMUP8Ojf1HLX+noRrfbbTafHRZ17ZeT0=",
@@ -856,6 +864,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-i5liWPRESnjBG8ZVaQeZwKHr+uade8sZCN7SuYzjNJU=",
       "url": "assets/images/twitter-cards/key-performance-indicators-kpis-twitter-card.png"
+    },
+    {
+      "hash": "sha256-mbfLi8KWPYtJqvbenGsg1dAPPXj6ERgwh5X4O8/6pHM=",
+      "url": "assets/images/twitter-cards/nvidia-hugging-face-acquisition-analysis-twitter-card.png"
     },
     {
       "hash": "sha256-foeEA7MSZJEV3iT8HMfT0d7lv3RtHjfCwnpEyG/h8gw=",
@@ -994,7 +1006,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-x4SURsFyQUlIFHyjUgE/dddm43zEQyxioMxffE1Cbtc=",
+      "hash": "sha256-QmY3YlfW7smDVx7dtWXmshMpDVKO48Yt+V0EmmDMLBw=",
       "url": "index.html"
     },
     {

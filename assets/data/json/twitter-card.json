@@ -101,6 +101,11 @@
       "title": "What's Your PC Really Worth? — VVG ONLINE",
       "description": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/pc-laptop-value-assessment-guide-inr-twitter-card.png"
+    },
+    "nvidia-hugging-face-acquisition-analysis": {
+      "title": "NVIDIA's $12.93B Hugging Face Acquisition: What It Means for Open-Source AI — VVG ONLINE",
+      "description": "NVIDIA's $12.93B acquisition of Hugging Face marks a pivotal moment for open-weight AI. Strategic implications, regulatory risks, and developer impact.",
+      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/nvidia-hugging-face-acquisition-analysis-twitter-card.png"
     }
   }
 }
