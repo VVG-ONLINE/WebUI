@@ -204,25 +204,5 @@
     "featured": true,
     "filename": "pc-laptop-value-assessment-guide-inr",
     "timeToRead": 9
-  },
-  {
-    "title": "PHP2Shell: AI-Discovered Critical Vulnerabilities Expose 70% of Websites",
-    "slug": "php2shell-critical-vulnerabilities-october-2026",
-    "publishedAt": "2026-10-23",
-    "tags": [
-      "Cybersecurity",
-      "PHP",
-      "Vulnerability",
-      "CVE",
-      "Zero-Day",
-      "RCE",
-      "AI Security Research"
-    ],
-    "excerpt": "Two critical unauthenticated RCE vulnerabilities discovered by AI-assisted security research affect PHP 5.4 through 8.5. Emergency patches released October 21, 2026. Here's what every organization needs to know.",
-    "draft": false,
-    "category": "Cybersecurity",
-    "featured": false,
-    "filename": "php2shell-critical-vulnerabilities-october-2026",
-    "timeToRead": 10
   }
 ]
