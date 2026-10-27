@@ -1,90 +1,106 @@
 [
   {
-    "category": "Plans & Billing",
+    "category": "Plans & Packages",
     "questions": [
       {
-        "question": "What is included in the Nano plan?",
-        "answer": "The Nano plan is designed for individuals or very small startups. It includes core managed IT services, basic security monitoring, and limited monthly support hours. It's an ideal entry point for fundamental infrastructure management. <a href=\"/blog/it-management-solutions-for-indian-smbs\">IT Management Solutions for Indian SMBs</a>"
+        "question": "What's included in the Nano plan (₹5,000/month)?",
+        "answer": "The Nano plan is perfect for aspiring founders and solopreneurs. It includes a one-time logo design with basic brand stationery (letterhead, visiting cards, envelope, 4-page brochure), a static 5-page website, domain & hosting setup, quarterly SEO check-ins, and annual strategy consultation. Print packages are available in Bharat only."
       },
       {
-        "question": "Do you offer custom pricing for enterprise clients?",
-        "answer": "Yes, we provide bespoke pricing models for enterprise-scale clients. This includes dedicated service level agreements (SLAs), specialized security protocols, and customized support tiers tailored to your specific infrastructure needs."
+        "question": "What's the difference between Starter and Growth plans?",
+        "answer": "The Starter plan (₹25,000/month) includes premium branding, a 5-page business website, social media management for 2 platforms, 4 blog posts per month, and basic SEO. The Growth plan (₹75,000/month) offers premium brand guidelines, up to 10-page website, 4-platform social media, 8 blog posts + 2 infographics monthly, advanced SEO (on-page + off-page), Google & Facebook Ads management, and a dedicated account manager. Growth is ideal for mid-market businesses ready to scale."
       },
       {
-        "question": "Are there any hidden costs or setup fees?",
-        "answer": "We maintain a transparent pricing model. While there may be a one-time onboarding and setup fee depending on the complexity of your infrastructure, all recurring monthly costs are clearly outlined in your service agreement."
+        "question": "What makes the Enterprise plan different?",
+        "answer": "The Enterprise plan (₹200,000/month) provides a full-stack digital partnership with custom brand identity, unlimited-page website, comprehensive SEO + technical SEO, full-scale social media across all platforms, custom content strategy (blogs, video, infographics), PPC management with large ad budgets, influencer marketing, reputation management, custom AI/automation solutions, weekly performance reviews, and a dedicated strategist + account team with 24/7 priority support."
+      },
+      {
+        "question": "Are one-time features separate from monthly services?",
+        "answer": "Yes. Each plan includes one-time setup deliverables (logo design, brand stationery, website, domain setup) that are completed at the start. Monthly recurring services (SEO, social media, content creation, analytics, support) continue for the duration of your plan. The note 'Branding is a one-time deliverable; all other items are recurring monthly services' applies to all tiers."
+      },
+      {
+        "question": "Do you offer yearly pricing discounts?",
+        "answer": "Yes! All plans offer yearly pricing that saves you 2 months. For example, Nano is ₹50,000/year (save ₹10,000 vs monthly), Starter is ₹250,000/year (save ₹50,000), Growth is ₹750,000/year (save ₹150,000), and Enterprise is ₹2,000,000/year (save ₹400,000). You can toggle between monthly and yearly pricing on our pricing page."
       }
     ]
   },
   {
-    "category": "Contracts & Service Agreements",
+    "category": "Service-Level Pricing",
     "questions": [
       {
-        "question": "What is the typical contract duration?",
-        "answer": "While we offer various contract lengths, most of our managed service agreements are on a 12-month basis to ensure consistent service delivery and infrastructure stability."
+        "question": "Can I hire you for a specific service without a monthly plan?",
+        "answer": "Absolutely. We offer project-based and workshop-based pricing for individual services. Strategy & Innovation starts at ₹50,000 per project, Digital Transformation at ₹75,000 per project, Capability Building workshops at ₹20,000 per session, Design Thinking Workshops at ₹25,000 (half-day) to ₹50,000 (full-day), and IT Management Solutions with custom project pricing. Contact us for a detailed quote."
       },
       {
-        "question": "Can I cancel my contract before the term ends?",
-        "answer": "Contracts are generally binding for the agreed-upon term. However, we can discuss early termination in specific circumstances, subject to a review of the service agreement and any outstanding obligations."
+        "question": "What does Strategic Digital Marketing include?",
+        "answer": "Our Strategic Digital Marketing service includes SEO Optimization (₹12,000/month), Social Media Management (₹8,000/month), Content Marketing (₹5,000/month), Paid Advertising/PPC (₹10,000/month), Email Marketing (₹5,000/month), and Analytics & KPIs (₹10,000/month). These can be purchased individually or as part of our tiered packages for better value."
       },
       {
-        "question": "How do you handle service scope changes?",
-        "answer": "If your business needs evolve and you require additional services, we can issue a change order. This will update your agreement with the new scope of work and any associated adjustments to the monthly fee."
+        "question": "How much do Design Thinking Workshops cost?",
+        "answer": "We offer three workshop formats: Half-Day Workshop (3-4 hours) starting at ₹25,000, Full-Day Workshop (6-8 hours) at ₹50,000, and Multi-Day Programs starting at ₹100,000. Sub-services include User-Centered Design Sessions (₹15,000/session), Problem-Solving Workshops (₹20,000/session), and Innovation Strategy Sprints (₹50,000/program)."
+      },
+      {
+        "question": "What's included in IT Management Solutions?",
+        "answer": "Our Comprehensive IT Management Solutions include Cloud Infrastructure (₹50,000/month), Cybersecurity (₹30,000/month), IT Support & Training (₹10,000/month), Digital Platform Enablement (₹50,000/project), Vendor Management (₹25,000/month), and Custom AI Model Development (₹100,000/project). We also offer project-based options: AI Server setup (₹300,000), Full Office IT setup for 10 systems + 1 server (₹300,000), and On-Premise Cloud Infrastructure (₹150,000)."
       }
     ]
   },
   {
-    "category": "Managed Services & Support",
+    "category": "Custom Bundles & Add-Ons",
     "questions": [
       {
-        "question": "What are your standard support hours?",
-        "answer": "Our standard support is available Monday through Friday, 9 AM to 6 PM IST. We offer extended support hours and 24/7 emergency response for our Enterprise and Growth plans."
+        "question": "What custom bundles do you offer?",
+        "answer": "We offer five custom bundles: Digital Presence Bundle (₹30,000 one-time) includes a static website, 100 social media posts, 2 short videos, and basic SEO setup. Brand Launch Kit (₹75,000 one-time) includes logo, brand guidelines, website, social media setup, 50 posts, 1 brand video, and email templates. SEO Accelerator (₹40,000 one-time) is a comprehensive SEO audit and optimization sprint. Social Media Sprint (₹15,000/month) provides short-term social media boost. Innovation Workshop Sprint (₹60,000 one-time) is an intensive design thinking sprint."
       },
       {
-        "question": "How do I open a support ticket?",
-        "answer": "Clients can open support tickets via through email, or by calling our support hotline. We prioritize tickets based on severity and impact."
+        "question": "Can I add video production to my plan?",
+        "answer": "Yes! Video production add-ons include: Short-form videos (up to 60 seconds) at ₹5,000 per video, Brand videos (2-3 minutes) at ₹15,000 per video, and Animated explainer videos at ₹25,000 per video. These can be added to any monthly plan or purchased as standalone services."
       },
       {
-        "question": "What is your average response time for critical issues?",
-        "answer": "For critical issues (Severity 1), we aim for a response time of under 30 minutes. Other issues are addressed based on their priority level and our current support queue."
+        "question": "What content creation services are available?",
+        "answer": "Our content creation add-ons include: Blog posts (500-1000 words) at ₹2,000 per post, social media graphics at ₹300 per design, infographics at ₹5,000 per piece, and email newsletter design at ₹3,000 per template. These services are included in our tiered packages based on your plan level, but can also be purchased separately."
       }
     ]
   },
   {
-    "category": "Technology & Security",
+    "category": "Payments & Contracts",
     "questions": [
       {
-        "question": "How do you handle data privacy and security?",
-        "answer": "Data security is our top priority. We adhere to strict industry standards, including regular audits, encrypted data transmission, and robust firewall management. We also ensure compliance with relevant regulations like the DPDP Act. <a href=\"/blog/bharat-ai-five-layer-cake\">Bharat AI: Five Layer Cake</a>"
+        "question": "What are your payment terms?",
+        "answer": "Monthly plans are billed at the start of each month. Yearly plans are billed annually upfront with a 2-month discount. One-time services and custom bundles require 50% upfront with the remainder upon completion. All prices are in INR and exclude GST. We accept bank transfers, UPI, and major credit cards."
       },
       {
-        "question": "Do you manage private AI infrastructure?",
-        "answer": "Yes, we specialize in building and managing private AI infrastructure. This allows you to leverage the power of LLMs while keeping your sensitive data on-site and under your direct control. <a href=\"/blog/bharat-ai-five-layer-cake\">Bharat AI: Five Layer Cake</a>"
+        "question": "Is there a minimum contract period?",
+        "answer": "Monthly retainer plans have no minimum contract period—you can cancel anytime with 30 days notice. However, we recommend a 3-6 month commitment for optimal results, especially for SEO and social media services. Custom bundles and project-based services are one-time engagements with defined timelines."
       },
       {
-        "question": "What technologies do you support?",
-        "answer": "We support a wide range of technologies including Cloud (AWS, Azure, Google Cloud), on-premise servers, virtualization (VMWare, Hyper-V), and various networking and security hardware. <a href=\"/blog/it-management-solutions-for-indian-smbs\">IT Management Solutions for Indian SMBs</a>"
+        "question": "Can I upgrade or downgrade my plan?",
+        "answer": "Yes! You can upgrade your plan at any time, and we'll prorate the difference. Downgrades take effect at the start of your next billing cycle. Contact your account manager or our support team to discuss plan changes that align with your evolving business needs."
+      },
+      {
+        "question": "Are there any hidden fees or setup costs?",
+        "answer": "No hidden fees. All pricing is transparent and clearly outlined in your service agreement. Domain registration and hosting fees are included in your plan. Third-party costs (ad spend, premium plugins, stock images) are billed separately at cost. Print packages include design but exclude delivery charges."
       }
     ]
   },
   {
-    "category": "Onboarding & Implementation",
+    "category": "Getting Started",
     "questions": [
       {
-        "question": "How does the onboarding process work?",
-        "answer": "Our onboarding typically takes 2-4 weeks depending on the complexity of your infrastructure. It begins with a comprehensive audit, followed by a roadmap design, and finally the systematic migration or setup of your managed services."
+        "question": "How do I choose the right plan for my business?",
+        "answer": "Choose Nano if you're just starting out and need basic branding. Choose Starter for small businesses needing consistent digital presence. Choose Growth for mid-market businesses ready to scale with advanced marketing. Choose Enterprise for full-stack digital partnership with comprehensive services. Not sure? Book a free consultation and we'll recommend the best fit."
       },
       {
-        "question": "Will you migrate my existing data?",
-        "answer": "Yes, we have extensive experience migrating data and infrastructure from various platforms to managed environments while ensuring minimal downtime and data integrity."
+        "question": "What's the onboarding process like?",
+        "answer": "After signing up, we schedule a kickoff call to understand your goals. For monthly plans, you'll complete a brand questionnaire and provide any existing assets. We'll set up your website, social media accounts, and begin content creation within 1-2 weeks. Monthly deliverables start flowing from week 3 onwards with regular check-ins and reports."
       },
       {
-        "question": "Who will be my primary point of contact?",
-        "answer": "Every Enterprise client is assigned a dedicated Account Manager who acts as your main point of contact for service inquiries, reporting, and strategic planning."
+        "question": "Do you work with clients outside Bharat (India)?",
+        "answer": "Yes! We work with clients globally. However, print packages (brand stationery with physical delivery) are currently available in Bharat only and do not include delivery charges. All digital services (website, SEO, social media, content, consulting) are available worldwide."
       },
       {
-        "question": "What methodology do you follow during implementation?",
-        "answer": "We follow <strong>Decode, Design, Deliver</strong> — our core methodology powered by the V.I.P.E.R. framework. Every engagement starts with a thorough decode (Vision) of your current state, followed by a structured design (Intelligence + Procedure), and concludes with expert delivery (Experts + Results) against defined KPIs. This ensures measurable outcomes at every stage. <a href=\"/blog/decode-design-deliver\">Decode. Design. Deliver.</a> <a href=\"/blog/key-performance-indicators-kpis\">Key Performance Indicators (KPIs)</a>"
+        "question": "Can I get a custom quote for unique requirements?",
+        "answer": "Absolutely. All our pricing is indicative and can be customized based on your specific needs, scope, and timeline. We offer bespoke packages for enterprises with unique requirements. Contact us for a free consultation and we'll create a tailored proposal that aligns with your goals and budget."
       }
     ]
   }
