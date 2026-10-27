@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "iJPyfT+I",
+  "version": "AfM0/A2W",
   "assets": [
     {
       "hash": "sha256-DubzVRAcefVzrUkPmvmpRqrTxVqS6U7EDctJJVvGgVM=",
@@ -426,8 +426,8 @@ self.assetsManifest = {
       "url": "_framework/System.Text.Encodings.Web.oxrommdamx.wasm"
     },
     {
-      "hash": "sha256-qnraq3rmpqWXYdyiLHLnz2O4lAh9GKGLaL8FZXZ1wd4=",
-      "url": "_framework/System.Text.Json.ark5dgamm5.wasm"
+      "hash": "sha256-JbvXQZJIQ3cdJbNVIrFIWBVFu/SffcggwCSp2aN9aOs=",
+      "url": "_framework/System.Text.Json.d6syowazqs.wasm"
     },
     {
       "hash": "sha256-P4DZkljL+se6N6Ot86SFO3FXKXCQXca/MCWuSTgU8Fg=",
@@ -454,16 +454,16 @@ self.assetsManifest = {
       "url": "_framework/System.Xml.XmlSerializer.i1nnz4i7r3.wasm"
     },
     {
-      "hash": "sha256-uHfuV8PcjT5FtSuCG/MJ3HjTTVSSC1+e52odAcuEmwE=",
-      "url": "_framework/VVG.Web.giayqpzymq.wasm"
+      "hash": "sha256-lmPtYEw9seuQufiwtHL+AsHTV5248LDzIRSHw8jJfiI=",
+      "url": "_framework/VVG.Web.akhe0ju9mh.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.66stpp682q.js"
     },
     {
-      "hash": "sha256-1XcfOUgMJypQuO75tjyxmfOKFIeKJl0Mu/XDJbHx9VM=",
-      "url": "_framework/dotnet.5kkvq9ybux.js"
+      "hash": "sha256-TVtnl5ci71WfALko0B2ffRIsb8irVFeIZEXRfskLeA0=",
+      "url": "_framework/dotnet.f9avfgb0u5.js"
     },
     {
       "hash": "sha256-jZddobLBM2C3lQhYQ61xSQJ/WqD3eQCO3RzoHGaOjx0=",
@@ -698,7 +698,7 @@ self.assetsManifest = {
       "url": "assets/data/json/ai-readiness-assessment.json"
     },
     {
-      "hash": "sha256-eb+YonmJIRX9sdPMlcoHXSzq3oEFqx6PvLdt2J5skNE=",
+      "hash": "sha256-2t5DPs1QL+UHL6eONzD+xG9kK9Fh7ktGQHrNumqSa8M=",
       "url": "assets/data/json/blog-index.json"
     },
     {
@@ -1014,7 +1014,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-hB+wrbDsZmTHF23ZPvAyktYd7VuUTh224t15PX/i77E=",
+      "hash": "sha256-QWyNR5nb8ehjxqlDN+gCclfiHmL86gfVW4PDBMWWMDM=",
       "url": "index.html"
     },
     {
