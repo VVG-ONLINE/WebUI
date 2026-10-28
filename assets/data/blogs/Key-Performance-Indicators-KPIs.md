@@ -61,11 +61,11 @@ qualitative metrics to obtain a comprehensive understanding of the project's per
 * **Customer Acquisition Cost (CAC)** - The cost of acquiring a new
   customer.
     
-  ![Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.](../assets/images/twitter-cards/cac-formula.svg "Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.")
+  ![Customer Acquisition Cost (CAC) - The cost of acquiring a new customer.](../assets/images/banners/cac-formula.svg)
 * **Customer Lifetime Value (CLV)** - The total revenue a business
   can reasonably expect from a single customer account throughout the business relationship.
     
-  ![Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.](../assets/images/twitter-cards/clv-formula.svg "Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.")
+  ![Customer Lifetime Value (CLV) - The total revenue a business can reasonably expect from a single customer account throughout the business relationship.](../assets/images/banners/clv-formula.svg)
 
 By selecting the right KPIs, VVG ONLINE ensures that clients can effectively monitor their
 performance. By following this structured approach, VVG ONLINE helped the e-commerce client
@@ -109,8 +109,6 @@ implements necessary adjustments to enhance digital marketing strategies. This i
 ensures that the project stays on track to meet its objectives. This iterative process ensures
 that the project stays on track to meet its objectives.
 
-This aligns with the **Results** phase of VVG ONLINE's V.I.P.E.R. methodology — the operational framework behind our core principle: **Decode, Design, Deliver**. Every KPI we track feeds back into the cycle: decoding what the data reveals, designing adjustments, and delivering improved outcomes. For a deeper look at how V.I.P.E.R. structures our entire approach, see [Decode. Design. Deliver.](/blog/decode-design-deliver).
-
 Case Study: Measuring KPIs for an E-commerce Client
 ---------------------------------------------------
 
@@ -137,9 +135,3 @@ approach to ensure that all facets of the project are monitored, evaluated, and 
 effectiveness. By focusing on relevant KPIs and leveraging advanced analytics tools, **VVG ONLINE**
 helps
 clients achieve their digital marketing goals effectively.
-
----
-
-**Related Reading:**
-- [Decode. Design. Deliver.](/blog/decode-design-deliver) — VVG ONLINE's core methodology and V.I.P.E.R. framework
-- [Operating Model Design](/blog/operating-model-design) — Structuring your business for digital success

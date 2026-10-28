@@ -21,12 +21,6 @@
       "description": "Comprehensive digital business consulting services including technology solutions, digital marketing, data analytics, UX design, and customized strategies to transform your enterprise.",
       "keywords": "digital services, technology solutions, digital marketing, data analytics, UX design, consulting services, digital transformation, VVG ONLINE"
     },
-    "private-ai": {
-      "title": "Private AI for Bharat's SMBs - VVG ONLINE",
-      "description": "Private AI consulting for Bharat's SMBs: practical, privacy-conscious local AI setups with cautious estimates based on your hardware, data, and workflows. No universal performance or cost guarantees.",
-      "keywords": "private AI, private AI consulting, local AI, AI infrastructure, Bharat SMBs, data privacy, VVG ONLINE",
-      "canonicalUrl": "https://vvgonline.net/private-ai"
-    },
     "about": {
       "title": "About VVG ONLINE",
       "description": "Learn about VVG ONLINE's mission, philosophy, and our commitment to driving digital transformation and innovation.",
@@ -46,21 +40,6 @@
       "title": "Blog Archives - VVG ONLINE",
       "description": "Browse our complete collection of digital business insights, case studies, and thought leadership articles.",
       "keywords": "blog archives, digital business articles, technology insights, innovation articles"
-    },
-    "privacy": {
-      "title": "Privacy Policy - VVG ONLINE",
-      "description": "Read VVG ONLINE's privacy policy covering how we collect, use, and protect your personal information in compliance with the DPDP Act.",
-      "keywords": "privacy policy, data protection, DPDP Act, personal information, VVG ONLINE"
-    },
-    "terms": {
-      "title": "Terms & Conditions - VVG ONLINE",
-      "description": "Review VVG ONLINE's terms and conditions governing the use of our digital business consulting services, including fees, SLAs, and DPDP Act compliance.",
-      "keywords": "terms and conditions, service agreement, digital consulting, DPDP Act, VVG ONLINE"
-    },
-    "nvidia-hugging-face-acquisition-analysis": {
-      "title": "NVIDIA's $12.93B Hugging Face Acquisition: What It Means for Open-Source AI - VVG ONLINE",
-      "description": "NVIDIA's $12.93B acquisition of Hugging Face marks a pivotal moment for open-weight AI. We analyze the strategic implications, regulatory risks, and what this means for developers and the open-source ecosystem.",
-      "keywords": "NVIDIA, Hugging Face, AI infrastructure, open source AI, M&A, regulatory, antitrust, private AI, VVG ONLINE"
     },
     "not-found": {
       "title": "404 Not Found - VVG ONLINE",

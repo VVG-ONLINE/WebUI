@@ -21,11 +21,6 @@
       "description": "Comprehensive digital business consulting services to transform your enterprise.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/services-twitter-card.png"
     },
-    "private-ai": {
-      "title": "Private AI for Bharat's SMBs - VVG ONLINE",
-      "description": "Practical private AI consulting for Bharat's SMBs, with cautious setup estimates and no universal performance or cost guarantees.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/private-ai-twitter-card.png"
-    },
     "about": {
       "title": "About VVG ONLINE",
       "description": "Learn about our mission to decode the complex digital landscape, design bespoke strategies, and deliver transformative results.",
@@ -46,23 +41,7 @@
       "description": "Browse our complete collection of digital business insights.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/blog-archives-twitter-card.png"
     },
-    "privacy": {
-      "title": "Privacy Policy - VVG ONLINE",
-      "description": "Learn how VVG ONLINE collects, uses, and protects your personal data in compliance with the DPDP Act.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
-    },
-    "terms": {
-      "title": "Terms & Conditions - VVG ONLINE",
-      "description": "Review the terms governing VVG ONLINE's consulting services, including service scope, payment terms, and data protection commitments.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/vvg-online-home-twitter-card.png"
-    },
-    "strategic-outlook-2026": {
-      "title": "VVG ONLINE // ACCESS THE FUTURE: Strategic Outlook for 2026 & Beyond",
-      "description": "Explore VVG ONLINE's comprehensive strategic outlook for 2026, covering AI paradigms, marketing domination, infrastructure security, global risks, and the human capital crisis.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategic-outlook-2026-twitter-card.png"
-    },
     "strategy-and-innovation": {
-
       "title": "Strategy & Innovation — VVG ONLINE",
       "description": "In today's volatility, strategy isn't a static document—it's a living artifact that guides organizations through uncertainty.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/strategy-and-innovation-twitter-card.png"
@@ -87,25 +66,10 @@
       "description": "Design thinking is 67% hype, 33% value. The workshops that work last 2 years and deliver measurable innovation lift.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/design-thinking-workshops-twitter-card.png"
     },
-    "it-management-solutions-for-indian-smbs": {
+    "it-management-solutions": {
       "title": "IT Management Solutions — VVG ONLINE",
       "description": "Transform IT from a cost center to a strategic enabler with comprehensive infrastructure, cloud, and managed IT services.",
       "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/it-management-solutions-twitter-card.png"
-    },
-    "bharat-ai-five-layer-cake": {
-      "title": "Bharat's AI Five-Layer Cake — VVG ONLINE",
-      "description": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/bharat-ai-five-layer-cake-twitter-card.png"
-    },
-    "pc-laptop-value-assessment-guide-inr": {
-      "title": "What's Your PC Really Worth? — VVG ONLINE",
-      "description": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/pc-laptop-value-assessment-guide-inr-twitter-card.png"
-    },
-    "nvidia-hugging-face-acquisition-analysis": {
-      "title": "NVIDIA's $12.93B Hugging Face Acquisition: What It Means for Open-Source AI — VVG ONLINE",
-      "description": "NVIDIA's $12.93B acquisition of Hugging Face marks a pivotal moment for open-weight AI. Strategic implications, regulatory risks, and developer impact.",
-      "image": "https://raw.githubusercontent.com/VVG-ONLINE/WebUI/main/src/wwwroot/assets/images/twitter-cards/nvidia-hugging-face-acquisition-analysis-twitter-card.png"
     }
   }
 }

@@ -213,14 +213,9 @@ window.vvg.restartWorkflow = () => {
  * A GridHelper plane scrolls slowly upward, giving depth behind the content.
  * Runs inside the #canvas-container div (which has pointer-events: none).
  */
-function initBackground(retries = 10) {
+function initBackground() {
     const container = document.getElementById('canvas-container');
-    if (!container || !window.THREE) {
-        if (retries > 0) {
-            setTimeout(() => initBackground(retries - 1), 200);
-        }
-        return;
-    }
+    if (!container || !window.THREE) return;
 
     // Read the current theme from <html data-theme="...">
     const theme = document.documentElement.getAttribute('data-theme') || 'light';

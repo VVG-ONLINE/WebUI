@@ -82,7 +82,7 @@ The x-axis represents Time (Years), showing "Low" to "High" and marked at "Year 
 can grow exponentially over time, eventually exceeding the rising costs associated with
 them, leading to a period of optimal return on investment.*
 
-![A line graph showing that the compounding value of digital marketing eventually surpasses its rising cost over time. The graph is titled 'Digital Marketing: Cost vs. Compounding Value Over Time' and indicates that the 'Optimal Investment Window' is when value is greater than cost.](../assets/images/twitter-cards/digital-marketing-cost-vs-compounding-value.png "Digital Marketing: Cost vs. Compounding Value Over Time")
+![A line graph showing that the compounding value of digital marketing eventually surpasses its rising cost over time. The graph is titled 'Digital Marketing: Cost vs. Compounding Value Over Time' and indicates that the 'Optimal Investment Window' is when value is greater than cost.](../assets/images/banners/digital-marketing-cost-vs-compounding-value.png)
 
 ---
 
@@ -105,7 +105,7 @@ advertising costs.*
 *Visual representation of key digital marketing elements contributing to
 overall Return on Investment (ROI).*
 
-![An infographic visually representing digital marketing ROI with various interconnected elements like email, SEO, mobile ads, and AI-driven campaigns, all pointing towards growth.](../assets/images/twitter-cards/digital-marketing-roi-visual-elements.png "An infographic visually representing digital marketing ROI with various interconnected elements like email, SEO, mobile ads, and AI-driven campaigns, all pointing towards growth.")
+![An infographic visually representing digital marketing ROI with various interconnected elements like email, SEO, mobile ads, and AI-driven campaigns, all pointing towards growth.](../assets/images/banners/digital-marketing-roi-visual-elements.png)
 
 ---
 
@@ -121,7 +121,7 @@ overall Return on Investment (ROI).*
 > 🔍 Forbes ROI Guide and Quest Journals ROI Analysis offer frameworks to calculate and optimize
 > returns
 
-> 🔍 VVG ONLINE's blog delves into the [key performance indicators (KPIs)](/blog/key-performance-indicators-kpis) of digital marketing,
+> 🔍 VVG ONLINE's blog delves into the [key performance indicators (KPIs)](./blog/key-performance-indicators-kpis) of digital marketing,
 > providing clients with the tools to evaluate the return on investment (ROI) of their campaigns
 > effectively.
 
@@ -240,7 +240,7 @@ Today's digital marketing landscape offers a unique convergence of factors:
 | Long-Term Value | Depends on timing | Compounds with strategy |
 
 > 🧠 Think of digital marketing like buying
-> [real estate](/blog/Digital-Assets-The-Real-Estate-of-the-Virtual-World) in a
+> [real estate](./Digital-Assets-The-Real-Estate-of-the-Virtual-World.html) in a
 > booming
 > city—every month you wait, the price goes up.
 

@@ -44,6 +44,22 @@
     "draft": false,
     "category": "Business",
     "featured": false,
+    "filename": "Don-t-Normalize-Common-Things-A-Philosophy-for-Business-Excellence",
+    "timeToRead": 4
+  },
+  {
+    "title": "Don't Normalize Common Things: A Philosophy for Business Excellence",
+    "slug": "dont-normalize-common-things-a-philosophy-for-business-excellence",
+    "publishedAt": "2025-11-06",
+    "tags": [
+      "Business",
+      "Innovation",
+      "Excellence"
+    ],
+    "excerpt": "Explore why questioning common practices is crucial for business innovation and excellence. Learn how to challenge the status quo and drive transformative growth.",
+    "draft": false,
+    "category": "Business",
+    "featured": false,
     "filename": "Dont-normalize-common-things-a-philosophy-for-business-excellence",
     "timeToRead": 4
   },
@@ -79,7 +95,7 @@
     "category": "Technology",
     "featured": true,
     "filename": "It-management-solutions-for-indian-smbs",
-    "timeToRead": 8
+    "timeToRead": 6
   },
   {
     "title": "Key Performance Indicators (KPIs)",
@@ -95,7 +111,7 @@
     "category": "Marketing",
     "featured": true,
     "filename": "Key-Performance-Indicators-KPIs",
-    "timeToRead": 5
+    "timeToRead": 4
   },
   {
     "title": "Operating Model Design",
@@ -128,81 +144,5 @@
     "featured": false,
     "filename": "The-Digital-Marketing-Investment-Imperative",
     "timeToRead": 11
-  },
-  {
-    "title": "Bharat's AI Five-Layer Cake: Why Private AI Infrastructure is the Real Opportunity",
-    "slug": "bharat-ai-five-layer-cake",
-    "publishedAt": "2026-02-01",
-    "tags": [
-      "AI Infrastructure",
-      "Private AI",
-      "Bharat",
-      "Digital Transformation",
-      "Jensen Huang",
-      "NVIDIA",
-      "Data Centers"
-    ],
-    "excerpt": "Jensen Huang's five-layer cake framework reveals Bharat's unique AI infrastructure opportunity — and why private AI is the missing layer for SMBs, blue-collar workers, and capability builders.",
-    "draft": false,
-    "category": "Technology",
-    "featured": false,
-    "filename": "bharat-ai-five-layer-cake",
-    "timeToRead": 16
-  },
-  {
-    "title": "Decode. Design. Deliver.",
-    "slug": "decode-design-deliver",
-    "publishedAt": "2026-08-30",
-    "tags": [
-      "Strategy",
-      "Methodology",
-      "V.I.P.E.R.",
-      "Business",
-      "Digital Transformation"
-    ],
-    "excerpt": "Every transformation follows the same arc: Decode the problem, Design the solution, Deliver the results. Here's how VVG ONLINE operationalizes this through V.I.P.E.R.",
-    "draft": false,
-    "category": "Strategy",
-    "featured": true,
-    "filename": "decode-design-deliver",
-    "timeToRead": 7
-  },
-  {
-    "title": "NVIDIA's $12.93B Hugging Face Acquisition: What It Means for Open-Source AI",
-    "slug": "nvidia-hugging-face-acquisition-analysis",
-    "publishedAt": "2026-09-06",
-    "tags": [
-      "NVIDIA",
-      "Hugging Face",
-      "AI Infrastructure",
-      "Open Source",
-      "M&A",
-      "Regulatory"
-    ],
-    "excerpt": "NVIDIA's $12.93B acquisition of Hugging Face marks a pivotal moment for open-weight AI. We analyze the strategic implications, regulatory risks, and what this means for developers and the open-source ecosystem.",
-    "draft": false,
-    "category": "Technology",
-    "featured": false,
-    "filename": "nvidia-hugging-face-acquisition-analysis",
-    "timeToRead": 9
-  },
-  {
-    "title": "What's Your PC Really Worth? A Value Assessment Guide for Indian Buyers",
-    "slug": "pc-laptop-value-assessment-guide-inr",
-    "publishedAt": "2026-07-27",
-    "tags": [
-      "Hardware",
-      "IT Management",
-      "Private AI",
-      "SMBs",
-      "India",
-      "INR"
-    ],
-    "excerpt": "Stop overpaying for underperforming hardware. Here's how to calculate the real value of a PC or laptop — and why the right infrastructure decision saves lakhs.",
-    "draft": false,
-    "category": "Technology",
-    "featured": true,
-    "filename": "pc-laptop-value-assessment-guide-inr",
-    "timeToRead": 9
   }
 ]
