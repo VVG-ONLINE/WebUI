@@ -1,0 +1,96 @@
+@page "/terms"
+@using VVG.Web.Models
+@inject VVG.Web.Services.MetadataService MetadataService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Terms & Conditions | VVG ONLINE</PageTitle>
+
+<section class="py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Terms & Conditions</h1>
+        <p class="lead mb-5">Last Updated: July 2026</p>
+
+        <div class="terms-content">
+            <div class="mb-5">
+                <h3>1. Scope of Services</h3>
+                <p>VVG ONLINE provides a comprehensive range of digital business consultancy services across the following areas:</p>
+                <ul>
+                    <li><strong>Strategy & Innovation</strong> — Tailored strategic planning, innovation roadmaps, and business alignment consulting.</li>
+                    <li><strong>Digital Transformation</strong> — Technology integration, sustainable transformation consulting, and digital maturity acceleration.</li>
+                    <li><strong>Capability Building</strong> — Training & development, resource optimization, and organizational upskilling programs.</li>
+                    <li><strong>Strategic Digital Marketing</strong> — SEO, social media management, content marketing, paid advertising, and analytics-driven marketing strategy.</li>
+                    <li><strong>Design Thinking Workshops</strong> — User-centered design, problem-solving workshops, and innovation strategy facilitation.</li>
+                    <li><strong>IT Management Solutions</strong> — Cloud infrastructure, cybersecurity, IT support & training, digital platform enablement, vendor management, and custom AI model development.</li>
+                </ul>
+                <p>Any service not explicitly outlined in a signed Statement of Work (SOW) or service agreement is considered outside the scope of this agreement.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>2. Fees & Payment Terms</h3>
+                <p>Fees for services are agreed upon in writing in a service agreement or quote. Payments are due within 15 days of the invoice date. Late payments may be subject to a late fee of 1.5% per month. VVG ONLINE reserves the right to suspend services if accounts remain unpaid for more than 30 days.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>3. Service Level Agreements (SLAs)</h3>
+                <p>We strive to provide 99.9% uptime for managed services. Specific response times for different severity levels are detailed in the individual service agreements. While we make every effort to minimize downtime, VVG ONLINE is not liable for interruptions caused by third-party providers (e.g., AWS, Azure) or force majeure events.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>4. Data Privacy & DPDP Act Compliance</h3>
+                <p>VVG ONLINE is committed to protecting your data. We operate in strict compliance with the Digital Personal Data Protection (DPDP) Act. We only process personal data for the purposes of providing our services and as explicitly authorized by the client. We do not sell or share personal data with third parties without prior consent.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>5. Intellectual Property</h3>
+                <p>VVG ONLINE retains ownership of all pre-existing intellectual property, including tools, processes, and proprietary software. Client-provided data and the specific configurations created for the client remain the property of the client. Any custom software developed specifically for the client is governed by the terms of the SOW.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>6. Confidentiality</h3>
+                <p>Both parties agree to keep all non-public information, including business strategies, technical specifications, and client data, strictly confidential. This obligation survives the termination of the agreement for a period of 3 years.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>7. Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, VVG ONLINE's total liability for any claims arising out of or related to the services provided shall not exceed the total amount paid by the client in the 6 months preceding the claim. VVG ONLINE is not liable for indirect, incidental, or consequential damages, including loss of profits or data.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>8. Termination of Agreement</h3>
+                <p>Either party may terminate this agreement with 30 days' written notice. In the event of a material breach of terms, VVG ONLINE reserves the right to terminate the agreement immediately. Upon termination, the client remains responsible for all outstanding fees for services rendered up to the termination date.</p>
+            </div>
+
+            <div class="mb-5">
+                <h3>9. Governing Law</h3>
+                <p>This agreement shall be governed by and construed in accordance with the laws of India. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts located in Indore, Madhya Pradesh.</p>
+            </div>
+        </div>
+
+        <div class="mt-5 p-4 card border">
+            <p>By using our services, you acknowledge that you have read, understood, and agreed to these Terms & Conditions. If you have any questions, please contact our support team at <a href="/contact">vvgonline.net@gmail.com</a>.</p>
+        </div>
+    </div>
+</section>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var pageMeta = await MetadataService.GetPageMetadataAsync("terms");
+        await MetadataService.SetPageMetadata(pageMeta);
+    }
+}
+
+<style>
+    .terms-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.5rem;
+    }
+    .terms-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+</style>

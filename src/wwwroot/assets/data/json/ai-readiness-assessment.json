@@ -1,0 +1,241 @@
+{
+  "title": "AI Readiness Assessment for Indian SMBs",
+  "description": "Evaluate your business's readiness to leverage Artificial Intelligence for improved operational efficiency, cost savings, and increased profits.",
+  "sections": [
+    {
+      "id": "strategicAlignment",
+      "title": "Business Vision & AI Alignment",
+      "description": "How well is AI integrated into your overall business strategy and profit goals?",
+      "questions": [
+        {
+          "id": "A1",
+          "text": "We have a clearly defined business strategy that accounts for digital and AI-driven opportunities.",
+          "options": [
+            { "text": "Not yet started", "score": 0 },
+            { "text": "In discussion, no formal plan", "score": 1 },
+            { "text": "Working plan exists for one department", "score": 2 },
+            { "text": "AI is embedded in our company-wide strategy", "score": 3 }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "Our leadership team actively discusses and sponsors AI initiatives.",
+          "options": [
+            { "text": "No awareness or interest", "score": 0 },
+            { "text": "Some awareness but no priority", "score": 1 },
+            { "text": "Leadership is exploring use cases", "score": 2 },
+            { "text": "Dedicated budget and sponsor assigned", "score": 3 }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "We track metrics related to operational efficiency and profitability at least monthly.",
+          "options": [
+            { "text": "No formal tracking", "score": 0 },
+            { "text": "Tracked annually", "score": 1 },
+            { "text": "Tracked quarterly", "score": 2 },
+            { "text": "Tracked monthly or real-time", "score": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dataAndInfrastructure",
+      "title": "Operational Data & Infrastructure Readiness",
+      "description": "Evaluation of your existing data quality, IT infrastructure, and data security practices.",
+      "questions": [
+        {
+          "id": "B1",
+          "text": "Our business data (customer, sales, inventory) is digitised and stored centrally.",
+          "options": [
+            { "text": "Mostly paper-based or siloed in individual files", "score": 0 },
+            { "text": "Some data digitised, spread across scattered tools", "score": 1 },
+            { "text": "Centralised storage but inconsistent quality", "score": 2 },
+            { "text": "Clean, structured data in a centralised system", "score": 3 }
+          ]
+        },
+        {
+          "id": "B2",
+          "text": "Our IT infrastructure is reliable and scalable for new technologies.",
+          "options": [
+            { "text": "Outdated, frequently down", "score": 0 },
+            { "text": "Basic infrastructure, scalability concerns", "score": 1 },
+            { "text": "Mostly cloud-based with reliable uptime", "score": 2 },
+            { "text": "Modern, scalable, with redundancy and security layers", "score": 3 }
+          ]
+        },
+        {
+          "id": "B3",
+          "text": "We have documented cybersecurity and data backup protocols in place.",
+          "options": [
+            { "text": "No formal protocols", "score": 0 },
+            { "text": "Basic antivirus, periodic backups", "score": 1 },
+            { "text": "Regular backups, firewall, access controls", "score": 2 },
+            { "text": "Comprehensive policy including encryption and incident response", "score": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talentAndCulture",
+      "title": "Team & Culture for AI Adoption",
+      "description": "Assessment of your team's readiness, skills, and organisational culture to embrace AI-driven changes.",
+      "questions": [
+        {
+          "id": "C1",
+          "text": "Our team members have basic digital literacy (using cloud apps, collaboration tools).",
+          "options": [
+            { "text": "Many lack basic digital skills", "score": 0 },
+            { "text": "Core team is digitally literate", "score": 1 },
+            { "text": "Most of the team is comfortable with new technology", "score": 2 },
+            { "text": "Team actively seeks out and adopts new digital tools", "score": 3 }
+          ]
+        },
+        {
+          "id": "C2",
+          "text": "Our organisation encourages experimentation and learning.",
+          "options": [
+            { "text": "Risk-averse; mistakes are discouraged", "score": 0 },
+            { "text": "Learning is encouraged but no budget for it", "score": 1 },
+            { "text": "Budget exists for training and pilot projects", "score": 2 },
+            { "text": "Dedicated innovation time and resources allocated", "score": 3 }
+          ]
+        },
+        {
+          "id": "C3",
+          "text": "We understand which internal processes would benefit most from automation or AI.",
+          "options": [
+            { "text": "No clarity on potential use cases", "score": 0 },
+            { "text": "Some ideas but not prioritised", "score": 1 },
+            { "text": "Identified 2-3 key areas for improvement", "score": 2 },
+            { "text": "Mapped all processes and prioritised by ROI", "score": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "useCasesAndROI",
+      "title": "High-Impact AI Use Cases & Opportunities",
+      "description": "Identification of potential AI applications relevant to driving operational efficiency and direct business profits.",
+      "questions": [
+        {
+          "id": "D1",
+          "text": "We have repetitive manual tasks that consume more than 20% of our team's time.",
+          "options": [
+            { "text": "Most tasks are manual", "score": 0 },
+            { "text": "Some automation in place", "score": 1 },
+            { "text": "Majority of workflows are digitised", "score": 2 },
+            { "text": "Automated workflows cover back-office and customer-facing processes", "score": 3 }
+          ]
+        },
+        {
+          "id": "D2",
+          "text": "We currently use any AI-powered tools (chatbots, predictive analytics, automation).",
+          "options": [
+            { "text": "No AI tools in use", "score": 0 },
+            { "text": "Using basic off-the-shelf AI features", "score": 1 },
+            { "text": "Implemented AI in one department", "score": 2 },
+            { "text": "AI tools deployed across multiple business functions", "score": 3 }
+          ]
+        },
+        {
+          "id": "D3",
+          "text": "We can clearly identify where a small efficiency gain would have a big impact on profitability.",
+          "options": [
+            { "text": "No visibility into process bottlenecks", "score": 0 },
+            { "text": "Some bottlenecks known, no solution identified", "score": 1 },
+            { "text": "Bottlenecks identified, exploring technical solutions", "score": 2 },
+            { "text": "Ready to implement targeted automation for high-ROI processes", "score": 3 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "governanceAndDPDP",
+      "title": "AI Governance & Data Privacy (DPDP Act)",
+      "description": "Awareness and preparedness for AI ethics, data privacy, and responsible AI implementation.",
+      "questions": [
+        {
+          "id": "E1",
+          "text": "We understand how the DPDP Act impacts our data collection and customer communication.",
+          "options": [
+            { "text": "Never heard of DPDP Act", "score": 0 },
+            { "text": "Aware but no compliance actions taken", "score": 1 },
+            { "text": "Basic privacy policy and consent mechanisms in place", "score": 2 },
+            { "text": "Full compliance with DPDP requirements", "score": 3 }
+          ]
+        },
+        {
+          "id": "E2",
+          "text": "We have clear policies for responsible and ethical use of AI.",
+          "options": [
+            { "text": "No policies", "score": 0 },
+            { "text": "Informal understanding within team", "score": 1 },
+            { "text": "Draft policies under review", "score": 2 },
+            { "text": "Formal, documented AI ethics policy", "score": 3 }
+          ]
+        },
+        {
+          "id": "E3",
+          "text": "We are confident that our data handling practices will not create legal or reputational risk.",
+          "options": [
+            { "text": "High concern, major gaps exist", "score": 0 },
+            { "text": "Moderate concern, gaps identified", "score": 1 },
+            { "text": "Low concern, minor gaps remain", "score": 2 },
+            { "text": "Fully confident, regularly audited", "score": 3 }
+          ]
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "tier": "AI Beginner",
+      "minScore": 0,
+      "maxScore": 15,
+      "summary": "You are at the very start of your AI journey. Opportunities to improve efficiency and profit are largely untapped.",
+      "recommendations": [
+        "Schedule a free introductory call with VVG ONLINE to understand AI fundamentals for SMBs.",
+        "Digitise your data from paper/spreadsheets to a centralised digital system.",
+        "Identify one quick win — pick a single repetitive task and explore an off-the-shelf automation tool."
+      ],
+      "cta": "Contact VVG ONLINE for a free consultation to define your AI readiness roadmap."
+    },
+    {
+      "tier": "AI Progressor",
+      "minScore": 16,
+      "maxScore": 25,
+      "summary": "You have the basics in place and are exploring AI possibilities. Focused effort can unlock significant efficiency gains and cost savings.",
+      "recommendations": [
+        "Formalise your AI strategy with VVG ONLINE to create a structured AI adoption plan aligned with your business goals.",
+        "Invest in training to upskill your team on digital tools and AI fundamentals.",
+        "Pilot a high-impact use case — launch a small AI project in one department to demonstrate ROI."
+      ],
+      "cta": "Contact VVG ONLINE for a consultation to identify and pilot your highest-impact AI use case."
+    },
+    {
+      "tier": "AI Transformer",
+      "minScore": 26,
+      "maxScore": 35,
+      "summary": "Your organisation is well-positioned to deploy AI for meaningful competitive advantage.",
+      "recommendations": [
+        "Scale successful pilots to expand proven AI use cases across other departments.",
+        "Integrate AI into core processes like CRM, ERP, or supply chain management.",
+        "Strengthen governance — formalise DPDP Act compliance and AI ethics policies."
+      ],
+      "cta": "Contact VVG ONLINE for a strategic session on scaling AI across your enterprise to maximise profitability."
+    },
+    {
+      "tier": "AI Leader",
+      "minScore": 36,
+      "maxScore": 45,
+      "summary": "You are ahead of most Indian SMBs. AI is driving measurable efficiency and profit improvements.",
+      "recommendations": [
+        "Adopt custom AI solutions — explore bespoke AI models fine-tuned for your proprietary data.",
+        "Build a competitive moat using AI for unique customer experiences or operational efficiencies.",
+        "Stay ahead of regulation by ensuring your governance framework anticipates future regulations."
+      ],
+      "cta": "Contact VVG ONLINE to explore how custom AI solutions can give you a lasting competitive edge and drive superior profit margins."
+    }
+  ]
+}
